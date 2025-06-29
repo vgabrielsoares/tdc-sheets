@@ -746,15 +746,13 @@ CREATE TABLE "particularidade" (
   "particularidade" "VARCHAR" NOT NULL,
   "efeito" "TEXT",
   "oposto" "INTEGER",
-  "pontos" "INTEGER",
-  PRIMARY KEY ("id")
+  "pontos" "INTEGER"
 );
 
 CREATE TABLE "particularidades_personagem" (
   "id" SERIAL PRIMARY KEY,
   "ficha_personagem_id" "INTEGER" NOT NULL,
-  "particularidade_id" "VARCHAR",
-  PRIMARY KEY ("id")
+  "particularidade_id" "INTEGER"
 );
 
 CREATE TABLE "equipamentos" (
@@ -763,8 +761,7 @@ CREATE TABLE "equipamentos" (
   "peso" "INTEGER",
   "preco" "VARCHAR",
   "tipo" tipos_equipamentos,
-  "descricao" "TEXT",
-  PRIMARY KEY ("id")
+  "descricao" "TEXT"
 );
 
 CREATE INDEX "ficha_personagem_index_0" ON "ficha_personagem" ("id", "user_id");
