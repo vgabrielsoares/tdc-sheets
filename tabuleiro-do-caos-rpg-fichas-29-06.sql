@@ -1004,3 +1004,54 @@ ALTER TABLE "descricao_personagem" ADD FOREIGN KEY ("ficha_personagem_id") REFER
 
 ALTER TABLE "habilidades_personagem" DROP CONSTRAINT IF EXISTS habilidades_personagem_atributo_personagem_id_fkey;
 ALTER TABLE "habilidades_personagem" ADD FOREIGN KEY ("atributo_personagem_id") REFERENCES "atributos_personagem" ("id") ON DELETE RESTRICT;
+
+-- Função para limpeza de tokens expirados de compartilhamento
+CREATE OR REPLACE FUNCTION cleanup_expired_sharing_tokens()
+RETURNS INTEGER
+LANGUAGE plpgsql AS $$
+DECLARE
+    cleaned_count INTEGER := 0;
+BEGIN
+    UPDATE compartilhamento_ficha 
+    SET ativo = false 
+    WHERE expiracao < CURRENT_TIMESTAMP AND ativo = true;
+    
+    GET DIAGNOSTICS cleaned_count = ROW_COUNT;
+    RETURN cleaned_count;
+END; $$;
+
+-- Função para criar snapshot da ficha
+CREATE OR REPLACE FUNCTION create_ficha_snapshot(
+    p_ficha_id INTEGER,
+    p_motivo VARCHAR(100) DEFAULT 'Manual'
+)
+RETURNS INTEGER
+LANGUAGE plpgsql AS $$
+DECLARE
+    v_versao INTEGER;
+    v_dados JSONB;
+    v_snapshot_id INTEGER;
+BEGIN
+    -- Incrementar versão
+    UPDATE ficha_personagem 
+    SET versao = versao + 1, updated_at = CURRENT_TIMESTAMP
+    WHERE id = p_ficha_id
+    RETURNING versao INTO v_versao;
+    
+    -- Criar dados JSON da ficha
+    SELECT json_build_object(
+        'ficha', row_to_json(fp.*),
+        'atributos', row_to_json(ap.*),
+        'created_at', CURRENT_TIMESTAMP
+    )::JSONB INTO v_dados
+    FROM ficha_personagem fp
+    LEFT JOIN atributos_personagem ap ON fp.id = ap.ficha_personagem_id
+    WHERE fp.id = p_ficha_id;
+    
+    -- Inserir snapshot
+    INSERT INTO ficha_snapshot (ficha_personagem_id, versao, motivo, dados_ficha)
+    VALUES (p_ficha_id, v_versao, p_motivo, v_dados)
+    RETURNING id INTO v_snapshot_id;
+    
+    RETURN v_snapshot_id;
+END; $$;
