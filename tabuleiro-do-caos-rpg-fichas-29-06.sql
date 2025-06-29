@@ -541,19 +541,12 @@ CREATE TABLE "resistencias_personagem" (
 CREATE TABLE "atributos_personagem" (
   "id" SERIAL PRIMARY KEY,
   "ficha_personagem_id" "INTEGER" NOT NULL,
-  "agilidade" "INTEGER" NOT NULL,
-  "agilidade_temp" "INTEGER",
-  "constituicao" "INTEGER" NOT NULL,
-  "constituicao_temp" "INTEGER",
-  "forca" "INTEGER" NOT NULL,
-  "forca_temp" "INTEGER",
-  "influencia" "INTEGER" NOT NULL,
-  "influencia_temp" "INTEGER",
-  "mente" "INTEGER" NOT NULL,
-  "mente_temp" "INTEGER",
-  "presenca" "INTEGER" NOT NULL,
-  "presenca_temp" "INTEGER",
-  PRIMARY KEY ("id")
+  "atributo" atributos NOT NULL,
+  "valor" "INTEGER" NOT NULL,
+  "valor_temp" "INTEGER",
+  "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "updated_at" TIMESTAMP,
+  UNIQUE(ficha_personagem_id, atributo)
 );
 
 CREATE TABLE "sentidos_personagem" (
