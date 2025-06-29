@@ -1309,3 +1309,6 @@ CREATE INDEX idx_log_ficha ON log_alteracoes(ficha_personagem_id);
 CREATE INDEX idx_log_data ON log_alteracoes(created_at);
 CREATE INDEX idx_log_user ON log_alteracoes(user_id);
 CREATE INDEX idx_log_tabela ON log_alteracoes(tabela);
+
+ALTER TABLE "log_alteracoes" ADD FOREIGN KEY ("ficha_personagem_id") REFERENCES "ficha_personagem" ("id") ON DELETE CASCADE;
+ALTER TABLE "log_alteracoes" ADD FOREIGN KEY ("user_id") REFERENCES "user" ("id") ON DELETE SET NULL;
