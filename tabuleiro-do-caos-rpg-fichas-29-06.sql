@@ -912,6 +912,13 @@ ALTER TABLE "pv_pp_personagem" ADD CONSTRAINT check_pv_positivo
 ALTER TABLE "pv_pp_personagem" ADD CONSTRAINT check_pp_positivo 
   CHECK (pp_maximo >= 0 AND pp_atual >= 0);
 
+ALTER TABLE "user" ADD CONSTRAINT unique_username UNIQUE (username);
+ALTER TABLE "feiticos" ADD CONSTRAINT check_circulo_valido CHECK (circulo BETWEEN 0 AND 9);
+ALTER TABLE "arquetipos_personagem" ADD CONSTRAINT check_nivel_arquetipo_positivo CHECK (nivel_arquetipo > 0);
+ALTER TABLE "classes_personagem" ADD CONSTRAINT check_nivel_classe_positivo CHECK (nivel > 0);
+ALTER TABLE "equipamentos" ADD CONSTRAINT check_peso_positivo CHECK (peso >= 0);
+ALTER TABLE "carga_personagem" ADD CONSTRAINT check_carga_valida CHECK (carga_atual >= 0 AND capacidade_carga >= 0);
+
 COMMENT ON TABLE "ficha_personagem" IS 'Armazena informações básicas de personagens do RPG';
 COMMENT ON COLUMN "ficha_personagem"."habilidade_assinatura" IS 'Referência à habilidade na qual o personagem é especialista';
 COMMENT ON COLUMN "ficha_personagem"."versao" IS 'Controle de versionamento da ficha';
