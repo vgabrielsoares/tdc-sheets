@@ -1304,3 +1304,8 @@ CREATE TABLE "log_alteracoes" (
   "user_agent" TEXT,
   "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE INDEX idx_log_ficha ON log_alteracoes(ficha_personagem_id);
+CREATE INDEX idx_log_data ON log_alteracoes(created_at);
+CREATE INDEX idx_log_user ON log_alteracoes(user_id);
+CREATE INDEX idx_log_tabela ON log_alteracoes(tabela);
