@@ -895,9 +895,10 @@ ALTER TABLE "origem_custom" ADD FOREIGN KEY ("id") REFERENCES "itens_origem" ("o
 
 -- Constraints de validação
 ALTER TABLE "atributos_personagem" ADD CONSTRAINT check_atributos_range 
-  CHECK (agilidade BETWEEN 1 AND 20 AND constituicao BETWEEN 1 AND 20 
-         AND forca BETWEEN 1 AND 20 AND influencia BETWEEN 1 AND 20 
-         AND mente BETWEEN 1 AND 20 AND presenca BETWEEN 1 AND 20);
+  CHECK (valor BETWEEN 1 AND 20);
+
+ALTER TABLE "atributos_personagem" ADD CONSTRAINT check_valor_temp_range 
+  CHECK (valor_temp IS NULL OR valor_temp BETWEEN 1 AND 20);
 
 ALTER TABLE "ficha_personagem" ADD CONSTRAINT check_experiencia_positiva 
   CHECK (experiencia >= 0);
