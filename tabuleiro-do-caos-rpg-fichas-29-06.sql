@@ -973,3 +973,24 @@ $$ language 'plpgsql';
 
 CREATE TRIGGER update_ficha_personagem_updated_at BEFORE UPDATE
     ON ficha_personagem FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+
+CREATE TRIGGER update_atributos_personagem_updated_at BEFORE UPDATE
+    ON atributos_personagem FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+
+CREATE TRIGGER update_habilidades_personagem_updated_at BEFORE UPDATE
+    ON habilidades_personagem FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+
+CREATE TRIGGER update_pv_pp_personagem_updated_at BEFORE UPDATE
+    ON pv_pp_personagem FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+
+CREATE TRIGGER update_defesa_updated_at BEFORE UPDATE
+    ON defesa FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+
+CREATE TRIGGER update_inventario_personagem_updated_at BEFORE UPDATE
+    ON inventario_personagem FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+
+CREATE TRIGGER update_ataques_personagem_updated_at BEFORE UPDATE
+    ON ataques_personagem FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+
+CREATE TRIGGER update_feiticos_personagem_updated_at BEFORE UPDATE
+    ON feiticos_personagem FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
