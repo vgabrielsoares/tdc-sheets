@@ -218,7 +218,9 @@ CREATE TABLE "ficha_personagem" (
   "habilidade_assinatura" "INTEGER" NOT NULL,
   "nivel_sorte" "INTEGER" NOT NULL DEFAULT 0,
   "tamanho" tipos_tamanho,
-  PRIMARY KEY ("id")
+  "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "updated_at" TIMESTAMP,
+  "versao" INTEGER DEFAULT 1
 );
 
 CREATE TABLE "defesa" (
