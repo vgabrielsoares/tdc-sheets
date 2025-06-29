@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  database:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: tdc_sheets
+      POSTGRES_USER: tdc_user
+      POSTGRES_PASSWORD: tdc_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - tdc-network
+
+  backend:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.backend
+    environment:
+      DB_USERNAME: tdc_user
+      DB_PASSWORD: tdc_password
+      DB_URL: jdbc:postgresql://database:5432/tdc_sheets
+      JWT_SECRET: 
+    ports:
+      - "8080:8080"
+    depends_on:
+      - database
+    networks:
+      - tdc-network
+
+  frontend:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - tdc-network
+
+volumes:
+  postgres_data:
+
+networks:
+  tdc-network:
+    driver: bridge
