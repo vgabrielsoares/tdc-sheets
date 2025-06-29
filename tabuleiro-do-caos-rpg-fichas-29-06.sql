@@ -883,7 +883,7 @@ ALTER TABLE "uso_habilidade" ADD FOREIGN KEY ("habilidade_id") REFERENCES "habil
 
 ALTER TABLE "talento__poderes_arquetipo" ADD FOREIGN KEY ("arquetipo_id") REFERENCES "arquetipo" ("id");
 
-ALTER TABLE "talento__poderes_arquetipo" ADD FOREIGN KEY ("nome") REFERENCES "requisitos_talentos_poderes" ("id");
+ALTER TABLE "talento__poderes_arquetipo" ADD FOREIGN KEY ("requisitos_talentos_poderes_id") REFERENCES "requisitos_talentos_poderes" ("id");
 
 ALTER TABLE "requisitos_talentos_poderes" ADD FOREIGN KEY ("talento_poder_requisito") REFERENCES "talento__poderes_arquetipo" ("id");
 
