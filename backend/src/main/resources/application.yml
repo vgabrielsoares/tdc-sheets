@@ -1,0 +1,46 @@
+# Arquivo de configuração principal da aplicação Spring Boot
+# Configurações de desenvolvimento local
+
+spring:
+  application:
+    name: tdc-sheets
+  
+  profiles:
+    active: dev
+  
+  datasource:
+    url: jdbc:postgresql://localhost:5432/tdc_sheets
+    username: ${DB_USERNAME:tdc_user}
+    password: ${DB_PASSWORD:tdc_password}
+    driver-class-name: org.postgresql.Driver
+  
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+  
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
+    enabled: true
+  
+  security:
+    jwt:
+      secret: ${JWT_SECRET:your-secret-key-change-in-production}
+      expiration: 86400000 # 24 hours
+      refresh-expiration: 604800000 # 7 days
+
+logging:
+  level:
+    com.tdc.sheets: DEBUG
+    org.springframework.security: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api
