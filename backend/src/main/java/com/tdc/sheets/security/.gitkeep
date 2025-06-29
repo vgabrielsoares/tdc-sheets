@@ -1,0 +1,4 @@
+# Esta pasta conterá as configurações de segurança
+
+Este arquivo garante que a pasta seja versionada no Git.
+Classes de segurança para autenticação, autorização e configurações JWT.

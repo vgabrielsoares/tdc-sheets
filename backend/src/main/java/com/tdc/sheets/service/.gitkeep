@@ -1,0 +1,4 @@
+# Esta pasta conterá os serviços de negócio
+
+Este arquivo garante que a pasta seja versionada no Git.
+Services devem usar @Service e conter a lógica de negócio da aplicação.

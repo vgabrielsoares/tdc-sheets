@@ -1,0 +1,4 @@
+# Esta pasta conterá as entidades JPA
+
+Este arquivo garante que a pasta seja versionada no Git.
+Entidades devem usar @Entity e mapear as tabelas do banco de dados.

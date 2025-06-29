@@ -1,0 +1,4 @@
+# Esta pasta conterá os exception handlers e exceções customizadas
+
+Este arquivo garante que a pasta seja versionada no Git.
+Exceções customizadas e handlers para tratamento de erros da aplicação.

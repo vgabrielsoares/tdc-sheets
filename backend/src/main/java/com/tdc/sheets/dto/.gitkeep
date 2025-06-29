@@ -1,0 +1,4 @@
+# Esta pasta conterá os DTOs (Data Transfer Objects)
+
+Este arquivo garante que a pasta seja versionada no Git.
+DTOs devem ser usados para transferência de dados entre camadas e validações.
