@@ -836,6 +836,26 @@ ALTER TABLE "cunhagem_personagem" ADD FOREIGN KEY ("carga_personagem_id") REFERE
 
 ALTER TABLE "ficha_personagem" ADD FOREIGN KEY ("id") REFERENCES "descricao_personagem" ("ficha_personagem_id");
 
+CREATE TABLE "compartilhamento_ficha" (
+  "id" SERIAL PRIMARY KEY,
+  "ficha_personagem_id" INTEGER NOT NULL,
+  "user_id" INTEGER NOT NULL,
+  "nivel_acesso" VARCHAR(20) CHECK (nivel_acesso IN ('VISUALIZACAO', 'EDICAO')),
+  "link_token" VARCHAR(100) UNIQUE,
+  "expiracao" TIMESTAMP,
+  "ativo" BOOLEAN DEFAULT true,
+  "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE "ficha_snapshot" (
+  "id" SERIAL PRIMARY KEY,
+  "ficha_personagem_id" INTEGER NOT NULL,
+  "versao" INTEGER NOT NULL,
+  "motivo" VARCHAR(100),
+  "dados_ficha" JSONB,
+  "data_snapshot" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE TABLE "feiticos_personagem_habilidades_personagem" (
   "feiticos_personagem_habilidade" INTEGER,
   "habilidades_personagem_id" SERIAL,
