@@ -1118,3 +1118,21 @@ SELECT
     (SELECT COUNT(*) FROM compartilhamento_ficha WHERE ativo = true) as compartilhamentos_ativos,
     (SELECT COUNT(*) FROM ficha_snapshot) as total_snapshots,
     (SELECT COUNT(*) FROM archive.ficha_personagem) as fichas_arquivadas;
+
+ALTER TABLE "habilidades_personagem" ADD COLUMN "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+ALTER TABLE "habilidades_personagem" ADD COLUMN "updated_at" TIMESTAMP;
+
+ALTER TABLE "pv_pp_personagem" ADD COLUMN "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+ALTER TABLE "pv_pp_personagem" ADD COLUMN "updated_at" TIMESTAMP;
+
+ALTER TABLE "defesa" ADD COLUMN "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+ALTER TABLE "defesa" ADD COLUMN "updated_at" TIMESTAMP;
+
+ALTER TABLE "inventario_personagem" ADD COLUMN "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+ALTER TABLE "inventario_personagem" ADD COLUMN "updated_at" TIMESTAMP;
+
+ALTER TABLE "ataques_personagem" ADD COLUMN "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+ALTER TABLE "ataques_personagem" ADD COLUMN "updated_at" TIMESTAMP;
+
+ALTER TABLE "feiticos_personagem" ADD COLUMN "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+ALTER TABLE "feiticos_personagem" ADD COLUMN "updated_at" TIMESTAMP;
