@@ -1,0 +1,36 @@
+# Documentação da API - TDC Sheets
+
+Esta pasta conterá toda a documentação técnica do projeto.
+
+## Estrutura
+
+```
+docs/
+├── api/                    # Documentação da API
+│   ├── openapi.yml        # Especificação OpenAPI/Swagger
+│   ├── authentication.md  # Documentação de autenticação
+│   └── endpoints/         # Documentação detalhada dos endpoints
+├── database/              # Documentação do banco de dados
+│   ├── schema.md         # Esquema do banco
+│   ├── migrations.md     # Histórico de migrações
+│   └── queries.md        # Queries importantes
+├── deployment/           # Documentação de deploy
+│   ├── docker.md        # Deploy com Docker
+│   ├── production.md    # Configuração de produção
+│   └── monitoring.md    # Monitoramento e logs
+├── development/          # Guias de desenvolvimento
+│   ├── setup.md         # Setup do ambiente
+│   ├── coding-standards.md # Padrões de código
+│   └── contributing.md   # Guia de contribuição
+└── user/                # Documentação do usuário
+    ├── user-guide.md    # Manual do usuário
+    └── tutorials/       # Tutoriais passo-a-passo
+```
+
+## Convenções
+
+- Use Markdown (.md) para toda documentação
+- Inclua diagramas quando necessário (Mermaid, PlantUML)
+- Mantenha exemplos atualizados
+- Documente todas as APIs públicas
+- Inclua screenshots para interfaces
