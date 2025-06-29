@@ -735,6 +735,14 @@ CREATE INDEX idx_ficha_snapshot_personagem ON ficha_snapshot(ficha_personagem_id
 CREATE INDEX idx_user_username ON "user"(username);
 CREATE INDEX idx_ficha_created_at ON ficha_personagem(created_at);
 CREATE INDEX idx_ficha_updated_at ON ficha_personagem(updated_at);
+CREATE INDEX idx_ficha_user_origem ON ficha_personagem(user_id, origem_id);
+CREATE INDEX idx_atributos_ficha ON atributos_personagem(ficha_personagem_id);
+CREATE INDEX idx_atributos_tipo ON atributos_personagem(atributo);
+CREATE INDEX idx_atributos_ficha_tipo ON atributos_personagem(ficha_personagem_id, atributo);
+CREATE INDEX idx_habilidades_grau ON habilidades_personagem(grau_habilidade);
+CREATE INDEX idx_feiticos_circulo ON feiticos(circulo);
+CREATE INDEX idx_equipamentos_tipo ON equipamentos(tipo);
+CREATE INDEX idx_compartilhamento_ativo ON compartilhamento_ficha(ativo) WHERE ativo = true;
 
 ALTER TABLE "arquetipos_personagem" ADD FOREIGN KEY ("ficha_personagem_id") REFERENCES "ficha_personagem" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
