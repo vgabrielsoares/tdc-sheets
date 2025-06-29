@@ -1226,3 +1226,66 @@ EXCEPTION
     WHEN OTHERS THEN
         RAISE;
 END; $$;
+
+-- Função para transferir equipamento entre personagens
+CREATE OR REPLACE FUNCTION transferir_equipamento(
+    p_ficha_origem INTEGER,
+    p_ficha_destino INTEGER,
+    p_equipamento_id INTEGER,
+    p_quantidade INTEGER
+)
+RETURNS BOOLEAN
+LANGUAGE plpgsql AS $$
+DECLARE
+    v_carga_origem INTEGER;
+    v_carga_destino INTEGER;
+    v_quantidade_disponivel INTEGER;
+    v_peso_item INTEGER;
+    v_capacidade_destino INTEGER;
+BEGIN
+    -- Buscar cargas dos personagens
+    SELECT id INTO v_carga_origem FROM carga_personagem WHERE ficha_personagem_id = p_ficha_origem;
+    SELECT id INTO v_carga_destino FROM carga_personagem WHERE ficha_personagem_id = p_ficha_destino;
+    
+    -- Verificar quantidade disponível
+    SELECT quantidade_item INTO v_quantidade_disponivel
+    FROM inventario_personagem 
+    WHERE carga_personagem_id = v_carga_origem AND equipamento_id = p_equipamento_id;
+    
+    IF v_quantidade_disponivel < p_quantidade THEN
+        RAISE EXCEPTION 'Quantidade insuficiente. Disponível: %, Solicitado: %', v_quantidade_disponivel, p_quantidade;
+    END IF;
+    
+    -- Buscar peso do item
+    SELECT peso INTO v_peso_item FROM equipamentos WHERE id = p_equipamento_id;
+    
+    -- Verificar capacidade do destino
+    SELECT capacidade_carga INTO v_capacidade_destino 
+    FROM carga_personagem WHERE id = v_carga_destino;
+    
+    -- Transferir item
+    UPDATE inventario_personagem 
+    SET quantidade_item = quantidade_item - p_quantidade
+    WHERE carga_personagem_id = v_carga_origem AND equipamento_id = p_equipamento_id;
+    
+    -- Adicionar ao destino ou criar novo registro
+    INSERT INTO inventario_personagem (carga_personagem_id, equipamento_id, quantidade_item, peso_item)
+    VALUES (v_carga_destino, p_equipamento_id, p_quantidade, v_peso_item)
+    ON CONFLICT (carga_personagem_id, equipamento_id) 
+    DO UPDATE SET quantidade_item = inventario_personagem.quantidade_item + p_quantidade;
+    
+    -- Atualizar cargas
+    UPDATE carga_personagem 
+    SET carga_atual = carga_atual - (v_peso_item * p_quantidade)
+    WHERE id = v_carga_origem;
+    
+    UPDATE carga_personagem 
+    SET carga_atual = carga_atual + (v_peso_item * p_quantidade)
+    WHERE id = v_carga_destino;
+    
+    RETURN TRUE;
+    
+EXCEPTION
+    WHEN OTHERS THEN
+        RAISE;
+END; $$;
