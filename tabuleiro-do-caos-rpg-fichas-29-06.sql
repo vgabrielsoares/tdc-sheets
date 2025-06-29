@@ -257,8 +257,7 @@ CREATE TABLE "arquetipo" (
   "pp_nivel" integer NOT NULL,
   "defesa_5" integer NOT NULL,
   "defesa_10" integer NOT NULL,
-  "defesa_15" integer NOT NULL,
-  PRIMARY KEY ("id")
+  "defesa_15" integer NOT NULL
 );
 
 CREATE TABLE "talento__poderes_arquetipo" (
@@ -267,8 +266,7 @@ CREATE TABLE "talento__poderes_arquetipo" (
   "requisitos_talentos_poderes_id" integer,
   "nome" varchar NOT NULL,
   "descricao" text NOT NULL,
-  "linhagem" boolean,
-  PRIMARY KEY ("id")
+  "linhagem" boolean
 );
 
 CREATE TABLE "requisitos_talentos_poderes" (
@@ -282,16 +280,14 @@ CREATE TABLE "requisitos_talentos_poderes" (
   "habilidade_id" integer,
   "grau_habilidade" grau_pericia,
   "talento_poder_requisito" integer,
-  "linhagem_id" integer,
-  PRIMARY KEY ("id")
+  "linhagem_id" integer
 );
 
 CREATE TABLE "arquetipos_personagem" (
   "id" SERIAL PRIMARY KEY,
   "ficha_personagem_id" "INTEGER" NOT NULL,
   "arquetipo_id" "INTEGER" NOT NULL,
-  "nivel_arquetipo" "INTEGER" NOT NULL,
-  PRIMARY KEY ("id")
+  "nivel_arquetipo" "INTEGER" NOT NULL
 );
 
 CREATE TABLE "classe" (
@@ -301,16 +297,14 @@ CREATE TABLE "classe" (
   "requisitos_classe_id" "INTEGER" NOT NULL,
   "defesa_5" integer,
   "defesa_10" integer,
-  "defesa_15" integer,
-  PRIMARY KEY ("id")
+  "defesa_15" integer
 );
 
 CREATE TABLE "classes_personagem" (
   "id" SERIAL PRIMARY KEY,
   "ficha_personagem_id" "INTEGER" NOT NULL,
   "classe_id" "INTEGER" NOT NULL,
-  "nivel" "INTEGER" NOT NULL,
-  PRIMARY KEY ("id")
+  "nivel" "INTEGER" NOT NULL
 );
 
 CREATE TABLE "requisitos_classe" (
@@ -320,8 +314,7 @@ CREATE TABLE "requisitos_classe" (
   "primeiro_arquetipo" arquetipos_nome NOT NULL,
   "segundo_arquetipo" arquetipos_nome,
   "primeiro_arquetipo_nivel" "INTEGER" NOT NULL,
-  "segundo_arquetipo_nivel" "INTEGER",
-  PRIMARY KEY ("id")
+  "segundo_arquetipo_nivel" "INTEGER"
 );
 
 CREATE TABLE "habilidade" (
@@ -332,16 +325,14 @@ CREATE TABLE "habilidade" (
   "penalidade_carga" boolean,
   "instrumento" boolean,
   "proficiencia" boolean,
-  "combate" boolean,
-  PRIMARY KEY ("id")
+  "combate" boolean
 );
 
 CREATE TABLE "uso_habilidade" (
   "id" SERIAL PRIMARY KEY,
   "habilidade_id" "INTEGER" NOT NULL,
   "nome" varchar,
-  "descricao" text,
-  PRIMARY KEY ("id")
+  "descricao" text
 );
 
 CREATE TABLE "habilidades_personagem" (
@@ -362,16 +353,14 @@ CREATE TABLE "deslocamento_personagem" (
   "ficha_personagem_id" "INTEGER" NOT NULL,
   "deslocamento" tipos_deslocamento NOT NULL,
   "valor" "INTEGER" NOT NULL,
-  "bonus" integer,
-  PRIMARY KEY ("id")
+  "bonus" integer
 );
 
 CREATE TABLE "origem" (
   "id" SERIAL PRIMARY KEY,
   "nome" "VARCHAR" NOT NULL,
   "descricao" text,
-  "habilidade_especial" "TEXT",
-  PRIMARY KEY ("id")
+  "habilidade_especial" "TEXT"
 );
 
 CREATE TABLE "atributos_origem" (
@@ -384,24 +373,21 @@ CREATE TABLE "atributos_origem" (
   "valor_mente" integer,
   "valor_presenca" integer,
   "valor_generico_positivo" integer,
-  "valor_generico_negativo" integer,
-  PRIMARY KEY ("id")
+  "valor_generico_negativo" integer
 );
 
 CREATE TABLE "itens_origem" (
   "id" SERIAL PRIMARY KEY,
   "origem_id" "INTEGER" NOT NULL,
   "equipamento_id" integer,
-  "quantidade" integer,
-  PRIMARY KEY ("id")
+  "quantidade" integer
 );
 
 CREATE TABLE "habilidades_origem" (
   "id" SERIAL PRIMARY KEY,
   "origem_id" "INTEGER" NOT NULL,
   "habilidade_id" "INTEGER" NOT NULL,
-  "fixa" "BOOLEAN",
-  PRIMARY KEY ("id")
+  "fixa" "BOOLEAN"
 );
 
 CREATE TABLE "origem_custom" (
@@ -409,8 +395,7 @@ CREATE TABLE "origem_custom" (
   "ficha_personagem_id" "INTEGER",
   "nome" "VARCHAR",
   "descricao" text,
-  "habilidade_especial" "TEXT",
-  PRIMARY KEY ("id")
+  "habilidade_especial" "TEXT"
 );
 
 CREATE TABLE "linhagem" (
@@ -421,24 +406,21 @@ CREATE TABLE "linhagem" (
   "peso_medio" "VARCHAR",
   "maioridade" "VARCHAR",
   "expectativa_vida" "VARCHAR",
-  "descricao" "TEXT",
-  PRIMARY KEY ("id")
+  "descricao" "TEXT"
 );
 
 CREATE TABLE "deslocamento_linhagem" (
   "id" SERIAL PRIMARY KEY,
   "linhagem_id" integer,
   "deslocamento" tipos_deslocamento,
-  "valor" integer,
-  PRIMARY KEY ("id")
+  "valor" integer
 );
 
 CREATE TABLE "idiomas_linhagem" (
   "id" SERIAL PRIMARY KEY,
   "linhagem_id" integer,
   "idioma" idiomas,
-  "alfabeto" alfabetos,
-  PRIMARY KEY ("id")
+  "alfabeto" alfabetos
 );
 
 CREATE TABLE "atributos_linhagem" (
@@ -451,8 +433,7 @@ CREATE TABLE "atributos_linhagem" (
   "valor_mente" integer,
   "valor_presenca" integer,
   "valor_generico_positivo" integer,
-  "valor_generico_negativo" integer,
-  PRIMARY KEY ("id")
+  "valor_generico_negativo" integer
 );
 
 CREATE TABLE "sentidos_linhagem" (
@@ -460,8 +441,7 @@ CREATE TABLE "sentidos_linhagem" (
   "linhagem_id" integer,
   "audicao" tipos_sentidos NOT NULL,
   "olfato" tipos_sentidos NOT NULL,
-  "visao" tipos_sentidos NOT NULL,
-  PRIMARY KEY ("id")
+  "visao" tipos_sentidos NOT NULL
 );
 
 CREATE TABLE "caracteristicas_ancestralidade" (
@@ -469,8 +449,7 @@ CREATE TABLE "caracteristicas_ancestralidade" (
   "linhagem_id" integer,
   "nome" varchar,
   "descricao" text,
-  "fixa" boolean,
-  PRIMARY KEY ("id")
+  "fixa" boolean
 );
 
 CREATE TABLE "tamanho" (
@@ -487,8 +466,7 @@ CREATE TABLE "tamanho" (
   "atletismo" integer,
   "furtividade" integer,
   "reflexos" integer,
-  "tenacidade" integer,
-  PRIMARY KEY ("id")
+  "tenacidade" integer
 );
 
 CREATE TABLE "feiticos" (
@@ -510,15 +488,13 @@ CREATE TABLE "feiticos" (
   "duracao" "VARCHAR",
   "descricao" "TEXT",
   "elevacao" "TEXT",
-  "aprimoramento" "TEXT",
-  PRIMARY KEY ("id")
+  "aprimoramento" "TEXT"
 );
 
 CREATE TABLE "classes_feitico" (
   "id" SERIAL PRIMARY KEY,
   "feitico_id" "INTEGER" NOT NULL,
-  "classe_feitico" classes_feiticos,
-  PRIMARY KEY ("id")
+  "classe_feitico" classes_feiticos
 );
 
 CREATE TABLE "caracteristica_arquetipo" (
@@ -526,29 +502,25 @@ CREATE TABLE "caracteristica_arquetipo" (
   "nome" "VARCHAR" NOT NULL,
   "arquetipo_id" "INTEGER" NOT NULL,
   "descricao" "TEXT" NOT NULL,
-  "nivel" integer NOT NULL,
-  PRIMARY KEY ("id")
+  "nivel" integer NOT NULL
 );
 
 CREATE TABLE "habilidades_arquetipo" (
   "id" SERIAL PRIMARY KEY,
   "arquetipo_id" "INTEGER" NOT NULL,
-  "habilidade_id" "TEXT" NOT NULL,
-  PRIMARY KEY ("id")
+  "habilidade_id" "INTEGER" NOT NULL
 );
 
 CREATE TABLE "proficiencias_arquetipo" (
   "id" SERIAL PRIMARY KEY,
   "arquetipo_id" "INTEGER" NOT NULL,
-  "proficiencia" tipos_proficiencia,
-  PRIMARY KEY ("id")
+  "proficiencia" tipos_proficiencia
 );
 
 CREATE TABLE "proficiencias_classe" (
   "id" SERIAL PRIMARY KEY,
   "classe_id" "INTEGER" NOT NULL,
-  "proficiencia" tipos_proficiencia,
-  PRIMARY KEY ("id")
+  "proficiencia" tipos_proficiencia
 );
 
 CREATE TABLE "resistencias_personagem" (
@@ -560,8 +532,7 @@ CREATE TABLE "resistencias_personagem" (
   "suprema" "BOOLEAN" DEFAULT false,
   "lendaria" "BOOLEAN" DEFAULT false,
   "invulnerabilidade" "BOOLEAN" DEFAULT false,
-  "absorcao" "BOOLEAN" DEFAULT false,
-  PRIMARY KEY ("id")
+  "absorcao" "BOOLEAN" DEFAULT false
 );
 
 CREATE TABLE "atributos_personagem" (
@@ -590,16 +561,14 @@ CREATE TABLE "sentidos_personagem" (
   "olfato" tipos_sentidos NOT NULL,
   "mod_olfato" "INTEGER",
   "visao" tipos_sentidos NOT NULL,
-  "mod_visao" "INTEGER",
-  PRIMARY KEY ("id")
+  "mod_visao" "INTEGER"
 );
 
 CREATE TABLE "acoes_personagem" (
   "id" SERIAL PRIMARY KEY,
   "ficha_personagem_id" "INTEGER" NOT NULL,
   "acao" "VARCHAR" NOT NULL,
-  "acao_disponivel" "BOOLEAN" NOT NULL DEFAULT false,
-  PRIMARY KEY ("id")
+  "acao_disponivel" "BOOLEAN" NOT NULL DEFAULT false
 );
 
 CREATE TABLE "ataques_personagem" (
@@ -620,21 +589,18 @@ CREATE TABLE "user" (
   "nome_completo" "VARCHAR" NOT NULL,
   "username" "VARCHAR" NOT NULL,
   "senha" "VARCHAR" NOT NULL,
-  "created_at" "TIMESTAMP" NOT NULL,
-  PRIMARY KEY ("id")
+  "created_at" "TIMESTAMP" NOT NULL
 );
 
 CREATE TABLE "authorities" (
   "id" SERIAL PRIMARY KEY,
-  "authority" "VARCHAR" NOT NULL,
-  PRIMARY KEY ("id")
+  "authority" "VARCHAR" NOT NULL
 );
 
 CREATE TABLE "user_authority" (
   "id" "INTEGER" NOT NULL,
   "user_id" SERIAL PRIMARY KEY,
-  "authority_id" "INTEGER" NOT NULL,
-  PRIMARY KEY ("id")
+  "authority_id" "INTEGER" NOT NULL
 );
 
 CREATE TABLE "dano_ataque" (
@@ -643,8 +609,7 @@ CREATE TABLE "dano_ataque" (
   "dado" "VARCHAR(7)",
   "mod" "INTEGER",
   "bonus" "INTEGER",
-  "critico" "VARCHAR(8)",
-  PRIMARY KEY ("id")
+  "critico" "VARCHAR(8)"
 );
 
 CREATE TABLE "feiticos_personagem" (
@@ -659,8 +624,7 @@ CREATE TABLE "caracteristicas_arquetipos" (
   "id" SERIAL PRIMARY KEY,
   "arquetipo_id" "INTEGER",
   "nivel" "INTEGER",
-  "descricao" "TEXT",
-  PRIMARY KEY ("id")
+  "descricao" "TEXT"
 );
 
 CREATE TABLE "habilidades_classe" (
@@ -671,8 +635,7 @@ CREATE TABLE "habilidades_classe" (
   "primeiro_arquetipo" arquetipos_nome NOT NULL,
   "segundo_arquetipo" arquetipos_nome,
   "primeiro_arquetipo_nivel" "INTEGER" NOT NULL,
-  "segundo_arquetipo_nivel" "INTEGER",
-  PRIMARY KEY ("id")
+  "segundo_arquetipo_nivel" "INTEGER"
 );
 
 CREATE TABLE "proficiencias_personagem" (
@@ -698,8 +661,7 @@ CREATE TABLE "carga_personagem" (
   "ficha_personagem_id" "INTEGER" NOT NULL,
   "carga_atual" "INTEGER",
   "capacidade_carga" "INTEGER",
-  "bonus_capacidade_carga" "INTEGER",
-  PRIMARY KEY ("id")
+  "bonus_capacidade_carga" "INTEGER"
 );
 
 CREATE TABLE "cunhagem_personagem" (
@@ -710,8 +672,7 @@ CREATE TABLE "cunhagem_personagem" (
   "pp_fisico" "INTEGER",
   "c_banco" "INTEGER",
   "po_banco" "INTEGER",
-  "pp_banco" "INTEGER",
-  PRIMARY KEY ("id")
+  "pp_banco" "INTEGER"
 );
 
 CREATE TABLE "descricao_personagem" (
@@ -737,8 +698,7 @@ CREATE TABLE "descricao_personagem" (
   "aliados" "TEXT",
   "organizacoes" "TEXT",
   "historia" "TEXT",
-  "anotacoes" "TEXT",
-  PRIMARY KEY ("id")
+  "anotacoes" "TEXT"
 );
 
 CREATE TABLE "particularidade" (
