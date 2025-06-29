@@ -1,0 +1,4 @@
+# Componentes Comuns/Reutilizáveis
+
+Esta pasta conterá componentes que podem ser reutilizados em diferentes partes da aplicação.
+Exemplos: Button, Modal, Input, Loading, Notification, etc.

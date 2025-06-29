@@ -1,0 +1,4 @@
+# Componentes de Ficha
+
+Esta pasta conterá todos os componentes relacionados à criação, edição e visualização de fichas de RPG.
+Exemplos: FichaForm, AttributeEditor, EquipmentList, SkillsPanel, etc.

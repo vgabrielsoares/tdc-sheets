@@ -1,0 +1,4 @@
+# Componentes de Autenticação
+
+Esta pasta conterá os componentes relacionados a login, registro e autenticação.
+Exemplos: LoginForm, RegisterForm, ForgotPassword, etc.
