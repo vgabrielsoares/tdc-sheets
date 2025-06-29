@@ -994,3 +994,13 @@ CREATE TRIGGER update_ataques_personagem_updated_at BEFORE UPDATE
 
 CREATE TRIGGER update_feiticos_personagem_updated_at BEFORE UPDATE
     ON feiticos_personagem FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+
+ALTER TABLE "defesa" ADD FOREIGN KEY ("ficha_personagem_id") REFERENCES "ficha_personagem" ("id") ON DELETE CASCADE;
+ALTER TABLE "pv_pp_personagem" ADD FOREIGN KEY ("ficha_personagem_id") REFERENCES "ficha_personagem" ("id") ON DELETE CASCADE;
+ALTER TABLE "atributos_personagem" ADD FOREIGN KEY ("ficha_personagem_id") REFERENCES "ficha_personagem" ("id") ON DELETE CASCADE;
+ALTER TABLE "resistencias_personagem" ADD FOREIGN KEY ("ficha_personagem_id") REFERENCES "ficha_personagem" ("id") ON DELETE CASCADE;
+ALTER TABLE "ataques_personagem" ADD FOREIGN KEY ("ficha_personagem_id") REFERENCES "ficha_personagem" ("id") ON DELETE CASCADE;
+ALTER TABLE "descricao_personagem" ADD FOREIGN KEY ("ficha_personagem_id") REFERENCES "ficha_personagem" ("id") ON DELETE CASCADE;
+
+ALTER TABLE "habilidades_personagem" DROP CONSTRAINT IF EXISTS habilidades_personagem_atributo_personagem_id_fkey;
+ALTER TABLE "habilidades_personagem" ADD FOREIGN KEY ("atributo_personagem_id") REFERENCES "atributos_personagem" ("id") ON DELETE RESTRICT;
