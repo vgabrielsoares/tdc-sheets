@@ -231,7 +231,8 @@ CREATE TABLE "defesa" (
   "vestindo_armadura" "BOOLEAN" DEFAULT false,
   "limite_agilidade" "INTEGER",
   "outro_mod" "INTEGER",
-  PRIMARY KEY ("id")
+  "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "updated_at" TIMESTAMP
 );
 
 CREATE TABLE "pv_pp_personagem" (
@@ -245,7 +246,8 @@ CREATE TABLE "pv_pp_personagem" (
   "pp_temporario" "INTEGER",
   "limite_pp" "INTEGER",
   "limite_pp_bonus" "INTEGER",
-  PRIMARY KEY ("id")
+  "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "updated_at" TIMESTAMP
 );
 
 CREATE TABLE "arquetipo" (
@@ -345,7 +347,8 @@ CREATE TABLE "habilidades_personagem" (
   "mod_dado_habilidade" "INTEGER",
   "mod_temp" "INTEGER",
   "mod_outros" "INTEGER",
-  PRIMARY KEY ("id")
+  "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "updated_at" TIMESTAMP
 );
 
 CREATE TABLE "deslocamento_personagem" (
@@ -581,7 +584,8 @@ CREATE TABLE "ataques_personagem" (
   "dado_bonus" "INTEGER" DEFAULT 0,
   "mod_bonus" "INTEGER" DEFAULT 0,
   "custo_pp" "INTEGER",
-  PRIMARY KEY ("id")
+  "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "updated_at" TIMESTAMP
 );
 
 CREATE TABLE "user" (
@@ -617,7 +621,8 @@ CREATE TABLE "feiticos_personagem" (
   "ficha_personagem_id" "INTEGER" NOT NULL,
   "feiticos_id" "INTEGER",
   "habilidade" "INTEGER",
-  PRIMARY KEY ("id")
+  "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "updated_at" TIMESTAMP
 );
 
 CREATE TABLE "caracteristicas_arquetipos" (
@@ -653,7 +658,8 @@ CREATE TABLE "inventario_personagem" (
   "descricao_item" "TEXT",
   "quantidade_item" "INTEGER",
   "peso_item" "INTEGER",
-  PRIMARY KEY ("id")
+  "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "updated_at" TIMESTAMP
 );
 
 CREATE TABLE "carga_personagem" (
