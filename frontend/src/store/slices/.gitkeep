@@ -1,0 +1,4 @@
+# Redux Slices
+
+Esta pasta conterá os slices do Redux Toolkit para gerenciamento de estado.
+Exemplos: authSlice.ts, fichaSlice.ts, uiSlice.ts, userSlice.ts, etc.
