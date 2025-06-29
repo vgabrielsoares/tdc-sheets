@@ -1,0 +1,4 @@
+# Esta pasta conterá os testes de tratamento de exceções
+
+Este arquivo garante que a pasta seja versionada no Git.
+Os testes de exception devem testar exception handlers e tratamentos de erro customizados.

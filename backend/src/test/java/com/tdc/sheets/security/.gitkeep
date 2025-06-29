@@ -1,0 +1,4 @@
+# Esta pasta conterá os testes de segurança e autenticação
+
+Este arquivo garante que a pasta seja versionada no Git.
+Os testes de security devem testar configurações de segurança, autenticação e autorização.

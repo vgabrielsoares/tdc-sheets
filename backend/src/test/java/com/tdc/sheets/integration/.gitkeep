@@ -1,0 +1,4 @@
+# Esta pasta conterá os testes de integração end-to-end
+
+Este arquivo garante que a pasta seja versionada no Git.
+Os testes de integração devem usar @SpringBootTest e TestContainers para testes completos.

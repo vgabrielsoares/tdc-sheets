@@ -1,0 +1,4 @@
+# Esta pasta conterá os testes de validações customizadas
+
+Este arquivo garante que a pasta seja versionada no Git.
+Os testes de validation devem testar validators customizados e anotações de validação.

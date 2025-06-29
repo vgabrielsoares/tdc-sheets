@@ -1,0 +1,4 @@
+# Esta pasta conterá os testes dos repositórios JPA
+
+Este arquivo garante que a pasta seja versionada no Git.
+Os testes de repository devem usar @DataJpaTest para testes específicos de persistência.

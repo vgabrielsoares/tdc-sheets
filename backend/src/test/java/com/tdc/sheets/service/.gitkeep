@@ -1,0 +1,4 @@
+# Esta pasta conterá os testes da camada de serviço
+
+Este arquivo garante que a pasta seja versionada no Git.
+Os testes de service devem usar @ExtendWith(MockitoExtension.class) para testes unitários.

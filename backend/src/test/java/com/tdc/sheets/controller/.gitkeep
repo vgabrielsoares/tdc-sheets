@@ -1,0 +1,4 @@
+# Esta pasta conterá os testes dos controllers REST
+
+Este arquivo garante que a pasta seja versionada no Git.
+Os testes de controller devem seguir o padrão @WebMvcTest e testar endpoints REST.
