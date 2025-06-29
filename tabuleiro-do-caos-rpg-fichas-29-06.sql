@@ -766,6 +766,17 @@ CREATE TABLE "equipamentos" (
 
 CREATE INDEX "ficha_personagem_index_0" ON "ficha_personagem" ("id", "user_id");
 
+-- Índices para performance
+CREATE INDEX idx_habilidades_personagem_ficha ON habilidades_personagem(ficha_personagem_id);
+CREATE INDEX idx_arquetipos_personagem_arquetipo ON arquetipos_personagem(arquetipo_id);
+CREATE INDEX idx_classes_personagem_classe ON classes_personagem(classe_id);
+CREATE INDEX idx_compartilhamento_user ON compartilhamento_ficha(user_id);
+CREATE INDEX idx_compartilhamento_token ON compartilhamento_ficha(link_token);
+CREATE INDEX idx_ficha_snapshot_personagem ON ficha_snapshot(ficha_personagem_id);
+CREATE INDEX idx_user_username ON "user"(username);
+CREATE INDEX idx_ficha_created_at ON ficha_personagem(created_at);
+CREATE INDEX idx_ficha_updated_at ON ficha_personagem(updated_at);
+
 ALTER TABLE "arquetipos_personagem" ADD FOREIGN KEY ("ficha_personagem_id") REFERENCES "ficha_personagem" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 ALTER TABLE "arquetipos_personagem" ADD FOREIGN KEY ("arquetipo_id") REFERENCES "arquetipo" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
