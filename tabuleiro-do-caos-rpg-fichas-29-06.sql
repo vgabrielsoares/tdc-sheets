@@ -1289,3 +1289,18 @@ EXCEPTION
     WHEN OTHERS THEN
         RAISE;
 END; $$;
+
+-- Tabela de log para auditoria completa
+CREATE TABLE "log_alteracoes" (
+  "id" SERIAL PRIMARY KEY,
+  "ficha_personagem_id" INTEGER NOT NULL,
+  "user_id" INTEGER,
+  "tabela" VARCHAR(100) NOT NULL,
+  "campo" VARCHAR(100),
+  "valor_anterior" TEXT,
+  "valor_novo" TEXT,
+  "motivo" VARCHAR(100),
+  "ip_address" INET,
+  "user_agent" TEXT,
+  "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
