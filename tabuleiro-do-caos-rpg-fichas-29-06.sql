@@ -1055,3 +1055,66 @@ BEGIN
     
     RETURN v_snapshot_id;
 END; $$;
+
+-- Views úteis para consultas comuns
+CREATE VIEW vw_ficha_completa AS
+SELECT 
+    fp.*,
+    u.username,
+    o.nome as origem_nome,
+    l.nome as linhagem_nome,
+    (SELECT valor FROM atributos_personagem WHERE ficha_personagem_id = fp.id AND atributo = 'AGILIDADE') as agilidade,
+    (SELECT valor FROM atributos_personagem WHERE ficha_personagem_id = fp.id AND atributo = 'CONSTITUICAO') as constituicao,
+    (SELECT valor FROM atributos_personagem WHERE ficha_personagem_id = fp.id AND atributo = 'FORCA') as forca,
+    (SELECT valor FROM atributos_personagem WHERE ficha_personagem_id = fp.id AND atributo = 'INFLUENCIA') as influencia,
+    (SELECT valor FROM atributos_personagem WHERE ficha_personagem_id = fp.id AND atributo = 'MENTE') as mente,
+    (SELECT valor FROM atributos_personagem WHERE ficha_personagem_id = fp.id AND atributo = 'PRESENCA') as presenca,
+    pvpp.pv_atual, pvpp.pv_maximo, pvpp.pp_atual, pvpp.pp_maximo,
+    d.defesa_personagem
+FROM ficha_personagem fp
+JOIN "user" u ON fp.user_id = u.id
+LEFT JOIN origem o ON fp.origem_id = o.id
+LEFT JOIN linhagem l ON fp.linhagem_id = l.id
+LEFT JOIN pv_pp_personagem pvpp ON fp.id = pvpp.ficha_personagem_id
+LEFT JOIN defesa d ON fp.id = d.ficha_personagem_id;
+
+-- View para atributos pivotados
+CREATE VIEW vw_atributos_personagem AS
+SELECT 
+    ficha_personagem_id,
+    MAX(CASE WHEN atributo = 'AGILIDADE' THEN valor END) as agilidade,
+    MAX(CASE WHEN atributo = 'AGILIDADE' THEN valor_temp END) as agilidade_temp,
+    MAX(CASE WHEN atributo = 'CONSTITUICAO' THEN valor END) as constituicao,
+    MAX(CASE WHEN atributo = 'CONSTITUICAO' THEN valor_temp END) as constituicao_temp,
+    MAX(CASE WHEN atributo = 'FORCA' THEN valor END) as forca,
+    MAX(CASE WHEN atributo = 'FORCA' THEN valor_temp END) as forca_temp,
+    MAX(CASE WHEN atributo = 'INFLUENCIA' THEN valor END) as influencia,
+    MAX(CASE WHEN atributo = 'INFLUENCIA' THEN valor_temp END) as influencia_temp,
+    MAX(CASE WHEN atributo = 'MENTE' THEN valor END) as mente,
+    MAX(CASE WHEN atributo = 'MENTE' THEN valor_temp END) as mente_temp,
+    MAX(CASE WHEN atributo = 'PRESENCA' THEN valor END) as presenca,
+    MAX(CASE WHEN atributo = 'PRESENCA' THEN valor_temp END) as presenca_temp
+FROM atributos_personagem
+GROUP BY ficha_personagem_id;
+
+-- View para fichas compartilhadas
+CREATE VIEW vw_fichas_compartilhadas AS
+SELECT 
+    cf.*,
+    fp.nome_personagem,
+    u_owner.username as proprietario,
+    u_shared.username as usuario_compartilhado
+FROM compartilhamento_ficha cf
+JOIN ficha_personagem fp ON cf.ficha_personagem_id = fp.id
+JOIN "user" u_owner ON fp.user_id = u_owner.id
+JOIN "user" u_shared ON cf.user_id = u_shared.id
+WHERE cf.ativo = true;
+
+-- View para estatísticas do sistema
+CREATE VIEW vw_estatisticas_sistema AS
+SELECT 
+    (SELECT COUNT(*) FROM ficha_personagem) as total_fichas,
+    (SELECT COUNT(*) FROM "user") as total_usuarios,
+    (SELECT COUNT(*) FROM compartilhamento_ficha WHERE ativo = true) as compartilhamentos_ativos,
+    (SELECT COUNT(*) FROM ficha_snapshot) as total_snapshots,
+    (SELECT COUNT(*) FROM archive.ficha_personagem) as fichas_arquivadas;
