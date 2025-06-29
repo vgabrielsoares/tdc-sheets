@@ -768,11 +768,11 @@ CREATE INDEX "ficha_personagem_index_0" ON "ficha_personagem" ("id", "user_id");
 
 ALTER TABLE "arquetipos_personagem" ADD FOREIGN KEY ("ficha_personagem_id") REFERENCES "ficha_personagem" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
-ALTER TABLE "arquetipo" ADD FOREIGN KEY ("id") REFERENCES "arquetipos_personagem" ("arquetipo_id") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE "arquetipos_personagem" ADD FOREIGN KEY ("arquetipo_id") REFERENCES "arquetipo" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 ALTER TABLE "classes_personagem" ADD FOREIGN KEY ("ficha_personagem_id") REFERENCES "ficha_personagem" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
-ALTER TABLE "classe" ADD FOREIGN KEY ("id") REFERENCES "classes_personagem" ("classe_id") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE "classes_personagem" ADD FOREIGN KEY ("classe_id") REFERENCES "classe" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 ALTER TABLE "classes_feitico" ADD FOREIGN KEY ("feitico_id") REFERENCES "feiticos" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
@@ -786,7 +786,7 @@ ALTER TABLE "ficha_personagem" ADD FOREIGN KEY ("linhagem_id") REFERENCES "linha
 
 ALTER TABLE "habilidades_personagem" ADD FOREIGN KEY ("habilidade_id") REFERENCES "habilidade" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
-ALTER TABLE "ficha_personagem" ADD FOREIGN KEY ("id") REFERENCES "habilidades_personagem" ("ficha_personagem_id") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE "habilidades_personagem" ADD FOREIGN KEY ("ficha_personagem_id") REFERENCES "ficha_personagem" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 ALTER TABLE "ficha_personagem" ADD FOREIGN KEY ("id") REFERENCES "origem_custom" ("ficha_personagem_id") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
