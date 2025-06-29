@@ -1183,3 +1183,46 @@ EXCEPTION
         RAISE;
 END; $$;
 
+-- Função transacional para atualizar atributos com histórico
+CREATE OR REPLACE FUNCTION atualizar_atributos_personagem(
+    p_ficha_id INTEGER,
+    p_atributos JSONB,
+    p_motivo VARCHAR(100) DEFAULT 'Atualização de atributos'
+)
+RETURNS BOOLEAN
+LANGUAGE plpgsql AS $$
+DECLARE
+    v_atributo RECORD;
+    v_old_value INTEGER;
+BEGIN
+    -- Atualizar cada atributo
+    FOR v_atributo IN 
+        SELECT key as atributo_nome, value::INTEGER as novo_valor
+        FROM jsonb_each_text(p_atributos)
+    LOOP
+        -- Buscar valor anterior para auditoria
+        SELECT valor INTO v_old_value
+        FROM atributos_personagem
+        WHERE ficha_personagem_id = p_ficha_id 
+        AND atributo = v_atributo.atributo_nome::atributos;
+        
+        -- Atualizar valor
+        UPDATE atributos_personagem 
+        SET valor = v_atributo.novo_valor
+        WHERE ficha_personagem_id = p_ficha_id 
+        AND atributo = v_atributo.atributo_nome::atributos;
+        
+        -- Log da mudança
+        INSERT INTO log_alteracoes (ficha_personagem_id, tabela, campo, valor_anterior, valor_novo, motivo)
+        VALUES (p_ficha_id, 'atributos_personagem', v_atributo.atributo_nome, v_old_value::TEXT, v_atributo.novo_valor::TEXT, p_motivo);
+    END LOOP;
+    
+    -- Criar snapshot após mudanças significativas
+    PERFORM create_ficha_snapshot(p_ficha_id, p_motivo);
+    
+    RETURN TRUE;
+    
+EXCEPTION
+    WHEN OTHERS THEN
+        RAISE;
+END; $$;
