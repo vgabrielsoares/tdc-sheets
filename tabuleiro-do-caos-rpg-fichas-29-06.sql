@@ -678,9 +678,8 @@ CREATE TABLE "habilidades_classe" (
 CREATE TABLE "proficiencias_personagem" (
   "id" SERIAL PRIMARY KEY,
   "ficha_personagem_id" "INTEGER" NOT NULL,
-  "proficiencia" "TIPOS_PROFICIENCIA" NOT NULL,
-  "proficiente" "BOOLEAN" NOT NULL,
-  PRIMARY KEY ("id")
+  "proficiencia" tipos_proficiencia NOT NULL,
+  "proficiente" "BOOLEAN" NOT NULL
 );
 
 CREATE TABLE "inventario_personagem" (
