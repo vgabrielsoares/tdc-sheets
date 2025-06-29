@@ -1136,3 +1136,50 @@ ALTER TABLE "ataques_personagem" ADD COLUMN "updated_at" TIMESTAMP;
 
 ALTER TABLE "feiticos_personagem" ADD COLUMN "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
 ALTER TABLE "feiticos_personagem" ADD COLUMN "updated_at" TIMESTAMP;
+
+-- Função transacional para criar uma ficha completa
+CREATE OR REPLACE FUNCTION criar_ficha_completa(
+    p_nome_personagem VARCHAR,
+    p_user_id INTEGER,
+    p_origem_id INTEGER,
+    p_linhagem_id INTEGER,
+    p_atributos JSONB
+)
+RETURNS INTEGER
+LANGUAGE plpgsql AS $$
+DECLARE
+    v_ficha_id INTEGER;
+    v_atributo RECORD;
+BEGIN
+    -- Iniciar transação implícita
+    
+    -- Criar ficha principal
+    INSERT INTO ficha_personagem (nome_personagem, user_id, origem_id, linhagem_id, habilidade_assinatura)
+    VALUES (p_nome_personagem, p_user_id, p_origem_id, p_linhagem_id, 1) -- habilidade_assinatura temporária
+    RETURNING id INTO v_ficha_id;
+    
+    FOR v_atributo IN 
+        SELECT key as atributo_nome, value::INTEGER as valor
+        FROM jsonb_each_text(p_atributos)
+    LOOP
+        INSERT INTO atributos_personagem (ficha_personagem_id, atributo, valor)
+        VALUES (v_ficha_id, v_atributo.atributo_nome::atributos, v_atributo.valor);
+    END LOOP;
+    
+    -- Criar registros dependentes padrão
+    INSERT INTO pv_pp_personagem (ficha_personagem_id) VALUES (v_ficha_id);
+    INSERT INTO defesa (ficha_personagem_id, armadura) VALUES (v_ficha_id, 0);
+    INSERT INTO carga_personagem (ficha_personagem_id, carga_atual, capacidade_carga) VALUES (v_ficha_id, 0, 50);
+    INSERT INTO descricao_personagem (ficha_personagem_id) VALUES (v_ficha_id);
+    
+    -- Criar snapshot inicial
+    PERFORM create_ficha_snapshot(v_ficha_id, 'Criação da ficha');
+    
+    RETURN v_ficha_id;
+    
+EXCEPTION
+    WHEN OTHERS THEN
+        -- Em caso de erro, a transação será automaticamente revertida
+        RAISE;
+END; $$;
+
