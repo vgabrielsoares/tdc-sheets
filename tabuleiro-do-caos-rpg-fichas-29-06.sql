@@ -925,3 +925,76 @@ ALTER TABLE "requisitos_talentos_poderes" ADD FOREIGN KEY ("linhagem_id") REFERE
 ALTER TABLE "atributos_origem" ADD FOREIGN KEY ("origem_id") REFERENCES "origem" ("id");
 
 ALTER TABLE "origem_custom" ADD FOREIGN KEY ("id") REFERENCES "itens_origem" ("origem_id");
+
+-- Constraints de validação
+ALTER TABLE "atributos_personagem" ADD CONSTRAINT check_atributos_range 
+  CHECK (agilidade BETWEEN 1 AND 20 AND constituicao BETWEEN 1 AND 20 
+         AND forca BETWEEN 1 AND 20 AND influencia BETWEEN 1 AND 20 
+         AND mente BETWEEN 1 AND 20 AND presenca BETWEEN 1 AND 20);
+
+ALTER TABLE "ficha_personagem" ADD CONSTRAINT check_experiencia_positiva 
+  CHECK (experiencia >= 0);
+
+ALTER TABLE "ficha_personagem" ADD CONSTRAINT check_nivel_sorte_range 
+  CHECK (nivel_sorte >= 0 AND nivel_sorte <= 10);
+
+ALTER TABLE "pv_pp_personagem" ADD CONSTRAINT check_pv_positivo 
+  CHECK (pv_maximo > 0 AND pv_atual >= 0);
+
+ALTER TABLE "pv_pp_personagem" ADD CONSTRAINT check_pp_positivo 
+  CHECK (pp_maximo >= 0 AND pp_atual >= 0);
+
+COMMENT ON TABLE "ficha_personagem" IS 'Armazena informações básicas de personagens do RPG';
+COMMENT ON COLUMN "ficha_personagem"."habilidade_assinatura" IS 'Referência à habilidade na qual o personagem é especialista';
+COMMENT ON COLUMN "ficha_personagem"."versao" IS 'Controle de versionamento da ficha';
+COMMENT ON TABLE "compartilhamento_ficha" IS 'Controla compartilhamento de fichas entre usuários';
+COMMENT ON TABLE "ficha_snapshot" IS 'Snapshots para versionamento de fichas em momentos importantes';
+
+ALTER TABLE "compartilhamento_ficha" ADD FOREIGN KEY ("ficha_personagem_id") REFERENCES "ficha_personagem" ("id") ON DELETE CASCADE;
+ALTER TABLE "compartilhamento_ficha" ADD FOREIGN KEY ("user_id") REFERENCES "user" ("id") ON DELETE CASCADE;
+
+ALTER TABLE "ficha_snapshot" ADD FOREIGN KEY ("ficha_personagem_id") REFERENCES "ficha_personagem" ("id") ON DELETE CASCADE;
+
+CREATE SCHEMA IF NOT EXISTS archive;
+
+CREATE TABLE archive.ficha_personagem (LIKE ficha_personagem INCLUDING ALL);
+CREATE TABLE archive.atributos_personagem (LIKE atributos_personagem INCLUDING ALL);
+CREATE TABLE archive.habilidades_personagem (LIKE habilidades_personagem INCLUDING ALL);
+
+-- Procedimento para arquivar fichas não acessadas há 1 ano
+CREATE OR REPLACE FUNCTION archive_old_characters() 
+RETURNS INTEGER
+LANGUAGE plpgsql AS $$
+DECLARE
+    archived_count INTEGER := 0;
+BEGIN
+    -- Mover fichas antigas para o schema archive
+    WITH old_fichas AS (
+        SELECT id FROM ficha_personagem
+        WHERE updated_at < NOW() - INTERVAL '1 year'
+           OR (updated_at IS NULL AND created_at < NOW() - INTERVAL '1 year')
+    )
+    INSERT INTO archive.ficha_personagem
+    SELECT * FROM ficha_personagem
+    WHERE id IN (SELECT id FROM old_fichas);
+    
+    GET DIAGNOSTICS archived_count = ROW_COUNT;
+    
+    DELETE FROM ficha_personagem 
+    WHERE updated_at < NOW() - INTERVAL '1 year'
+       OR (updated_at IS NULL AND created_at < NOW() - INTERVAL '1 year');
+    
+    RETURN archived_count;
+END; $$;
+
+-- Trigger para atualizar campo updated_at automaticamente
+CREATE OR REPLACE FUNCTION update_updated_at_column()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.updated_at = CURRENT_TIMESTAMP;
+    RETURN NEW;
+END;
+$$ language 'plpgsql';
+
+CREATE TRIGGER update_ficha_personagem_updated_at BEFORE UPDATE
+    ON ficha_personagem FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
