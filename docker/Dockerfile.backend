@@ -16,8 +16,7 @@ RUN gradle dependencies --no-daemon --quiet
 COPY backend/src ./src
 
 # Build da aplicação
-RUN gradle clean build --no-daemon --exclude-task test && \
-    gradle bootJar --no-daemon
+RUN gradle clean build --no-daemon
 
 # Verificar se o JAR foi criado
 RUN ls -la build/libs/
