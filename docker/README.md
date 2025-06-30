@@ -1,23 +1,232 @@
-# Docker - Containerização do TDC Sheets
+# Docker Configuration - TDC Sheets
 
-## Visão Geral
-Configurações Docker para containerização completa do ambiente de desenvolvimento e produção do sistema TDC Sheets.
+Este diretório contém toda a configuração Docker para o projeto TDC Sheets.
 
-## Estrutura de Containers
+## Estrutura
 
-### Serviços
-- **tdc-backend** - API Spring Boot
-- **tdc-frontend** - Interface React (Nginx)
-- **tdc-database** - PostgreSQL 15
-- **tdc-redis** - Cache e sessões (opcional)
+```
+docker/
+├── docker-compose.yml          # Orquestração dos serviços
+├── Dockerfile.backend          # Imagem do backend Spring Boot
+├── Dockerfile.frontend         # Imagem do frontend React
+├── nginx/                      # Configurações do Nginx
+│   ├── nginx.conf             # Configuração principal
+│   └── default.conf           # Virtual host padrão
+└── database/                   # Configurações do PostgreSQL
+    └── init-scripts/          # Scripts de inicialização
+        └── 00-init-database.sh # Setup inicial do banco
+```
 
-## Arquivos
+## Serviços
 
-### docker-compose.yml
-Orquestração completa para desenvolvimento local com:
-- Hot reload habilitado
-- Volumes para sincronização de código
-- Redes internas para comunicação entre serviços
+### Database (PostgreSQL 15)
+- **Port**: 5432
+- **Database**: tdc_sheets
+- **User**: tdc_user
+- **Volumes**: postgres_data (persistente)
+- **Extensions**: uuid-ossp, pg_trgm, unaccent
+- **Timezone**: America/Sao_Paulo
+
+### Backend (Spring Boot)
+- **Port**: 8080
+- **Profile**: dev/prod (configurável via .env)
+- **Health Check**: /actuator/health
+- **Volumes**: backend_logs
+- **Dependencies**: Database
+
+### Frontend (React + Nginx)
+- **Port**: 3000 (dev) / 80 (prod)
+- **Health Check**: /health
+- **Proxy**: /api/* → backend:8080
+- **Dependencies**: Backend
+
+### Adminer (Dev only)
+- **Port**: 8081
+- **Profile**: dev only
+- **Usage**: Interface web para gerenciar banco
+
+## Uso
+
+### Desenvolvimento
+
+```bash
+# Setup inicial (primeira vez)
+./scripts/setup.sh
+
+# Iniciar todos os serviços
+./scripts/start-services.sh
+
+# Iniciar em background
+./scripts/start-services.sh -d
+
+# Ver logs
+docker-compose logs -f [service]
+
+# Parar serviços
+./scripts/stop-services.sh
+```
+
+### Produção
+
+```bash
+# Configurar .env para produção
+cp .env.example .env
+# Editar .env com valores de produção
+
+# Iniciar em modo produção
+./scripts/start-services.sh --prod -d
+```
+
+### Comandos Úteis
+
+```bash
+# Status dos serviços
+docker-compose ps
+
+# Logs de um serviço específico
+docker-compose logs -f backend
+
+# Restart de um serviço
+docker-compose restart backend
+
+# Rebuild das imagens
+./scripts/start-services.sh --rebuild
+
+# Limpeza completa (remove dados!)
+./scripts/stop-services.sh --clean-all
+```
+
+## Configuração
+
+### Variáveis de Ambiente
+
+Todas as configurações são feitas através do arquivo `.env` na raiz do projeto:
+
+```bash
+# Database
+DB_NAME=tdc_sheets
+DB_USERNAME=tdc_user
+DB_PASSWORD=sua_senha_segura
+
+# Backend
+JWT_SECRET=seu_jwt_secret_de_32_chars
+SPRING_PROFILES_ACTIVE=dev
+
+# Frontend
+VITE_API_URL=http://localhost:8080
+```
+
+### Profiles Docker Compose
+
+- **default**: Database + Backend + Frontend
+- **dev**: Inclui Adminer para desenvolvimento
+
+```bash
+# Apenas serviços principais
+docker-compose up
+
+# Com ferramentas de desenvolvimento
+docker-compose --profile dev up
+```
+
+## Rede e Volumes
+
+### Rede
+- **tdc-network**: Bridge network isolada
+- **Subnet**: 172.20.0.0/16
+
+### Volumes Persistentes
+- **postgres_data**: Dados do PostgreSQL
+- **backend_logs**: Logs da aplicação
+
+## Segurança
+
+### Usuários não-root
+- Backend: usuário `spring` (UID 1001)
+- Frontend: usuário `nginx` (UID 1001)
+
+### Health Checks
+- Database: `pg_isready`
+- Backend: `curl /actuator/health`
+- Frontend: `curl /health`
+
+### Rate Limiting (Nginx)
+- General: 10 req/s
+- API: 30 req/s
+
+## Troubleshooting
+
+### Banco não conecta
+```bash
+# Verificar se o banco está saudável
+docker exec tdc-database pg_isready -U tdc_user -d tdc_sheets
+
+# Ver logs do banco
+docker-compose logs database
+```
+
+### Backend não inicia
+```bash
+# Ver logs detalhados
+docker-compose logs backend
+
+# Verificar se o banco está disponível
+docker-compose exec backend wget -qO- http://database:5432 || echo "DB not reachable"
+```
+
+### Frontend não carrega
+```bash
+# Verificar se o Nginx está rodando
+docker-compose exec frontend nginx -t
+
+# Testar proxy para backend
+curl -I http://localhost:3000/api/health
+```
+
+### Rebuild completo
+```bash
+# Parar tudo e limpar
+./scripts/stop-services.sh --clean-all
+
+# Setup novamente
+./scripts/setup.sh
+
+# Iniciar
+./scripts/start-services.sh --rebuild
+```
+
+## Monitoramento
+
+### Logs Centralizados
+```bash
+# Todos os serviços
+docker-compose logs -f
+
+# Apenas erros
+docker-compose logs -f | grep ERROR
+
+# Últimas 100 linhas
+docker-compose logs --tail=100 -f
+```
+
+### Métricas de Recursos
+```bash
+# Uso de CPU/Memória
+docker stats
+
+# Espaço em disco
+docker system df
+```
+
+### Health Status
+```bash
+# Status de todos os containers
+docker-compose ps
+
+# Health checks específicos
+curl http://localhost:8080/actuator/health
+curl http://localhost:3000/health
+```
 - Variáveis de ambiente para configuração
 
 ### docker-compose.prod.yml
