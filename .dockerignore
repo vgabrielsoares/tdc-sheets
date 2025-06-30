@@ -1,0 +1,94 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Documentation
+README.md
+docs/
+*.md
+
+# IDE
+.vscode/
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node modules
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Logs
+*.log
+logs/
+
+# Test coverage
+coverage/
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# Build artifacts (excluding target for production builds)
+dist/
+out/
+
+# Environment files
+.env*
+!.env.example
+
+# Database files
+*.sqlite
+*.db
+
+# Backup files
+backups/
+*.bak
+*.backup
+
+# Uploads (usually not needed in image)
+uploads/
+
+# Docker files (no need to copy docker files into containers)
+docker-compose*.yml
+Dockerfile*
+.dockerignore
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+.circleci/
+
+# Package manager files (can be copied separately if needed)
+package-lock.json
+yarn.lock
+
+# Testing
+test-results/
+*.test.js.snap
+
+# Security
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.env.staging
+
+# Scripts (usually not needed in production containers)
+scripts/
+
+# Development tools
+.editorconfig
+.eslintrc*
+.prettierrc*
+tsconfig.json
