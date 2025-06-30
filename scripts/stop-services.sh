@@ -87,27 +87,39 @@ done
 cd docker
 
 # Verificar se há serviços rodando
-if ! docker-compose ps --services --filter "status=running" | grep -q .; then
+if ! docker compose ps --services --filter "status=running" | grep -q .; then
     log_info "Nenhum serviço está rodando."
 else
     log_info "Parando serviços do TDC Sheets..."
     
     # Parar serviços graciosamente
-    docker-compose stop
+    docker compose stop
     
     log_success "Serviços parados!"
 fi
 
 # Remover containers
 log_info "Removendo containers..."
-docker-compose down --remove-orphans $REMOVE_VOLUMES
+docker compose down --remove-orphans $REMOVE_VOLUMES
 
 # Remover imagens se solicitado
 if [ ! -z "$REMOVE_IMAGES" ]; then
     log_info "Removendo imagens Docker..."
     
-    # Remover imagens do projeto
-    docker images --format "table {{.Repository}}\t{{.Tag}}\t{{.ID}}" | grep "tdc-sheets" | awk '{print $3}' | xargs -r docker rmi -f
+    # Método 1: Obter imagens criadas pelo docker compose (mais preciso)
+    IMAGES=$(docker compose images -q 2>/dev/null || true)
+    if [ ! -z "$IMAGES" ]; then
+        echo "$IMAGES" | xargs -r docker rmi -f
+        log_info "Imagens do compose removidas"
+    fi
+    
+    # Método 2: Buscar por padrões de nome do projeto (fallback)
+    PROJECT_NAME=$(basename "$(dirname "$(pwd)")")
+    PATTERN_IMAGES=$(docker images --format "{{.Repository}}\t{{.Tag}}\t{{.ID}}" | grep -E "(docker[_-]|${PROJECT_NAME}[_-])(backend|frontend|database)" | awk '{print $3}' | head -10)
+    if [ ! -z "$PATTERN_IMAGES" ]; then
+        echo "$PATTERN_IMAGES" | xargs -r docker rmi -f
+        log_info "Imagens por padrão removidas"
+    fi
     
     # Remover imagens órfãs
     docker image prune -f
@@ -136,8 +148,8 @@ cd ..
 # Mostrar status final
 log_info "Status final:"
 cd docker
-if docker-compose ps --services --filter "status=running" | grep -q .; then
-    docker-compose ps
+if docker compose ps --services --filter "status=running" | grep -q .; then
+    docker compose ps
 else
     echo "Nenhum serviço rodando."
 fi
