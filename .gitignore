@@ -19,3 +19,115 @@ gradle-app.setting
 .project
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
+
+guia-desenvolvimento.md
+
+# Docker
+docker-compose.override.yml
+.dockerignore
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.env.staging
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# node_modules
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# Database
+*.sqlite
+*.db
+
+# Backup files
+backups/
+*.bak
+*.backup
+
+# Upload files (if contains sensitive data)
+uploads/
+
+# Build artifacts
+dist/
+out/
+target/
+
+# Spring Boot
+**/target/
+!**/src/**/target/
+
+# Maven
+.mvn/
+!**/src/**/pom.xml
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# VS Code
+.vscode/
+
+# JetBrains
+.idea/
+*.iml
+
+# Application specific
+application-local.yml
+application-dev.yml
+application-secret.yml
