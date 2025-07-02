@@ -32,8 +32,9 @@ tdc-sheets/
 - **React 18** - Biblioteca UI
 - **TypeScript** - Tipagem estática
 - **Redux Toolkit** - Gerenciamento de estado
+- **React Router** - Roteamento
+- **Tailwind CSS** - Framework CSS utility-first
 - **Vite** - Build tool
-- **CSS Modules** - Estilização
 
 ### DevOps
 - **Docker + Docker Compose** - Containerização
