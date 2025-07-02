@@ -1,13 +1,18 @@
-# Frontend - Tabuleiro do Caos RPG Fichas
+# TDC Sheets Frontend
 
-## Visão Geral
-Interface web moderna desenvolvida em React com TypeScript para criação e gerenciamento de fichas de personagem do sistema de RPG "Tabuleiro do Caos".
+Interface web do sistema de fichas para o RPG Tabuleiro do Caos.
 
 ## Stack Tecnológica
 
-### Core
-- **React 18** - Biblioteca para interfaces de usuário
-- **TypeScript** - Superset do JavaScript com tipagem estática
+- **React 18** - Biblioteca de UI
+- **TypeScript** - Tipagem estática
+- **Vite** - Build tool e dev server
+- **Redux Toolkit** - Gerenciamento de estado
+- **React Router** - Roteamento
+- **Tailwind CSS** - Framework CSS
+- **React Hook Form** - Gerenciamento de formulários
+- **Axios** - Cliente HTTP
+- **React Query** - Cache e sincronização de dados
 - **Vite** - Build tool moderna com HMR extremamente rápido
 
 ### Gerenciamento de Estado
@@ -20,9 +25,10 @@ Interface web moderna desenvolvida em React com TypeScript para criação e gere
 - **Lazy Loading** - Carregamento sob demanda de componentes
 
 ### Estilização
-- **CSS Puro** - Máximo controle e performance
-- **CSS Modules** - Escopo local para estilos
-- **Flexbox/Grid** - Layout responsivo moderno
+- **Tailwind CSS** - Framework CSS utility-first
+- **PostCSS** - Processamento automático de CSS
+- **Tema personalizado** - Design system consistente
+- **Modo escuro** - Suporte nativo a dark mode
 
 ### Ferramentas de Desenvolvimento
 - **ESLint** - Linting para código JavaScript/TypeScript
