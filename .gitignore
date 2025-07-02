@@ -57,10 +57,29 @@ coverage/
 # nyc test coverage
 .nyc_output
 
+# Storybook build
+storybook-static/
+**/storybook-static/
+
+# Testing
+**/.jest/
+**/cypress/videos/
+**/cypress/screenshots/
+
+# Misc frontend
+.eslintcache
+**/.eslintcache
+
 # node_modules
 node_modules/
 npm-debug.log
 yarn-error.log
+
+# TypeScript
+*.tsbuildinfo
+
+# package-lock.json
+# yarn.lock
 
 # IDE files
 .vscode/
@@ -100,6 +119,16 @@ uploads/
 dist/
 out/
 target/
+
+# Frontend build artifacts
+**/dist/
+**/build/
+**/.vite/
+**/.turbo/
+**/.next/
+**/.nuxt/
+**/.cache/
+**/public/build/
 
 # Spring Boot
 **/target/
