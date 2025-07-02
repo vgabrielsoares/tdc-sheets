@@ -20,6 +20,7 @@ CREATE TYPE "matriz_feiticos" AS ENUM (
   'PRIMORDIAL'
 );
 
+-- # TODO: Adicionar o resto das classes de feitiços
 CREATE TYPE "classes_feiticos" AS ENUM (
   'EVOCACAO',
   'MANIPULACAO'
@@ -42,6 +43,7 @@ CREATE TYPE "atributos" AS ENUM (
   'PRESENCA'
 );
 
+-- # TODO: Adicionar o resto dos tipos de dano
 CREATE TYPE "tipos_dano" AS ENUM (
   'CORTANTE',
   'PERFURANTE',
