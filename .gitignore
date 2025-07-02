@@ -22,6 +22,8 @@ gradle-app.setting
 
 guia-desenvolvimento.md
 
+organizacao-projeto.md
+
 # Docker
 docker-compose.override.yml
 .dockerignore
