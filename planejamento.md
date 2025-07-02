@@ -69,7 +69,7 @@ Controle granular:
 | Framework | React |
 | Gerenciamento de Estado | Redux Toolkit |
 | Roteamento | React Router |
-| Estilização | CSS Puro |
+| Estilização | Tailwind CSS |
 | Build Tool | Vite |
 
 ### Justificativas das Escolhas
@@ -82,7 +82,7 @@ Controle granular:
 #### Frontend
 - **Redux Toolkit**: Gerenciamento de estado previsível, com ferramentas de debug excelentes e adequado para a complexidade esperada do projeto.
 - **React Router**: Solução padrão da comunidade para roteamento, com suporte a code-splitting.
-- **CSS Puro**: Máximo controle e performance, sem overhead de bibliotecas.
+- **Tailwind CSS**: Framework CSS utility-first que acelera o desenvolvimento, oferece design system consistente e facilita a responsividade.
 - **Vite**: Build tool moderna com Hot Module Replacement extremamente rápido.
 
 ### Arquitetura Backend
