@@ -1,6 +1,8 @@
 package com.tdc.sheets.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.filter.CommonsRequestLoggingFilter;
 
 /**
  * Configuração de Logging para a aplicação
@@ -11,7 +13,18 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class LoggingConfig {
     
-    // Configurações específicas de logging podem ser adicionadas aqui
-    // Como configurações de appenders customizados, etc.
-    // Por enquanto, usamos as configurações do application.yml
+    /**
+     * Configuração adicional de logging de requests
+     * Complementa o filtro já configurado no WebConfig
+     */
+    @Bean
+    public CommonsRequestLoggingFilter logFilter() {
+        CommonsRequestLoggingFilter filter = new CommonsRequestLoggingFilter();
+        filter.setIncludeQueryString(true);
+        filter.setIncludePayload(false); // Por segurança
+        filter.setMaxPayloadLength(10000);
+        filter.setIncludeHeaders(false);
+        filter.setAfterMessagePrefix("REQUEST DATA: ");
+        return filter;
+    }
 }
