@@ -20,10 +20,22 @@ CREATE TYPE "matriz_feiticos" AS ENUM (
   'PRIMORDIAL'
 );
 
--- # TODO: Adicionar o resto das classes de feitiços
 CREATE TYPE "classes_feiticos" AS ENUM (
+  'ABJURACAO',
+  'DIVINACAO',
+  'ELEMENTAL',
+  'ENCANTAMENTO'
   'EVOCACAO',
-  'MANIPULACAO'
+  'ILUSAO',
+  'INVOCACAO',
+  'MANIPULACAO',
+  'MISTICA',
+  'NATURAL',
+  'NECROMANCIA',
+  'PROFANA',
+  'SAGRADA',
+  'TRANSLOCACAO',
+  'TRANSMUTACAO'
 );
 
 CREATE TYPE "grau_pericia" AS ENUM (
@@ -43,12 +55,21 @@ CREATE TYPE "atributos" AS ENUM (
   'PRESENCA'
 );
 
--- # TODO: Adicionar o resto dos tipos de dano
 CREATE TYPE "tipos_dano" AS ENUM (
+  'ACIDO',
+  'ELETRICO',
   'CORTANTE',
   'PERFURANTE',
   'IMPACTO',
-  'FOGO'
+  'FOGO',
+  'FRIO',
+  'INTERNO',
+  'MENTAL',
+  'MISTICO',
+  'PROFANO',
+  'SAGRADO',
+  'SONORO',
+  'VENENO'
 );
 
 CREATE TYPE "raridades" AS ENUM (

@@ -276,7 +276,22 @@ export type MatrizFeitico =
   | 'NATURAL'
   | 'PRIMORDIAL';
 
-export type ClasseFeitico = 'EVOCACAO' | 'MANIPULACAO';
+export type ClasseFeitico = 
+  | 'ABJURACAO'
+  | 'DIVINACAO'
+  | 'ELEMENTAL'
+  | 'ENCANTAMENTO'
+  | 'EVOCACAO'
+  | 'ILUSAO'
+  | 'INVOCACAO'
+  | 'MANIPULACAO'
+  | 'MISTICA'
+  | 'NATURAL'
+  | 'NECROMANCIA'
+  | 'PROFANA'
+  | 'SAGRADA'
+  | 'TRANSLOCACAO'
+  | 'TRANSMUTACAO';
 
 export interface Equipamento {
   id: number;
