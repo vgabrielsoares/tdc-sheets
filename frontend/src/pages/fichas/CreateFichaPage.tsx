@@ -2,6 +2,22 @@ import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ArrowLeft, Save } from 'lucide-react'
 
+// TODO: Implementar página de criação de ficha completa - FRONT-005
+// - Wizard step-by-step para criação
+// - Validação em tempo real dos campos
+// - Preview da ficha durante criação
+// - Auto-save como rascunho
+// - Templates de fichas pré-definidas
+// - Importação de fichas de outras fontes
+
+// TODO: Implementar integração com regras TDC - RPG-001 até RPG-004
+// - Seleção de origem com bonus automáticos
+// - Distribuição de pontos de atributo com limites
+// - Cálculos automáticos de PV, PP, defesa
+// - Validação de pré-requisitos para habilidades
+// - Sistema de pontos de experiência
+// - Validação de equipamentos por classe
+
 const CreateFichaPage: FC = () => {
   const navigate = useNavigate()
 
@@ -55,8 +71,32 @@ const CreateFichaPage: FC = () => {
           </p>
         </div>
       </div>
+
+      {/* TODO: Implementar estado do formulário:
+      // - currentStep: number (para wizard)
+      // - fichaData: Partial<FichaPersonagem>
+      // - validationErrors: Record<string, string>
+      // - isSubmitting: boolean
+      // - isDraft: boolean */}
+
+      {/* TODO: Implementar lógica de steps:
+      // 1. Informações básicas (nome, origem, linhagem)
+      // 2. Arquetipos e classes
+      // 3. Distribuição de atributos
+      // 4. Seleção de habilidades
+      // 5. Equipamentos iniciais
+      // 6. Feitiços (se aplicável)
+      // 7. Revisão final */}
     </div>
   )
 }
 
 export default CreateFichaPage
+
+// TODO: Implementar funcionalidades avançadas:
+// - Auto-complete para nomes baseado em linhagem
+// - Gerador aleatório de personagem
+// - Import de conceito de personagem (texto livre)
+// - Sistema de templates favoritos
+// - Validação de regras em tempo real
+// - Export de PDF já na criação

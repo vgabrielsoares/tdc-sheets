@@ -73,6 +73,42 @@ tdc-sheets/
 - Sistema de notas e anotações
 - Backup automático
 
+<!-- TODO: Implementar funcionalidades avançadas planejadas -->
+<!--
+TODOs Principais por Milestone:
+
+MILESTONE 2 - Backend Funcional:
+- TODO: Implementar Spring Security com JWT (BACK-005)
+- TODO: Criar sistema completo de entidades JPA (BACK-002)
+- TODO: Configurar Liquibase e migrations (BACK-004)
+- TODO: Implementar CRUD completo de fichas (BACK-006)
+- TODO: Adicionar Swagger/OpenAPI para documentação
+
+MILESTONE 3 - Frontend Base:
+- TODO: Implementar autenticação frontend com JWT (FRONT-004)
+- TODO: Criar páginas principais de gerenciamento de fichas (FRONT-005)
+- TODO: Desenvolver hooks customizados para fichas (FRONT-006)
+- TODO: Integrar serviços HTTP reais com backend
+
+MILESTONE 4 - Sistema RPG Completo:
+- TODO: Implementar sistema completo de atributos TDC (RPG-001)
+- TODO: Criar sistema de habilidades e perícias (RPG-002)
+- TODO: Desenvolver sistema de equipamentos e inventário (RPG-003)
+- TODO: Implementar sistema de magia e feitiços (RPG-004)
+
+MILESTONE 5 - Funcionalidades Avançadas:
+- TODO: Sistema de compartilhamento de fichas (ADV-001)
+- TODO: Validações complexas das regras TDC (ADV-002)
+- TODO: Sistema de versionamento de fichas
+- TODO: Modo mestre para visualização de grupo
+
+MILESTONE 6 - Qualidade e Deploy:
+- TODO: Implementar testes automatizados (TEST-001, TEST-002)
+- TODO: Configurar CI/CD com GitHub Actions (DEPLOY-001)
+- TODO: Otimizações de performance (PERF-001)
+- TODO: Design system e acessibilidade (UX-001)
+-->
+
 ## Regras do Sistema TDC
 
 ### Atributos Base

@@ -10,6 +10,22 @@ import { store, persistor } from './store'
 import Loading from '@components/common/Loading'
 
 import '@styles/index.css'
+import './styles/globals.css'
+
+// TODO: Adicionar configurações de performance - PERF-001
+// - React.StrictMode apenas em desenvolvimento
+// - React Profiler para monitoramento de performance
+// - Configuração de service worker para cache
+
+// TODO: Implementar configurações de monitoramento - DEPLOY-001
+// - Sentry para error tracking
+// - Analytics (GA, Hotjar, etc.)
+// - Performance monitoring (Web Vitals)
+
+// TODO: Configurar internacionalização - UX-001
+// - i18next setup
+// - Context de idioma
+// - Detecção automática de idioma do browser
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -42,3 +58,10 @@ root.render(
     </Provider>
   </React.StrictMode>
 )
+
+// TODO: Adicionar configurações globais:
+// - Error boundary global
+// - Theme provider
+// - Toast provider
+// - Modal provider
+// - Loading provider

@@ -29,8 +29,32 @@ import PublicRoute from '@components/routes/PublicRoute'
 import NotFoundPage from '@pages/error/NotFoundPage'
 import ErrorBoundary from '@components/error/ErrorBoundary'
 
+// TODO: Implementar funcionalidades avançadas do App - FRONT-003
+// - Toast notifications provider
+// - Modal manager global
+// - Loading states globais
+// - Context de configurações do usuário
+
+// TODO: Adicionar providers adicionais conforme necessidade - UX-001
+// - I18n provider para internacionalização
+// - Auth provider para contexto de autenticação
+// - Offline provider para PWA features
+// - Analytics provider para tracking
+
+// TODO: Configurar PWA features - PERF-001
+// - Service worker registration
+// - Manifest.json configuration
+// - Cache strategies
+// - Offline functionality
+
 const App: FC = () => {
   const isAuthenticated = useAppSelector(selectIsAuthenticated)
+
+  // TODO: Adicionar lógica de inicialização:
+  // - Verificação de autenticação persistida
+  // - Carregamento de configurações do usuário
+  // - Setup de interceptors HTTP
+  // - Configuração de tema baseado nas preferências
 
   return (
     <ThemeProvider>
@@ -78,3 +102,9 @@ const App: FC = () => {
 }
 
 export default App
+
+// TODO: Implementar recursos adicionais:
+// - Hot module replacement para desenvolvimento
+// - Code splitting por rota - PERF-001
+// - Lazy loading de componentes pesados
+// - Preloading de recursos críticos

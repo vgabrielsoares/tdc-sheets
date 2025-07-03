@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../index'
 
+// TODO: Expandir interface de UI state conforme necessidade - FRONT-003
 // Types
 export interface UIPreferences {
   language: 'pt-BR' | 'en-US'
@@ -71,6 +72,7 @@ const initialState: UIState = {
   error: null
 }
 
+// TODO: Implementar actions completas de UI - FRONT-003
 // Slice
 const uiSlice = createSlice({
   name: 'ui',
@@ -181,6 +183,14 @@ export const {
   clearError
 } = uiSlice.actions
 
+// TODO: Implementar selectors de UI:
+// - selectTheme
+// - selectSidebarOpen
+// - selectGlobalLoading
+// - selectModals
+// - selectNotifications
+// - selectIsMobile
+
 // Selectors
 export const selectTheme = (state: RootState) => state.ui.theme
 export const selectSidebarCollapsed = (state: RootState) => state.ui.sidebarCollapsed
@@ -203,3 +213,9 @@ export const selectUnreadNotificationCount = (state: RootState) =>
 
 // Export reducer
 export default uiSlice.reducer
+
+// TODO: Implementar middleware para UI:
+// - Theme persistence
+// - Responsive breakpoint detection
+// - Notification auto-dismiss
+// - Modal z-index management
