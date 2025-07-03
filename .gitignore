@@ -21,8 +21,11 @@ gradle-app.setting
 .classpath
 
 guia-desenvolvimento.md
-
 organizacao-projeto.md
+TODO-BACKEND.md
+TODO-FRONTEND.md
+TODO-MASTER.md
+TODO-RPG-RULES.md
 
 # Docker
 docker-compose.override.yml
