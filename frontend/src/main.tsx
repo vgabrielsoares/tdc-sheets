@@ -10,7 +10,6 @@ import { store, persistor } from './store'
 import Loading from '@components/common/Loading'
 
 import '@styles/index.css'
-import './styles/globals.css'
 
 // TODO: Adicionar configurações de performance - PERF-001
 // - React.StrictMode apenas em desenvolvimento
