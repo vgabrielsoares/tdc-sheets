@@ -339,32 +339,6 @@ tdc-sheets/
 5. **Code Review** pela equipe
 6. **Merge** após aprovação
 
-## Roadmap
-
-### v1.0 - MVP ✅
-- [x] CRUD básico de fichas
-- [x] Sistema de autenticação
-- [x] Cálculos de atributos
-- [x] Interface responsiva
-
-### v1.1 - Compartilhamento
-- [ ] Sistema de compartilhamento
-- [ ] Permissões granulares
-- [ ] Links temporários
-- [ ] Notificações
-
-### v1.2 - Recursos Avançados
-- [ ] Sistema de grupos/mesas
-- [ ] Chat integrado
-- [ ] Backup na nuvem
-- [ ] Aplicativo mobile
-
-### v2.0 - Automação
-- [ ] Integração com dados do livro
-- [ ] IA para sugestões
-- [ ] Sistema de campanhas
-- [ ] Marketplace de conteúdo
-
 ## Licença
 MIT License - veja [LICENSE](LICENSE) para detalhes.
 
