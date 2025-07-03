@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { resolve } from 'path'
+import { createAliases } from './config/aliases'
 
 // TODO: Configurar plugins adicionais conforme necessidade - PERF-001
 // import { visualizer } from 'rollup-plugin-visualizer' // Para análise de bundle
@@ -16,18 +16,7 @@ export default defineConfig({
     // TODO: Plugin para análise de bundle em desenvolvimento
   ],
   resolve: {
-    alias: {
-      '@': resolve(__dirname, './src'),
-      '@components': resolve(__dirname, './src/components'),
-      '@pages': resolve(__dirname, './src/pages'),
-      '@services': resolve(__dirname, './src/services'),
-      '@store': resolve(__dirname, './src/store'),
-      '@hooks': resolve(__dirname, './src/hooks'),
-      '@utils': resolve(__dirname, './src/utils'),
-      '@types': resolve(__dirname, './src/types'),
-      '@styles': resolve(__dirname, './src/styles'),
-      '@assets': resolve(__dirname, './src/assets')
-    }
+    alias: createAliases(__dirname)
   },
   server: {
     port: 3000,
