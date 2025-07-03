@@ -8,6 +8,11 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.web.filter.CommonsRequestLoggingFilter;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 
 import java.util.Arrays;
 import java.util.List;
@@ -42,8 +47,8 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins(allowedOrigins.toArray(new String[0]))
-                .allowedMethods(allowedMethods.toArray(new String[0]))
+                .allowedOrigins(allowedOrigins.toArray(String[]::new))
+                .allowedMethods(allowedMethods.toArray(String[]::new))
                 .allowedHeaders(allowedHeaders.split(","))
                 .allowCredentials(allowCredentials)
                 .maxAge(maxAge);
@@ -75,5 +80,47 @@ public class WebConfig implements WebMvcConfigurer {
         source.registerCorsConfiguration("/**", configuration);
         
         return source;
+    }
+
+    /**
+     * Configuração de negociação de conteúdo
+     */
+    @Override
+    public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
+        configurer
+                .favorParameter(false)
+                .ignoreAcceptHeader(false)
+                .defaultContentType(org.springframework.http.MediaType.APPLICATION_JSON);
+    }
+
+    /**
+     * Configuração de conversores de mensagem HTTP
+     */
+    @Override
+    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+        MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
+        // Configurações específicas do Jackson podem ser adicionadas aqui
+        converters.add(converter);
+    }
+
+    /**
+     * Filtro de logging de requisições
+     */
+    @Bean
+    public FilterRegistrationBean<CommonsRequestLoggingFilter> requestLoggingFilter() {
+        FilterRegistrationBean<CommonsRequestLoggingFilter> registrationBean = new FilterRegistrationBean<>();
+        
+        CommonsRequestLoggingFilter filter = new CommonsRequestLoggingFilter();
+        filter.setIncludeQueryString(true);
+        filter.setIncludePayload(false); // Por segurança, não logar payloads
+        filter.setIncludeHeaders(false);
+        filter.setMaxPayloadLength(10000);
+        filter.setAfterMessagePrefix("REQUEST DATA: ");
+        
+        registrationBean.setFilter(filter);
+        registrationBean.addUrlPatterns("/api/*");
+        registrationBean.setOrder(1);
+        
+        return registrationBean;
     }
 }
