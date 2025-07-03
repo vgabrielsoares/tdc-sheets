@@ -104,7 +104,11 @@ public class WebConfig implements WebMvcConfigurer {
     }
 
     /**
-     * Filtro de logging de requisições
+     * Filtro centralizado de logging de requisições
+     * Configurado com FilterRegistrationBean para controle completo sobre:
+     * - Padrões de URL aplicáveis
+     * - Ordem de execução do filtro
+     * - Configurações específicas de logging
      */
     @Bean
     public FilterRegistrationBean<CommonsRequestLoggingFilter> requestLoggingFilter() {
