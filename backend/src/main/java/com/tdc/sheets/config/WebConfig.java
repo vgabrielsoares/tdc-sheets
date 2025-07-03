@@ -45,7 +45,7 @@ public class WebConfig implements WebMvcConfigurer {
      * Configuração global de CORS
      */
     @Override
-    public void addCorsMappings(CorsRegistry registry) {
+    public void addCorsMappings(@org.springframework.lang.NonNull CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedOrigins(allowedOrigins.toArray(String[]::new))
                 .allowedMethods(allowedMethods.toArray(String[]::new))
@@ -86,7 +86,7 @@ public class WebConfig implements WebMvcConfigurer {
      * Configuração de negociação de conteúdo
      */
     @Override
-    public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
+    public void configureContentNegotiation(@org.springframework.lang.NonNull ContentNegotiationConfigurer configurer) {
         configurer
                 .favorParameter(false)
                 .ignoreAcceptHeader(false)
@@ -94,13 +94,21 @@ public class WebConfig implements WebMvcConfigurer {
     }
 
     /**
-     * Configuração de conversores de mensagem HTTP
+     * Estende os conversores de mensagem HTTP existentes do Spring
+     * Adiciona configurações customizadas do Jackson sem remover os conversores padrão
      */
     @Override
-    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-        MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
-        // Configurações específicas do Jackson podem ser adicionadas aqui
-        converters.add(converter);
+    public void extendMessageConverters(@org.springframework.lang.NonNull List<HttpMessageConverter<?>> converters) {
+        // Encontra o converter Jackson existente e aplica configurações customizadas
+        converters.stream()
+                .filter(MappingJackson2HttpMessageConverter.class::isInstance)
+                .map(MappingJackson2HttpMessageConverter.class::cast)
+                .findFirst()
+                .ifPresent(converter -> {
+                    // Configurações específicas do Jackson podem ser adicionadas aqui
+                    // Por exemplo: configurar ObjectMapper customizado
+                    // converter.getObjectMapper().configure(...)
+                });
     }
 
     /**
