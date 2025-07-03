@@ -8,6 +8,11 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.web.filter.CommonsRequestLoggingFilter;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 
 import java.util.Arrays;
 import java.util.List;
@@ -40,10 +45,10 @@ public class WebConfig implements WebMvcConfigurer {
      * Configuração global de CORS
      */
     @Override
-    public void addCorsMappings(CorsRegistry registry) {
+    public void addCorsMappings(@org.springframework.lang.NonNull CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins(allowedOrigins.toArray(new String[0]))
-                .allowedMethods(allowedMethods.toArray(new String[0]))
+                .allowedOrigins(allowedOrigins.toArray(String[]::new))
+                .allowedMethods(allowedMethods.toArray(String[]::new))
                 .allowedHeaders(allowedHeaders.split(","))
                 .allowCredentials(allowCredentials)
                 .maxAge(maxAge);
@@ -75,5 +80,59 @@ public class WebConfig implements WebMvcConfigurer {
         source.registerCorsConfiguration("/**", configuration);
         
         return source;
+    }
+
+    /**
+     * Configuração de negociação de conteúdo
+     */
+    @Override
+    public void configureContentNegotiation(@org.springframework.lang.NonNull ContentNegotiationConfigurer configurer) {
+        configurer
+                .favorParameter(false)
+                .ignoreAcceptHeader(false)
+                .defaultContentType(org.springframework.http.MediaType.APPLICATION_JSON);
+    }
+
+    /**
+     * Estende os conversores de mensagem HTTP existentes do Spring
+     * Adiciona configurações customizadas do Jackson sem remover os conversores padrão
+     */
+    @Override
+    public void extendMessageConverters(@org.springframework.lang.NonNull List<HttpMessageConverter<?>> converters) {
+        // Encontra o converter Jackson existente e aplica configurações customizadas
+        converters.stream()
+                .filter(MappingJackson2HttpMessageConverter.class::isInstance)
+                .map(MappingJackson2HttpMessageConverter.class::cast)
+                .findFirst()
+                .ifPresent(converter -> {
+                    // Configurações específicas do Jackson podem ser adicionadas aqui
+                    // Por exemplo: configurar ObjectMapper customizado
+                    // converter.getObjectMapper().configure(...)
+                });
+    }
+
+    /**
+     * Filtro centralizado de logging de requisições
+     * Configurado com FilterRegistrationBean para controle completo sobre:
+     * - Padrões de URL aplicáveis
+     * - Ordem de execução do filtro
+     * - Configurações específicas de logging
+     */
+    @Bean
+    public FilterRegistrationBean<CommonsRequestLoggingFilter> requestLoggingFilter() {
+        FilterRegistrationBean<CommonsRequestLoggingFilter> registrationBean = new FilterRegistrationBean<>();
+        
+        CommonsRequestLoggingFilter filter = new CommonsRequestLoggingFilter();
+        filter.setIncludeQueryString(true);
+        filter.setIncludePayload(false); // Por segurança, não logar payloads
+        filter.setIncludeHeaders(false);
+        filter.setMaxPayloadLength(10000);
+        filter.setAfterMessagePrefix("REQUEST DATA: ");
+        
+        registrationBean.setFilter(filter);
+        registrationBean.addUrlPatterns("/api/*");
+        registrationBean.setOrder(1);
+        
+        return registrationBean;
     }
 }
