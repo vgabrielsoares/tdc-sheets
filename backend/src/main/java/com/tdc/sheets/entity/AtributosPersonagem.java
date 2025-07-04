@@ -18,9 +18,10 @@ import jakarta.validation.constraints.NotNull;
        indexes = {
            @Index(name = "idx_atributos_ficha", columnList = "ficha_personagem_id"),
            @Index(name = "idx_atributos_tipo", columnList = "atributo"),
-           @Index(name = "idx_atributos_ficha_tipo", columnList = "ficha_personagem_id, atributo")
+           @Index(name = "idx_atributos_ficha_tipo", columnList = "ficha_personagem_id, atributo"),
+           @Index(name = "idx_atributos_active", columnList = "is_active")
        })
-public class AtributosPersonagem extends BaseEntity {
+public class AtributosPersonagem extends AuditableEntity {
 
     @NotNull(message = "Atributo é obrigatório")
     @Enumerated(EnumType.STRING)

@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
 @Table(name = "classes_personagem")
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class ClassesPersonagem extends BaseEntity {
+public class ClassesPersonagem extends AuditableEntity {
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ficha_personagem_id", nullable = false)

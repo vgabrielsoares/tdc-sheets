@@ -6,8 +6,6 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.time.LocalDateTime;
-
 /**
  * Entidade que representa os ataques de um personagem
  * Baseada na tabela ataques_personagem do schema SQL
@@ -16,7 +14,7 @@ import java.time.LocalDateTime;
 @Table(name = "ataques_personagem")
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class AtaquesPersonagem extends BaseEntity {
+public class AtaquesPersonagem extends AuditableEntity {
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ficha_personagem_id")
@@ -45,10 +43,4 @@ public class AtaquesPersonagem extends BaseEntity {
     
     @Column(name = "custo_pp")
     private Integer custoPp;
-    
-    @Column(name = "created_at", nullable = false)
-    private LocalDateTime createdAt = LocalDateTime.now();
-    
-    @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
 }

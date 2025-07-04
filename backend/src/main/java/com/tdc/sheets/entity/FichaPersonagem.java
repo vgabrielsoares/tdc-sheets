@@ -20,9 +20,11 @@ import java.util.List;
 @Table(name = "ficha_personagem", indexes = {
     @Index(name = "idx_ficha_user_origem", columnList = "user_id, origem_id"),
     @Index(name = "idx_ficha_created_at", columnList = "created_at"),
-    @Index(name = "idx_ficha_updated_at", columnList = "updated_at")
+    @Index(name = "idx_ficha_updated_at", columnList = "updated_at"),
+    @Index(name = "idx_ficha_active", columnList = "is_active"),
+    @Index(name = "idx_ficha_deleted", columnList = "deleted_at")
 })
-public class FichaPersonagem extends BaseEntity {
+public class FichaPersonagem extends AuditableEntity {
 
     @NotBlank(message = "Nome do personagem é obrigatório")
     @Size(max = 100, message = "Nome do personagem deve ter no máximo 100 caracteres")

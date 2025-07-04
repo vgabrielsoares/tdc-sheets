@@ -6,17 +6,17 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.time.LocalDateTime;
-
 /**
  * Entidade que representa as habilidades de um personagem
  * Baseada na tabela habilidades_personagem do schema SQL
  */
 @Entity
-@Table(name = "habilidades_personagem")
+@Table(name = "habilidades_personagem", indexes = {
+    @Index(name = "idx_habilidades_pers_active", columnList = "is_active")
+})
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class HabilidadesPersonagem extends BaseEntity {
+public class HabilidadesPersonagem extends AuditableEntity {
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ficha_personagem_id", nullable = false)
@@ -46,10 +46,4 @@ public class HabilidadesPersonagem extends BaseEntity {
     
     @Column(name = "mod_outros")
     private Integer modOutros;
-    
-    @Column(name = "created_at", nullable = false)
-    private LocalDateTime createdAt = LocalDateTime.now();
-    
-    @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
 }

@@ -12,7 +12,7 @@ import jakarta.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = "pv_pp_personagem")
-public class PvPpPersonagem extends BaseEntity {
+public class PvPpPersonagem extends AuditableEntity {
 
     @NotNull(message = "PV máximo é obrigatório")
     @Min(value = 1, message = "PV máximo deve ser maior que 0")

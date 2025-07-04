@@ -10,14 +10,13 @@ import java.time.LocalDateTime;
  * Representa o sistema de compartilhamento de fichas entre usuários
  */
 @Entity
-@Table(name = "compartilhamento_ficha")
+@Table(name = "compartilhamento_ficha", indexes = {
+    @Index(name = "idx_compartilhamento_active", columnList = "is_active"),
+    @Index(name = "idx_compartilhamento_token", columnList = "link_token")
+})
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class CompartilhamentoFicha extends BaseEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class CompartilhamentoFicha extends AuditableEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ficha_personagem_id", nullable = false)
@@ -39,6 +38,4 @@ public class CompartilhamentoFicha extends BaseEntity {
     @Column(name = "ativo")
     private Boolean ativo = true;
 
-    @Column(name = "created_at", nullable = false)
-    private LocalDateTime createdAt = LocalDateTime.now();
 }

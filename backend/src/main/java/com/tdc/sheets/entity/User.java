@@ -17,9 +17,11 @@ import java.util.List;
 @Entity
 @Table(name = "user", indexes = {
     @Index(name = "idx_user_username", columnList = "username"),
-    @Index(name = "idx_user_email", columnList = "email")
+    @Index(name = "idx_user_email", columnList = "email"),
+    @Index(name = "idx_user_active", columnList = "is_active"),
+    @Index(name = "idx_user_deleted", columnList = "deleted_at")
 })
-public class User extends BaseEntity {
+public class User extends AuditableEntity {
 
     @NotBlank(message = "Nome completo é obrigatório")
     @Size(max = 100, message = "Nome completo deve ter no máximo 100 caracteres")

@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.time.LocalDateTime;
-
 /**
  * Entidade que representa o inventário de um personagem
  * Baseada na tabela inventario_personagem do schema SQL
@@ -14,7 +12,7 @@ import java.time.LocalDateTime;
 @Table(name = "inventario_personagem")
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class InventarioPersonagem extends BaseEntity {
+public class InventarioPersonagem extends AuditableEntity {
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "carga_personagem_id", nullable = false)
@@ -35,10 +33,4 @@ public class InventarioPersonagem extends BaseEntity {
     
     @Column(name = "peso_item")
     private Integer pesoItem;
-    
-    @Column(name = "created_at", nullable = false)
-    private LocalDateTime createdAt = LocalDateTime.now();
-    
-    @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
 }
