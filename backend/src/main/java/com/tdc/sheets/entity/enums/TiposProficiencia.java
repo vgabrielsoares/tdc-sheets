@@ -1,0 +1,31 @@
+package com.tdc.sheets.entity.enums;
+
+/**
+ * Enum para tipos de proficiência conforme definido no sistema TDC
+ */
+public enum TiposProficiencia {
+    ARMAS_SIMPLES,
+    ARMAS_COMPLEXAS,
+    ARMAS_MARCIAIS,
+    ARMAS_PESADAS,
+    IDIOMA_COMUM,
+    IDIOMA_PRIMORDIAL,
+    IDIOMA_RUNICO,
+    IDIOMA_ANAO,
+    IDIOMA_AQUATICO,
+    IDIOMA_DRACONICO,
+    IDIOMA_ELFICO,
+    IDIOMA_GIGANTE,
+    IDIOMA_GNOMICO,
+    IDIOMA_INFERNAL,
+    IDIOMA_OOPARNEELA,
+    IDIOMA_ORC,
+    IDIOMA_SILVESTRE,
+    IDIOMA_URURIMI,
+    PROTECAO_LEVE,
+    PROTECAO_MEDIA,
+    PROTECAO_PESADA,
+    ESCUDOS,
+    INTRUMENTO_HABILIDADE,
+    INTRUMENTO_OFICIO
+}
