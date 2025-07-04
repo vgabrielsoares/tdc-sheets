@@ -53,8 +53,21 @@ export type MatrizFeiticos =
   | 'PRIMORDIAL'
 
 export type ClassesFeiticos = 
+  | 'ABJURACAO'
+  | 'DIVINACAO'
+  | 'ELEMENTAL'
+  | 'ENCANTAMENTO'
   | 'EVOCACAO'
+  | 'ILUSAO'
+  | 'INVOCACAO'
   | 'MANIPULACAO'
+  | 'MISTICA'
+  | 'NATURAL'
+  | 'NECROMANCIA'
+  | 'PROFANA'
+  | 'SAGRADA'
+  | 'TRANSLOCACAO'
+  | 'TRANSMUTACAO'
 
 export type GrauPericia = 
   | 'LEIGO'
@@ -72,10 +85,20 @@ export type Atributos =
   | 'PRESENCA'
 
 export type TiposDano = 
+  | 'ACIDO'
+  | 'ELETRICO'
   | 'CORTANTE'
   | 'PERFURANTE'
   | 'IMPACTO'
   | 'FOGO'
+  | 'FRIO'
+  | 'INTERNO'
+  | 'MENTAL'
+  | 'MISTICO'
+  | 'PROFANO'
+  | 'SAGRADO'
+  | 'SONORO'
+  | 'VENENO'
 
 export type Raridades = 
   | 'COMUM'

@@ -20,10 +20,22 @@ CREATE TYPE "matriz_feiticos" AS ENUM (
   'PRIMORDIAL'
 );
 
--- # TODO: Adicionar o resto das classes de feitiços
 CREATE TYPE "classes_feiticos" AS ENUM (
+  'ABJURACAO',
+  'DIVINACAO',
+  'ELEMENTAL',
+  'ENCANTAMENTO',
   'EVOCACAO',
-  'MANIPULACAO'
+  'ILUSAO',
+  'INVOCACAO',
+  'MANIPULACAO',
+  'MISTICA',
+  'NATURAL',
+  'NECROMANCIA',
+  'PROFANA',
+  'SAGRADA',
+  'TRANSLOCACAO',
+  'TRANSMUTACAO'
 );
 
 CREATE TYPE "grau_pericia" AS ENUM (
@@ -43,12 +55,21 @@ CREATE TYPE "atributos" AS ENUM (
   'PRESENCA'
 );
 
--- # TODO: Adicionar o resto dos tipos de dano
 CREATE TYPE "tipos_dano" AS ENUM (
+  'ACIDO',
+  'ELETRICO',
   'CORTANTE',
   'PERFURANTE',
   'IMPACTO',
-  'FOGO'
+  'FOGO',
+  'FRIO',
+  'INTERNO',
+  'MENTAL',
+  'MISTICO',
+  'PROFANO',
+  'SAGRADO',
+  'SONORO',
+  'VENENO'
 );
 
 CREATE TYPE "raridades" AS ENUM (
@@ -223,7 +244,14 @@ CREATE TABLE "ficha_personagem" (
   "tamanho" tipos_tamanho,
   "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   "updated_at" TIMESTAMP,
-  "versao" INTEGER DEFAULT 1
+  "version" INTEGER DEFAULT 1,
+  "created_by_user_id" BIGINT,
+  "updated_by_user_id" BIGINT,
+  "created_ip_address" VARCHAR(45),
+  "updated_ip_address" VARCHAR(45),
+  "deleted_at" TIMESTAMP,
+  "deleted_by_user_id" BIGINT,
+  "is_active" BOOLEAN NOT NULL DEFAULT true
 );
 
 CREATE TABLE "defesa" (
@@ -351,7 +379,11 @@ CREATE TABLE "habilidades_personagem" (
   "mod_temp" "INTEGER",
   "mod_outros" "INTEGER",
   "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  "updated_at" TIMESTAMP
+  "updated_at" TIMESTAMP,
+  "version" INTEGER DEFAULT 1,
+  "created_by_user_id" BIGINT,
+  "updated_by_user_id" BIGINT,
+  "is_active" BOOLEAN NOT NULL DEFAULT true
 );
 
 CREATE TABLE "deslocamento_personagem" (
@@ -549,6 +581,10 @@ CREATE TABLE "atributos_personagem" (
   "valor_temp" "INTEGER",
   "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   "updated_at" TIMESTAMP,
+  "version" INTEGER DEFAULT 1,
+  "created_by_user_id" BIGINT,
+  "updated_by_user_id" BIGINT,
+  "is_active" BOOLEAN NOT NULL DEFAULT true,
   UNIQUE(ficha_personagem_id, atributo)
 );
 
@@ -588,8 +624,20 @@ CREATE TABLE "user" (
   "id" SERIAL PRIMARY KEY,
   "nome_completo" "VARCHAR" NOT NULL,
   "username" "VARCHAR" NOT NULL,
+  "email" "VARCHAR" NOT NULL,
   "senha" "VARCHAR" NOT NULL,
-  "created_at" "TIMESTAMP" NOT NULL
+  "ativo" BOOLEAN NOT NULL DEFAULT true,
+  "data_nascimento" DATE,
+  "created_at" "TIMESTAMP" NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "updated_at" TIMESTAMP,
+  "version" INTEGER DEFAULT 1,
+  "created_by_user_id" BIGINT,
+  "updated_by_user_id" BIGINT,
+  "created_ip_address" VARCHAR(45),
+  "updated_ip_address" VARCHAR(45),
+  "deleted_at" TIMESTAMP,
+  "deleted_by_user_id" BIGINT,
+  "is_active" BOOLEAN NOT NULL DEFAULT true
 );
 
 CREATE TABLE "authorities" (
@@ -747,6 +795,25 @@ CREATE INDEX idx_feiticos_circulo ON feiticos(circulo);
 CREATE INDEX idx_equipamentos_tipo ON equipamentos(tipo);
 CREATE INDEX idx_compartilhamento_ativo ON compartilhamento_ficha(ativo) WHERE ativo = true;
 
+-- Índices para auditoria e performance
+CREATE INDEX idx_ficha_active ON ficha_personagem(is_active);
+CREATE INDEX idx_ficha_deleted ON ficha_personagem(deleted_at);
+CREATE INDEX idx_ficha_created_by ON ficha_personagem(created_by_user_id);
+CREATE INDEX idx_ficha_updated_by ON ficha_personagem(updated_by_user_id);
+
+CREATE INDEX idx_user_active ON "user"(is_active);
+CREATE INDEX idx_user_deleted ON "user"(deleted_at);
+CREATE INDEX idx_user_email ON "user"(email);
+
+CREATE INDEX idx_compartilhamento_active_audit ON compartilhamento_ficha(is_active);
+CREATE INDEX idx_compartilhamento_deleted ON compartilhamento_ficha(deleted_at);
+
+CREATE INDEX idx_atributos_active ON atributos_personagem(is_active);
+CREATE INDEX idx_atributos_created_by ON atributos_personagem(created_by_user_id);
+
+CREATE INDEX idx_habilidades_pers_active ON habilidades_personagem(is_active);
+CREATE INDEX idx_habilidades_pers_created_by ON habilidades_personagem(created_by_user_id);
+
 ALTER TABLE "arquetipos_personagem" ADD FOREIGN KEY ("ficha_personagem_id") REFERENCES "ficha_personagem" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 ALTER TABLE "arquetipos_personagem" ADD FOREIGN KEY ("arquetipo_id") REFERENCES "arquetipo" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -825,7 +892,16 @@ CREATE TABLE "compartilhamento_ficha" (
   "link_token" VARCHAR(100) UNIQUE,
   "expiracao" TIMESTAMP,
   "ativo" BOOLEAN DEFAULT true,
-  "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+  "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "updated_at" TIMESTAMP,
+  "version" INTEGER DEFAULT 1,
+  "created_by_user_id" BIGINT,
+  "updated_by_user_id" BIGINT,
+  "created_ip_address" VARCHAR(45),
+  "updated_ip_address" VARCHAR(45),
+  "deleted_at" TIMESTAMP,
+  "deleted_by_user_id" BIGINT,
+  "is_active" BOOLEAN NOT NULL DEFAULT true
 );
 
 CREATE TABLE "ficha_snapshot" (
@@ -895,6 +971,25 @@ ALTER TABLE "requisitos_talentos_poderes" ADD FOREIGN KEY ("linhagem_id") REFERE
 ALTER TABLE "atributos_origem" ADD FOREIGN KEY ("origem_id") REFERENCES "origem" ("id");
 
 ALTER TABLE "origem_custom" ADD FOREIGN KEY ("id") REFERENCES "itens_origem" ("origem_id");
+
+-- Foreign keys para auditoria
+ALTER TABLE "ficha_personagem" ADD FOREIGN KEY ("created_by_user_id") REFERENCES "user"("id");
+ALTER TABLE "ficha_personagem" ADD FOREIGN KEY ("updated_by_user_id") REFERENCES "user"("id");
+ALTER TABLE "ficha_personagem" ADD FOREIGN KEY ("deleted_by_user_id") REFERENCES "user"("id");
+
+ALTER TABLE "user" ADD FOREIGN KEY ("created_by_user_id") REFERENCES "user"("id");
+ALTER TABLE "user" ADD FOREIGN KEY ("updated_by_user_id") REFERENCES "user"("id");
+ALTER TABLE "user" ADD FOREIGN KEY ("deleted_by_user_id") REFERENCES "user"("id");
+
+ALTER TABLE "compartilhamento_ficha" ADD FOREIGN KEY ("created_by_user_id") REFERENCES "user"("id");
+ALTER TABLE "compartilhamento_ficha" ADD FOREIGN KEY ("updated_by_user_id") REFERENCES "user"("id");
+ALTER TABLE "compartilhamento_ficha" ADD FOREIGN KEY ("deleted_by_user_id") REFERENCES "user"("id");
+
+ALTER TABLE "atributos_personagem" ADD FOREIGN KEY ("created_by_user_id") REFERENCES "user"("id");
+ALTER TABLE "atributos_personagem" ADD FOREIGN KEY ("updated_by_user_id") REFERENCES "user"("id");
+
+ALTER TABLE "habilidades_personagem" ADD FOREIGN KEY ("created_by_user_id") REFERENCES "user"("id");
+ALTER TABLE "habilidades_personagem" ADD FOREIGN KEY ("updated_by_user_id") REFERENCES "user"("id");
 
 -- Constraints de validação
 ALTER TABLE "atributos_personagem" ADD CONSTRAINT check_atributos_range 

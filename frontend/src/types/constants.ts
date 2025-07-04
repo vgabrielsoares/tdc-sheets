@@ -46,8 +46,21 @@ export const MATRIZ_FEITICOS_LABELS: Record<MatrizFeiticos, string> = {
 
 // Classes de Feitiços labels
 export const CLASSES_FEITICOS_LABELS: Record<ClassesFeiticos, string> = {
+  ABJURACAO: 'Abjuração',
+  DIVINACAO: 'Divinação',
+  ELEMENTAL: 'Elemental',
+  ENCANTAMENTO: 'Encantamento',
   EVOCACAO: 'Evocação',
-  MANIPULACAO: 'Manipulação'
+  ILUSAO: 'Ilusão',
+  INVOCACAO: 'Invocação',
+  MANIPULACAO: 'Manipulação',
+  MISTICA: 'Mística',
+  NATURAL: 'Natural',
+  NECROMANCIA: 'Necromancia',
+  PROFANA: 'Profana',
+  SAGRADA: 'Sagrada',
+  TRANSLOCACAO: 'Translocação',
+  TRANSMUTACAO: 'Transmutação'
 }
 
 // Grau de Perícia labels
@@ -71,10 +84,20 @@ export const ATRIBUTOS_LABELS: Record<Atributos, string> = {
 
 // Tipos de Dano labels
 export const TIPOS_DANO_LABELS: Record<TiposDano, string> = {
+  ACIDO: 'Ácido',
+  ELETRICO: 'Elétrico',
   CORTANTE: 'Cortante',
   PERFURANTE: 'Perfurante',
   IMPACTO: 'Impacto',
-  FOGO: 'Fogo'
+  FOGO: 'Fogo',
+  FRIO: 'Frio',
+  INTERNO: 'Interno',
+  MENTAL: 'Mental',
+  MISTICO: 'Místico',
+  PROFANO: 'Profano',
+  SAGRADO: 'Sagrado',
+  SONORO: 'Sonoro',
+  VENENO: 'Veneno'
 }
 
 // Raridades labels
@@ -264,6 +287,12 @@ export const getTamanhoLabel = (tamanho: TiposTamanho): string =>
 export const getGrauPericiaLabel = (grau: GrauPericia): string => 
   GRAU_PERICIA_LABELS[grau] || grau
 
+export const getClasseFeiticoLabel = (classe: ClassesFeiticos): string => 
+  CLASSES_FEITICOS_LABELS[classe] || classe
+
+export const getTipoDanoLabel = (tipo: TiposDano): string => 
+  TIPOS_DANO_LABELS[tipo] || tipo
+
 // Options arrays for selects
 export const ARQUETIPOS_OPTIONS = Object.entries(ARQUETIPOS_LABELS).map(([value, label]) => ({
   value,
@@ -296,6 +325,11 @@ export const MATRIZ_FEITICOS_OPTIONS = Object.entries(MATRIZ_FEITICOS_LABELS).ma
 }))
 
 export const CLASSES_FEITICOS_OPTIONS = Object.entries(CLASSES_FEITICOS_LABELS).map(([value, label]) => ({
+  value,
+  label
+}))
+
+export const TIPOS_DANO_OPTIONS = Object.entries(TIPOS_DANO_LABELS).map(([value, label]) => ({
   value,
   label
 }))
