@@ -160,8 +160,8 @@ public interface FichaPersonagemRepository extends BaseRepository<FichaPersonage
     /**
      * Busca fichas por data de criação
      */
-    @Query("SELECT f FROM FichaPersonagem f WHERE DATE(f.createdAt) = DATE(:date) AND f.isActive = true")
-    List<FichaPersonagem> findByCreatedDate(@Param("date") LocalDateTime date);
+    @Query("SELECT f FROM FichaPersonagem f WHERE f.createdAt >= :startDate AND f.createdAt < :endDate AND f.isActive = true")
+    List<FichaPersonagem> findByCreatedDate(@Param("startDate") LocalDateTime startDate, @Param("endDate") LocalDateTime endDate);
     
     /**
      * Busca fichas criadas nos últimos X dias
