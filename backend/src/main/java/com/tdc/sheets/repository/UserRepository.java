@@ -96,8 +96,8 @@ public interface UserRepository extends BaseRepository<User, Long> {
     /**
      * Busca usuários por data de criação
      */
-    @Query("SELECT u FROM User u WHERE DATE(u.createdAt) = DATE(:date) AND u.isActive = true")
-    List<User> findByCreatedDate(@Param("date") LocalDateTime date);
+    @Query("SELECT u FROM User u WHERE u.createdAt >= :startDate AND u.createdAt < :endDate AND u.isActive = true")
+    List<User> findByCreatedDate(@Param("startDate") LocalDateTime startDate, @Param("endDate") LocalDateTime endDate);
     
     /**
      * Estatísticas de usuários
