@@ -4,8 +4,10 @@ import com.tdc.sheets.entity.BaseEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.NoRepositoryBean;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -65,18 +67,24 @@ public interface BaseRepository<T extends BaseEntity, ID> extends JpaRepository<
     /**
      * Soft delete - marca como inativo
      */
+    @Modifying
+    @Transactional
     @Query("UPDATE #{#entityName} e SET e.isActive = false, e.updatedAt = CURRENT_TIMESTAMP WHERE e.id = :id")
     void softDelete(ID id);
     
     /**
      * Soft delete múltiplos registros
      */
+    @Modifying
+    @Transactional
     @Query("UPDATE #{#entityName} e SET e.isActive = false, e.updatedAt = CURRENT_TIMESTAMP WHERE e.id IN :ids")
     void softDeleteAll(List<ID> ids);
     
     /**
      * Restaura um registro soft deleted
      */
+    @Modifying
+    @Transactional
     @Query("UPDATE #{#entityName} e SET e.isActive = true, e.updatedAt = CURRENT_TIMESTAMP WHERE e.id = :id")
     void restore(ID id);
 }
