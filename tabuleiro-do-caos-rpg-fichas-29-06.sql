@@ -100,7 +100,7 @@ CREATE TYPE "tipos_alcance" AS ENUM (
   'ADJACENTE',
   'TOQUE',
   'CURTO',
-  'MÉDIO',
+  'MEDIO',
   'LONGO',
   'MUITO_lONGO',
   'ILIMITADO'
