@@ -1,0 +1,7 @@
+id;nome;descricao;mod_alcance;mod_dano;mod_defesa;mod_quadrados;mod_peso;mod_manobras;mod_rastreio;mod_acrobacia;mod_atletismo;mod_furtividade;mod_reflexos;mod_tenacidade
+1;MINUSCULO;Criaturas muito pequenas;1;-4;+3;0.5;-5;-3;+5;+5;-5;+5;+3;-3
+2;PEQUENO;Criaturas pequenas;1;-1;+1;1;-2;-1;+2;+2;-2;+2;+1;-1
+3;MEDIO;Tamanho padrão humanóide;1;0;0;1;0;0;0;0;0;0;0;0
+4;GRANDE;Criaturas grandes;2;+1;-1;2;+2;+1;-2;-2;+2;-2;-1;+1
+5;ENORME;Criaturas muito grandes;4;+6;-3;4;+5;+3;-6;-6;+6;-6;-3;+3
+6;COLOSSAL;Criaturas gigantescas;8;+10;-6;8;+10;+6;-9;-9;+9;-9;-6;+6

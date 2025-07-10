@@ -1,0 +1,30 @@
+id;nome;descricao;proficiencia_habilidade_1;proficiencia_habilidade_2;proficiencia_habilidade_3;modificador_atributo;habilidade_especial;itens_inicial;roll_d100_min;roll_d100_max
+1;Amigo dos Animais;Você sente afinidade com animais;Adestramento;Condução;Natureza;+1 Influência;Aumigo;Apito de Sinal, Cantil, Corda de Cânhamo, Ração (5), Tocha (5), Pá, Ovchjins (3), Saco, Sino e Bota;1;3
+2;Aristocrata;Você é considerado um aristocrata;Persuasão;Determinação;Instrução;+1 Influência;Sangue Azul;Algibeira, Porta Pergaminho, Papel (3), Pena de Escrever, Pente, Perfume, Tinta de Escrever, Vestimenta Formal e 5 PO$;4;6
+3;Artista;Você é um artista;Arte;Performance;Determinação;+1 Mente ou Influência, +1 Presença e -1 Força;Magnum Opus;Instrumentos de Arte, Cobertor, Mochila de Viagem, Saco de Dormir, Ração (2), Vela, Óleo (Frasco), Espelho, Livro, Pena, Perfume, Tinta, Avental;7;9
+4;Atirador;Sua precisão é fora do comum;Acerto;Iniciativa;Reflexo;+1 Agilidade;Na Mosca;Arco, Flechas (20), Aljava, Punhal, Armadura de Couro, Mochila, Ração (3), Corda, Pederneira;10;12
+5;Atleta;Você é um atleta;Atletismo;Acrobacia;Vigor;+1 Constituição;Físico Impecável;Roupas de Exercício, Toalha, Cantil, Ração (2), Óleos para Massagem, Bandagens, Sandálias;13;15
+6;Batedor;Você é um batedor;Percepção;Furtividade;Rastreamento;+1 Presença;Percepção de Lince;Arco Curto, Flechas (20), Corda, Mochila, Ração (3), Manto, Botas Suaves, Luneta;16;18
+7;Caçador;Você é um caçador;Rastreamento;Furtividade;Sobrevivência;+1 Presença;De Olho na Caça;Arco, Flechas (30), Faca de Caça, Armadilhas (3), Ração (5), Mochila, Corda, Pele de Animal;19;21
+8;Capanga;Você é um capanga;Intimidação;Iniciativa;Luta;+1 Força, +1 Influência e -1 Mente;Sorriso de Crocodilo;Porrete, Armadura de Couro, Roupas Comuns, Algemas, Corda, Saco, Dados, Cartas;22;24
+9;Circense;Você é um circense;Performance;Acrobacia;Arte;+1 Influência;Truques na Corda Bamba;Roupas Coloridas, Malabarismo (3), Corda, Maquiagem, Espelho, Instrumentos Musicais, Ração (2);25;27
+10;Cozinheiro;Você é um cozinheiro;Instrumentos de Cozinha;Instrução;Natureza;+1 Agilidade ou Mente;Preparar Talheres!;Panelas, Facas de Cozinha, Temperos, Ração (10), Avental, Panos de Prato, Fogareiro Portátil;28;30
+11;Criminoso;Você é um criminoso;Furtividade;Destreza;Enganação;+1 Agilidade;Malandragem;Gazuas, Punhal, Armadura de Couro, Corda, Capuz, Roupas Escuras, Algemas Falsas, Mochila;31;33
+12;Curandeiro;Você é um curandeiro;Medicina;Instrução;Natureza;+1 Mente;Ambulância;Kit Médico, Bandagens, Ervas Medicinais, Ração (3), Mochila, Bastão, Vestimentas Simples, Velas;34;36
+13;Escravo;Você é um escravo;Vigor;Atletismo;Tenacidade;+1 Constituição, +1 Força e -1 Influência;Corcel Indomável;Roupas Rasgadas, Algemas Quebradas, Ração (1), Ferramenta de Trabalho, Cicatrizes, Determinação;37;39
+14;Fazendeiro;Você é um fazendeiro;Natureza;Adestramento;Sobrevivência;+1 Presença;Filho da Terra;Enxada, Sementes, Ração (7), Animais Domésticos, Roupas de Trabalho, Chapéu de Palha, Botas;40;42
+15;Gladiador;Você é um gladiador;Luta;Performance;Vigor;+1 Constituição, +1 Influência e -1 Presença;O Show Não Pode Parar;Arma Gladiadora, Armadura de Couro, Rede, Tridente, Elmo, Sandálias, Óleo para Corpo;43;45
+16;Guarda;Você é um guarda;Investigação;Luta;Perspicácia;+1 Força, +1 Mente e -1 Influência;Ei, Você! Parado Aí!;Espada, Escudo, Armadura de Couro, Apito, Algemas, Tocha, Ração (3), Distintivo;46;48
+17;Herói do Povo;Você é um herói do povo;Sociedade;Acerto;Luta;+1 Influência;Um Por Todos;Arma Heróica, Armadura, Capa, Ração (3), Mochila, Símbolos Heróicos, Cartas de Recomendação;49;51
+18;Letrado;Você é um letrado;Instrução;História;Investigação;+1 Mente;Nerd dos Livros;Livros (5), Pergaminhos, Pena, Tinta, Óculos, Velas, Mochila, Ração (2), Lupa;52;54
+19;Lutador;Você é um lutador;Luta;Reflexo;Vigor;+1 Constituição, +1 Agilidade ou Força e -1 Presença;Espírito de Luta;Bandagens, Óleos, Roupas de Luta, Ração (2), Prêmios de Luta, Cicatrizes de Honra;55;57
+20;Marujo;Você é um marujo;Condução;Atletismo;Sorte;+1 Agilidade, +1 Presença e -1 Mente;Içar Velas!;Corda, Gancho, Ração (5), Roupas Impermeáveis, Rum, Papagaio, Tatuagens, Compass;58;60
+21;Minerador;Você é um minerador;Atletismo;Vigor;Nenhuma;+1 Constituição, +1 Força e -1 Mente;Senhor dos Túneis;Picareta, Pá, Lanterna, Ração (5), Roupas de Trabalho, Capacete, Corda, Pedras Preciosas;61;63
+22;Negociante;Você é um negociante;Persuasão;Perspicácia;Determinação;+1 Influência;Quem Não Chora...;Mercadorias, Balança, Mochila, Ração (3), Roupas Finas, Moedas, Contratos, Carroça;64;66
+23;Nômade;Você é um nômade;Sobrevivência;Condução;Natureza;+1 Presença;E O Vento Levou;Cavalo, Tenda, Ração (10), Roupas Nômades, Arco, Flechas (20), Amuletos, Mapa;67;69
+24;Religioso;Você é um religioso;Religião;Determinação;Perspicácia;+1 Presença;Se Deus Quiser;Símbolo Sagrado, Vestes Religiosas, Ração (3), Velas, Incenso, Textos Sagrados, Óleos Santos;70;72
+25;Selvagem;Você é um selvagem;Sobrevivência;Percepção;Reflexo;+1 Agilidade, +1 Presença e -1 Mente;Cria da Natureza;Lança, Roupas de Pele, Ração (2), Amuletos, Tinta de Guerra, Ossos, Pedras, Fogo;73;75
+26;Soldado;Você é um soldado;Estratégia;Luta;Acerto;+1 Constituição ou Mente;Sentido!;Espada, Escudo, Armadura de Couro, Ração (5), Mochila, Distintivo, Manta, Pederneira;76;78
+27;Trabalhador;Você é um trabalhador;Escolha Livre;Instrumento de Trabalho;Nenhuma;+1 em um Atributo;Manu Factum;Ferramentas de Trabalho, Roupas de Trabalho, Ração (5), Mochila, Materiais de Ofício;79;81
+28;Trambiqueiro;Você é um trambiqueiro;Enganação;Furtividade;Sociedade;+1 Agilidade, +1 Influência e -1 Força;Falácia? Eu?!;Dados Viciados, Cartas Marcadas, Roupas Comuns, Moedas Falsas, Ração (2), Mochila, Disfarces;82;84
+29;Origem Customizável;Origem personalizada;Escolha Livre;Escolha Livre;Nenhuma;+1 em um Atributo;Especialidade;Equipamentos Básicos, Ração (3), Mochila, Itens Relacionados à Origem;85;100

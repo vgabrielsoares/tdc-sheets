@@ -1,0 +1,5 @@
+authority;descricao
+ROLE_ADMIN;Administrador com acesso total ao sistema
+ROLE_USER;Usuário padrão do sistema
+ROLE_PLAYER;Jogador com permissão para gerenciar personagens
+ROLE_GAME_MASTER;Mestre de jogo com permissões estendidas
