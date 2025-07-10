@@ -1,0 +1,4 @@
+id;ficha_personagem_id;audicao;mod_audicao;olfato;mod_olfato;visao;mod_visao;created_at;updated_at
+1;1;COMUM;0;COMUM;0;COMUM;0;2025-07-01 10:00:00;2025-07-01 10:00:00
+2;2;AGUCADO;2;COMUM;0;AGUCADO;2;2025-07-01 10:00:00;2025-07-01 10:00:00
+3;3;COMUM;0;AGUCADO;2;COMUM;0;2025-07-01 10:00:00;2025-07-01 10:00:00

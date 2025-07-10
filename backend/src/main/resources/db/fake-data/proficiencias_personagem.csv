@@ -1,0 +1,10 @@
+id;ficha_personagem_id;tipo;nome;grau_pericia;created_at;updated_at;version;created_by_user_id;updated_by_user_id;is_active
+1;1;ARMA;Espadas;VERSADO;2025-07-01 10:00:00;2025-07-01 10:00:00;1;1;;true
+2;1;ARMA;Adagas;ADEPTO;2025-07-01 10:00:00;2025-07-01 10:00:00;1;1;;true
+3;1;ARMADURA;Armadura Leve;VERSADO;2025-07-01 10:00:00;2025-07-01 10:00:00;1;1;;true
+4;1;PERICIA;Sobrevivência;ADEPTO;2025-07-01 10:00:00;2025-07-01 10:00:00;1;1;;true
+5;2;ARMA;Armas de Precisão;VERSADO;2025-07-01 10:00:00;2025-07-01 10:00:00;1;1;;true
+6;2;PERICIA;Furtividade;MESTRE;2025-07-01 10:00:00;2025-07-01 10:00:00;1;1;;true
+7;2;PERICIA;Percepção;VERSADO;2025-07-01 10:00:00;2025-07-01 10:00:00;1;1;;true
+8;3;PERICIA;Conhecimento Arcano;MESTRE;2025-07-01 10:00:00;2025-07-01 10:00:00;1;1;;true
+9;3;PERICIA;História;VERSADO;2025-07-01 10:00:00;2025-07-01 10:00:00;1;1;;true

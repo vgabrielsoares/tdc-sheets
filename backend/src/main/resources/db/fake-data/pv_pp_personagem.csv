@@ -1,0 +1,4 @@
+id;ficha_personagem_id;pv_maximo;pv_atual;pv_temporario;pp_maximo;pp_atual;pp_temporario;limite_pp;limite_pp_bonus;created_at
+1;1;28;25;0;15;12;0;15;0;2025-01-01 00:00:00
+2;2;35;35;0;28;25;0;28;0;2025-01-01 00:00:00
+3;3;22;22;0;12;12;0;12;0;2025-01-01 00:00:00
