@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <!-- Changeset: Inserção de dados de exemplo para desenvolvimento -->
+    <changeSet id="013-insert-dev-data-fichas" author="tdc-sheets" context="dev">
+        <comment>Inserção de dados de fichas de exemplo para ambiente de desenvolvimento</comment>
+        
+        <!-- Inserção de fichas de personagem de exemplo -->
+        <loadData 
+            encoding="UTF-8"
+            file="db/fake-data/fichas.csv"
+            separator=";"
+            tableName="ficha_personagem">
+            <column name="nome_personagem" type="STRING"/>
+            <column name="user_id" type="NUMERIC"/>
+            <column name="background" type="STRING"/>
+            <column name="origem_id" type="NUMERIC"/>
+            <column name="linhagem_id" type="NUMERIC"/>
+            <column name="experiencia" type="NUMERIC"/>
+            <column name="habilidade_assinatura" type="NUMERIC"/>
+            <column name="nivel_sorte" type="NUMERIC"/>
+            <column name="tamanho" type="STRING"/>
+            <column name="is_active" type="BOOLEAN"/>
+        </loadData>
+        
+        <rollback>
+            DELETE FROM ficha_personagem;
+        </rollback>
+    </changeSet>
+    
+    <!-- Changeset: Inserção de atributos para personagens de exemplo -->
+    <changeSet id="013-insert-dev-data-atributos" author="tdc-sheets" context="dev">
+        <comment>Inserção de atributos para personagens de exemplo</comment>
+        
+        <loadData 
+            encoding="UTF-8"
+            file="db/fake-data/atributos_personagem.csv"
+            separator=";"
+            tableName="atributos_personagem">
+            <column name="ficha_personagem_id" type="NUMERIC"/>
+            <column name="atributo" type="STRING"/>
+            <column name="valor" type="NUMERIC"/>
+            <column name="valor_temp" type="NUMERIC"/>
+            <column name="is_active" type="BOOLEAN"/>
+        </loadData>
+        
+        <rollback>
+            DELETE FROM atributos_personagem;
+        </rollback>
+    </changeSet>
+    
+    <!-- Changeset: Inserção de dados de arquetipos para personagens de exemplo -->
+    <changeSet id="013-insert-dev-data-arquetipos-personagem" author="tdc-sheets" context="dev">
+        <comment>Inserção de arquetipos para personagens de exemplo</comment>
+        
+        <loadData 
+            encoding="UTF-8"
+            file="db/fake-data/arquetipos_personagem.csv"
+            separator=";"
+            tableName="arquetipos_personagem">
+            <column name="ficha_personagem_id" type="NUMERIC"/>
+            <column name="arquetipo_id" type="NUMERIC"/>
+            <column name="nivel_arquetipo" type="NUMERIC"/>
+        </loadData>
+        
+        <rollback>
+            DELETE FROM arquetipos_personagem;
+        </rollback>
+    </changeSet>
+    
+    <!-- Changeset: Inserção de dados de classes para personagens de exemplo -->
+    <changeSet id="013-insert-dev-data-classes-personagem" author="tdc-sheets" context="dev">
+        <comment>Inserção de classes para personagens de exemplo</comment>
+        
+        <loadData 
+            encoding="UTF-8"
+            file="db/fake-data/classes_personagem.csv"
+            separator=";"
+            tableName="classes_personagem">
+            <column name="ficha_personagem_id" type="NUMERIC"/>
+            <column name="classe_id" type="NUMERIC"/>
+            <column name="nivel" type="NUMERIC"/>
+        </loadData>
+        
+        <rollback>
+            DELETE FROM classes_personagem;
+        </rollback>
+    </changeSet>
+    
+    <!-- Changeset: Inserção de habilidades para personagens de exemplo -->
+    <changeSet id="013-insert-dev-data-habilidades" author="tdc-sheets" context="dev">
+        <comment>Inserção de habilidades para personagens de exemplo</comment>
+        
+        <loadData 
+            encoding="UTF-8"
+            file="db/fake-data/habilidades_personagem.csv"
+            separator=";"
+            tableName="habilidades_personagem">
+            <column name="ficha_personagem_id" type="NUMERIC"/>
+            <column name="habilidade_id" type="NUMERIC"/>
+            <column name="grau_habilidade" type="STRING"/>
+            <column name="atributo_chave_personagem" type="STRING"/>
+            <column name="atributo_personagem_id" type="NUMERIC"/>
+            <column name="mod_dado_habilidade" type="NUMERIC"/>
+            <column name="mod_temp" type="NUMERIC"/>
+            <column name="mod_outros" type="NUMERIC"/>
+            <column name="is_active" type="BOOLEAN"/>
+        </loadData>
+        
+        <rollback>
+            DELETE FROM habilidades_personagem;
+        </rollback>
+    </changeSet>
+    
+    <!-- Changeset: Inserção de dados de PV e PP para personagens de exemplo -->
+    <changeSet id="013-insert-dev-data-pv-pp" author="tdc-sheets" context="dev">
+        <comment>Inserção de dados de PV e PP para personagens de exemplo</comment>
+        
+        <loadData 
+            encoding="UTF-8"
+            file="db/fake-data/pv_pp_personagem.csv"
+            separator=";"
+            tableName="pv_pp_personagem">
+            <column name="ficha_personagem_id" type="NUMERIC"/>
+            <column name="pv_maximo" type="NUMERIC"/>
+            <column name="pv_atual" type="NUMERIC"/>
+            <column name="pv_temporario" type="NUMERIC"/>
+            <column name="pp_maximo" type="NUMERIC"/>
+            <column name="pp_atual" type="NUMERIC"/>
+            <column name="pp_temporario" type="NUMERIC"/>
+            <column name="limite_pp" type="NUMERIC"/>
+            <column name="limite_pp_bonus" type="NUMERIC"/>
+        </loadData>
+        
+        <rollback>
+            DELETE FROM pv_pp_personagem;
+        </rollback>
+    </changeSet>
+    
+    <!-- Changeset: Inserção de dados de defesa para personagens de exemplo -->
+    <changeSet id="013-insert-dev-data-defesa" author="tdc-sheets" context="dev">
+        <comment>Inserção de dados de defesa para personagens de exemplo</comment>
+        
+        <loadData 
+            encoding="UTF-8"
+            file="db/fake-data/defesa.csv"
+            separator=";"
+            tableName="defesa">
+            <column name="ficha_personagem_id" type="NUMERIC"/>
+            <column name="defesa_personagem" type="NUMERIC"/>
+            <column name="armadura" type="NUMERIC"/>
+            <column name="vestindo_armadura" type="BOOLEAN"/>
+            <column name="limite_agilidade" type="NUMERIC"/>
+            <column name="outro_mod" type="NUMERIC"/>
+        </loadData>
+        
+        <rollback>
+            DELETE FROM defesa;
+        </rollback>
+    </changeSet>
+    
+    <!-- Changeset: Inserção de dados de resistências para personagens de exemplo -->
+    <changeSet id="013-insert-dev-data-resistencias" author="tdc-sheets" context="dev">
+        <comment>Inserção de dados de resistências para personagens de exemplo</comment>
+        
+        <loadData 
+            encoding="UTF-8"
+            file="db/fake-data/resistencias_personagem.csv"
+            separator=";"
+            tableName="resistencias_personagem">
+            <column name="ficha_personagem_id" type="NUMERIC"/>
+            <column name="tipo_dano" type="STRING"/>
+            <column name="resistencia" type="NUMERIC"/>
+            <column name="aprimorada" type="BOOLEAN"/>
+            <column name="suprema" type="BOOLEAN"/>
+            <column name="lendaria" type="BOOLEAN"/>
+            <column name="invulnerabilidade" type="BOOLEAN"/>
+            <column name="absorcao" type="BOOLEAN"/>
+        </loadData>
+        
+        <rollback>
+            DELETE FROM resistencias_personagem;
+        </rollback>
+    </changeSet>
+    
+    <!-- Changeset: Inserção de dados de sentidos para personagens de exemplo -->
+    <changeSet id="013-insert-dev-data-sentidos" author="tdc-sheets" context="dev">
+        <comment>Inserção de dados de sentidos para personagens de exemplo</comment>
+        
+        <loadData 
+            encoding="UTF-8"
+            file="db/fake-data/sentidos_personagem.csv"
+            separator=";"
+            tableName="sentidos_personagem">
+            <column name="ficha_personagem_id" type="NUMERIC"/>
+            <column name="audicao" type="STRING"/>
+            <column name="mod_audicao" type="NUMERIC"/>
+            <column name="olfato" type="STRING"/>
+            <column name="mod_olfato" type="NUMERIC"/>
+            <column name="visao" type="STRING"/>
+            <column name="mod_visao" type="NUMERIC"/>
+        </loadData>
+        
+        <rollback>
+            DELETE FROM sentidos_personagem;
+        </rollback>
+    </changeSet>
+    
+    <!-- Changeset: Inserção de dados de descrição para personagens de exemplo -->
+    <changeSet id="013-insert-dev-data-descricao" author="tdc-sheets" context="dev">
+        <comment>Inserção de dados de descrição para personagens de exemplo</comment>
+        
+        <loadData 
+            encoding="UTF-8"
+            file="db/fake-data/descricao_personagem.csv"
+            separator=";"
+            tableName="descricao_personagem">
+            <column name="ficha_personagem_id" type="NUMERIC"/>
+            <column name="genero" type="STRING"/>
+            <column name="pronomes" type="STRING"/>
+            <column name="idade" type="STRING"/>
+            <column name="altura" type="STRING"/>
+            <column name="peso" type="STRING"/>
+            <column name="tamanho" type="STRING"/>
+            <column name="fe" type="STRING"/>
+            <column name="pele" type="STRING"/>
+            <column name="olhos" type="STRING"/>
+            <column name="cabelos" type="STRING"/>
+            <column name="aparencia_outros" type="STRING"/>
+            <column name="particularidades" type="STRING"/>
+            <column name="conceito" type="STRING"/>
+            <column name="tracos_personalidade" type="STRING"/>
+            <column name="ideais" type="STRING"/>
+            <column name="falhas" type="STRING"/>
+            <column name="medos" type="STRING"/>
+            <column name="aliados" type="STRING"/>
+            <column name="organizacoes" type="STRING"/>
+            <column name="historia" type="STRING"/>
+            <column name="anotacoes" type="STRING"/>
+        </loadData>
+        
+        <rollback>
+            DELETE FROM descricao_personagem;
+        </rollback>
+    </changeSet>
+    
+    <!-- Changeset: Inserção de dados de ações para personagens de exemplo -->
+    <changeSet id="013-insert-dev-data-acoes" author="tdc-sheets" context="dev">
+        <comment>Inserção de dados de ações para personagens de exemplo</comment>
+        
+        <loadData 
+            encoding="UTF-8"
+            file="db/fake-data/acoes_personagem.csv"
+            separator=";"
+            tableName="acoes_personagem">
+            <column name="ficha_personagem_id" type="NUMERIC"/>
+            <column name="acao" type="STRING"/>
+            <column name="acao_disponivel" type="BOOLEAN"/>
+        </loadData>
+        
+        <rollback>
+            DELETE FROM acoes_personagem;
+        </rollback>
+    </changeSet>
+    
+    <!-- Changeset: Inserção de dados de ataques para personagens de exemplo -->
+    <changeSet id="013-insert-dev-data-ataques" author="tdc-sheets" context="dev">
+        <comment>Inserção de dados de ataques para personagens de exemplo</comment>
+        
+        <loadData 
+            encoding="UTF-8"
+            file="db/fake-data/ataques_personagem.csv"
+            separator=";"
+            tableName="ataques_personagem">
+            <column name="ficha_personagem_id" type="NUMERIC"/>
+            <column name="nome" type="STRING"/>
+            <column name="atributo" type="STRING"/>
+            <column name="habilidade_id" type="NUMERIC"/>
+            <column name="alcance" type="STRING"/>
+            <column name="dado_bonus" type="NUMERIC"/>
+            <column name="mod_bonus" type="NUMERIC"/>
+            <column name="custo_pp" type="NUMERIC"/>
+        </loadData>
+        
+        <rollback>
+            DELETE FROM ataques_personagem;
+        </rollback>
+    </changeSet>
+    
+    <!-- Changeset: Inserção de dados de dano para ataques de exemplo -->
+    <changeSet id="013-insert-dev-data-dano-ataque" author="tdc-sheets" context="dev">
+        <comment>Inserção de dados de dano para ataques de exemplo</comment>
+        
+        <loadData 
+            encoding="UTF-8"
+            file="db/fake-data/dano_ataque.csv"
+            separator=";"
+            tableName="dano_ataque">
+            <column name="ataque_personagem_id" type="NUMERIC"/>
+            <column name="dado" type="STRING"/>
+            <column name="mod" type="NUMERIC"/>
+            <column name="bonus" type="NUMERIC"/>
+            <column name="critico" type="STRING"/>
+        </loadData>
+        
+        <rollback>
+            DELETE FROM dano_ataque;
+        </rollback>
+    </changeSet>
+    
+    <!-- Changeset: Inserção de dados de feitiços para personagens de exemplo -->
+    <changeSet id="013-insert-dev-data-feiticos" author="tdc-sheets" context="dev">
+        <comment>Inserção de dados de feitiços para personagens de exemplo</comment>
+        
+        <loadData 
+            encoding="UTF-8"
+            file="db/fake-data/feiticos_personagem.csv"
+            separator=";"
+            tableName="feiticos_personagem">
+            <column name="ficha_personagem_id" type="NUMERIC"/>
+            <column name="feiticos_id" type="NUMERIC"/>
+            <column name="habilidade" type="NUMERIC"/>
+        </loadData>
+        
+        <rollback>
+            DELETE FROM feiticos_personagem;
+        </rollback>
+    </changeSet>
+    
+    <!-- Changeset: Inserção de dados de carga para personagens de exemplo -->
+    <changeSet id="013-insert-dev-data-carga" author="tdc-sheets" context="dev">
+        <comment>Inserção de dados de carga para personagens de exemplo</comment>
+        
+        <loadData 
+            encoding="UTF-8"
+            file="db/fake-data/carga_personagem.csv"
+            separator=";"
+            tableName="carga_personagem">
+            <column name="ficha_personagem_id" type="NUMERIC"/>
+            <column name="carga_atual" type="NUMERIC"/>
+            <column name="capacidade_carga" type="NUMERIC"/>
+            <column name="bonus_capacidade_carga" type="NUMERIC"/>
+        </loadData>
+        
+        <rollback>
+            DELETE FROM carga_personagem;
+        </rollback>
+    </changeSet>
+    
+    <!-- Changeset: Inserção de dados de cunhagem para personagens de exemplo -->
+    <changeSet id="013-insert-dev-data-cunhagem" author="tdc-sheets" context="dev">
+        <comment>Inserção de dados de cunhagem para personagens de exemplo</comment>
+        
+        <loadData 
+            encoding="UTF-8"
+            file="db/fake-data/cunhagem_personagem.csv"
+            separator=";"
+            tableName="cunhagem_personagem">
+            <column name="carga_personagem_id" type="NUMERIC"/>
+            <column name="c_fisico" type="NUMERIC"/>
+            <column name="po_fisico" type="NUMERIC"/>
+            <column name="pp_fisico" type="NUMERIC"/>
+            <column name="c_banco" type="NUMERIC"/>
+            <column name="po_banco" type="NUMERIC"/>
+            <column name="pp_banco" type="NUMERIC"/>
+        </loadData>
+        
+        <rollback>
+            DELETE FROM cunhagem_personagem;
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <!-- Changeset: Adição de Foreign Keys -->
+    <changeSet id="008-add-foreign-keys" author="tdc-sheets">
+        <comment>Adição de Foreign Keys para as tabelas</comment>
+        
+        <!-- Foreign keys para ficha_personagem -->
+        <addForeignKeyConstraint baseTableName="ficha_personagem" baseColumnNames="user_id"
+                                 constraintName="fk_ficha_personagem_user"
+                                 referencedTableName="user" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <addForeignKeyConstraint baseTableName="ficha_personagem" baseColumnNames="origem_id"
+                                 constraintName="fk_ficha_personagem_origem"
+                                 referencedTableName="origem" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <addForeignKeyConstraint baseTableName="ficha_personagem" baseColumnNames="linhagem_id"
+                                 constraintName="fk_ficha_personagem_linhagem"
+                                 referencedTableName="linhagem" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <addForeignKeyConstraint baseTableName="ficha_personagem" baseColumnNames="habilidade_assinatura"
+                                 constraintName="fk_ficha_personagem_habilidade_assinatura"
+                                 referencedTableName="habilidades_personagem" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para tabela de usuário -->
+        <addForeignKeyConstraint baseTableName="user_authority" baseColumnNames="user_id"
+                                 constraintName="fk_user_authority_user"
+                                 referencedTableName="user" referencedColumnNames="id"
+                                 onDelete="CASCADE" onUpdate="CASCADE"/>
+        
+        <addForeignKeyConstraint baseTableName="user_authority" baseColumnNames="authority_id"
+                                 constraintName="fk_user_authority_authority"
+                                 referencedTableName="authorities" referencedColumnNames="id"
+                                 onDelete="CASCADE" onUpdate="CASCADE"/>
+        
+        <!-- Foreign keys para arquetipos do personagem -->
+        <addForeignKeyConstraint baseTableName="arquetipos_personagem" baseColumnNames="ficha_personagem_id"
+                                 constraintName="fk_arquetipos_personagem_ficha"
+                                 referencedTableName="ficha_personagem" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <addForeignKeyConstraint baseTableName="arquetipos_personagem" baseColumnNames="arquetipo_id"
+                                 constraintName="fk_arquetipos_personagem_arquetipo"
+                                 referencedTableName="arquetipo" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para características de arquétipo -->
+        <addForeignKeyConstraint baseTableName="caracteristica_arquetipo" baseColumnNames="arquetipo_id"
+                                 constraintName="fk_caracteristica_arquetipo"
+                                 referencedTableName="arquetipo" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para habilidades de arquétipo -->
+        <addForeignKeyConstraint baseTableName="habilidades_arquetipo" baseColumnNames="arquetipo_id"
+                                 constraintName="fk_habilidades_arquetipo_arquetipo"
+                                 referencedTableName="arquetipo" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <addForeignKeyConstraint baseTableName="habilidades_arquetipo" baseColumnNames="habilidade_id"
+                                 constraintName="fk_habilidades_arquetipo_habilidade"
+                                 referencedTableName="habilidade" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para proficiências de arquétipo -->
+        <addForeignKeyConstraint baseTableName="proficiencias_arquetipo" baseColumnNames="arquetipo_id"
+                                 constraintName="fk_proficiencias_arquetipo_arquetipo"
+                                 referencedTableName="arquetipo" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para classes do personagem -->
+        <addForeignKeyConstraint baseTableName="classes_personagem" baseColumnNames="ficha_personagem_id"
+                                 constraintName="fk_classes_personagem_ficha"
+                                 referencedTableName="ficha_personagem" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <addForeignKeyConstraint baseTableName="classes_personagem" baseColumnNames="classe_id"
+                                 constraintName="fk_classes_personagem_classe"
+                                 referencedTableName="classe" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para classe -->
+        <addForeignKeyConstraint baseTableName="classe" baseColumnNames="requisitos_classe_id"
+                                 constraintName="fk_classe_requisitos"
+                                 referencedTableName="requisitos_classe" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para habilidades da classe -->
+        <addForeignKeyConstraint baseTableName="habilidades_classe" baseColumnNames="classe_id"
+                                 constraintName="fk_habilidades_classe_classe"
+                                 referencedTableName="classe" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para proficiências da classe -->
+        <addForeignKeyConstraint baseTableName="proficiencias_classe" baseColumnNames="classe_id"
+                                 constraintName="fk_proficiencias_classe_classe"
+                                 referencedTableName="classe" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para uso de habilidade -->
+        <addForeignKeyConstraint baseTableName="uso_habilidade" baseColumnNames="habilidade_id"
+                                 constraintName="fk_uso_habilidade_habilidade"
+                                 referencedTableName="habilidade" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para habilidades do personagem -->
+        <addForeignKeyConstraint baseTableName="habilidades_personagem" baseColumnNames="ficha_personagem_id"
+                                 constraintName="fk_habilidades_personagem_ficha"
+                                 referencedTableName="ficha_personagem" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <addForeignKeyConstraint baseTableName="habilidades_personagem" baseColumnNames="habilidade_id"
+                                 constraintName="fk_habilidades_personagem_habilidade"
+                                 referencedTableName="habilidade" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <addForeignKeyConstraint baseTableName="habilidades_personagem" baseColumnNames="atributo_personagem_id"
+                                 constraintName="fk_habilidades_personagem_sentidos"
+                                 referencedTableName="sentidos_personagem" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para classes de feitiço -->
+        <addForeignKeyConstraint baseTableName="classes_feitico" baseColumnNames="feitico_id"
+                                 constraintName="fk_classes_feitico_feitico"
+                                 referencedTableName="feiticos" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para feitiços do personagem -->
+        <addForeignKeyConstraint baseTableName="feiticos_personagem" baseColumnNames="ficha_personagem_id"
+                                 constraintName="fk_feiticos_personagem_ficha"
+                                 referencedTableName="ficha_personagem" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <addForeignKeyConstraint baseTableName="feiticos_personagem" baseColumnNames="feiticos_id"
+                                 constraintName="fk_feiticos_personagem_feitico"
+                                 referencedTableName="feiticos" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para inventário do personagem -->
+        <addForeignKeyConstraint baseTableName="inventario_personagem" baseColumnNames="ficha_personagem_id"
+                                 constraintName="fk_inventario_personagem_ficha"
+                                 referencedTableName="ficha_personagem" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <addForeignKeyConstraint baseTableName="inventario_personagem" baseColumnNames="equipamento_id"
+                                 constraintName="fk_inventario_personagem_equipamento"
+                                 referencedTableName="equipamentos" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <addForeignKeyConstraint baseTableName="inventario_personagem" baseColumnNames="carga_personagem_id"
+                                 constraintName="fk_inventario_personagem_carga"
+                                 referencedTableName="carga_personagem" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para compartilhamento de ficha -->
+        <addForeignKeyConstraint baseTableName="compartilhamento_ficha" baseColumnNames="ficha_personagem_id"
+                                 constraintName="fk_compartilhamento_ficha_ficha"
+                                 referencedTableName="ficha_personagem" referencedColumnNames="id"
+                                 onDelete="CASCADE" onUpdate="CASCADE"/>
+        
+        <addForeignKeyConstraint baseTableName="compartilhamento_ficha" baseColumnNames="user_id"
+                                 constraintName="fk_compartilhamento_ficha_user"
+                                 referencedTableName="user" referencedColumnNames="id"
+                                 onDelete="CASCADE" onUpdate="CASCADE"/>
+        
+        <!-- Foreign keys para defesa -->
+        <addForeignKeyConstraint baseTableName="defesa" baseColumnNames="ficha_personagem_id"
+                                 constraintName="fk_defesa_ficha_personagem"
+                                 referencedTableName="ficha_personagem" referencedColumnNames="id"
+                                 onDelete="CASCADE" onUpdate="CASCADE"/>
+        
+        <!-- Foreign keys para PV e PP -->
+        <addForeignKeyConstraint baseTableName="pv_pp_personagem" baseColumnNames="ficha_personagem_id"
+                                 constraintName="fk_pv_pp_personagem_ficha"
+                                 referencedTableName="ficha_personagem" referencedColumnNames="id"
+                                 onDelete="CASCADE" onUpdate="CASCADE"/>
+        
+        <!-- Foreign keys para atributos do personagem -->
+        <addForeignKeyConstraint baseTableName="atributos_personagem" baseColumnNames="ficha_personagem_id"
+                                 constraintName="fk_atributos_personagem_ficha"
+                                 referencedTableName="ficha_personagem" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para resistências do personagem -->
+        <addForeignKeyConstraint baseTableName="resistencias_personagem" baseColumnNames="ficha_personagem_id"
+                                 constraintName="fk_resistencias_personagem_ficha"
+                                 referencedTableName="ficha_personagem" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para sentidos do personagem -->
+        <addForeignKeyConstraint baseTableName="sentidos_personagem" baseColumnNames="ficha_personagem_id"
+                                 constraintName="fk_sentidos_personagem_ficha"
+                                 referencedTableName="ficha_personagem" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para ações do personagem -->
+        <addForeignKeyConstraint baseTableName="acoes_personagem" baseColumnNames="ficha_personagem_id"
+                                 constraintName="fk_acoes_personagem_ficha"
+                                 referencedTableName="ficha_personagem" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para ataques do personagem -->
+        <addForeignKeyConstraint baseTableName="ataques_personagem" baseColumnNames="ficha_personagem_id"
+                                 constraintName="fk_ataques_personagem_ficha"
+                                 referencedTableName="ficha_personagem" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para dano de ataque -->
+        <addForeignKeyConstraint baseTableName="dano_ataque" baseColumnNames="ataque_personagem_id"
+                                 constraintName="fk_dano_ataque_ataque"
+                                 referencedTableName="ataques_personagem" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para descrição do personagem -->
+        <addForeignKeyConstraint baseTableName="descricao_personagem" baseColumnNames="ficha_personagem_id"
+                                 constraintName="fk_descricao_personagem_ficha"
+                                 referencedTableName="ficha_personagem" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para particularidades do personagem -->
+        <addForeignKeyConstraint baseTableName="particularidades_personagem" baseColumnNames="ficha_personagem_id"
+                                 constraintName="fk_particularidades_personagem_ficha"
+                                 referencedTableName="ficha_personagem" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <addForeignKeyConstraint baseTableName="particularidades_personagem" baseColumnNames="particularidade_id"
+                                 constraintName="fk_particularidades_personagem_particularidade"
+                                 referencedTableName="particularidade" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para snapshot de ficha -->
+        <addForeignKeyConstraint baseTableName="ficha_snapshot" baseColumnNames="ficha_personagem_id"
+                                 constraintName="fk_ficha_snapshot_ficha"
+                                 referencedTableName="ficha_personagem" referencedColumnNames="id"
+                                 onDelete="CASCADE" onUpdate="CASCADE"/>
+        
+        <!-- Foreign keys para relacionamento entre feitiços e habilidades -->
+        <addForeignKeyConstraint baseTableName="feiticos_personagem_habilidades_personagem" baseColumnNames="feiticos_personagem_habilidade"
+                                 constraintName="fk_feiticos_personagem_habilidade_feitico"
+                                 referencedTableName="feiticos_personagem" referencedColumnNames="habilidade"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <addForeignKeyConstraint baseTableName="feiticos_personagem_habilidades_personagem" baseColumnNames="habilidades_personagem_id"
+                                 constraintName="fk_feiticos_personagem_habilidade_habilidade"
+                                 referencedTableName="habilidades_personagem" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para deslocamento do personagem -->
+        <addForeignKeyConstraint baseTableName="deslocamento_personagem" baseColumnNames="ficha_personagem_id"
+                                 constraintName="fk_deslocamento_personagem_ficha"
+                                 referencedTableName="ficha_personagem" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para proficiências do personagem -->
+        <addForeignKeyConstraint baseTableName="proficiencias_personagem" baseColumnNames="ficha_personagem_id"
+                                 constraintName="fk_proficiencias_personagem_ficha"
+                                 referencedTableName="ficha_personagem" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para origem customizada -->
+        <addForeignKeyConstraint baseTableName="origem_custom" baseColumnNames="ficha_personagem_id"
+                                 constraintName="fk_origem_custom_ficha"
+                                 referencedTableName="ficha_personagem" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para habilidades de origem -->
+        <addForeignKeyConstraint baseTableName="habilidades_origem" baseColumnNames="origem_id"
+                                 constraintName="fk_habilidades_origem_origem"
+                                 referencedTableName="origem" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para itens de origem -->
+        <addForeignKeyConstraint baseTableName="itens_origem" baseColumnNames="origem_id"
+                                 constraintName="fk_itens_origem_origem"
+                                 referencedTableName="origem" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <addForeignKeyConstraint baseTableName="itens_origem" baseColumnNames="equipamento_id"
+                                 constraintName="fk_itens_origem_equipamento"
+                                 referencedTableName="equipamentos" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para atributos de origem -->
+        <addForeignKeyConstraint baseTableName="atributos_origem" baseColumnNames="origem_id"
+                                 constraintName="fk_atributos_origem_origem"
+                                 referencedTableName="origem" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para linhagem -->
+        <addForeignKeyConstraint baseTableName="linhagem" baseColumnNames="tamanho"
+                                 constraintName="fk_linhagem_tamanho"
+                                 referencedTableName="tamanho" referencedColumnNames="nome"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para deslocamento da linhagem -->
+        <addForeignKeyConstraint baseTableName="deslocamento_linhagem" baseColumnNames="linhagem_id"
+                                 constraintName="fk_deslocamento_linhagem_linhagem"
+                                 referencedTableName="linhagem" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para idiomas da linhagem -->
+        <addForeignKeyConstraint baseTableName="idiomas_linhagem" baseColumnNames="linhagem_id"
+                                 constraintName="fk_idiomas_linhagem_linhagem"
+                                 referencedTableName="linhagem" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para atributos da linhagem -->
+        <addForeignKeyConstraint baseTableName="atributos_linhagem" baseColumnNames="linhagem_id"
+                                 constraintName="fk_atributos_linhagem_linhagem"
+                                 referencedTableName="linhagem" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para sentidos da linhagem -->
+        <addForeignKeyConstraint baseTableName="sentidos_linhagem" baseColumnNames="linhagem_id"
+                                 constraintName="fk_sentidos_linhagem_linhagem"
+                                 referencedTableName="linhagem" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para características da ancestralidade -->
+        <addForeignKeyConstraint baseTableName="caracteristicas_ancestralidade" baseColumnNames="linhagem_id"
+                                 constraintName="fk_caracteristicas_ancestralidade_linhagem"
+                                 referencedTableName="linhagem" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para carga do personagem -->
+        <addForeignKeyConstraint baseTableName="carga_personagem" baseColumnNames="ficha_personagem_id"
+                                 constraintName="fk_carga_personagem_ficha"
+                                 referencedTableName="ficha_personagem" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para cunhagem do personagem -->
+        <addForeignKeyConstraint baseTableName="cunhagem_personagem" baseColumnNames="carga_personagem_id"
+                                 constraintName="fk_cunhagem_personagem_carga"
+                                 referencedTableName="carga_personagem" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para talentos e poderes de arquétipo -->
+        <addForeignKeyConstraint baseTableName="talento__poderes_arquetipo" baseColumnNames="arquetipo_id"
+                                 constraintName="fk_talentos_poderes_arquetipo"
+                                 referencedTableName="arquetipo" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <addForeignKeyConstraint baseTableName="talento__poderes_arquetipo" baseColumnNames="requisitos_talentos_poderes_id"
+                                 constraintName="fk_talentos_poderes_requisitos"
+                                 referencedTableName="requisitos_talentos_poderes" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para requisitos de talentos e poderes -->
+        <addForeignKeyConstraint baseTableName="requisitos_talentos_poderes" baseColumnNames="talento_poder_requisito"
+                                 constraintName="fk_requisitos_talento_poder"
+                                 referencedTableName="talento__poderes_arquetipo" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <addForeignKeyConstraint baseTableName="requisitos_talentos_poderes" baseColumnNames="linhagem_id"
+                                 constraintName="fk_requisitos_talentos_poderes_linhagem"
+                                 referencedTableName="linhagem" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <addForeignKeyConstraint baseTableName="requisitos_talentos_poderes" baseColumnNames="habilidade_id"
+                                 constraintName="fk_requisitos_talentos_poderes_habilidade"
+                                 referencedTableName="habilidade" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Foreign keys para auditoria -->
+        <addForeignKeyConstraint baseTableName="ficha_personagem" baseColumnNames="created_by_user_id"
+                                 constraintName="fk_ficha_personagem_created_by"
+                                 referencedTableName="user" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <addForeignKeyConstraint baseTableName="ficha_personagem" baseColumnNames="updated_by_user_id"
+                                 constraintName="fk_ficha_personagem_updated_by"
+                                 referencedTableName="user" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <addForeignKeyConstraint baseTableName="ficha_personagem" baseColumnNames="deleted_by_user_id"
+                                 constraintName="fk_ficha_personagem_deleted_by"
+                                 referencedTableName="user" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <addForeignKeyConstraint baseTableName="user" baseColumnNames="created_by_user_id"
+                                 constraintName="fk_user_created_by"
+                                 referencedTableName="user" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <addForeignKeyConstraint baseTableName="user" baseColumnNames="updated_by_user_id"
+                                 constraintName="fk_user_updated_by"
+                                 referencedTableName="user" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <addForeignKeyConstraint baseTableName="user" baseColumnNames="deleted_by_user_id"
+                                 constraintName="fk_user_deleted_by"
+                                 referencedTableName="user" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <addForeignKeyConstraint baseTableName="compartilhamento_ficha" baseColumnNames="created_by_user_id"
+                                 constraintName="fk_compartilhamento_created_by"
+                                 referencedTableName="user" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <addForeignKeyConstraint baseTableName="compartilhamento_ficha" baseColumnNames="updated_by_user_id"
+                                 constraintName="fk_compartilhamento_updated_by"
+                                 referencedTableName="user" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <addForeignKeyConstraint baseTableName="compartilhamento_ficha" baseColumnNames="deleted_by_user_id"
+                                 constraintName="fk_compartilhamento_deleted_by"
+                                 referencedTableName="user" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <addForeignKeyConstraint baseTableName="atributos_personagem" baseColumnNames="created_by_user_id"
+                                 constraintName="fk_atributos_personagem_created_by"
+                                 referencedTableName="user" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <addForeignKeyConstraint baseTableName="atributos_personagem" baseColumnNames="updated_by_user_id"
+                                 constraintName="fk_atributos_personagem_updated_by"
+                                 referencedTableName="user" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <addForeignKeyConstraint baseTableName="habilidades_personagem" baseColumnNames="created_by_user_id"
+                                 constraintName="fk_habilidades_personagem_created_by"
+                                 referencedTableName="user" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <addForeignKeyConstraint baseTableName="habilidades_personagem" baseColumnNames="updated_by_user_id"
+                                 constraintName="fk_habilidades_personagem_updated_by"
+                                 referencedTableName="user" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <addForeignKeyConstraint baseTableName="ficha_snapshot" baseColumnNames="created_by_user_id"
+                                 constraintName="fk_ficha_snapshot_created_by"
+                                 referencedTableName="user" referencedColumnNames="id"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+        
+        <!-- Criar triggers de atualização -->
+        <sql>
+            -- Trigger para atualizar campo updated_at automaticamente
+            CREATE OR REPLACE FUNCTION update_updated_at_column()
+            RETURNS TRIGGER AS $$
+            BEGIN
+                NEW.updated_at = CURRENT_TIMESTAMP;
+                RETURN NEW;
+            END;
+            $$ language 'plpgsql';
+            
+            -- Triggers para as tabelas principais
+            CREATE TRIGGER update_ficha_personagem_updated_at BEFORE UPDATE
+                ON ficha_personagem FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+            
+            CREATE TRIGGER update_atributos_personagem_updated_at BEFORE UPDATE
+                ON atributos_personagem FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+            
+            CREATE TRIGGER update_habilidades_personagem_updated_at BEFORE UPDATE
+                ON habilidades_personagem FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+            
+            CREATE TRIGGER update_pv_pp_personagem_updated_at BEFORE UPDATE
+                ON pv_pp_personagem FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+            
+            CREATE TRIGGER update_defesa_updated_at BEFORE UPDATE
+                ON defesa FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+            
+            CREATE TRIGGER update_inventario_personagem_updated_at BEFORE UPDATE
+                ON inventario_personagem FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+            
+            CREATE TRIGGER update_ataques_personagem_updated_at BEFORE UPDATE
+                ON ataques_personagem FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+            
+            CREATE TRIGGER update_feiticos_personagem_updated_at BEFORE UPDATE
+                ON feiticos_personagem FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+        </sql>
+        
+        <!-- Rollback -->
+        <rollback>
+            -- Como remover todas as foreign keys seria complicado, o rollback faz referência ao próprio changeLog
+            -- Isso faz com que o rollback seja na ordem inversa, removendo primeiro as constraints e depois as tabelas
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

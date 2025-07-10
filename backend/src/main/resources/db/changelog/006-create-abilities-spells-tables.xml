@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <!-- Changeset: Criação das tabelas de habilidades e feitiços -->
+    <changeSet id="006-create-abilities-spells-tables" author="tdc-sheets">
+        <comment>Criação das tabelas para habilidades, talentos, feitiços e arquétipos</comment>
+        
+        <!-- Tabela de arquétipos -->
+        <createTable tableName="arquetipo">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="nome" type="arquetipos_nome">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="descricao" type="TEXT"/>
+            <column name="defesa_15" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="criador" type="VARCHAR(100)"/>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_active" type="BOOLEAN" defaultValue="true">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <!-- Tabela de arquetipos do personagem -->
+        <createTable tableName="arquetipos_personagem">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="ficha_personagem_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="arquetipo_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nivel_arquetipo" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="arquetipo_principal" type="BOOLEAN" defaultValue="false">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <!-- Tabela de características do arquétipo -->
+        <createTable tableName="caracteristica_arquetipo">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="arquetipo_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nome" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="descricao" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nivel" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <!-- Tabela de habilidades do arquétipo -->
+        <createTable tableName="habilidades_arquetipo">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="arquetipo_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="habilidade_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <!-- Tabela de proficiências do arquétipo -->
+        <createTable tableName="proficiencias_arquetipo">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="arquetipo_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="proficiencia" type="tipos_proficiencia">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <!-- Tabela de classe -->
+        <createTable tableName="classe">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="nome" type="VARCHAR(100)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="descricao" type="TEXT"/>
+            <column name="requisitos_classe_id" type="BIGINT"/>
+            <column name="defesa_15" type="INTEGER"/>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_active" type="BOOLEAN" defaultValue="true">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <!-- Tabela de classes do personagem -->
+        <createTable tableName="classes_personagem">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="ficha_personagem_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="classe_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nivel" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <!-- Tabela de requisitos da classe -->
+        <createTable tableName="requisitos_classe">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="arquetipo_id" type="BIGINT"/>
+            <column name="atributo_minimo" type="atributos"/>
+            <column name="valor_minimo" type="INTEGER"/>
+            <column name="segundo_arquetipo" type="arquetipos_nome"/>
+            <column name="segundo_arquetipo_nivel" type="INTEGER"/>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <!-- Tabela de habilidades da classe -->
+        <createTable tableName="habilidades_classe">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="classe_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nome" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="descricao" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nivel" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="segundo_arquetipo" type="arquetipos_nome"/>
+            <column name="segundo_arquetipo_nivel" type="INTEGER"/>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <!-- Tabela de proficiências da classe -->
+        <createTable tableName="proficiencias_classe">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="classe_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="proficiencia" type="tipos_proficiencia">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <!-- Tabela de habilidades -->
+        <createTable tableName="habilidade">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="nome" type="VARCHAR(100)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="descricao" type="TEXT"/>
+            <column name="atributo_base" type="atributos">
+                <constraints nullable="false"/>
+            </column>
+            <column name="combate" type="BOOLEAN" defaultValue="false"/>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_active" type="BOOLEAN" defaultValue="true">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <!-- Tabela de uso de habilidade -->
+        <createTable tableName="uso_habilidade">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="habilidade_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nome" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="descricao" type="TEXT"/>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <!-- Tabela de habilidades do personagem -->
+        <createTable tableName="habilidades_personagem">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="ficha_personagem_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="habilidade_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="grau_habilidade" type="grau_pericia"/>
+            <column name="bonus_adicional" type="INTEGER" defaultValue="0"/>
+            <column name="atributo_personagem_id" type="BIGINT"/>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by_user_id" type="BIGINT"/>
+            <column name="updated_by_user_id" type="BIGINT"/>
+            <column name="is_active" type="BOOLEAN" defaultValue="true">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <!-- Tabela de feitiços -->
+        <createTable tableName="feiticos">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="nome" type="VARCHAR(100)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="descricao" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="circulo" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tempo_conjuracao" type="tempo_acoes">
+                <constraints nullable="false"/>
+            </column>
+            <column name="alcance" type="tipos_alcance">
+                <constraints nullable="false"/>
+            </column>
+            <column name="duracao" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="matriz" type="matriz_feiticos"/>
+            <column name="resistencia_tipo" type="habilidades_resistencia"/>
+            <column name="resistencia_cd_base" type="INTEGER"/>
+            <column name="aprimoramento" type="TEXT"/>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_active" type="BOOLEAN" defaultValue="true">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <!-- Tabela de classes de feitiços -->
+        <createTable tableName="classes_feitico">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="feitico_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="classe_feitico" type="classes_feiticos">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <!-- Tabela de feitiços do personagem -->
+        <createTable tableName="feiticos_personagem">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="ficha_personagem_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="feiticos_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="habilidade" type="BIGINT"/>
+            <column name="cd_personalizado" type="INTEGER"/>
+            <column name="preparado" type="BOOLEAN" defaultValue="false"/>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <!-- Tabela de talentos e poderes do arquétipo -->
+        <createTable tableName="talento__poderes_arquetipo">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="arquetipo_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nome" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="descricao" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nivel_minimo" type="INTEGER"/>
+            <column name="classe_id" type="BIGINT"/>
+            <column name="linhagem" type="BOOLEAN" defaultValue="false"/>
+            <column name="requisitos_talentos_poderes_id" type="BIGINT"/>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <!-- Tabela de requisitos de talentos e poderes -->
+        <createTable tableName="requisitos_talentos_poderes">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="talento_poder_requisito" type="BIGINT"/>
+            <column name="atributo" type="atributos"/>
+            <column name="valor_minimo" type="INTEGER"/>
+            <column name="linhagem_id" type="BIGINT"/>
+            <column name="habilidade_id" type="BIGINT"/>
+            <column name="grau_minimo" type="grau_pericia"/>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <!-- Índices para performance -->
+        <createIndex tableName="arquetipos_personagem" indexName="idx_arquetipos_personagem_arquetipo">
+            <column name="arquetipo_id"/>
+        </createIndex>
+        
+        <createIndex tableName="classes_personagem" indexName="idx_classes_personagem_classe">
+            <column name="classe_id"/>
+        </createIndex>
+        
+        <createIndex tableName="habilidades_personagem" indexName="idx_habilidades_personagem_ficha">
+            <column name="ficha_personagem_id"/>
+        </createIndex>
+        
+        <createIndex tableName="habilidades_personagem" indexName="idx_habilidades_grau">
+            <column name="grau_habilidade"/>
+        </createIndex>
+        
+        <createIndex tableName="feiticos" indexName="idx_feiticos_circulo">
+            <column name="circulo"/>
+        </createIndex>
+        
+        <!-- Unique constraints -->
+        <addUniqueConstraint tableName="habilidades_personagem" columnNames="ficha_personagem_id, habilidade_id" constraintName="uk_habilidades_personagem_ficha_habilidade"/>
+        <addUniqueConstraint tableName="feiticos_personagem" columnNames="ficha_personagem_id, feiticos_id" constraintName="uk_feiticos_personagem_ficha_feitico"/>
+        
+        <!-- Constraints de validação -->
+        <sql>
+            ALTER TABLE "arquetipos_personagem" ADD CONSTRAINT check_nivel_arquetipo_positivo 
+              CHECK (nivel_arquetipo > 0);
+              
+            ALTER TABLE "classes_personagem" ADD CONSTRAINT check_nivel_classe_positivo 
+              CHECK (nivel > 0);
+              
+            ALTER TABLE "feiticos" ADD CONSTRAINT check_circulo_valido 
+              CHECK (circulo BETWEEN 0 AND 9);
+        </sql>
+        
+        <!-- Rollback -->
+        <rollback>
+            DROP TABLE IF EXISTS requisitos_talentos_poderes;
+            DROP TABLE IF EXISTS talento__poderes_arquetipo;
+            DROP TABLE IF EXISTS feiticos_personagem;
+            DROP TABLE IF EXISTS classes_feitico;
+            DROP TABLE IF EXISTS feiticos;
+            DROP TABLE IF EXISTS habilidades_personagem;
+            DROP TABLE IF EXISTS uso_habilidade;
+            DROP TABLE IF EXISTS habilidade;
+            DROP TABLE IF EXISTS proficiencias_classe;
+            DROP TABLE IF EXISTS habilidades_classe;
+            DROP TABLE IF EXISTS requisitos_classe;
+            DROP TABLE IF EXISTS classes_personagem;
+            DROP TABLE IF EXISTS classe;
+            DROP TABLE IF EXISTS proficiencias_arquetipo;
+            DROP TABLE IF EXISTS habilidades_arquetipo;
+            DROP TABLE IF EXISTS caracteristica_arquetipo;
+            DROP TABLE IF EXISTS arquetipos_personagem;
+            DROP TABLE IF EXISTS arquetipo;
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

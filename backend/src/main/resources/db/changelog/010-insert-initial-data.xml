@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <!-- Changeset 1: Inserir dados iniciais de authorities via CSV -->
+    <changeSet id="010-insert-authorities-csv" author="tdc-sheets">
+        <comment>Inserção das authorities/roles padrão do sistema via CSV</comment>
+        
+        <loadData 
+            encoding="UTF-8"
+            file="db/data/authorities.csv"
+            separator=";"
+            tableName="authorities">
+            <column name="authority" type="STRING"/>
+            <column name="descricao" type="STRING"/>
+        </loadData>
+        
+        <rollback>
+            DELETE FROM authorities;
+        </rollback>
+    </changeSet>
+
+    <!-- Changeset 2: Inserir usuários padrão via CSV -->
+    <changeSet id="010-insert-users-csv" author="tdc-sheets">
+        <comment>Inserção dos usuários padrão do sistema via CSV</comment>
+        
+        <loadData 
+            encoding="UTF-8"
+            file="db/data/users.csv"
+            separator=";"
+            tableName="user">
+            <column name="username" type="STRING"/>
+            <column name="email" type="STRING"/>
+            <column name="senha" type="STRING"/>
+            <column name="nome_completo" type="STRING"/>
+            <column name="ativo" type="BOOLEAN"/>
+            <column name="is_active" type="BOOLEAN"/>
+        </loadData>
+        
+        <rollback>
+            DELETE FROM "user";
+        </rollback>
+    </changeSet>
+
+    <!-- Changeset 3: Inserir dados básicos de arquetipos via CSV -->
+    <changeSet id="010-insert-arquetipos-csv" author="tdc-sheets">
+        <comment>Inserção dos arquetipos básicos do sistema via CSV</comment>
+        
+        <loadData 
+            encoding="UTF-8"
+            file="db/data/arquetipos.csv"
+            separator=";"
+            tableName="arquetipo">
+            <column name="nome" type="STRING"/>
+            <column name="pv_inicial" type="NUMERIC"/>
+            <column name="pp_inicial" type="NUMERIC"/>
+            <column name="pv_nivel" type="NUMERIC"/>
+            <column name="pp_nivel" type="NUMERIC"/>
+            <column name="defesa_5" type="NUMERIC"/>
+            <column name="defesa_10" type="NUMERIC"/>
+            <column name="defesa_15" type="NUMERIC"/>
+        </loadData>
+        
+        <rollback>
+            DELETE FROM arquetipo;
+        </rollback>
+    </changeSet>
+    
+    <!-- Changeset 4: Inserir classes via CSV -->
+    <changeSet id="010-insert-classes-csv" author="tdc-sheets">
+        <comment>Inserção das classes básicas do sistema via CSV</comment>
+        
+        <loadData 
+            encoding="UTF-8"
+            file="db/data/classes.csv"
+            separator=";"
+            tableName="classe">
+            <column name="nome" type="STRING"/>
+            <column name="descricao" type="STRING"/>
+            <column name="requisitos_classe_id" type="NUMERIC"/>
+            <column name="defesa_5" type="NUMERIC"/>
+            <column name="defesa_10" type="NUMERIC"/>
+            <column name="defesa_15" type="NUMERIC"/>
+        </loadData>
+        
+        <rollback>
+            DELETE FROM classe;
+        </rollback>
+    </changeSet>
+    
+    <!-- Changeset 5: Inserir origens via CSV -->
+    <changeSet id="010-insert-origens-csv" author="tdc-sheets">
+        <comment>Inserção das origens do sistema via CSV</comment>
+        
+        <loadData 
+            encoding="UTF-8"
+            file="db/data/origens.csv"
+            separator=";"
+            tableName="origem">
+            <column name="nome" type="STRING"/>
+            <column name="descricao" type="STRING"/>
+            <column name="habilidade_especial" type="STRING"/>
+        </loadData>
+        
+        <rollback>
+            DELETE FROM origem;
+        </rollback>
+    </changeSet>
+    
+    <!-- Changeset 6: Inserir linhagens via CSV -->
+    <changeSet id="010-insert-linhagens-csv" author="tdc-sheets">
+        <comment>Inserção das linhagens do sistema via CSV</comment>
+        
+        <loadData 
+            encoding="UTF-8"
+            file="db/data/linhagens.csv"
+            separator=";"
+            tableName="linhagem">
+            <column name="nome" type="STRING"/>
+            <column name="tamanho" type="STRING"/>
+            <column name="altura_media" type="STRING"/>
+            <column name="peso_medio" type="STRING"/>
+            <column name="maioridade" type="STRING"/>
+            <column name="expectativa_vida" type="STRING"/>
+            <column name="descricao" type="STRING"/>
+        </loadData>
+        
+        <rollback>
+            DELETE FROM linhagem;
+        </rollback>
+    </changeSet>
+    
+    <!-- Changeset 7: Inserir habilidades via CSV -->
+    <changeSet id="010-insert-habilidades-csv" author="tdc-sheets">
+        <comment>Inserção das habilidades básicas do sistema via CSV</comment>
+        
+        <loadData 
+            encoding="UTF-8"
+            file="db/data/habilidades.csv"
+            separator=";"
+            tableName="habilidade">
+            <column name="pericia" type="STRING"/>
+            <column name="descricao" type="STRING"/>
+            <column name="atributo_chave" type="STRING"/>
+            <column name="penalidade_carga" type="BOOLEAN"/>
+            <column name="instrumento" type="BOOLEAN"/>
+            <column name="proficiencia" type="BOOLEAN"/>
+            <column name="combate" type="BOOLEAN"/>
+        </loadData>
+        
+        <rollback>
+            DELETE FROM habilidade;
+        </rollback>
+    </changeSet>
+    
+    <!-- Changeset 8: Inserir feitiços via CSV -->
+    <changeSet id="010-insert-feiticos-csv" author="tdc-sheets">
+        <comment>Inserção dos feitiços básicos do sistema via CSV</comment>
+        
+        <loadData 
+            encoding="UTF-8"
+            file="db/data/feiticos.csv"
+            separator=";"
+            tableName="feiticos">
+            <column name="nome" type="STRING"/>
+            <column name="circulo" type="NUMERIC"/>
+            <column name="matriz" type="STRING"/>
+            <column name="alcance" type="STRING"/>
+            <column name="habilidade_resistencia" type="STRING"/>
+            <column name="componente_somatico" type="BOOLEAN"/>
+            <column name="componente_verbal" type="BOOLEAN"/>
+            <column name="componente_material" type="BOOLEAN"/>
+            <column name="componente_circular" type="BOOLEAN"/>
+            <column name="componente_material_descricao" type="STRING"/>
+            <column name="tempo_conjuracao" type="STRING"/>
+            <column name="tipo_resistencia" type="STRING"/>
+            <column name="alvo" type="STRING"/>
+            <column name="area" type="STRING"/>
+            <column name="duracao" type="STRING"/>
+            <column name="descricao" type="STRING"/>
+            <column name="elevacao" type="STRING"/>
+            <column name="aprimoramento" type="STRING"/>
+        </loadData>
+        
+        <rollback>
+            DELETE FROM feiticos;
+        </rollback>
+    </changeSet>
+    
+    <!-- Changeset 9: Inserir equipamentos via CSV -->
+    <changeSet id="010-insert-equipamentos-csv" author="tdc-sheets">
+        <comment>Inserção dos equipamentos básicos do sistema via CSV</comment>
+        
+        <loadData 
+            encoding="UTF-8"
+            file="db/data/equipamentos.csv"
+            separator=";"
+            tableName="equipamentos">
+            <column name="raridade" type="STRING"/>
+            <column name="peso" type="NUMERIC"/>
+            <column name="preco" type="STRING"/>
+            <column name="tipo" type="STRING"/>
+            <column name="descricao" type="STRING"/>
+        </loadData>
+        
+        <rollback>
+            DELETE FROM equipamentos;
+        </rollback>
+    </changeSet>
+    
+    <!-- Changeset 10: Inserir particularidades via CSV -->
+    <changeSet id="010-insert-particularidades-csv" author="tdc-sheets">
+        <comment>Inserção das particularidades do sistema via CSV</comment>
+        
+        <loadData 
+            encoding="UTF-8"
+            file="db/data/particularidades.csv"
+            separator=";"
+            tableName="particularidade">
+            <column name="particularidade" type="STRING"/>
+            <column name="efeito" type="STRING"/>
+            <column name="oposto" type="NUMERIC"/>
+            <column name="pontos" type="NUMERIC"/>
+        </loadData>
+        
+        <rollback>
+            DELETE FROM particularidade;
+        </rollback>
+    </changeSet>
+    
+    <!-- Changeset 11: Inserir tamanhos via CSV -->
+    <changeSet id="010-insert-tamanhos-csv" author="tdc-sheets">
+        <comment>Inserção dos tamanhos do sistema via CSV</comment>
+        
+        <loadData 
+            encoding="UTF-8"
+            file="db/data/tamanhos.csv"
+            separator=";"
+            tableName="tamanho">
+            <column name="nome" type="STRING"/>
+            <column name="alcance" type="NUMERIC"/>
+            <column name="dano" type="STRING"/>
+            <column name="defesa" type="NUMERIC"/>
+            <column name="quadrados" type="NUMERIC"/>
+            <column name="peso_carregado" type="NUMERIC"/>
+            <column name="manobras" type="NUMERIC"/>
+            <column name="nd_rastro" type="NUMERIC"/>
+            <column name="acrobacia" type="NUMERIC"/>
+            <column name="atletismo" type="NUMERIC"/>
+            <column name="furtividade" type="NUMERIC"/>
+            <column name="reflexos" type="NUMERIC"/>
+            <column name="tenacidade" type="NUMERIC"/>
+        </loadData>
+        
+        <rollback>
+            DELETE FROM tamanho;
+        </rollback>
+    </changeSet>
+
+    <!-- Associação do usuário admin com a role de administrador -->
+    <changeSet id="010-insert-user-authorities" author="tdc-sheets">
+        <comment>Associação de authorities aos usuários</comment>
+        
+        <!-- Admin user - associar a ROLE_ADMIN -->
+        <sql>
+            INSERT INTO user_authority (user_id, authority_id)
+            SELECT u.id, a.id
+            FROM "user" u, authorities a
+            WHERE u.username = 'admin' AND a.authority = 'ROLE_ADMIN';
+        </sql>
+        
+        <rollback>
+            DELETE FROM user_authority WHERE user_id IN (
+                SELECT id FROM "user" WHERE username = 'admin'
+            );
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

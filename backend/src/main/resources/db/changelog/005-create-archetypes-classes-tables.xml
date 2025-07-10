@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <!-- Changeset: Criação das tabelas de arquétipos e classes -->
+    <changeSet id="005-create-archetypes-classes-tables" author="tdc-sheets">
+        <comment>Criação das tabelas para arquétipos, classes e suas características</comment>
+        
+        <!-- Tabela de origem -->
+        <createTable tableName="origem">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="nome" type="VARCHAR(100)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="descricao" type="TEXT"/>
+            <column name="habilidade_especial" type="TEXT"/>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_active" type="BOOLEAN" defaultValue="true">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <!-- Tabela de atributos de origem -->
+        <createTable tableName="atributos_origem">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="origem_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="atributo" type="atributos">
+                <constraints nullable="false"/>
+            </column>
+            <column name="valor_generico" type="INTEGER"/>
+            <column name="valor_generico_negativo" type="INTEGER"/>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <!-- Tabela de itens de origem -->
+        <createTable tableName="itens_origem">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="origem_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="equipamento_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="quantidade" type="INTEGER" defaultValue="1">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <!-- Tabela de habilidades de origem -->
+        <createTable tableName="habilidades_origem">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="origem_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="habilidade_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fixa" type="BOOLEAN" defaultValue="false">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <!-- Tabela de origem customizada -->
+        <createTable tableName="origem_custom">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="ficha_personagem_id" type="BIGINT">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="nome" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="descricao" type="TEXT"/>
+            <column name="habilidade_especial" type="TEXT"/>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <!-- Tabela de linhagem -->
+        <createTable tableName="linhagem">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="nome" type="VARCHAR(100)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="descricao" type="TEXT"/>
+            <column name="tamanho" type="tipos_tamanho">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_active" type="BOOLEAN" defaultValue="true">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <!-- Tabela de deslocamento da linhagem -->
+        <createTable tableName="deslocamento_linhagem">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="linhagem_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tipo_deslocamento" type="tipos_deslocamento">
+                <constraints nullable="false"/>
+            </column>
+            <column name="valor" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <!-- Tabela de idiomas da linhagem -->
+        <createTable tableName="idiomas_linhagem">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="linhagem_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="idioma" type="idiomas">
+                <constraints nullable="false"/>
+            </column>
+            <column name="alfabeto" type="alfabetos"/>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <!-- Tabela de atributos da linhagem -->
+        <createTable tableName="atributos_linhagem">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="linhagem_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="atributo" type="atributos">
+                <constraints nullable="false"/>
+            </column>
+            <column name="valor_generico" type="INTEGER"/>
+            <column name="valor_generico_negativo" type="INTEGER"/>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <!-- Tabela de sentidos da linhagem -->
+        <createTable tableName="sentidos_linhagem">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="linhagem_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="visao" type="tipos_sentidos">
+                <constraints nullable="false"/>
+            </column>
+            <column name="alcance" type="INTEGER"/>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <!-- Tabela de características da ancestralidade -->
+        <createTable tableName="caracteristicas_ancestralidade">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="linhagem_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nome" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="descricao" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fixa" type="BOOLEAN" defaultValue="false"/>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <!-- Tabela de tamanho -->
+        <createTable tableName="tamanho">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="nome" type="tipos_tamanho">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="descricao" type="VARCHAR(255)"/>
+            <column name="espaco" type="INTEGER"/>
+            <column name="alcance" type="INTEGER"/>
+            <column name="tenacidade" type="INTEGER"/>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <!-- Rollback -->
+        <rollback>
+            DROP TABLE IF EXISTS caracteristicas_ancestralidade;
+            DROP TABLE IF EXISTS sentidos_linhagem;
+            DROP TABLE IF EXISTS atributos_linhagem;
+            DROP TABLE IF EXISTS idiomas_linhagem;
+            DROP TABLE IF EXISTS deslocamento_linhagem;
+            DROP TABLE IF EXISTS linhagem;
+            DROP TABLE IF EXISTS tamanho;
+            DROP TABLE IF EXISTS origem_custom;
+            DROP TABLE IF EXISTS habilidades_origem;
+            DROP TABLE IF EXISTS itens_origem;
+            DROP TABLE IF EXISTS atributos_origem;
+            DROP TABLE IF EXISTS origem;
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

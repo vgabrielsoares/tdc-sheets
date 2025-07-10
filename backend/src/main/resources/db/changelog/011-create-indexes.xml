@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <!-- Changeset: Criação de índices adicionais para otimização -->
+    <changeSet id="011-create-indexes" author="tdc-sheets">
+        <comment>Criação de índices adicionais para otimização de consultas</comment>
+        
+        <!-- Índices para user -->
+        <createIndex tableName="user" indexName="idx_user_email">
+            <column name="email"/>
+        </createIndex>
+        
+        <createIndex tableName="user" indexName="idx_user_deleted">
+            <column name="deleted_at"/>
+        </createIndex>
+        
+        <!-- Índices para fichas -->
+        <createIndex tableName="ficha_personagem" indexName="idx_ficha_nome">
+            <column name="nome_personagem"/>
+        </createIndex>
+        
+        <createIndex tableName="ficha_personagem" indexName="idx_ficha_user_active">
+            <column name="user_id"/>
+            <column name="is_active"/>
+        </createIndex>
+        
+        <!-- Índices para arquetipos e classes -->
+        <createIndex tableName="arquetipos_personagem" indexName="idx_arquetipos_personagem_nivel">
+            <column name="nivel_arquetipo"/>
+        </createIndex>
+        
+        <createIndex tableName="classes_personagem" indexName="idx_classes_personagem_nivel">
+            <column name="nivel"/>
+        </createIndex>
+        
+        <!-- Índices para feitiços -->
+        <createIndex tableName="feiticos" indexName="idx_feiticos_matriz">
+            <column name="matriz"/>
+        </createIndex>
+        
+        <createIndex tableName="feiticos" indexName="idx_feiticos_resistencia">
+            <column name="tipo_resistencia"/>
+        </createIndex>
+        
+        <!-- Índices para equipamentos -->
+        <createIndex tableName="equipamentos" indexName="idx_equipamentos_raridade">
+            <column name="raridade"/>
+        </createIndex>
+        
+        <!-- Índices para auditoria -->
+        <createIndex tableName="ficha_personagem" indexName="idx_ficha_audit">
+            <column name="created_by_user_id"/>
+            <column name="updated_at"/>
+        </createIndex>
+        
+        <!-- Rollback -->
+        <rollback>
+            DROP INDEX IF EXISTS idx_user_email;
+            DROP INDEX IF EXISTS idx_user_deleted;
+            DROP INDEX IF EXISTS idx_ficha_nome;
+            DROP INDEX IF EXISTS idx_ficha_user_active;
+            DROP INDEX IF EXISTS idx_arquetipos_personagem_nivel;
+            DROP INDEX IF EXISTS idx_classes_personagem_nivel;
+            DROP INDEX IF EXISTS idx_feiticos_matriz;
+            DROP INDEX IF EXISTS idx_feiticos_resistencia;
+            DROP INDEX IF EXISTS idx_equipamentos_raridade;
+            DROP INDEX IF EXISTS idx_ficha_audit;
+        </rollback>
+    </changeSet>
+</databaseChangeLog>
