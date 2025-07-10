@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <!-- Changeset 1: Inserir dados de arquetipos via CSV -->
+    <changeSet id="001-insert-arquetipos-csv" author="tdc-sheets">
+        <comment>Inserção dos arquetipos do sistema TDC via CSV</comment>
+        
+        <loadData 
+            encoding="UTF-8"
+            file="db/data/arquetipos.csv"
+            separator=";"
+            tableName="arquetipo">
+            <column name="id" type="NUMERIC"/>
+            <column name="nome" type="STRING"/>
+            <column name="pv_inicial" type="NUMERIC"/>
+            <column name="pp_inicial" type="NUMERIC"/>
+            <column name="pv_nivel" type="NUMERIC"/>
+            <column name="pp_nivel" type="NUMERIC"/>
+            <column name="defesa_5" type="NUMERIC"/>
+            <column name="defesa_10" type="NUMERIC"/>
+            <column name="defesa_15" type="NUMERIC"/>
+        </loadData>
+        
+        <rollback>
+            DELETE FROM arquetipo WHERE nome IN ('ACADEMICO', 'ACOLITO', 'COMBATENTE', 'FEITICEIRO', 'LADINO', 'NATURAL');
+        </rollback>
+    </changeSet>
+
+    <!-- Changeset 2: Inserir dados de classes via CSV -->
+    <changeSet id="002-insert-classes-csv" author="tdc-sheets">
+        <comment>Inserção das classes do sistema TDC via CSV</comment>
+        
+        <loadData 
+            encoding="UTF-8"
+            file="db/data/classes.csv"
+            separator=";"
+            tableName="classe">
+            <column name="id" type="NUMERIC"/>
+            <column name="nome" type="STRING"/>
+            <column name="descricao" type="STRING"/>
+            <column name="defesa_5" type="NUMERIC"/>
+            <column name="defesa_10" type="NUMERIC"/>
+            <column name="defesa_15" type="NUMERIC"/>
+            <column name="defesa_20" type="NUMERIC"/>
+            <column name="pm_5" type="NUMERIC"/>
+            <column name="pm_10" type="NUMERIC"/>
+            <column name="pm_15" type="NUMERIC"/>
+            <column name="pm_20" type="NUMERIC"/>
+            <column name="pv_5" type="NUMERIC"/>
+            <column name="pv_10" type="NUMERIC"/>
+            <column name="pv_15" type="NUMERIC"/>
+            <column name="pv_20" type="NUMERIC"/>
+            <column name="habilidade_especial" type="STRING"/>
+            <column name="modificador_xp" type="NUMERIC"/>
+            <column name="nivel_maximo" type="NUMERIC"/>
+        </loadData>
+        
+        <rollback>
+            DELETE FROM classe WHERE nome IN ('GUERREIRO', 'RANGER', 'MAGO', 'CLERIGO', 'LADRAO', 'BARDO');
+        </rollback>
+    </changeSet>
+
+    <!-- Changeset 3: Inserir dados de habilidades via CSV -->
+    <changeSet id="003-insert-habilidades-csv" author="tdc-sheets">
+        <comment>Inserção das habilidades do sistema TDC via CSV</comment>
+        
+        <loadData 
+            encoding="UTF-8"
+            file="db/data/habilidades.csv"
+            separator=";"
+            tableName="habilidade">
+            <column name="id" type="NUMERIC"/>
+            <column name="nome" type="STRING"/>
+            <column name="descricao" type="STRING"/>
+            <column name="atributo_principal" type="STRING"/>
+            <column name="tipo" type="STRING"/>
+            <column name="categoria" type="STRING"/>
+            <column name="combate" type="BOOLEAN"/>
+            <column name="graduacao_maxima" type="NUMERIC"/>
+            <column name="sinergias" type="STRING"/>
+            <column name="pre_requisitos" type="STRING"/>
+        </loadData>
+        
+        <rollback>
+            DELETE FROM habilidade WHERE id BETWEEN 1 AND 20;
+        </rollback>
+    </changeSet>
+
+    <!-- Changeset 4: Inserir dados de feitiços via CSV -->
+    <changeSet id="004-insert-feiticos-csv" author="tdc-sheets">
+        <comment>Inserção dos feitiços do sistema TDC via CSV</comment>
+        
+        <loadData 
+            encoding="UTF-8"
+            file="db/data/feiticos.csv"
+            separator=";"
+            tableName="feiticos">
+            <column name="id" type="NUMERIC"/>
+            <column name="nome" type="STRING"/>
+            <column name="descricao" type="STRING"/>
+            <column name="circulo" type="NUMERIC"/>
+            <column name="matriz" type="STRING"/>
+            <column name="classe_feitico" type="STRING"/>
+            <column name="componentes" type="STRING"/>
+            <column name="alcance" type="STRING"/>
+            <column name="duracao" type="STRING"/>
+            <column name="efeito" type="STRING"/>
+            <column name="aprimoramento" type="STRING"/>
+            <column name="pre_requisitos" type="STRING"/>
+        </loadData>
+        
+        <rollback>
+            DELETE FROM feiticos WHERE id BETWEEN 1 AND 15;
+        </rollback>
+    </changeSet>
+
+    <!-- Changeset 5: Inserir dados de equipamentos via CSV -->
+    <changeSet id="005-insert-equipamentos-csv" author="tdc-sheets">
+        <comment>Inserção dos equipamentos do sistema TDC via CSV</comment>
+        
+        <loadData 
+            encoding="UTF-8"
+            file="db/data/equipamentos.csv"
+            separator=";"
+            tableName="equipamentos">
+            <column name="id" type="NUMERIC"/>
+            <column name="nome" type="STRING"/>
+            <column name="descricao" type="STRING"/>
+            <column name="tipo" type="STRING"/>
+            <column name="categoria" type="STRING"/>
+            <column name="preco" type="NUMERIC"/>
+            <column name="peso" type="NUMERIC"/>
+            <column name="durabilidade" type="NUMERIC"/>
+            <column name="raridade" type="STRING"/>
+            <column name="bonus_defesa" type="NUMERIC"/>
+            <column name="bonus_ataque" type="NUMERIC"/>
+            <column name="dano" type="STRING"/>
+            <column name="propriedades_especiais" type="STRING"/>
+        </loadData>
+        
+        <rollback>
+            DELETE FROM equipamentos WHERE id BETWEEN 1 AND 20;
+        </rollback>
+    </changeSet>
+
+    <!-- Changeset 6: Inserir dados de origens via CSV -->
+    <changeSet id="006-insert-origens-csv" author="tdc-sheets">
+        <comment>Inserção das origens do sistema TDC via CSV</comment>
+        
+        <loadData 
+            encoding="UTF-8"
+            file="db/data/origens.csv"
+            separator=";"
+            tableName="origem">
+            <column name="nome" type="STRING"/>
+            <column name="descricao" type="STRING"/>
+            <column name="atributo_origem" type="STRING"/>
+            <column name="valor_origem" type="NUMERIC"/>
+        </loadData>
+        
+        <rollback>
+            DELETE FROM origem WHERE nome IN ('Acolito', 'Aristocrata', 'Artesão', 'Artista', 'Assistente de Laboratório', 'Batedor', 'Capanga', 'Charlatão', 'Criminoso', 'Curandeiro', 'Eremita', 'Escravo', 'Estudioso', 'Forasteiro', 'Gladiador', 'Guarda', 'Herdeiro', 'Marujo', 'Mateiro', 'Mercador', 'Minerador', 'Nômade', 'Pivete', 'Soldado', 'Taverneiro');
+        </rollback>
+    </changeSet>
+
+    <!-- Changeset 7: Inserir dados de linhagens via CSV -->
+    <changeSet id="007-insert-linhagens-csv" author="tdc-sheets">
+        <comment>Inserção das linhagens do sistema TDC via CSV</comment>
+        
+        <loadData 
+            encoding="UTF-8"
+            file="db/data/linhagens.csv"
+            separator=";"
+            tableName="linhagem">
+            <column name="id" type="NUMERIC"/>
+            <column name="nome" type="STRING"/>
+            <column name="descricao" type="STRING"/>
+            <column name="origem_relacionada" type="STRING"/>
+            <column name="bonus_atributos" type="STRING"/>
+            <column name="habilidades_especiais" type="STRING"/>
+            <column name="idiomas_automaticos" type="STRING"/>
+            <column name="idiomas_bonus" type="STRING"/>
+        </loadData>
+        
+        <rollback>
+            DELETE FROM linhagem WHERE id BETWEEN 1 AND 8;
+        </rollback>
+    </changeSet>
+
+    <!-- Changeset 8: Inserir dados de particularidades via CSV -->
+    <changeSet id="008-insert-particularidades-csv" author="tdc-sheets">
+        <comment>Inserção das particularidades do sistema TDC via CSV</comment>
+        
+        <loadData 
+            encoding="UTF-8"
+            file="db/data/particularidades.csv"
+            separator=";"
+            tableName="particularidade">
+            <column name="id" type="NUMERIC"/>
+            <column name="nome" type="STRING"/>
+            <column name="descricao" type="STRING"/>
+            <column name="pontos_custo" type="NUMERIC"/>
+            <column name="tipo" type="STRING"/>
+            <column name="efeito" type="STRING"/>
+            <column name="pre_requisitos" type="STRING"/>
+            <column name="categoria" type="STRING"/>
+        </loadData>
+        
+        <rollback>
+            DELETE FROM particularidade WHERE id BETWEEN 1 AND 15;
+        </rollback>
+    </changeSet>
+
+    <!-- Changeset 9: Inserir dados de tamanhos via CSV -->
+    <changeSet id="009-insert-tamanhos-csv" author="tdc-sheets">
+        <comment>Inserção dos tamanhos do sistema TDC via CSV</comment>
+        
+        <loadData 
+            encoding="UTF-8"
+            file="db/data/tamanhos.csv"
+            separator=";"
+            tableName="tamanho">
+            <column name="id" type="NUMERIC"/>
+            <column name="nome" type="STRING"/>
+            <column name="descricao" type="STRING"/>
+            <column name="categoria" type="STRING"/>
+            <column name="modificador_vida" type="NUMERIC"/>
+            <column name="modificador_carga" type="NUMERIC"/>
+            <column name="habilidades_especiais" type="STRING"/>
+            <column name="bonus_atributos" type="STRING"/>
+        </loadData>
+        
+        <rollback>
+            DELETE FROM tamanho WHERE id BETWEEN 1 AND 6;
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>
