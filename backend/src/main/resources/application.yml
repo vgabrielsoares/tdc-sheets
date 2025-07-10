@@ -7,6 +7,9 @@ spring:
   profiles:
     active: ${SPRING_PROFILES_ACTIVE:dev}
     
+  main:
+    allow-bean-definition-overriding: true
+    
   # Configuração de internacionalização
   web:
     locale: pt_BR
@@ -98,7 +101,6 @@ resilience4j:
       default:
         limit-for-period: 100
         limit-refresh-period: 1s
-        timeout-duration: 1s
         
 # Configuração Actuator
 management:
@@ -164,8 +166,8 @@ app:
       - GET
       - POST
       - PUT
-      - DELETE
       - PATCH
+      - DELETE
       - OPTIONS
     allowed-headers: "*"
     allow-credentials: true
