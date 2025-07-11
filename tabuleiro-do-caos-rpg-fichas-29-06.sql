@@ -767,11 +767,15 @@ CREATE TABLE "particularidades_personagem" (
 
 CREATE TABLE "equipamentos" (
   "id" SERIAL PRIMARY KEY,
+  "nome" VARCHAR NOT NULL,
   "raridade" raridades,
   "peso" INTEGER,
   "preco" VARCHAR,
   "tipo" tipos_equipamentos,
-  "descricao" TEXT
+  "descricao" TEXT,
+  "created_at" TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
+  "updated_at" TIMESTAMP WITHOUT TIME ZONE,
+  "version" INTEGER DEFAULT 0
 );
 
 CREATE INDEX "ficha_personagem_index_0" ON "ficha_personagem" ("id", "user_id");
