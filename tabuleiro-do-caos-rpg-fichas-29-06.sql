@@ -831,15 +831,7 @@ ALTER TABLE "habilidades_personagem" ADD FOREIGN KEY ("ficha_personagem_id") REF
 
 ALTER TABLE "deslocamento_personagem" ADD FOREIGN KEY ("ficha_personagem_id") REFERENCES "ficha_personagem" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
-
-
 ALTER TABLE "sentidos_personagem" ADD FOREIGN KEY ("ficha_personagem_id") REFERENCES "ficha_personagem" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-
-
-
-
-
 
 ALTER TABLE "ficha_personagem" ADD FOREIGN KEY ("habilidade_assinatura") REFERENCES "habilidades_personagem" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
@@ -866,8 +858,6 @@ ALTER TABLE "inventario_personagem" ADD FOREIGN KEY ("carga_personagem_id") REFE
 ALTER TABLE "carga_personagem" ADD FOREIGN KEY ("ficha_personagem_id") REFERENCES "ficha_personagem" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 ALTER TABLE "cunhagem_personagem" ADD FOREIGN KEY ("carga_personagem_id") REFERENCES "carga_personagem" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-
 
 CREATE TABLE "compartilhamento_ficha" (
   "id" SERIAL PRIMARY KEY,
@@ -1027,45 +1017,6 @@ ALTER TABLE "compartilhamento_ficha" ADD FOREIGN KEY ("user_id") REFERENCES "use
 
 ALTER TABLE "ficha_snapshot" ADD FOREIGN KEY ("ficha_personagem_id") REFERENCES "ficha_personagem" ("id") ON DELETE CASCADE;
 
-CREATE SCHEMA IF NOT EXISTS archive;
-
-CREATE TABLE archive.ficha_personagem (LIKE ficha_personagem INCLUDING ALL);
-CREATE TABLE archive.atributos_personagem (LIKE atributos_personagem INCLUDING ALL);
-CREATE TABLE archive.habilidades_personagem (LIKE habilidades_personagem INCLUDING ALL);
-
--- Trigger para atualizar campo updated_at automaticamente
-CREATE OR REPLACE FUNCTION update_updated_at_column()
-RETURNS TRIGGER AS $$
-BEGIN
-    NEW.updated_at = CURRENT_TIMESTAMP;
-    RETURN NEW;
-END;
-$$ language 'plpgsql';
-
-CREATE TRIGGER update_ficha_personagem_updated_at BEFORE UPDATE
-    ON ficha_personagem FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
-
-CREATE TRIGGER update_atributos_personagem_updated_at BEFORE UPDATE
-    ON atributos_personagem FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
-
-CREATE TRIGGER update_habilidades_personagem_updated_at BEFORE UPDATE
-    ON habilidades_personagem FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
-
-CREATE TRIGGER update_pv_pp_personagem_updated_at BEFORE UPDATE
-    ON pv_pp_personagem FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
-
-CREATE TRIGGER update_defesa_updated_at BEFORE UPDATE
-    ON defesa FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
-
-CREATE TRIGGER update_inventario_personagem_updated_at BEFORE UPDATE
-    ON inventario_personagem FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
-
-CREATE TRIGGER update_ataques_personagem_updated_at BEFORE UPDATE
-    ON ataques_personagem FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
-
-CREATE TRIGGER update_feiticos_personagem_updated_at BEFORE UPDATE
-    ON feiticos_personagem FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
-
 ALTER TABLE "defesa" ADD FOREIGN KEY ("ficha_personagem_id") REFERENCES "ficha_personagem" ("id") ON DELETE CASCADE;
 ALTER TABLE "pv_pp_personagem" ADD FOREIGN KEY ("ficha_personagem_id") REFERENCES "ficha_personagem" ("id") ON DELETE CASCADE;
 ALTER TABLE "atributos_personagem" ADD FOREIGN KEY ("ficha_personagem_id") REFERENCES "ficha_personagem" ("id") ON DELETE CASCADE;
@@ -1075,69 +1026,6 @@ ALTER TABLE "descricao_personagem" ADD FOREIGN KEY ("ficha_personagem_id") REFER
 
 ALTER TABLE "habilidades_personagem" DROP CONSTRAINT IF EXISTS habilidades_personagem_atributo_personagem_id_fkey;
 ALTER TABLE "habilidades_personagem" ADD FOREIGN KEY ("atributo_personagem_id") REFERENCES "atributos_personagem" ("id") ON DELETE RESTRICT;
-
--- Views úteis para consultas comuns
-CREATE VIEW vw_ficha_completa AS
-SELECT 
-    fp.*,
-    u.username,
-    o.nome as origem_nome,
-    l.nome as linhagem_nome,
-    (SELECT valor FROM atributos_personagem WHERE ficha_personagem_id = fp.id AND atributo = 'AGILIDADE') as agilidade,
-    (SELECT valor FROM atributos_personagem WHERE ficha_personagem_id = fp.id AND atributo = 'CONSTITUICAO') as constituicao,
-    (SELECT valor FROM atributos_personagem WHERE ficha_personagem_id = fp.id AND atributo = 'FORCA') as forca,
-    (SELECT valor FROM atributos_personagem WHERE ficha_personagem_id = fp.id AND atributo = 'INFLUENCIA') as influencia,
-    (SELECT valor FROM atributos_personagem WHERE ficha_personagem_id = fp.id AND atributo = 'MENTE') as mente,
-    (SELECT valor FROM atributos_personagem WHERE ficha_personagem_id = fp.id AND atributo = 'PRESENCA') as presenca,
-    pvpp.pv_atual, pvpp.pv_maximo, pvpp.pp_atual, pvpp.pp_maximo,
-    d.defesa_personagem
-FROM ficha_personagem fp
-JOIN "user" u ON fp.user_id = u.id
-LEFT JOIN origem o ON fp.origem_id = o.id
-LEFT JOIN linhagem l ON fp.linhagem_id = l.id
-LEFT JOIN pv_pp_personagem pvpp ON fp.id = pvpp.ficha_personagem_id
-LEFT JOIN defesa d ON fp.id = d.ficha_personagem_id;
-
--- View para atributos pivotados
-CREATE VIEW vw_atributos_personagem AS
-SELECT 
-    ficha_personagem_id,
-    MAX(CASE WHEN atributo = 'AGILIDADE' THEN valor END) as agilidade,
-    MAX(CASE WHEN atributo = 'AGILIDADE' THEN valor_temp END) as agilidade_temp,
-    MAX(CASE WHEN atributo = 'CONSTITUICAO' THEN valor END) as constituicao,
-    MAX(CASE WHEN atributo = 'CONSTITUICAO' THEN valor_temp END) as constituicao_temp,
-    MAX(CASE WHEN atributo = 'FORCA' THEN valor END) as forca,
-    MAX(CASE WHEN atributo = 'FORCA' THEN valor_temp END) as forca_temp,
-    MAX(CASE WHEN atributo = 'INFLUENCIA' THEN valor END) as influencia,
-    MAX(CASE WHEN atributo = 'INFLUENCIA' THEN valor_temp END) as influencia_temp,
-    MAX(CASE WHEN atributo = 'MENTE' THEN valor END) as mente,
-    MAX(CASE WHEN atributo = 'MENTE' THEN valor_temp END) as mente_temp,
-    MAX(CASE WHEN atributo = 'PRESENCA' THEN valor END) as presenca,
-    MAX(CASE WHEN atributo = 'PRESENCA' THEN valor_temp END) as presenca_temp
-FROM atributos_personagem
-GROUP BY ficha_personagem_id;
-
--- View para fichas compartilhadas
-CREATE VIEW vw_fichas_compartilhadas AS
-SELECT 
-    cf.*,
-    fp.nome_personagem,
-    u_owner.username as proprietario,
-    u_shared.username as usuario_compartilhado
-FROM compartilhamento_ficha cf
-JOIN ficha_personagem fp ON cf.ficha_personagem_id = fp.id
-JOIN "user" u_owner ON fp.user_id = u_owner.id
-JOIN "user" u_shared ON cf.user_id = u_shared.id
-WHERE cf.ativo = true;
-
--- View para estatísticas do sistema
-CREATE VIEW vw_estatisticas_sistema AS
-SELECT 
-    (SELECT COUNT(*) FROM ficha_personagem) as total_fichas,
-    (SELECT COUNT(*) FROM "user") as total_usuarios,
-    (SELECT COUNT(*) FROM compartilhamento_ficha WHERE ativo = true) as compartilhamentos_ativos,
-    (SELECT COUNT(*) FROM ficha_snapshot) as total_snapshots,
-    (SELECT COUNT(*) FROM archive.ficha_personagem) as fichas_arquivadas;
 
 -- Tabela de log para auditoria completa
 CREATE TABLE "log_alteracoes" (
