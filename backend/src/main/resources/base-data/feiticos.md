@@ -629,3 +629,52 @@ Você controla uma leve rajada de vento e cria um dos seguintes efeitos dentro d
 - **+2 PP** - Aumenta o tamanho máximo de criaturas em um passo. Enorme requer 3º Círculo e Colossal requer 5º Círculo.
 
 **Elevação:** +1 alvo por círculo.
+
+---
+
+## 2º Círculo
+
+### [Feitiços do 2º Círculo]
+*[Conteúdo a ser adicionado]*
+
+---
+
+## 3º Círculo
+
+### [Feitiços do 3º Círculo]
+*[Conteúdo a ser adicionado]*
+
+---
+
+## 4º Círculo
+
+### [Feitiços do 4º Círculo]
+*[Conteúdo a ser adicionado]*
+
+---
+
+## 5º Círculo
+
+### [Feitiços do 5º Círculo]
+*[Conteúdo a ser adicionado]*
+
+---
+
+## 6º Círculo
+
+### [Feitiços do 6º Círculo]
+*[Conteúdo a ser adicionado]*
+
+---
+
+## 7º Círculo
+
+### [Feitiços do 7º Círculo]
+*[Conteúdo a ser adicionado]*
+
+---
+
+## 8º Círculo
+
+### [Feitiços do 8º Círculo]
+*[Conteúdo a ser adicionado]*

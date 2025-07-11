@@ -79,46 +79,55 @@ Todo personagem deve escolher uma Habilidade de Assinatura, um ponto em específ
 
 ## Capítulo 2.2: Lista de Habilidades
 
-**[TODO] fazer o resumozinho do capítulo e falar que os usos são regras-sugestões, e que outros usos podem surgir durante o jogo**
+### Introdução ao Capítulo
+
+Este capítulo apresenta todas as habilidades disponíveis no sistema e seus usos principais. É importante lembrar que os usos descritos são regras-sugestões, e que outros usos podem surgir durante o jogo conforme a criatividade dos jogadores e a decisão do narrador. O mestre tem sempre a palavra final sobre quando e como uma habilidade pode ser aplicada em situações específicas.
 
 ### Tabela Geral de Habilidades
 
-#### Habilidades     
 | Habilidade | Atributo | Carga | Instrumento | Proficiência | Combate |
-|------------------|------------|----------|-------|-------------|--------------|--------|
-| Acerto           | Agilidade  | -        | -     | - | Sim |
-| Acrobacia        | Agilidade  | Sim      | -     | - | - |
-| Adestramento     | Influência | -        | -     | Sim | - |
-| Arcano           | Mente      | -        | -     | Sim | Sim |
-| Arte             | Mente      | -        | -     | Sim | - |
-| Atletismo        | Constituição| Sim     | -     | - | - |
-| Condução         | Agilidade  | Sim     | Sim   | Sim | - |
-| Destreza         | Agilidade  | Sim     | Sim   | Sim | - |
-| Determinação     | Presença   | -        | -     | - | Sim |
-| Enganação        | Influência | -        | Sim   | - | - |
-| Estratégia       | Mente      | -        | -     | Sim | - |
-| Furtividade      | Agilidade  | Sim     | -     | - | - |
-| História          | Mente      | -        | -     | - | - |
-| Iniciativa       | Agilidade  | Sim     | -     | - | Sim |
-| Instrução        | Mente      | -        | -     | Sim | - |
-| Intimidação      | Influência | -        | -     | - | - |
-| Investigação     | Mente      | -        | -     | - | - |
-| Luta             | Força      | -        | -     | - | Sim |
-| Medicina         | Mente      | -        | Sim   | Sim | - |
-| Natureza         | Presença   | -        | -     | - | Sim |
-| Ofício           | Especial   | -        | Sim   | - | - |
-| Percepção        | Presença   | -        | -     | - | - |
-| Performance      | Influência | Sim      | -     | - | - |
-| Perspicácia      | Presença   | -        | -     | - | - |
-| Persuasão        | Influência | -        | -     | - | - |
-| Rastreamento     | Presença   | -        | -     | Sim | - |
-| Reflexo          | Agilidade  | Sim     | -     | - | Sim |
-| Religião         | Presença   | -        | -     | Sim | Sim |
-| Sobrevivência    | Mente      | -        | -     | - | - |
-| Sociedade        | Influência | -        | -     | - | - |
-| Sorte            | Especial   | -        | -     | - | - |
-| Tenacidade       | Força      | -        | -     | - | Sim |
-| Vigor            | Constituição| -        | -     | - | Sim |
+|------------|----------|-------|-------------|--------------|---------|
+| **Acerto** | Agilidade | - | - | - | Sim |
+| **Acrobacia** | Agilidade | Sim | - | - | - |
+| **Adestramento** | Influência | - | - | Sim | - |
+| **Arcano** | Mente | - | - | Sim | Sim |
+| **Arte** | Mente | - | - | Sim | - |
+| **Atletismo** | Constituição | Sim | - | - | - |
+| **Condução** | Agilidade | Sim | Sim | Sim | - |
+| **Destreza** | Agilidade | Sim | Sim | Sim | - |
+| **Determinação** | Presença | - | - | - | Sim |
+| **Enganação** | Influência | - | Sim | - | - |
+| **Estratégia** | Mente | - | - | Sim | - |
+| **Furtividade** | Agilidade | Sim | - | - | - |
+| **História** | Mente | - | - | - | - |
+| **Iniciativa** | Agilidade | Sim | - | - | Sim |
+| **Instrução** | Mente | - | - | Sim | - |
+| **Intimidação** | Influência | - | - | - | - |
+| **Investigação** | Mente | - | - | - | - |
+| **Luta** | Força | - | - | - | Sim |
+| **Medicina** | Mente | - | Sim | Sim | - |
+| **Natureza** | Presença | - | - | - | Sim |
+| **Ofício** | Especial | - | Sim | - | - |
+| **Percepção** | Presença | - | - | - | - |
+| **Performance** | Influência | Sim | - | - | - |
+| **Perspicácia** | Presença | - | - | - | - |
+| **Persuasão** | Influência | - | - | - | - |
+| **Rastreamento** | Presença | - | - | Sim | - |
+| **Reflexo** | Agilidade | Sim | - | - | Sim |
+| **Religião** | Presença | - | - | Sim | Sim |
+| **Sobrevivência** | Mente | - | - | - | - |
+| **Sociedade** | Influência | - | - | - | - |
+| **Sorte** | Especial | - | - | - | - |
+| **Tenacidade** | Força | - | - | - | Sim |
+| **Vigor** | Constituição | - | - | - | Sim |
+
+#### Legenda da Tabela
+
+- **Atributo**: Atributo base usado para testes da habilidade
+- **Carga**: Indica se a habilidade sofre penalidade de carga (Sim/-)
+- **Instrumento**: Indica se requer instrumentos específicos (Sim/-)
+- **Proficiência**: Indica se requer proficiência mínima para uso (Sim/-)
+- **Combate**: Indica se é habilidade de combate (Sim/-)
 
 ### Detalhamento das Habilidades
 
