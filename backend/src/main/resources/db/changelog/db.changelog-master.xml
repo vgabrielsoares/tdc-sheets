@@ -6,7 +6,11 @@
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.23.xsd">
 
     <include file="001-enums-changelog.xml" relativeToChangelogFile="true"/>
-    
-    <include file="generated-changelog.xml" relativeToChangelogFile="true"/>
+    <include file="002-auth-changelog.xml" relativeToChangelogFile="true"/>
+    <include file="003-core-ficha-changelog.xml" relativeToChangelogFile="true"/>
+    <include file="004-atributos-changelog.xml" relativeToChangelogFile="true"/>
+    <include file="005-linhagem-origem-changelog.xml" relativeToChangelogFile="true"/>
+    <include file="006-sistema-rpg-changelog.xml" relativeToChangelogFile="true"/>
+    <include file="007-foreign-keys-changelog.xml" relativeToChangelogFile="true"/>
     
 </databaseChangeLog>
