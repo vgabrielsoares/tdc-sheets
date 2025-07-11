@@ -5,6 +5,7 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.23.xsd">
 
+    <include file="001-enums-changelog.xml" relativeToChangelogFile="true"/>
     
     <include file="generated-changelog.xml" relativeToChangelogFile="true"/>
     
