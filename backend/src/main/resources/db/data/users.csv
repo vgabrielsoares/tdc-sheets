@@ -1,5 +1,0 @@
-username;email;senha;nome_completo;ativo;primeiro_acesso;created_at
-admin;admin@tdc-sheets.com;$2a$10$X5wFBtLrL/kY4S2GjEz0XOLhXGU0Q9YgN3xpKJpAjvhGQ1I1I1I1I;Admin Sistema;true;false;2024-01-01 00:00:00
-teste;teste@teste.com;$2a$10$X5wFBtLrL/kY4S2GjEz0XOLhXGU0Q9YgN3xpKJpAjvhGQ1I1I1I1I;Usuario Teste;true;true;2024-01-01 00:00:00
-jogador1;jogador1@tdc.com;$2a$10$X5wFBtLrL/kY4S2GjEz0XOLhXGU0Q9YgN3xpKJpAjvhGQ1I1I1I1I;João Silva;true;true;2024-01-01 00:00:00
-mestre1;mestre1@tdc.com;$2a$10$X5wFBtLrL/kY4S2GjEz0XOLhXGU0Q9YgN3xpKJpAjvhGQ1I1I1I1I;Maria Santos;true;true;2024-01-01 00:00:00

@@ -1,7 +1,0 @@
-id;ficha_personagem_id;nome;tipo;alcance;bonus_ataque;margem_critico;created_at;updated_at;version;created_by_user_id;updated_by_user_id;is_active
-1;1;Espada Longa;CORPO_A_CORPO;ADJACENTE;5;19;2025-07-01 10:00:00;2025-07-01 10:00:00;1;1;;true
-2;1;Adaga;CORPO_A_CORPO;ADJACENTE;3;20;2025-07-01 10:00:00;2025-07-01 10:00:00;1;1;;true
-3;2;Arco Curto;A_DISTANCIA;DISTANTE;6;20;2025-07-01 10:00:00;2025-07-01 10:00:00;1;1;;true
-4;2;Adaga;CORPO_A_CORPO;ADJACENTE;4;19;2025-07-01 10:00:00;2025-07-01 10:00:00;1;1;;true
-5;3;Cajado Arcano;CORPO_A_CORPO;ADJACENTE;2;20;2025-07-01 10:00:00;2025-07-01 10:00:00;1;1;;true
-6;3;Raio Arcano;MAGICO;LONGO;7;20;2025-07-01 10:00:00;2025-07-01 10:00:00;1;1;;true

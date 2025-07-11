@@ -1,4 +1,0 @@
-id;nome_personagem;user_id;background;origem_id;linhagem_id;experiencia;habilidade_assinatura;nivel_sorte;tamanho;created_at;is_active
-1;Eldrin Forjaverde;3;Eldrin cresceu na floresta e se tornou um guerreiro habilidoso;3;2;2850;5;1;MEDIO;2025-01-01 00:00:00;true
-2;Morgana Luaverde;1;Morgana é uma feiticeira poderosa que busca conhecimento antigo;2;1;5200;7;2;MEDIO;2025-01-01 00:00:00;true
-3;Thorin Machado-de-Ferro;2;Thorin é um anão ferreiro que busca vingar a morte de seu clã;1;3;1500;3;1;PEQUENO;2025-01-01 00:00:00;true

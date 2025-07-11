@@ -1,7 +1,0 @@
-id;ataque_id;tipo_dano;dados_dano;dano_base;dano_extra;created_at;updated_at;version;created_by_user_id;updated_by_user_id;is_active
-1;1;CORTANTE;1d8;0;2;2025-07-01 10:00:00;2025-07-01 10:00:00;1;1;;true
-2;2;PERFURANTE;1d4;0;1;2025-07-01 10:00:00;2025-07-01 10:00:00;1;1;;true
-3;3;PERFURANTE;1d6;0;3;2025-07-01 10:00:00;2025-07-01 10:00:00;1;1;;true
-4;4;PERFURANTE;1d4;0;2;2025-07-01 10:00:00;2025-07-01 10:00:00;1;1;;true
-5;5;CONTUNDENTE;1d6;0;0;2025-07-01 10:00:00;2025-07-01 10:00:00;1;1;;true
-6;6;FORCA;2d6;0;4;2025-07-01 10:00:00;2025-07-01 10:00:00;1;1;;true
