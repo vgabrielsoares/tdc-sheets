@@ -1028,11 +1028,19 @@
             <column autoIncrement="true" name="id" type="INTEGER">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="equipamentos_pkey"/>
             </column>
+            <column name="nome" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
             <column name="raridade" type="RARIDADES"/>
             <column name="peso" type="INTEGER"/>
             <column name="preco" type="VARCHAR"/>
             <column name="tipo" type="TIPOS_EQUIPAMENTOS"/>
             <column name="descricao" type="TEXT"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="created_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column defaultValueNumeric="0" name="version" type="INTEGER"/>
         </createTable>
     </changeSet>
     <changeSet author="Victor Gabriel" id="1752249625777-64">
