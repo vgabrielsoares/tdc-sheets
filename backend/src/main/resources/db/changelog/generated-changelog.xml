@@ -1,0 +1,1588 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="Victor Gabriel" id="1752192418012-1">
+        <createTable tableName="defesa">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="defesa_pkey"/>
+            </column>
+            <column name="ficha_personagem_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="15" name="defesa_personagem" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="armadura" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="false" name="vestindo_armadura" type="BOOLEAN"/>
+            <column name="limite_agilidade" type="INTEGER"/>
+            <column name="outro_mod" type="INTEGER"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="created_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-2">
+        <createTable tableName="pv_pp_personagem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pv_pp_personagem_pkey"/>
+            </column>
+            <column name="ficha_personagem_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="15" name="pv_maximo" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="15" name="pv_atual" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pv_temporario" type="INTEGER"/>
+            <column defaultValueNumeric="2" name="pp_maximo" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="2" name="pp_atual" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pp_temporario" type="INTEGER"/>
+            <column name="limite_pp" type="INTEGER"/>
+            <column name="limite_pp_bonus" type="INTEGER"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="created_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-3">
+        <createTable tableName="talento__poderes_arquetipo">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="talento__poderes_arquetipo_pkey"/>
+            </column>
+            <column name="arquetipo_id" type="INTEGER"/>
+            <column name="requisitos_talentos_poderes_id" type="INTEGER"/>
+            <column name="nome" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="descricao" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="linhagem" type="BOOLEAN"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-4">
+        <createTable tableName="arquetipos_personagem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="arquetipos_personagem_pkey"/>
+            </column>
+            <column name="ficha_personagem_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="arquetipo_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nivel_arquetipo" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-5">
+        <createTable tableName="classe">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="classe_pkey"/>
+            </column>
+            <column name="nome" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="descricao" type="TEXT"/>
+            <column name="requisitos_classe_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="defesa_5" type="INTEGER"/>
+            <column name="defesa_10" type="INTEGER"/>
+            <column name="defesa_15" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-6">
+        <createTable tableName="classes_personagem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="classes_personagem_pkey"/>
+            </column>
+            <column name="ficha_personagem_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="classe_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nivel" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-7">
+        <createTable tableName="uso_habilidade">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="uso_habilidade_pkey"/>
+            </column>
+            <column name="habilidade_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nome" type="VARCHAR"/>
+            <column name="descricao" type="TEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-8">
+        <createTable tableName="origem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="origem_pkey"/>
+            </column>
+            <column name="nome" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="descricao" type="TEXT"/>
+            <column name="habilidade_especial" type="TEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-9">
+        <createTable tableName="atributos_origem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="atributos_origem_pkey"/>
+            </column>
+            <column name="origem_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="valor_agilidade" type="INTEGER"/>
+            <column name="valor_constituicao" type="INTEGER"/>
+            <column name="valor_forca" type="INTEGER"/>
+            <column name="valor_influencia" type="INTEGER"/>
+            <column name="valor_mente" type="INTEGER"/>
+            <column name="valor_presenca" type="INTEGER"/>
+            <column name="valor_generico_positivo" type="INTEGER"/>
+            <column name="valor_generico_negativo" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-10">
+        <createTable tableName="itens_origem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="itens_origem_pkey"/>
+            </column>
+            <column name="origem_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="equipamento_id" type="INTEGER"/>
+            <column name="quantidade" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-11">
+        <createTable tableName="habilidades_origem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="habilidades_origem_pkey"/>
+            </column>
+            <column name="origem_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="habilidade_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fixa" type="BOOLEAN"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-12">
+        <createTable tableName="origem_custom">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="origem_custom_pkey"/>
+            </column>
+            <column name="ficha_personagem_id" type="INTEGER"/>
+            <column name="nome" type="VARCHAR"/>
+            <column name="descricao" type="TEXT"/>
+            <column name="habilidade_especial" type="TEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-13">
+        <createTable tableName="atributos_linhagem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="atributos_linhagem_pkey"/>
+            </column>
+            <column name="linhagem_id" type="INTEGER"/>
+            <column name="valor_agilidade" type="INTEGER"/>
+            <column name="valor_constituicao" type="INTEGER"/>
+            <column name="valor_forca" type="INTEGER"/>
+            <column name="valor_influencia" type="INTEGER"/>
+            <column name="valor_mente" type="INTEGER"/>
+            <column name="valor_presenca" type="INTEGER"/>
+            <column name="valor_generico_positivo" type="INTEGER"/>
+            <column name="valor_generico_negativo" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-14">
+        <createTable tableName="caracteristicas_ancestralidade">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="caracteristicas_ancestralidade_pkey"/>
+            </column>
+            <column name="linhagem_id" type="INTEGER"/>
+            <column name="nome" type="VARCHAR"/>
+            <column name="descricao" type="TEXT"/>
+            <column name="fixa" type="BOOLEAN"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-15">
+        <createTable tableName="caracteristica_arquetipo">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="caracteristica_arquetipo_pkey"/>
+            </column>
+            <column name="nome" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="arquetipo_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="descricao" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nivel" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-16">
+        <createTable tableName="habilidades_arquetipo">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="habilidades_arquetipo_pkey"/>
+            </column>
+            <column name="arquetipo_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="habilidade_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-17">
+        <createTable tableName="acoes_personagem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="acoes_personagem_pkey"/>
+            </column>
+            <column name="ficha_personagem_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="acao" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="false" name="acao_disponivel" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-18">
+        <createTable tableName="user">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_pkey"/>
+            </column>
+            <column name="nome_completo" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="username" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="senha" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="true" name="ativo" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="data_nascimento" type="date"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="created_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column defaultValueNumeric="1" name="version" type="INTEGER"/>
+            <column name="created_by_user_id" type="BIGINT"/>
+            <column name="updated_by_user_id" type="BIGINT"/>
+            <column name="created_ip_address" type="VARCHAR(45)"/>
+            <column name="updated_ip_address" type="VARCHAR(45)"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="deleted_by_user_id" type="BIGINT"/>
+            <column defaultValueBoolean="true" name="is_active" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-19">
+        <createTable tableName="authorities">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="authorities_pkey"/>
+            </column>
+            <column name="authority" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-20">
+        <createTable tableName="user_authority">
+            <column name="id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column autoIncrement="true" name="user_id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_authority_pkey"/>
+            </column>
+            <column name="authority_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-21">
+        <createTable tableName="dano_ataque">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="dano_ataque_pkey"/>
+            </column>
+            <column name="ataque_personagem_id" type="INTEGER"/>
+            <column name="dado" type="VARCHAR(7)"/>
+            <column name="mod" type="INTEGER"/>
+            <column name="bonus" type="INTEGER"/>
+            <column name="critico" type="VARCHAR(8)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-22">
+        <createTable tableName="feiticos_personagem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="feiticos_personagem_pkey"/>
+            </column>
+            <column name="ficha_personagem_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="feiticos_id" type="INTEGER"/>
+            <column name="habilidade" type="INTEGER"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="created_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-23">
+        <createTable tableName="caracteristicas_arquetipos">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="caracteristicas_arquetipos_pkey"/>
+            </column>
+            <column name="arquetipo_id" type="INTEGER"/>
+            <column name="nivel" type="INTEGER"/>
+            <column name="descricao" type="TEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-24">
+        <createTable tableName="inventario_personagem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="inventario_personagem_pkey"/>
+            </column>
+            <column name="carga_personagem_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="equipamento_id" type="INTEGER"/>
+            <column name="item" type="VARCHAR(255)"/>
+            <column name="descricao_item" type="TEXT"/>
+            <column name="quantidade_item" type="INTEGER"/>
+            <column name="peso_item" type="INTEGER"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="created_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-25">
+        <createTable tableName="carga_personagem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="carga_personagem_pkey"/>
+            </column>
+            <column name="ficha_personagem_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="carga_atual" type="INTEGER"/>
+            <column name="capacidade_carga" type="INTEGER"/>
+            <column name="bonus_capacidade_carga" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-26">
+        <createTable tableName="cunhagem_personagem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="cunhagem_personagem_pkey"/>
+            </column>
+            <column name="carga_personagem_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="c_fisico" type="INTEGER"/>
+            <column name="po_fisico" type="INTEGER"/>
+            <column name="pp_fisico" type="INTEGER"/>
+            <column name="c_banco" type="INTEGER"/>
+            <column name="po_banco" type="INTEGER"/>
+            <column name="pp_banco" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-27">
+        <createTable tableName="particularidade">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="particularidade_pkey"/>
+            </column>
+            <column name="particularidade" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="efeito" type="TEXT"/>
+            <column name="oposto" type="INTEGER"/>
+            <column name="pontos" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-28">
+        <createTable tableName="particularidades_personagem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="particularidades_personagem_pkey"/>
+            </column>
+            <column name="ficha_personagem_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="particularidade_id" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-29">
+        <createTable remarks="Controla compartilhamento de fichas entre usuários" tableName="compartilhamento_ficha">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="compartilhamento_ficha_pkey"/>
+            </column>
+            <column name="ficha_personagem_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nivel_acesso" type="VARCHAR(20)"/>
+            <column name="link_token" type="VARCHAR(100)"/>
+            <column name="expiracao" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column defaultValueBoolean="true" name="ativo" type="BOOLEAN"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="created_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column defaultValueNumeric="1" name="version" type="INTEGER"/>
+            <column name="created_by_user_id" type="BIGINT"/>
+            <column name="updated_by_user_id" type="BIGINT"/>
+            <column name="created_ip_address" type="VARCHAR(45)"/>
+            <column name="updated_ip_address" type="VARCHAR(45)"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="deleted_by_user_id" type="BIGINT"/>
+            <column defaultValueBoolean="true" name="is_active" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-30">
+        <createTable remarks="Snapshots para versionamento de fichas em momentos importantes" tableName="ficha_snapshot">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="ficha_snapshot_pkey"/>
+            </column>
+            <column name="ficha_personagem_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="motivo" type="VARCHAR(100)"/>
+            <column name="dados_ficha" type="JSONB"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="data_snapshot" type="TIMESTAMP WITHOUT TIME ZONE"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-31">
+        <createTable tableName="feiticos_personagem_habilidades_personagem">
+            <column name="feiticos_personagem_habilidade" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="feiticos_personagem_habilidades_personagem_pkey"/>
+            </column>
+            <column autoIncrement="true" name="habilidades_personagem_id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="feiticos_personagem_habilidades_personagem_pkey"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-32">
+        <createTable tableName="log_alteracoes">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="log_alteracoes_pkey"/>
+            </column>
+            <column name="ficha_personagem_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="INTEGER"/>
+            <column name="tabela" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="campo" type="VARCHAR(100)"/>
+            <column name="valor_anterior" type="TEXT"/>
+            <column name="valor_novo" type="TEXT"/>
+            <column name="motivo" type="VARCHAR(100)"/>
+            <column name="ip_address" type="INET"/>
+            <column name="user_agent" type="TEXT"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="created_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-33">
+        <createTable remarks="Armazena informações básicas de personagens do RPG" tableName="ficha_personagem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="ficha_personagem_pkey"/>
+            </column>
+            <column name="nome_personagem" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="background" type="TEXT"/>
+            <column name="origem_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="linhagem_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="experiencia" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="habilidade_assinatura" remarks="Referência à habilidade na qual o personagem é especialista" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="nivel_sorte" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tamanho" type="TIPOS_TAMANHO"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="created_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column defaultValueNumeric="1" name="version" remarks="Controle de versionamento da ficha" type="INTEGER"/>
+            <column name="created_by_user_id" type="BIGINT"/>
+            <column name="updated_by_user_id" type="BIGINT"/>
+            <column name="created_ip_address" type="VARCHAR(45)"/>
+            <column name="updated_ip_address" type="VARCHAR(45)"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="deleted_by_user_id" type="BIGINT"/>
+            <column defaultValueBoolean="true" name="is_active" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-34">
+        <createTable tableName="linhagem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="linhagem_pkey"/>
+            </column>
+            <column name="nome" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tamanho" type="TIPOS_TAMANHO"/>
+            <column name="altura_media" type="VARCHAR"/>
+            <column name="peso_medio" type="VARCHAR"/>
+            <column name="maioridade" type="VARCHAR"/>
+            <column name="expectativa_vida" type="VARCHAR"/>
+            <column name="descricao" type="TEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-35">
+        <createTable tableName="tamanho">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="tamanho_pkey"/>
+            </column>
+            <column name="nome" type="TIPOS_TAMANHO">
+                <constraints nullable="false"/>
+            </column>
+            <column name="alcance" type="INTEGER"/>
+            <column name="dano" type="VARCHAR"/>
+            <column name="defesa" type="INTEGER"/>
+            <column name="quadrados" type="numeric"/>
+            <column name="peso_carregado" type="INTEGER"/>
+            <column name="manobras" type="INTEGER"/>
+            <column name="nd_rastro" type="INTEGER"/>
+            <column name="acrobacia" type="INTEGER"/>
+            <column name="atletismo" type="INTEGER"/>
+            <column name="furtividade" type="INTEGER"/>
+            <column name="reflexos" type="INTEGER"/>
+            <column name="tenacidade" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-36">
+        <createTable tableName="descricao_personagem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="descricao_personagem_pkey"/>
+            </column>
+            <column name="ficha_personagem_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="genero" type="VARCHAR(255)"/>
+            <column name="pronomes" type="VARCHAR(255)"/>
+            <column name="idade" type="VARCHAR(255)"/>
+            <column name="altura" type="VARCHAR(255)"/>
+            <column name="peso" type="VARCHAR(255)"/>
+            <column name="tamanho" type="TIPOS_TAMANHO"/>
+            <column name="fe" type="VARCHAR(255)"/>
+            <column name="pele" type="VARCHAR(255)"/>
+            <column name="olhos" type="VARCHAR(255)"/>
+            <column name="cabelos" type="VARCHAR(255)"/>
+            <column name="aparencia_outros" type="VARCHAR(255)"/>
+            <column name="particularidades" type="TEXT"/>
+            <column name="conceito" type="TEXT"/>
+            <column name="tracos_personalidade" type="TEXT"/>
+            <column name="ideais" type="TEXT"/>
+            <column name="falhas" type="TEXT"/>
+            <column name="medos" type="TEXT"/>
+            <column name="aliados" type="TEXT"/>
+            <column name="organizacoes" type="TEXT"/>
+            <column name="historia" type="TEXT"/>
+            <column name="anotacoes" type="TEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-37">
+        <createTable tableName="arquetipo">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="arquetipo_pkey"/>
+            </column>
+            <column name="nome" type="ARQUETIPOS_NOME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pv_inicial" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pp_inicial" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pv_nivel" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pp_nivel" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="defesa_5" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="defesa_10" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="defesa_15" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-38">
+        <createTable tableName="requisitos_classe">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="requisitos_classe_pkey"/>
+            </column>
+            <column name="classe_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nivel_minimo" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="primeiro_arquetipo" type="ARQUETIPOS_NOME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="segundo_arquetipo" type="ARQUETIPOS_NOME"/>
+            <column name="primeiro_arquetipo_nivel" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="segundo_arquetipo_nivel" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-39">
+        <createTable tableName="habilidades_classe">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="habilidades_classe_pkey"/>
+            </column>
+            <column name="classe_id" type="INTEGER"/>
+            <column name="nivel" type="INTEGER"/>
+            <column name="descricao" type="TEXT"/>
+            <column name="primeiro_arquetipo" type="ARQUETIPOS_NOME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="segundo_arquetipo" type="ARQUETIPOS_NOME"/>
+            <column name="primeiro_arquetipo_nivel" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="segundo_arquetipo_nivel" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-40">
+        <createTable tableName="requisitos_talentos_poderes">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="requisitos_talentos_poderes_pkey"/>
+            </column>
+            <column name="valor_agilidade" type="INTEGER"/>
+            <column name="valor_constituicao" type="INTEGER"/>
+            <column name="valor_forca" type="INTEGER"/>
+            <column name="valor_influencia" type="INTEGER"/>
+            <column name="valor_mente" type="INTEGER"/>
+            <column name="valor_presenca" type="INTEGER"/>
+            <column name="habilidade_id" type="INTEGER"/>
+            <column name="grau_habilidade" type="GRAU_PERICIA"/>
+            <column name="talento_poder_requisito" type="INTEGER"/>
+            <column name="linhagem_id" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-41">
+        <createTable tableName="habilidades_personagem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="habilidades_personagem_pkey"/>
+            </column>
+            <column name="ficha_personagem_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="habilidade_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="grau_habilidade" type="GRAU_PERICIA">
+                <constraints nullable="false"/>
+            </column>
+            <column name="atributo_chave_personagem" type="ATRIBUTOS"/>
+            <column name="atributo_personagem_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="mod_dado_habilidade" type="INTEGER"/>
+            <column name="mod_temp" type="INTEGER"/>
+            <column name="mod_outros" type="INTEGER"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="created_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column defaultValueNumeric="1" name="version" type="INTEGER"/>
+            <column name="created_by_user_id" type="BIGINT"/>
+            <column name="updated_by_user_id" type="BIGINT"/>
+            <column defaultValueBoolean="true" name="is_active" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-42">
+        <createIndex indexName="idx_arquetipos_personagem_arquetipo" tableName="arquetipos_personagem">
+            <column name="arquetipo_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-43">
+        <createIndex indexName="idx_classes_personagem_classe" tableName="classes_personagem">
+            <column name="classe_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-44">
+        <createTable tableName="habilidade">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="habilidade_pkey"/>
+            </column>
+            <column name="pericia" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="descricao" type="TEXT"/>
+            <column name="atributo_chave" type="ATRIBUTOS"/>
+            <column name="penalidade_carga" type="BOOLEAN"/>
+            <column name="instrumento" type="BOOLEAN"/>
+            <column name="proficiencia" type="BOOLEAN"/>
+            <column name="combate" type="BOOLEAN"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-45">
+        <createTable tableName="atributos_personagem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="atributos_personagem_pkey"/>
+            </column>
+            <column name="ficha_personagem_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="atributo" type="ATRIBUTOS">
+                <constraints nullable="false"/>
+            </column>
+            <column name="valor" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="valor_temp" type="INTEGER"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="created_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column defaultValueNumeric="1" name="version" type="INTEGER"/>
+            <column name="created_by_user_id" type="BIGINT"/>
+            <column name="updated_by_user_id" type="BIGINT"/>
+            <column defaultValueBoolean="true" name="is_active" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-46">
+        <createTable tableName="ataques_personagem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="ataques_personagem_pkey"/>
+            </column>
+            <column name="ficha_personagem_id" type="INTEGER"/>
+            <column name="nome" type="VARCHAR"/>
+            <column name="atributo" type="ATRIBUTOS"/>
+            <column name="habilidade_id" type="INTEGER"/>
+            <column name="alcance" type="TIPOS_ALCANCE"/>
+            <column defaultValueNumeric="0" name="dado_bonus" type="INTEGER"/>
+            <column defaultValueNumeric="0" name="mod_bonus" type="INTEGER"/>
+            <column name="custo_pp" type="INTEGER"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="created_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-47">
+        <createView fullDefinition="false" viewName="vw_ficha_completa">SELECT fp.id,
+    fp.nome_personagem,
+    fp.user_id,
+    fp.background,
+    fp.origem_id,
+    fp.linhagem_id,
+    fp.experiencia,
+    fp.habilidade_assinatura,
+    fp.nivel_sorte,
+    fp.tamanho,
+    fp.created_at,
+    fp.updated_at,
+    fp.version,
+    fp.created_by_user_id,
+    fp.updated_by_user_id,
+    fp.created_ip_address,
+    fp.updated_ip_address,
+    fp.deleted_at,
+    fp.deleted_by_user_id,
+    fp.is_active,
+    u.username,
+    o.nome AS origem_nome,
+    l.nome AS linhagem_nome,
+    ( SELECT atributos_personagem.valor
+           FROM atributos_personagem
+          WHERE ((atributos_personagem.ficha_personagem_id = fp.id) AND (atributos_personagem.atributo = 'AGILIDADE'::atributos))) AS agilidade,
+    ( SELECT atributos_personagem.valor
+           FROM atributos_personagem
+          WHERE ((atributos_personagem.ficha_personagem_id = fp.id) AND (atributos_personagem.atributo = 'CONSTITUICAO'::atributos))) AS constituicao,
+    ( SELECT atributos_personagem.valor
+           FROM atributos_personagem
+          WHERE ((atributos_personagem.ficha_personagem_id = fp.id) AND (atributos_personagem.atributo = 'FORCA'::atributos))) AS forca,
+    ( SELECT atributos_personagem.valor
+           FROM atributos_personagem
+          WHERE ((atributos_personagem.ficha_personagem_id = fp.id) AND (atributos_personagem.atributo = 'INFLUENCIA'::atributos))) AS influencia,
+    ( SELECT atributos_personagem.valor
+           FROM atributos_personagem
+          WHERE ((atributos_personagem.ficha_personagem_id = fp.id) AND (atributos_personagem.atributo = 'MENTE'::atributos))) AS mente,
+    ( SELECT atributos_personagem.valor
+           FROM atributos_personagem
+          WHERE ((atributos_personagem.ficha_personagem_id = fp.id) AND (atributos_personagem.atributo = 'PRESENCA'::atributos))) AS presenca,
+    pvpp.pv_atual,
+    pvpp.pv_maximo,
+    pvpp.pp_atual,
+    pvpp.pp_maximo,
+    d.defesa_personagem
+   FROM (((((ficha_personagem fp
+     JOIN "user" u ON ((fp.user_id = u.id)))
+     LEFT JOIN origem o ON ((fp.origem_id = o.id)))
+     LEFT JOIN linhagem l ON ((fp.linhagem_id = l.id)))
+     LEFT JOIN pv_pp_personagem pvpp ON ((fp.id = pvpp.ficha_personagem_id)))
+     LEFT JOIN defesa d ON ((fp.id = d.ficha_personagem_id)));</createView>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-48">
+        <createView fullDefinition="false" viewName="vw_atributos_personagem">SELECT ficha_personagem_id,
+    max(
+        CASE
+            WHEN (atributo = 'AGILIDADE'::atributos) THEN valor
+            ELSE NULL::integer
+        END) AS agilidade,
+    max(
+        CASE
+            WHEN (atributo = 'AGILIDADE'::atributos) THEN valor_temp
+            ELSE NULL::integer
+        END) AS agilidade_temp,
+    max(
+        CASE
+            WHEN (atributo = 'CONSTITUICAO'::atributos) THEN valor
+            ELSE NULL::integer
+        END) AS constituicao,
+    max(
+        CASE
+            WHEN (atributo = 'CONSTITUICAO'::atributos) THEN valor_temp
+            ELSE NULL::integer
+        END) AS constituicao_temp,
+    max(
+        CASE
+            WHEN (atributo = 'FORCA'::atributos) THEN valor
+            ELSE NULL::integer
+        END) AS forca,
+    max(
+        CASE
+            WHEN (atributo = 'FORCA'::atributos) THEN valor_temp
+            ELSE NULL::integer
+        END) AS forca_temp,
+    max(
+        CASE
+            WHEN (atributo = 'INFLUENCIA'::atributos) THEN valor
+            ELSE NULL::integer
+        END) AS influencia,
+    max(
+        CASE
+            WHEN (atributo = 'INFLUENCIA'::atributos) THEN valor_temp
+            ELSE NULL::integer
+        END) AS influencia_temp,
+    max(
+        CASE
+            WHEN (atributo = 'MENTE'::atributos) THEN valor
+            ELSE NULL::integer
+        END) AS mente,
+    max(
+        CASE
+            WHEN (atributo = 'MENTE'::atributos) THEN valor_temp
+            ELSE NULL::integer
+        END) AS mente_temp,
+    max(
+        CASE
+            WHEN (atributo = 'PRESENCA'::atributos) THEN valor
+            ELSE NULL::integer
+        END) AS presenca,
+    max(
+        CASE
+            WHEN (atributo = 'PRESENCA'::atributos) THEN valor_temp
+            ELSE NULL::integer
+        END) AS presenca_temp
+   FROM atributos_personagem
+  GROUP BY ficha_personagem_id;</createView>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-49">
+        <createTable tableName="deslocamento_personagem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="deslocamento_personagem_pkey"/>
+            </column>
+            <column name="ficha_personagem_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deslocamento" type="TIPOS_DESLOCAMENTO">
+                <constraints nullable="false"/>
+            </column>
+            <column name="valor" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="bonus" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-50">
+        <createTable tableName="deslocamento_linhagem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="deslocamento_linhagem_pkey"/>
+            </column>
+            <column name="linhagem_id" type="INTEGER"/>
+            <column name="deslocamento" type="TIPOS_DESLOCAMENTO"/>
+            <column name="valor" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-51">
+        <createTable tableName="idiomas_linhagem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="idiomas_linhagem_pkey"/>
+            </column>
+            <column name="linhagem_id" type="INTEGER"/>
+            <column name="idioma" type="IDIOMAS"/>
+            <column name="alfabeto" type="ALFABETOS"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-52">
+        <createTable tableName="sentidos_linhagem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="sentidos_linhagem_pkey"/>
+            </column>
+            <column name="linhagem_id" type="INTEGER"/>
+            <column name="audicao" type="TIPOS_SENTIDOS">
+                <constraints nullable="false"/>
+            </column>
+            <column name="olfato" type="TIPOS_SENTIDOS">
+                <constraints nullable="false"/>
+            </column>
+            <column name="visao" type="TIPOS_SENTIDOS">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-53">
+        <createTable tableName="sentidos_personagem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="sentidos_personagem_pkey"/>
+            </column>
+            <column name="ficha_personagem_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="audicao" type="TIPOS_SENTIDOS">
+                <constraints nullable="false"/>
+            </column>
+            <column name="mod_audicao" type="INTEGER"/>
+            <column name="olfato" type="TIPOS_SENTIDOS">
+                <constraints nullable="false"/>
+            </column>
+            <column name="mod_olfato" type="INTEGER"/>
+            <column name="visao" type="TIPOS_SENTIDOS">
+                <constraints nullable="false"/>
+            </column>
+            <column name="mod_visao" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-54">
+        <createTable tableName="feiticos">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="feiticos_pkey"/>
+            </column>
+            <column name="nome" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="circulo" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="matriz" type="MATRIZ_FEITICOS">
+                <constraints nullable="false"/>
+            </column>
+            <column name="alcance" type="TIPOS_ALCANCE"/>
+            <column name="habilidade_resistencia" type="HABILIDADES_RESISTENCIA"/>
+            <column name="componente_somatico" type="BOOLEAN"/>
+            <column name="componente_verbal" type="BOOLEAN"/>
+            <column name="componente_material" type="BOOLEAN"/>
+            <column name="componente_circular" type="BOOLEAN"/>
+            <column name="componente_material_descricao" type="TEXT"/>
+            <column name="tempo_conjuracao" type="TEMPO_ACOES">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tipo_resistencia" type="TIPOS_RESISTENCIA"/>
+            <column name="alvo" type="VARCHAR"/>
+            <column name="area" type="VARCHAR"/>
+            <column name="duracao" type="VARCHAR"/>
+            <column name="descricao" type="TEXT"/>
+            <column name="elevacao" type="TEXT"/>
+            <column name="aprimoramento" type="TEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-55">
+        <createTable tableName="classes_feitico">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="classes_feitico_pkey"/>
+            </column>
+            <column name="feitico_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="classe_feitico" type="CLASSES_FEITICOS"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-56">
+        <createTable tableName="proficiencias_arquetipo">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="proficiencias_arquetipo_pkey"/>
+            </column>
+            <column name="arquetipo_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="proficiencia" type="TIPOS_PROFICIENCIA"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-57">
+        <createTable tableName="proficiencias_classe">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="proficiencias_classe_pkey"/>
+            </column>
+            <column name="classe_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="proficiencia" type="TIPOS_PROFICIENCIA"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-58">
+        <createTable tableName="proficiencias_personagem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="proficiencias_personagem_pkey"/>
+            </column>
+            <column name="ficha_personagem_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="proficiencia" type="TIPOS_PROFICIENCIA">
+                <constraints nullable="false"/>
+            </column>
+            <column name="proficiente" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-59">
+        <createTable tableName="resistencias_personagem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="resistencias_personagem_pkey"/>
+            </column>
+            <column name="ficha_personagem_id" type="INTEGER"/>
+            <column name="tipo_dano" type="TIPOS_DANO"/>
+            <column defaultValueNumeric="0" name="resistencia" type="INTEGER"/>
+            <column defaultValueBoolean="false" name="aprimorada" type="BOOLEAN"/>
+            <column defaultValueBoolean="false" name="suprema" type="BOOLEAN"/>
+            <column defaultValueBoolean="false" name="lendaria" type="BOOLEAN"/>
+            <column defaultValueBoolean="false" name="invulnerabilidade" type="BOOLEAN"/>
+            <column defaultValueBoolean="false" name="absorcao" type="BOOLEAN"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-60">
+        <createIndex indexName="idx_user_username" tableName="user">
+            <column name="username"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-61">
+        <createIndex indexName="idx_user_active" tableName="user">
+            <column defaultValueBoolean="true" name="is_active"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-62">
+        <createIndex indexName="idx_user_deleted" tableName="user">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-63">
+        <createIndex indexName="idx_user_email" tableName="user">
+            <column name="email"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-64">
+        <createView fullDefinition="false" viewName="vw_fichas_compartilhadas">SELECT cf.id,
+    cf.ficha_personagem_id,
+    cf.user_id,
+    cf.nivel_acesso,
+    cf.link_token,
+    cf.expiracao,
+    cf.ativo,
+    cf.created_at,
+    cf.updated_at,
+    cf.version,
+    cf.created_by_user_id,
+    cf.updated_by_user_id,
+    cf.created_ip_address,
+    cf.updated_ip_address,
+    cf.deleted_at,
+    cf.deleted_by_user_id,
+    cf.is_active,
+    fp.nome_personagem,
+    u_owner.username AS proprietario,
+    u_shared.username AS usuario_compartilhado
+   FROM (((compartilhamento_ficha cf
+     JOIN ficha_personagem fp ON ((cf.ficha_personagem_id = fp.id)))
+     JOIN "user" u_owner ON ((fp.user_id = u_owner.id)))
+     JOIN "user" u_shared ON ((cf.user_id = u_shared.id)))
+  WHERE (cf.ativo = true);</createView>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-65">
+        <createView fullDefinition="false" viewName="vw_estatisticas_sistema">SELECT ( SELECT count(*) AS count
+           FROM ficha_personagem) AS total_fichas,
+    ( SELECT count(*) AS count
+           FROM "user") AS total_usuarios,
+    ( SELECT count(*) AS count
+           FROM compartilhamento_ficha
+          WHERE (compartilhamento_ficha.ativo = true)) AS compartilhamentos_ativos,
+    ( SELECT count(*) AS count
+           FROM ficha_snapshot) AS total_snapshots,
+    ( SELECT count(*) AS count
+           FROM archive.ficha_personagem) AS fichas_arquivadas;</createView>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-66">
+        <addUniqueConstraint columnNames="username" constraintName="unique_username" tableName="user"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-67">
+        <createTable tableName="equipamentos">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="equipamentos_pkey"/>
+            </column>
+            <column name="raridade" type="RARIDADES"/>
+            <column name="peso" type="INTEGER"/>
+            <column name="preco" type="VARCHAR"/>
+            <column name="tipo" type="TIPOS_EQUIPAMENTOS"/>
+            <column name="descricao" type="TEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-68">
+        <createIndex indexName="idx_compartilhamento_user" tableName="compartilhamento_ficha">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-69">
+        <createIndex indexName="idx_compartilhamento_token" tableName="compartilhamento_ficha">
+            <column name="link_token"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-70">
+        <createIndex indexName="idx_compartilhamento_ativo" tableName="compartilhamento_ficha">
+            <column defaultValueBoolean="true" name="ativo"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-71">
+        <createIndex indexName="idx_compartilhamento_active_audit" tableName="compartilhamento_ficha">
+            <column defaultValueBoolean="true" name="is_active"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-72">
+        <createIndex indexName="idx_compartilhamento_deleted" tableName="compartilhamento_ficha">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-73">
+        <addUniqueConstraint columnNames="link_token" constraintName="compartilhamento_ficha_link_token_key" tableName="compartilhamento_ficha"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-74">
+        <createIndex indexName="idx_ficha_snapshot_personagem" tableName="ficha_snapshot">
+            <column name="ficha_personagem_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-75">
+        <createIndex indexName="idx_log_ficha" tableName="log_alteracoes">
+            <column name="ficha_personagem_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-76">
+        <createIndex indexName="idx_log_data" tableName="log_alteracoes">
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="created_at"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-77">
+        <createIndex indexName="idx_log_user" tableName="log_alteracoes">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-78">
+        <createIndex indexName="idx_log_tabela" tableName="log_alteracoes">
+            <column name="tabela"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-79">
+        <createIndex indexName="ficha_personagem_index_0" tableName="ficha_personagem">
+            <column name="id"/>
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-80">
+        <createIndex indexName="idx_ficha_created_at" tableName="ficha_personagem">
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="created_at"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-81">
+        <createIndex indexName="idx_ficha_updated_at" tableName="ficha_personagem">
+            <column name="updated_at"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-82">
+        <createIndex indexName="idx_ficha_user_origem" tableName="ficha_personagem">
+            <column name="user_id"/>
+            <column name="origem_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-83">
+        <createIndex indexName="idx_ficha_active" tableName="ficha_personagem">
+            <column defaultValueBoolean="true" name="is_active"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-84">
+        <createIndex indexName="idx_ficha_deleted" tableName="ficha_personagem">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-85">
+        <createIndex indexName="idx_ficha_created_by" tableName="ficha_personagem">
+            <column name="created_by_user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-86">
+        <createIndex indexName="idx_ficha_updated_by" tableName="ficha_personagem">
+            <column name="updated_by_user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-87">
+        <addUniqueConstraint columnNames="nome" constraintName="tamanho_nome_key" tableName="tamanho"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-88">
+        <createIndex indexName="idx_habilidades_personagem_ficha" tableName="habilidades_personagem">
+            <column name="ficha_personagem_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-89">
+        <createIndex indexName="idx_habilidades_grau" tableName="habilidades_personagem">
+            <column name="grau_habilidade"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-90">
+        <createIndex indexName="idx_habilidades_pers_active" tableName="habilidades_personagem">
+            <column defaultValueBoolean="true" name="is_active"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-91">
+        <createIndex indexName="idx_habilidades_pers_created_by" tableName="habilidades_personagem">
+            <column name="created_by_user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-92">
+        <createIndex indexName="idx_atributos_ficha" tableName="atributos_personagem">
+            <column name="ficha_personagem_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-93">
+        <createIndex indexName="idx_atributos_tipo" tableName="atributos_personagem">
+            <column name="atributo"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-94">
+        <createIndex indexName="idx_atributos_ficha_tipo" tableName="atributos_personagem">
+            <column name="ficha_personagem_id"/>
+            <column name="atributo"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-95">
+        <createIndex indexName="idx_atributos_active" tableName="atributos_personagem">
+            <column defaultValueBoolean="true" name="is_active"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-96">
+        <createIndex indexName="idx_atributos_created_by" tableName="atributos_personagem">
+            <column name="created_by_user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-97">
+        <addUniqueConstraint columnNames="ficha_personagem_id, atributo" constraintName="atributos_personagem_ficha_personagem_id_atributo_key" tableName="atributos_personagem"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-98">
+        <createIndex indexName="idx_feiticos_circulo" tableName="feiticos">
+            <column name="circulo"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-99">
+        <createIndex indexName="idx_equipamentos_tipo" tableName="equipamentos">
+            <column name="tipo"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-100">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="acoes_personagem" constraintName="acoes_personagem_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-101">
+        <addForeignKeyConstraint baseColumnNames="arquetipo_id" baseTableName="arquetipos_personagem" constraintName="arquetipos_personagem_arquetipo_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="arquetipo" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-102">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="arquetipos_personagem" constraintName="arquetipos_personagem_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-103">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="ataques_personagem" constraintName="ataques_personagem_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-104">
+        <addForeignKeyConstraint baseColumnNames="linhagem_id" baseTableName="atributos_linhagem" constraintName="atributos_linhagem_linhagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="linhagem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-105">
+        <addForeignKeyConstraint baseColumnNames="origem_id" baseTableName="atributos_origem" constraintName="atributos_origem_origem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="origem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-106">
+        <addForeignKeyConstraint baseColumnNames="created_by_user_id" baseTableName="atributos_personagem" constraintName="atributos_personagem_created_by_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-107">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="atributos_personagem" constraintName="atributos_personagem_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-108">
+        <addForeignKeyConstraint baseColumnNames="updated_by_user_id" baseTableName="atributos_personagem" constraintName="atributos_personagem_updated_by_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-109">
+        <addForeignKeyConstraint baseColumnNames="arquetipo_id" baseTableName="caracteristica_arquetipo" constraintName="caracteristica_arquetipo_arquetipo_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="arquetipo" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-110">
+        <addForeignKeyConstraint baseColumnNames="linhagem_id" baseTableName="caracteristicas_ancestralidade" constraintName="caracteristicas_ancestralidade_linhagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="linhagem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-111">
+        <addForeignKeyConstraint baseColumnNames="arquetipo_id" baseTableName="caracteristicas_arquetipos" constraintName="caracteristicas_arquetipos_arquetipo_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="arquetipo" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-112">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="carga_personagem" constraintName="carga_personagem_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-113">
+        <addForeignKeyConstraint baseColumnNames="requisitos_classe_id" baseTableName="classe" constraintName="classe_requisitos_classe_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="requisitos_classe" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-114">
+        <addForeignKeyConstraint baseColumnNames="feitico_id" baseTableName="classes_feitico" constraintName="classes_feitico_feitico_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="feiticos" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-115">
+        <addForeignKeyConstraint baseColumnNames="classe_id" baseTableName="classes_personagem" constraintName="classes_personagem_classe_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="classe" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-116">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="classes_personagem" constraintName="classes_personagem_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-117">
+        <addForeignKeyConstraint baseColumnNames="created_by_user_id" baseTableName="compartilhamento_ficha" constraintName="compartilhamento_ficha_created_by_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-118">
+        <addForeignKeyConstraint baseColumnNames="deleted_by_user_id" baseTableName="compartilhamento_ficha" constraintName="compartilhamento_ficha_deleted_by_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-119">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="compartilhamento_ficha" constraintName="compartilhamento_ficha_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-120">
+        <addForeignKeyConstraint baseColumnNames="updated_by_user_id" baseTableName="compartilhamento_ficha" constraintName="compartilhamento_ficha_updated_by_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-121">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="compartilhamento_ficha" constraintName="compartilhamento_ficha_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-122">
+        <addForeignKeyConstraint baseColumnNames="carga_personagem_id" baseTableName="cunhagem_personagem" constraintName="cunhagem_personagem_carga_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="carga_personagem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-123">
+        <addForeignKeyConstraint baseColumnNames="ataque_personagem_id" baseTableName="dano_ataque" constraintName="dano_ataque_ataque_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ataques_personagem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-124">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="defesa" constraintName="defesa_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-125">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="descricao_personagem" constraintName="descricao_personagem_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-126">
+        <addForeignKeyConstraint baseColumnNames="linhagem_id" baseTableName="deslocamento_linhagem" constraintName="deslocamento_linhagem_linhagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="linhagem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-127">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="deslocamento_personagem" constraintName="deslocamento_personagem_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-128">
+        <addForeignKeyConstraint baseColumnNames="feiticos_id" baseTableName="feiticos_personagem" constraintName="feiticos_personagem_feiticos_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="feiticos" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-129">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="feiticos_personagem" constraintName="feiticos_personagem_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-130">
+        <addForeignKeyConstraint baseColumnNames="feiticos_personagem_habilidade" baseTableName="feiticos_personagem_habilidades_personagem" constraintName="feiticos_personagem_habilidad_feiticos_personagem_habilida_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="feiticos_personagem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-131">
+        <addForeignKeyConstraint baseColumnNames="habilidades_personagem_id" baseTableName="feiticos_personagem_habilidades_personagem" constraintName="feiticos_personagem_habilidades__habilidades_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="habilidades_personagem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-132">
+        <addForeignKeyConstraint baseColumnNames="created_by_user_id" baseTableName="ficha_personagem" constraintName="ficha_personagem_created_by_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-133">
+        <addForeignKeyConstraint baseColumnNames="deleted_by_user_id" baseTableName="ficha_personagem" constraintName="ficha_personagem_deleted_by_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-134">
+        <addForeignKeyConstraint baseColumnNames="habilidade_assinatura" baseTableName="ficha_personagem" constraintName="ficha_personagem_habilidade_assinatura_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="habilidades_personagem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-135">
+        <addForeignKeyConstraint baseColumnNames="linhagem_id" baseTableName="ficha_personagem" constraintName="ficha_personagem_linhagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="linhagem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-136">
+        <addForeignKeyConstraint baseColumnNames="origem_id" baseTableName="ficha_personagem" constraintName="ficha_personagem_origem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="origem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-137">
+        <addForeignKeyConstraint baseColumnNames="updated_by_user_id" baseTableName="ficha_personagem" constraintName="ficha_personagem_updated_by_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-138">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="ficha_personagem" constraintName="ficha_personagem_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-139">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="ficha_snapshot" constraintName="ficha_snapshot_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-140">
+        <addForeignKeyConstraint baseColumnNames="arquetipo_id" baseTableName="habilidades_arquetipo" constraintName="habilidades_arquetipo_arquetipo_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="arquetipo" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-141">
+        <addForeignKeyConstraint baseColumnNames="habilidade_id" baseTableName="habilidades_arquetipo" constraintName="habilidades_arquetipo_habilidade_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="habilidade" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-142">
+        <addForeignKeyConstraint baseColumnNames="classe_id" baseTableName="habilidades_classe" constraintName="habilidades_classe_classe_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="classe" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-143">
+        <addForeignKeyConstraint baseColumnNames="habilidade_id" baseTableName="habilidades_origem" constraintName="habilidades_origem_habilidade_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="habilidade" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-144">
+        <addForeignKeyConstraint baseColumnNames="origem_id" baseTableName="habilidades_origem" constraintName="habilidades_origem_origem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="origem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-145">
+        <addForeignKeyConstraint baseColumnNames="atributo_personagem_id" baseTableName="habilidades_personagem" constraintName="habilidades_personagem_atributo_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="atributos_personagem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-146">
+        <addForeignKeyConstraint baseColumnNames="created_by_user_id" baseTableName="habilidades_personagem" constraintName="habilidades_personagem_created_by_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-147">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="habilidades_personagem" constraintName="habilidades_personagem_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-148">
+        <addForeignKeyConstraint baseColumnNames="habilidade_id" baseTableName="habilidades_personagem" constraintName="habilidades_personagem_habilidade_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="habilidade" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-149">
+        <addForeignKeyConstraint baseColumnNames="updated_by_user_id" baseTableName="habilidades_personagem" constraintName="habilidades_personagem_updated_by_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-150">
+        <addForeignKeyConstraint baseColumnNames="linhagem_id" baseTableName="idiomas_linhagem" constraintName="idiomas_linhagem_linhagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="linhagem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-151">
+        <addForeignKeyConstraint baseColumnNames="carga_personagem_id" baseTableName="inventario_personagem" constraintName="inventario_personagem_carga_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="carga_personagem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-152">
+        <addForeignKeyConstraint baseColumnNames="equipamento_id" baseTableName="inventario_personagem" constraintName="inventario_personagem_equipamento_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="equipamentos" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-153">
+        <addForeignKeyConstraint baseColumnNames="origem_id" baseTableName="itens_origem" constraintName="itens_origem_origem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="origem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-154">
+        <addForeignKeyConstraint baseColumnNames="tamanho" baseTableName="linhagem" constraintName="linhagem_tamanho_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="nome" referencedTableName="tamanho" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-155">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="log_alteracoes" constraintName="log_alteracoes_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-156">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="log_alteracoes" constraintName="log_alteracoes_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="SET NULL" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-157">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="origem_custom" constraintName="origem_custom_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-158">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="particularidades_personagem" constraintName="particularidades_personagem_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-159">
+        <addForeignKeyConstraint baseColumnNames="particularidade_id" baseTableName="particularidades_personagem" constraintName="particularidades_personagem_particularidade_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="particularidade" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-160">
+        <addForeignKeyConstraint baseColumnNames="arquetipo_id" baseTableName="proficiencias_arquetipo" constraintName="proficiencias_arquetipo_arquetipo_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="arquetipo" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-161">
+        <addForeignKeyConstraint baseColumnNames="classe_id" baseTableName="proficiencias_classe" constraintName="proficiencias_classe_classe_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="classe" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-162">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="proficiencias_personagem" constraintName="proficiencias_personagem_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-163">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="pv_pp_personagem" constraintName="pv_pp_personagem_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-164">
+        <addForeignKeyConstraint baseColumnNames="habilidade_id" baseTableName="requisitos_talentos_poderes" constraintName="requisitos_talentos_poderes_habilidade_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="habilidade" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-165">
+        <addForeignKeyConstraint baseColumnNames="linhagem_id" baseTableName="requisitos_talentos_poderes" constraintName="requisitos_talentos_poderes_linhagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="linhagem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-166">
+        <addForeignKeyConstraint baseColumnNames="talento_poder_requisito" baseTableName="requisitos_talentos_poderes" constraintName="requisitos_talentos_poderes_talento_poder_requisito_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="talento__poderes_arquetipo" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-167">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="resistencias_personagem" constraintName="resistencias_personagem_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-168">
+        <addForeignKeyConstraint baseColumnNames="linhagem_id" baseTableName="sentidos_linhagem" constraintName="sentidos_linhagem_linhagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="linhagem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-169">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="sentidos_personagem" constraintName="sentidos_personagem_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-170">
+        <addForeignKeyConstraint baseColumnNames="arquetipo_id" baseTableName="talento__poderes_arquetipo" constraintName="talento__poderes_arquetipo_arquetipo_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="arquetipo" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-171">
+        <addForeignKeyConstraint baseColumnNames="requisitos_talentos_poderes_id" baseTableName="talento__poderes_arquetipo" constraintName="talento__poderes_arquetipo_requisitos_talentos_poderes_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="requisitos_talentos_poderes" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-172">
+        <addForeignKeyConstraint baseColumnNames="authority_id" baseTableName="user_authority" constraintName="user_authority_authority_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="authorities" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-173">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_authority" constraintName="user_authority_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-174">
+        <addForeignKeyConstraint baseColumnNames="created_by_user_id" baseTableName="user" constraintName="user_created_by_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-175">
+        <addForeignKeyConstraint baseColumnNames="deleted_by_user_id" baseTableName="user" constraintName="user_deleted_by_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-176">
+        <addForeignKeyConstraint baseColumnNames="updated_by_user_id" baseTableName="user" constraintName="user_updated_by_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="Victor Gabriel" id="1752192418012-177">
+        <addForeignKeyConstraint baseColumnNames="habilidade_id" baseTableName="uso_habilidade" constraintName="uso_habilidade_habilidade_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="habilidade" validate="true"/>
+    </changeSet>
+</databaseChangeLog>
