@@ -1,0 +1,304 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- ======================================= -->
+    <!-- CORE - FICHA DE PERSONAGEM E AUDITORIA -->
+    <!-- ======================================= -->
+    <!--
+        Este changelog contém:
+        - Tabela principal de fichas de personagem (ficha_personagem)
+        - Descrição detalhada do personagem (descricao_personagem)
+        - Sistema de auditoria e logs (log_alteracoes)
+        - Sistema de snapshots para versionamento (ficha_snapshot)
+        - Sistema de compartilhamento de fichas (compartilhamento_ficha)
+        - Tabela auxiliar feiticos_personagem_habilidades_personagem
+    -->
+
+    <!-- TABELAS BASE -->
+    
+    <changeSet author="Victor Gabriel" id="core-001-table-ficha-personagem">
+        <createTable remarks="Armazena informações básicas de personagens do RPG" tableName="ficha_personagem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="ficha_personagem_pkey"/>
+            </column>
+            <column name="nome_personagem" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="background" type="TEXT"/>
+            <column name="origem_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="linhagem_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="experiencia" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="habilidade_assinatura" remarks="Referência à habilidade na qual o personagem é especialista" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="nivel_sorte" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tamanho" type="TIPOS_TAMANHO"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="created_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column defaultValueNumeric="1" name="version" remarks="Controle de versionamento da ficha" type="INTEGER"/>
+            <column name="created_by_user_id" type="BIGINT"/>
+            <column name="updated_by_user_id" type="BIGINT"/>
+            <column name="created_ip_address" type="VARCHAR(45)"/>
+            <column name="updated_ip_address" type="VARCHAR(45)"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="deleted_by_user_id" type="BIGINT"/>
+            <column defaultValueBoolean="true" name="is_active" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="core-002-table-descricao-personagem">
+        <createTable tableName="descricao_personagem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="descricao_personagem_pkey"/>
+            </column>
+            <column name="ficha_personagem_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="genero" type="VARCHAR(255)"/>
+            <column name="pronomes" type="VARCHAR(255)"/>
+            <column name="idade" type="VARCHAR(255)"/>
+            <column name="altura" type="VARCHAR(255)"/>
+            <column name="peso" type="VARCHAR(255)"/>
+            <column name="tamanho" type="TIPOS_TAMANHO"/>
+            <column name="fe" type="VARCHAR(255)"/>
+            <column name="pele" type="VARCHAR(255)"/>
+            <column name="olhos" type="VARCHAR(255)"/>
+            <column name="cabelos" type="VARCHAR(255)"/>
+            <column name="aparencia_outros" type="VARCHAR(255)"/>
+            <column name="particularidades" type="TEXT"/>
+            <column name="conceito" type="TEXT"/>
+            <column name="tracos_personalidade" type="TEXT"/>
+            <column name="ideais" type="TEXT"/>
+            <column name="falhas" type="TEXT"/>
+            <column name="medos" type="TEXT"/>
+            <column name="aliados" type="TEXT"/>
+            <column name="organizacoes" type="TEXT"/>
+            <column name="historia" type="TEXT"/>
+            <column name="anotacoes" type="TEXT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="core-003-table-log-alteracoes">
+        <createTable tableName="log_alteracoes">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="log_alteracoes_pkey"/>
+            </column>
+            <column name="ficha_personagem_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="INTEGER"/>
+            <column name="tabela" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="campo" type="VARCHAR(100)"/>
+            <column name="valor_anterior" type="TEXT"/>
+            <column name="valor_novo" type="TEXT"/>
+            <column name="motivo" type="VARCHAR(100)"/>
+            <column name="ip_address" type="INET"/>
+            <column name="user_agent" type="TEXT"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="created_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="core-004-table-ficha-snapshot">
+        <createTable remarks="Snapshots para versionamento de fichas em momentos importantes" tableName="ficha_snapshot">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="ficha_snapshot_pkey"/>
+            </column>
+            <column name="ficha_personagem_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="motivo" type="VARCHAR(100)"/>
+            <column name="dados_ficha" type="JSONB"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="data_snapshot" type="TIMESTAMP WITHOUT TIME ZONE"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="core-005-table-compartilhamento-ficha">
+        <createTable remarks="Controla compartilhamento de fichas entre usuários" tableName="compartilhamento_ficha">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="compartilhamento_ficha_pkey"/>
+            </column>
+            <column name="ficha_personagem_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nivel_acesso" type="VARCHAR(20)"/>
+            <column name="link_token" type="VARCHAR(100)"/>
+            <column name="expiracao" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column defaultValueBoolean="true" name="ativo" type="BOOLEAN"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="created_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column defaultValueNumeric="1" name="version" type="INTEGER"/>
+            <column name="created_by_user_id" type="BIGINT"/>
+            <column name="updated_by_user_id" type="BIGINT"/>
+            <column name="created_ip_address" type="VARCHAR(45)"/>
+            <column name="updated_ip_address" type="VARCHAR(45)"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="deleted_by_user_id" type="BIGINT"/>
+            <column defaultValueBoolean="true" name="is_active" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="core-006-table-feiticos-personagem-habilidades">
+        <createTable tableName="feiticos_personagem_habilidades_personagem">
+            <column name="feiticos_personagem_habilidade" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="feiticos_personagem_habilidades_personagem_pkey"/>
+            </column>
+            <column autoIncrement="true" name="habilidades_personagem_id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="feiticos_personagem_habilidades_personagem_pkey"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ÍNDICES -->
+
+    <changeSet author="Victor Gabriel" id="core-007-index-ficha-id-user">
+        <createIndex indexName="ficha_personagem_index_0" tableName="ficha_personagem">
+            <column name="id"/>
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="core-008-index-ficha-created-at">
+        <createIndex indexName="idx_ficha_created_at" tableName="ficha_personagem">
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="created_at"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="core-009-index-ficha-updated-at">
+        <createIndex indexName="idx_ficha_updated_at" tableName="ficha_personagem">
+            <column name="updated_at"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="core-010-index-ficha-user-origem">
+        <createIndex indexName="idx_ficha_user_origem" tableName="ficha_personagem">
+            <column name="user_id"/>
+            <column name="origem_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="core-011-index-ficha-active">
+        <createIndex indexName="idx_ficha_active" tableName="ficha_personagem">
+            <column defaultValueBoolean="true" name="is_active"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="core-012-index-ficha-deleted">
+        <createIndex indexName="idx_ficha_deleted" tableName="ficha_personagem">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="core-013-index-ficha-created-by">
+        <createIndex indexName="idx_ficha_created_by" tableName="ficha_personagem">
+            <column name="created_by_user_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="core-014-index-ficha-updated-by">
+        <createIndex indexName="idx_ficha_updated_by" tableName="ficha_personagem">
+            <column name="updated_by_user_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="core-015-index-compartilhamento-user">
+        <createIndex indexName="idx_compartilhamento_user" tableName="compartilhamento_ficha">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="core-016-index-compartilhamento-token">
+        <createIndex indexName="idx_compartilhamento_token" tableName="compartilhamento_ficha">
+            <column name="link_token"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="core-017-index-compartilhamento-ativo">
+        <createIndex indexName="idx_compartilhamento_ativo" tableName="compartilhamento_ficha">
+            <column defaultValueBoolean="true" name="ativo"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="core-018-index-compartilhamento-active-audit">
+        <createIndex indexName="idx_compartilhamento_active_audit" tableName="compartilhamento_ficha">
+            <column defaultValueBoolean="true" name="is_active"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="core-019-index-compartilhamento-deleted">
+        <createIndex indexName="idx_compartilhamento_deleted" tableName="compartilhamento_ficha">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="core-020-index-ficha-snapshot-personagem">
+        <createIndex indexName="idx_ficha_snapshot_personagem" tableName="ficha_snapshot">
+            <column name="ficha_personagem_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="core-021-index-log-ficha">
+        <createIndex indexName="idx_log_ficha" tableName="log_alteracoes">
+            <column name="ficha_personagem_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="core-022-index-log-data">
+        <createIndex indexName="idx_log_data" tableName="log_alteracoes">
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="created_at"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="core-023-index-log-user">
+        <createIndex indexName="idx_log_user" tableName="log_alteracoes">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="core-024-index-log-tabela">
+        <createIndex indexName="idx_log_tabela" tableName="log_alteracoes">
+            <column name="tabela"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- CONSTRAINTS ÚNICOS -->
+
+    <changeSet author="Victor Gabriel" id="core-025-unique-compartilhamento-token">
+        <addUniqueConstraint columnNames="link_token" constraintName="compartilhamento_ficha_link_token_key" tableName="compartilhamento_ficha"/>
+    </changeSet>
+
+    <!-- FOREIGN KEYS - Referencias para outras tabelas serão adicionadas nos changelogs específicos -->
+
+</databaseChangeLog>
