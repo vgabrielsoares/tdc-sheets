@@ -165,3 +165,5 @@ target/
 application-local.yml
 application-dev.yml
 application-secret.yml
+
+.github
