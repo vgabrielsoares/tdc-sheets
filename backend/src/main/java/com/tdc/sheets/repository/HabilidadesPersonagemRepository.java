@@ -57,15 +57,17 @@ public interface HabilidadesPersonagemRepository extends BaseRepository<Habilida
     
     /**
      * Busca habilidades com modificador específico
+     * TODO: Descomentar quando campo modificador for adicionado à entidade ou ajustar para usar campos existentes
      */
-    @Query("SELECT h FROM HabilidadesPersonagem h WHERE h.modificador = :modificador AND h.isActive = true")
-    List<HabilidadesPersonagem> findByModificador(@Param("modificador") Integer modificador);
+    // @Query("SELECT h FROM HabilidadesPersonagem h WHERE h.modificador = :modificador AND h.isActive = true")
+    // List<HabilidadesPersonagem> findByModificador(@Param("modificador") Integer modificador);
     
     /**
      * Busca habilidades com modificador mínimo
+     * TODO: Descomentar quando campo modificador for adicionado à entidade ou ajustar para usar campos existentes
      */
-    @Query("SELECT h FROM HabilidadesPersonagem h WHERE h.modificador >= :modificadorMinimo AND h.isActive = true")
-    List<HabilidadesPersonagem> findByModificadorGreaterThanEqual(@Param("modificadorMinimo") Integer modificadorMinimo);
+    // @Query("SELECT h FROM HabilidadesPersonagem h WHERE h.modificador >= :modificadorMinimo AND h.isActive = true")
+    // List<HabilidadesPersonagem> findByModificadorGreaterThanEqual(@Param("modificadorMinimo") Integer modificadorMinimo);
     
     /**
      * Busca habilidades de combate
@@ -93,9 +95,10 @@ public interface HabilidadesPersonagemRepository extends BaseRepository<Habilida
     
     /**
      * Busca habilidades ordenadas por modificador (descendente)
+     * TODO: Descomentar quando campo modificador for adicionado à entidade ou ajustar para usar campos existentes
      */
-    @Query("SELECT h FROM HabilidadesPersonagem h WHERE h.fichaPersonagem.id = :fichaId AND h.isActive = true ORDER BY h.modificador DESC")
-    List<HabilidadesPersonagem> findByFichaPersonagemIdOrderByModificadorDesc(@Param("fichaId") Long fichaId);
+    // @Query("SELECT h FROM HabilidadesPersonagem h WHERE h.fichaPersonagem.id = :fichaId AND h.isActive = true ORDER BY h.modificador DESC")
+    // List<HabilidadesPersonagem> findByFichaPersonagemIdOrderByModificadorDesc(@Param("fichaId") Long fichaId);
     
     /**
      * Busca habilidades ordenadas por grau de perícia
@@ -130,13 +133,13 @@ public interface HabilidadesPersonagemRepository extends BaseRepository<Habilida
     /**
      * Busca habilidades por nome (busca textual)
      */
-    @Query("SELECT h FROM HabilidadesPersonagem h WHERE LOWER(h.habilidade.nome) LIKE LOWER(CONCAT('%', :nome, '%')) AND h.isActive = true")
+    @Query("SELECT h FROM HabilidadesPersonagem h WHERE LOWER(h.habilidade.pericia) LIKE LOWER(CONCAT('%', :nome, '%')) AND h.isActive = true")
     List<HabilidadesPersonagem> findByHabilidadeNomeContainingIgnoreCase(@Param("nome") String nome);
     
     /**
      * Busca habilidades por nome de uma ficha específica
      */
-    @Query("SELECT h FROM HabilidadesPersonagem h WHERE h.fichaPersonagem.id = :fichaId AND LOWER(h.habilidade.nome) LIKE LOWER(CONCAT('%', :nome, '%')) AND h.isActive = true")
+    @Query("SELECT h FROM HabilidadesPersonagem h WHERE h.fichaPersonagem.id = :fichaId AND LOWER(h.habilidade.pericia) LIKE LOWER(CONCAT('%', :nome, '%')) AND h.isActive = true")
     List<HabilidadesPersonagem> findByFichaPersonagemIdAndHabilidadeNomeContainingIgnoreCase(@Param("fichaId") Long fichaId, @Param("nome") String nome);
     
     /**
@@ -147,15 +150,16 @@ public interface HabilidadesPersonagemRepository extends BaseRepository<Habilida
     
     /**
      * Estatísticas de habilidades
+     * TODO: Descomentar quando campo modificador for adicionado à entidade ou ajustar para usar campos existentes
      */
-    @Query("SELECT AVG(h.modificador) FROM HabilidadesPersonagem h WHERE h.fichaPersonagem.id = :fichaId AND h.isActive = true")
-    Double getAverageModificadorByFicha(@Param("fichaId") Long fichaId);
+    // @Query("SELECT AVG(h.modificador) FROM HabilidadesPersonagem h WHERE h.fichaPersonagem.id = :fichaId AND h.isActive = true")
+    // Double getAverageModificadorByFicha(@Param("fichaId") Long fichaId);
     
-    @Query("SELECT MAX(h.modificador) FROM HabilidadesPersonagem h WHERE h.fichaPersonagem.id = :fichaId AND h.isActive = true")
-    Integer getMaxModificadorByFicha(@Param("fichaId") Long fichaId);
+    // @Query("SELECT MAX(h.modificador) FROM HabilidadesPersonagem h WHERE h.fichaPersonagem.id = :fichaId AND h.isActive = true")
+    // Integer getMaxModificadorByFicha(@Param("fichaId") Long fichaId);
     
-    @Query("SELECT MIN(h.modificador) FROM HabilidadesPersonagem h WHERE h.fichaPersonagem.id = :fichaId AND h.isActive = true")
-    Integer getMinModificadorByFicha(@Param("fichaId") Long fichaId);
+    // @Query("SELECT MIN(h.modificador) FROM HabilidadesPersonagem h WHERE h.fichaPersonagem.id = :fichaId AND h.isActive = true")
+    // Integer getMinModificadorByFicha(@Param("fichaId") Long fichaId);
     
     /**
      * Busca habilidades mais populares (mais usadas entre todas as fichas)

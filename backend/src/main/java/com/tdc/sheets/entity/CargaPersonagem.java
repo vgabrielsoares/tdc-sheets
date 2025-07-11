@@ -3,6 +3,8 @@ package com.tdc.sheets.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Entidade que representa a carga de um personagem
@@ -26,4 +28,10 @@ public class CargaPersonagem extends AuditableEntity {
     
     @Column(name = "bonus_capacidade_carga")
     private Integer bonusCapacidadeCarga;
+    
+    @OneToOne(mappedBy = "cargaPersonagem", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    private CunhagemPersonagem cunhagem;
+    
+    @OneToMany(mappedBy = "cargaPersonagem", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    private List<InventarioPersonagem> inventario = new ArrayList<>();
 }
