@@ -1,0 +1,11 @@
+id,username,email,password_hash,nome_completo,nivel_acesso,data_criacao,ativo
+1,admin,admin@tdc.com,$2a$10$dummy_hash_for_admin,Administrador do Sistema,ADMIN,2025-01-01 00:00:00,true
+2,mestre1,mestre1@tdc.com,$2a$10$dummy_hash_for_mestre1,João Silva - Mestre,MESTRE,2025-01-02 08:30:00,true
+3,mestre2,mestre2@tdc.com,$2a$10$dummy_hash_for_mestre2,Maria Santos - Mestre,MESTRE,2025-01-03 14:15:00,true
+4,jogador1,jogador1@tdc.com,$2a$10$dummy_hash_for_jogador1,Pedro Oliveira,JOGADOR,2025-01-04 19:45:00,true
+5,jogador2,jogador2@tdc.com,$2a$10$dummy_hash_for_jogador2,Ana Costa,JOGADOR,2025-01-05 10:20:00,true
+6,jogador3,jogador3@tdc.com,$2a$10$dummy_hash_for_jogador3,Carlos Mendes,JOGADOR,2025-01-06 16:30:00,true
+7,jogador4,jogador4@tdc.com,$2a$10$dummy_hash_for_jogador4,Lucia Ferreira,JOGADOR,2025-01-07 21:10:00,true
+8,jogador5,jogador5@tdc.com,$2a$10$dummy_hash_for_jogador5,Rafael Souza,JOGADOR,2025-01-08 12:45:00,true
+9,jogador6,jogador6@tdc.com,$2a$10$dummy_hash_for_jogador6,Camila Lima,JOGADOR,2025-01-09 09:15:00,true
+10,jogador7,jogador7@tdc.com,$2a$10$dummy_hash_for_jogador7,Bruno Rodrigues,JOGADOR,2025-01-10 18:00:00,true
