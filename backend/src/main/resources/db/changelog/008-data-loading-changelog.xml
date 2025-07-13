@@ -1,0 +1,403 @@
+﻿<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.23.xsd">
+
+    <!-- ========================================== -->
+    <!-- CARGA DE DADOS BASE E FAKE - TDC SHEETS   -->
+    <!-- ========================================== -->
+    <!--
+        Este changelog contém:
+        - Dados base do RPG (contexto: base-data) - Para todos os ambientes
+        - Dados fake de desenvolvimento (contexto: fake-data) - Apenas para dev
+    -->
+    
+    <!-- 1.1 Dados Fundamentais -->
+    
+    <changeSet id="data-base-001" author="system" context="base-data">
+        <comment>Carrega dados base de arquetipos</comment>
+        <loadData file="base-data/csv/arquetipos.csv" tableName="arquetipo" separator=";">
+            <column name="id" type="NUMERIC"/>
+            <column name="nome" type="STRING"/>
+            <column name="pv_inicial" type="NUMERIC"/>
+            <column name="pp_inicial" type="NUMERIC"/>
+            <column name="pv_nivel" type="NUMERIC"/>
+            <column name="pp_nivel" type="NUMERIC"/>
+            <column name="defesa_5" type="NUMERIC"/>
+            <column name="defesa_10" type="NUMERIC"/>
+            <column name="defesa_15" type="NUMERIC"/>
+        </loadData>
+        <rollback>
+            <delete tableName="arquetipo"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="data-base-001-5" author="system" context="base-data">
+        <comment>Carrega dados base de tamanhos</comment>
+        <loadData file="base-data/csv/tamanhos.csv" tableName="tamanho" separator=";">
+            <column name="id" type="NUMERIC"/>
+            <column name="nome" type="STRING"/>
+            <column name="defesa" type="NUMERIC"/>
+            <column name="alcance" type="NUMERIC"/>
+            <column name="peso_carregado" type="NUMERIC"/>
+            <column name="quadrados" type="NUMERIC"/>
+            <column name="dano" type="STRING"/>
+            <column name="manobras" type="NUMERIC"/>
+            <column name="nd_rastro" type="NUMERIC"/>
+            <column name="acrobacia" type="NUMERIC"/>
+            <column name="atletismo" type="NUMERIC"/>
+            <column name="furtividade" type="NUMERIC"/>
+            <column name="reflexos" type="NUMERIC"/>
+            <column name="tenacidade" type="NUMERIC"/>
+        </loadData>
+        <rollback>
+            <delete tableName="tamanho"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="data-base-002" author="system" context="base-data">
+        <comment>Carrega dados base de linhagens</comment>
+        <loadData file="base-data/csv/linhagens.csv" tableName="linhagem" separator=";">
+            <column name="id" type="NUMERIC"/>
+            <column name="nome" type="STRING"/>
+            <column name="tamanho" type="STRING"/>
+            <column name="altura_media" type="STRING"/>
+            <column name="peso_medio" type="STRING"/>
+            <column name="maioridade" type="STRING"/>
+            <column name="expectativa_vida" type="STRING"/>
+            <column name="descricao" type="STRING"/>
+        </loadData>
+        <rollback>
+            <delete tableName="linhagem"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="data-base-003" author="system" context="base-data">
+        <comment>Carrega dados base de origens</comment>
+        <loadData file="base-data/csv/origens.csv" tableName="origem" separator=";">
+            <column name="id" type="NUMERIC"/>
+            <column name="nome" type="STRING"/>
+            <column name="descricao" type="STRING"/>
+            <column name="habilidade_especial" type="STRING"/>
+        </loadData>
+    </changeSet>
+
+    <changeSet id="data-base-004" author="system" context="base-data">
+        <comment>Carrega dados base de habilidades</comment>
+        <loadData file="base-data/csv/habilidades.csv" tableName="habilidade" separator=";">
+            <column name="id" type="NUMERIC"/>
+            <column name="pericia" type="STRING"/>
+            <column name="descricao" type="STRING"/>
+            <column name="atributo_chave" type="STRING"/>
+            <column name="penalidade_carga" type="BOOLEAN"/>
+            <column name="instrumento" type="BOOLEAN"/>
+            <column name="proficiencia" type="BOOLEAN"/>
+            <column name="combate" type="BOOLEAN"/>
+        </loadData>
+    </changeSet>
+
+    <!-- TODO: Implementar carga de dados de feitiços posteriormente -->
+    <!-- 
+    <changeSet id="data-base-005" author="system" context="base-data">
+        <comment>Carrega dados base de feitiços (PENDENTE)</comment>
+        Será implementado posteriormente quando resolvidos os problemas de valores NULL em campos ENUM
+    </changeSet>
+    -->
+
+    <changeSet author="system" id="fix-particularidade-pontos-column" context="base-data">
+        <comment>Altera coluna pontos da tabela particularidade para VARCHAR</comment>
+        <modifyDataType tableName="particularidade" columnName="pontos" newDataType="VARCHAR(255)"/>
+        <rollback>
+            <modifyDataType tableName="particularidade" columnName="pontos" newDataType="INTEGER"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="data-base-006" author="system" context="base-data">
+        <comment>Carrega dados base de particularidades</comment>
+        <loadData file="base-data/csv/particularidades.csv" tableName="particularidade" separator=";">
+            <column name="id" type="NUMERIC"/>
+            <column name="particularidade" type="STRING"/>
+            <column name="efeito" type="STRING"/>
+            <column name="pontos" type="STRING"/>
+        </loadData>
+        <rollback>
+            <delete tableName="particularidade"/>
+        </rollback>
+    </changeSet>
+
+    <!-- 1.2 Classes e Requisitos -->
+    
+    <changeSet id="data-base-007" author="system" context="base-data">
+        <comment>Carrega requisitos de classes</comment>
+        <loadData file="base-data/csv/requisitos_classe.csv" tableName="requisitos_classe" separator=";">
+            <column name="id" type="NUMERIC"/>
+            <column name="classe_id" type="NUMERIC"/>
+            <column name="nivel_minimo" type="NUMERIC"/>
+            <column name="primeiro_arquetipo" type="STRING"/>
+            <column name="segundo_arquetipo" type="STRING"/>
+            <column name="primeiro_arquetipo_nivel" type="NUMERIC"/>
+            <column name="segundo_arquetipo_nivel" type="NUMERIC"/>
+        </loadData>
+    </changeSet>
+
+    <changeSet id="data-base-008" author="system" context="base-data">
+        <comment>Carrega dados base de classes</comment>
+        <loadData file="base-data/csv/classes.csv" tableName="classe" separator=";">
+            <column name="id" type="NUMERIC"/>
+            <column name="nome" type="STRING"/>
+            <column name="descricao" type="STRING"/>
+            <column name="requisitos_classe_id" type="NUMERIC"/>
+            <column name="defesa_5" type="NUMERIC"/>
+            <column name="defesa_10" type="NUMERIC"/>
+            <column name="defesa_15" type="NUMERIC"/>
+        </loadData>
+    </changeSet>
+
+    <!-- 1.3 Equipamentos e Itens -->
+    
+    <!-- Temporariamente comentado para ajustar valores dos enums
+    <changeSet id="data-base-009" author="system" context="base-data">
+        <comment>Carrega dados base de moedas e riquezas na tabela equipamentos com mapeamento de tipos</comment>
+        <sql>
+            Implementar mapeamento SQL posteriormente
+        </sql>
+    </changeSet>
+    -->
+
+    <changeSet id="data-base-010" author="system" context="base-data">
+        <comment>Carrega dados base de itens gerais na tabela equipamentos com mapeamento de tipos</comment>
+        <sql>
+            INSERT INTO equipamentos (id, nome, preco, peso, tipo, descricao, raridade)
+            SELECT
+                id,
+                nome,
+                valor_po,
+                peso,
+                (CASE categoria
+                    WHEN 'AVENTURA' THEN 'AVENTURA_EXPLORACAO_VIAGEM'
+                    WHEN 'COMIDA' THEN 'COMIDA_BEBIDA'
+                    WHEN 'FEITICARIA' THEN 'FEITICARIA_OUTROS'
+                    WHEN 'FERRAMENTA' THEN 'FERRAMENTAS_OFICIO'
+                    WHEN 'ALQUIMIA' THEN 'PRODUTOS_ALQUIMICOS'
+                    WHEN 'HERBALISMO' THEN 'HERBALISMO'
+                    WHEN 'LUZ' THEN 'FONTES_LUZ'
+                    WHEN 'MUNICAO' THEN 'MUNICOES'
+                    ELSE 'UTILITARIOS'
+                END)::tipos_equipamentos as tipo,
+                descricao,
+                raridade::raridades
+            FROM (
+                VALUES
+                    (1, 'Apito de Sinal', '0.03', 0, 'AVENTURA', 'Apito usado para comunicação e sinalização', 'COMUM'),
+                    (2, 'Bomba', '15', 1, 'AVENTURA', 'Explosivo usado para demolição ou combate', 'RARO'),
+                    (3, 'Bomba de Emaranhamento', '18', 1, 'AVENTURA', 'Explosivo que cria redes e laços', 'MUITO_RARO'),
+                    (4, 'Bomba de Fumaça', '7', 1, 'AVENTURA', 'Explosivo que cria cortina de fumaça', 'RARO'),
+                    (5, 'Bússola', '1', 0, 'AVENTURA', 'Instrumento de navegação magnética', 'COMUM'),
+                    (6, 'Cantil', '0.25', 0, 'AVENTURA', 'Recipiente para transporte de água', 'COMUM'),
+                    (7, 'Cobertor', '0.05', 1, 'AVENTURA', 'Tecido para aquecimento e conforto', 'COMUM'),
+                    (8, 'Coletor de Chuva', '0.40', 1, 'AVENTURA', 'Dispositivo para captação de água', 'COMUM'),
+                    (9, 'Corda de Cânhamo', '0.10', 1, 'AVENTURA', 'Corda resistente de fibra natural', 'COMUM'),
+                    (10, 'Corda de Seda', '1', 1, 'AVENTURA', 'Corda leve e resistente de seda', 'ATIPICO')
+                    -- Adicionar mais dados conforme necessário
+            ) AS dados(id, nome, valor_po, peso, categoria, descricao, raridade);
+        </sql>
+    </changeSet>
+
+    <changeSet id="data-base-011" author="system" context="base-data">
+        <comment>Carrega dados base de armas na tabela equipamentos com mapeamento de tipos</comment>
+        <sql>
+            INSERT INTO equipamentos (id, nome, preco, peso, tipo, descricao, raridade)
+            SELECT 
+                id,
+                nome,
+                valor_po,
+                peso,
+                (CASE categoria
+                    WHEN 'ARMA_SIMPLES' THEN 'ARMAS_SIMPLES'
+                    WHEN 'ARMA_MARCIAL' THEN 'ARMAS_MARCIAIS'
+                    WHEN 'ARMA_DISTANCIA' THEN 'ARMAS_COMPLEXAS'
+                    ELSE 'ARMAS_SIMPLES'
+                END)::tipos_equipamentos as tipo,
+                descricao,
+                raridade::raridades
+            FROM (
+                VALUES 
+                    (51, 'Adaga', '2', 1, 'ARMA_SIMPLES', 'Arma leve perfurante simples', 'COMUM'),
+                    (52, 'Clava', '0', 2, 'ARMA_SIMPLES', 'Arma simples de madeira', 'COMUM'),
+                    (53, 'Punhal', '1', 0, 'ARMA_SIMPLES', 'Arma muito pequena perfurante', 'COMUM'),
+                    (54, 'Lança', '2', 3, 'ARMA_SIMPLES', 'Arma de haste longa', 'COMUM'),
+                    (55, 'Espada Longa', '15', 2, 'ARMA_MARCIAL', 'Espada de uma mão versátil', 'COMUM'),
+                    (56, 'Espada Curta', '10', 1, 'ARMA_MARCIAL', 'Espada leve e rápida', 'COMUM'),
+                    (57, 'Arco Longo', '75', 1, 'ARMA_DISTANCIA', 'Arco de longo alcance', 'COMUM'),
+                    (58, 'Besta Leve', '35', 2, 'ARMA_DISTANCIA', 'Besta de recarga rápida', 'COMUM')
+                    -- Adicionar mais dados conforme necessário
+            ) AS dados(id, nome, valor_po, peso, categoria, descricao, raridade);
+        </sql>
+    </changeSet>
+
+    <changeSet id="data-base-012" author="system" context="base-data">
+        <comment>Carrega dados base de armaduras na tabela equipamentos com mapeamento de tipos</comment>
+        <sql>
+            INSERT INTO equipamentos (id, nome, preco, peso, tipo, descricao, raridade)
+            SELECT 
+                id,
+                nome,
+                valor_po,
+                peso,
+                (CASE categoria
+                    WHEN 'SEM_ARMADURA' THEN 'VESTIMENTAS'
+                    WHEN 'ARMADURA_LEVE' THEN 'PROTECOES_LEVES'
+                    WHEN 'ARMADURA_MEDIA' THEN 'PROTECOES_MEDIAS'
+                    WHEN 'ARMADURA_PESADA' THEN 'PROTECOES_PESADAS'
+                    WHEN 'ESCUDO' THEN 'ESCUDOS'
+                    ELSE 'PROTECOES_LEVES'
+                END)::tipos_equipamentos as tipo,
+                descricao,
+                raridade::raridades
+            FROM (
+                VALUES 
+                    (101, 'Roupas Comuns', '0.5', 0, 'SEM_ARMADURA', 'Vestimentas normais sem proteção', 'COMUM'),
+                    (102, 'Armadura de Couro', '10', 10, 'ARMADURA_LEVE', 'Proteção básica de couro', 'COMUM'),
+                    (103, 'Armadura de Couro Batido', '25', 15, 'ARMADURA_LEVE', 'Couro reforçado com metal', 'COMUM'),
+                    (104, 'Armadura de Estudos', '25', 15, 'ARMADURA_LEVE', 'Couro com tachas metálicas', 'COMUM'),
+                    (105, 'Cota de Malha', '50', 20, 'ARMADURA_MEDIA', 'Armadura de anéis entrelaçados', 'COMUM'),
+                    (106, 'Armadura de Placas', '200', 25, 'ARMADURA_PESADA', 'Proteção completa de metal', 'ATIPICO'),
+                    (107, 'Escudo Pequeno', '5', 2, 'ESCUDO', 'Escudo leve de madeira', 'COMUM'),
+                    (108, 'Escudo Grande', '15', 5, 'ESCUDO', 'Escudo pesado de metal', 'COMUM')
+                    -- Adicionar mais dados conforme necessário
+            ) AS dados(id, nome, valor_po, peso, categoria, descricao, raridade);
+        </sql>
+    </changeSet>
+
+    <changeSet id="data-base-013" author="system" context="base-data">
+        <comment>Carrega dados base de itens mágicos na tabela equipamentos</comment>
+        <sql>
+            INSERT INTO equipamentos (id, nome, preco, peso, tipo, descricao, raridade)
+            SELECT 
+                CAST(id AS INTEGER),
+                nome,
+                valor_po,
+                CAST(peso AS DECIMAL(10,2)),
+                CASE tipo 
+                    WHEN 'AMULETO' THEN 'FEITICARIA_OUTROS'::tipos_equipamentos
+                    WHEN 'ANEL' THEN 'FEITICARIA_OUTROS'::tipos_equipamentos
+                    WHEN 'ARMA_MAGICA' THEN 'ARMAS_COMPLEXAS'::tipos_equipamentos
+                    WHEN 'ATIPICO' THEN 'FEITICARIA_OUTROS'::tipos_equipamentos
+                    WHEN 'CALCADO' THEN 'VESTIMENTAS'::tipos_equipamentos
+                    WHEN 'CONTAINER' THEN 'RECIPIENTES'::tipos_equipamentos
+                    WHEN 'CRISTAL' THEN 'FEITICARIA_CONDUITES'::tipos_equipamentos
+                    WHEN 'ESCUDO_MAGICO' THEN 'ESCUDOS'::tipos_equipamentos
+                    WHEN 'ORBE' THEN 'FEITICARIA_CONDUITES'::tipos_equipamentos
+                    WHEN 'PERGAMINHO' THEN 'FEITICARIA_OUTROS'::tipos_equipamentos
+                    WHEN 'POCAO' THEN 'FEITICARIA_POCOES'::tipos_equipamentos
+                    WHEN 'VARINHA' THEN 'FEITICARIA_CONDUITES'::tipos_equipamentos
+                    WHEN 'VESTIMENTA' THEN 'VESTIMENTAS'::tipos_equipamentos
+                    ELSE 'FEITICARIA_OUTROS'::tipos_equipamentos
+                END,
+                efeitos,
+                CASE raridade 
+                    WHEN 'LENDARIO' THEN 'LENDARIO'::raridades
+                    WHEN 'MUITO_RARO' THEN 'MUITO_RARO'::raridades
+                    WHEN 'RARO' THEN 'RARO'::raridades
+                    ELSE 'COMUM'::raridades
+                END
+            FROM (
+                VALUES
+                    (11, 'Amuleto de Proteção', '2000', 0.1, 'AMULETO', '+1 de bônus na Defesa e testes de resistência', 'RARO'),
+                    (12, 'Anel de Proteção', '2500', 0.1, 'ANEL', 'Anel que oferece proteção mágica', 'RARO'),
+                    (13, 'Anel de Teleporte', '15000', 0.1, 'ANEL', 'Anel que permite teletransporte', 'MUITO_RARO'),
+                    (14, 'Amuleto de Cura', '3000', 0.1, 'AMULETO', 'Amuleto que acelera recuperação', 'RARO'),
+                    (15, 'Amuleto de Voo', '8000', 0.1, 'AMULETO', 'Amuleto que permite voar', 'MUITO_RARO'),
+                    (16, 'Botas de Velocidade', '4000', 1, 'CALCADO', 'Botas que aumentam velocidade', 'RARO'),
+                    (17, 'Capa da Invisibilidade', '10000', 2, 'VESTIMENTA', 'Capa que torna usuário invisível', 'LENDARIO'),
+                    (18, 'Bolsa de Manter', '6000', 1, 'CONTAINER', 'Bolsa dimensional extra', 'MUITO_RARO'),
+                    (19, 'Cristal de Luz Eterna', '1500', 0.5, 'CRISTAL', 'Cristal que emite luz constante', 'RARO'),
+                    (20, 'Escudo de Absorção', '8000', 5, 'ESCUDO_MAGICO', 'Escudo que absorve energia mágica', 'MUITO_RARO')
+                ) AS t(id, nome, valor_po, peso, tipo, efeitos, raridade);
+        </sql>
+    </changeSet>
+
+    <changeSet id="data-base-014" author="system" context="base-data">
+        <comment>Carrega dados base de materiais na tabela equipamentos</comment>
+        <sql>
+            INSERT INTO equipamentos (id, nome, preco, peso, tipo, descricao, raridade)
+            SELECT 
+                CAST(id AS INTEGER),
+                nome,
+                valor_po,
+                CAST(peso AS DECIMAL(10,2)),
+                CASE tipo_material 
+                    WHEN 'COURO' THEN 'MATERIAIS_INGREDIENTES'::tipos_equipamentos
+                    WHEN 'CRISTAL' THEN 'MATERIAIS_INGREDIENTES'::tipos_equipamentos
+                    WHEN 'GEMA' THEN 'PEDRAS_PRECIOSAS'::tipos_equipamentos
+                    WHEN 'MADEIRA' THEN 'MATERIAIS_INGREDIENTES'::tipos_equipamentos
+                    WHEN 'METAL' THEN 'MERCADORIAS_METAIS'::tipos_equipamentos
+                    WHEN 'TECIDO' THEN 'MERCADORIAS_TECIDOS'::tipos_equipamentos
+                    WHEN 'ATIPICO' THEN 'MATERIAIS_CRIACAO'::tipos_equipamentos
+                    ELSE 'MATERIAIS_INGREDIENTES'::tipos_equipamentos
+                END,
+                usos,
+                CASE raridade 
+                    WHEN 'LENDARIO' THEN 'LENDARIO'::raridades
+                    WHEN 'MUITO_RARO' THEN 'MUITO_RARO'::raridades
+                    WHEN 'RARO' THEN 'RARO'::raridades
+                    ELSE 'COMUM'::raridades
+                END
+            FROM (
+                VALUES
+                    (21, 'Ferro Comum', '1', 1, 'METAL', 'Metal básico para ferramentas e armas', 'COMUM'),
+                    (22, 'Aço', '5', 1, 'METAL', 'Liga metálica resistente', 'COMUM'),
+                    (23, 'Mithril', '500', 0.5, 'METAL', 'Metal élfico leve e resistente', 'RARO'),
+                    (24, 'Adamantina', '5000', 1, 'METAL', 'Metal extremamente resistente', 'MUITO_RARO'),
+                    (25, 'Ouro', '50', 0.1, 'METAL', 'Metal nobre muito valioso', 'COMUM'),
+                    (26, 'Prata', '10', 0.1, 'METAL', 'Metal precioso com propriedades especiais', 'COMUM'),
+                    (27, 'Madeira Comum', '0.1', 0.5, 'MADEIRA', 'Material básico de construção', 'COMUM'),
+                    (28, 'Carvalho Élfico', '25', 0.5, 'MADEIRA', 'Madeira mágica resistente', 'RARO'),
+                    (29, 'Ferro Sombrio', '200', 1, 'METAL', 'Madeira corrompida por magia sombria', 'RARO'),
+                    (30, 'Couro Comum', '2', 1, 'COURO', 'Material de proteção básico', 'COMUM')
+                ) AS t(id, nome, valor_po, peso, tipo_material, usos, raridade);
+        </sql>
+    </changeSet>
+
+    <changeSet id="data-base-015" author="system" context="base-data">
+        <comment>Carrega dados base de veículos e montarias na tabela equipamentos</comment>
+        <sql>
+            INSERT INTO equipamentos (id, nome, preco, peso, tipo, descricao, raridade)
+            SELECT 
+                CAST(id AS INTEGER),
+                nome,
+                valor_po,
+                CAST(COALESCE(peso, 0) AS DECIMAL(10,2)),
+                CASE tipo 
+                    WHEN 'MONTARIA' THEN 'MERCADORIAS_ANIMAIS'::tipos_equipamentos
+                    WHEN 'VEICULO_TERRESTRE' THEN 'AVENTURA_EXPLORACAO_VIAGEM'::tipos_equipamentos
+                    WHEN 'VEICULO_AQUATICO' THEN 'AVENTURA_EXPLORACAO_VIAGEM'::tipos_equipamentos
+                    WHEN 'VEICULO_AEREO' THEN 'AVENTURA_EXPLORACAO_VIAGEM'::tipos_equipamentos
+                    WHEN 'ATIPICO' THEN 'AVENTURA_EXPLORACAO_VIAGEM'::tipos_equipamentos
+                    ELSE 'AVENTURA_EXPLORACAO_VIAGEM'::tipos_equipamentos
+                END,
+                capacidade,
+                CASE raridade 
+                    WHEN 'MUITO_RARO' THEN 'MUITO_RARO'::raridades
+                    WHEN 'RARO' THEN 'RARO'::raridades
+                    ELSE 'COMUM'::raridades
+                END
+            FROM (
+                VALUES
+                    (31, 'Pônei', '30', 0, 'MONTARIA', 'Cavalo pequeno e resistente', 'COMUM'),
+                    (32, 'Cavalo de Montaria', '75', 0, 'MONTARIA', 'Cavalo comum para transporte', 'COMUM'),
+                    (33, 'Cavalo de Guerra', '400', 0, 'MONTARIA', 'Cavalo treinado para combate', 'COMUM'),
+                    (34, 'Mula', '8', 0, 'MONTARIA', 'Animal de carga híbrido', 'COMUM'),
+                    (35, 'Camelo', '50', 0, 'MONTARIA', 'Animal adaptado ao deserto', 'COMUM'),
+                    (36, 'Carroça', '15', 200, 'VEICULO_TERRESTRE', 'Veículo de tração animal', 'COMUM'),
+                    (37, 'Carruagem', '100', 300, 'VEICULO_TERRESTRE', 'Veículo de passageiros', 'COMUM'),
+                    (38, 'Trenó', '20', 130, 'VEICULO_TERRESTRE', 'Veículo para neve', 'COMUM'),
+                    (39, 'Charrete', '25', 150, 'VEICULO_TERRESTRE', 'Veículo leve de duas rodas', 'COMUM'),
+                    (40, 'Canoa', '25', 30, 'VEICULO_AQUATICO', 'Embarcação leve de madeira', 'COMUM')
+                ) AS t(id, nome, valor_po, peso, tipo, capacidade, raridade);
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

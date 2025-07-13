@@ -12,5 +12,6 @@
     <include file="005-linhagem-origem-changelog.xml" relativeToChangelogFile="true"/>
     <include file="006-sistema-rpg-changelog.xml" relativeToChangelogFile="true"/>
     <include file="007-foreign-keys-changelog.xml" relativeToChangelogFile="true"/>
+    <include file="008-data-loading-changelog.xml" relativeToChangelogFile="true"/>
     
 </databaseChangeLog>
