@@ -1,0 +1,41 @@
+id;nome;descricao;requisitos_classe_id;defesa_5;defesa_10;defesa_15
+1;Alquimista;Especialista em alquimia e criação de substâncias;1;1;2;2
+2;Estudioso;Mestre em conhecimento e pesquisa;2;1;2;2
+3;Investigador;Expert em descobrir a verdade e resolver mistérios;3;1;2;2
+4;Inventor;Criador de dispositivos e engenhocas;4;1;2;2
+5;Sacerdote;Servo devotado de uma divindade;5;1;2;2
+6;Estrategista;Mestre em táticas e planejamento;6;1;2;2
+7;Bardo;Artista e contador de histórias mágicas;7;1;2;2
+8;Guardião Rúnico;Protetor que usa runas antigas;8;1;2;2
+9;Explorador;Aventureiro especializado em sobrevivência;9;1;2;2
+10;Herbalista;Especialista em plantas e medicina natural;10;1;2;2
+11;Clérigo;Líder religioso e curandeiro divino;11;1;3;3
+12;Jurado;Guerreiro sagrado da justiça;12;1;3;3
+13;Avatar;Encarnação divina no mundo mortal;13;1;3;3
+14;Monge;Asceta disciplinado em artes marciais;14;1;3;3
+15;Paladino;Cavaleiro sagrado da ordem;15;1;3;3
+16;Xamã;Mediador entre mundos espirituais;16;1;3;3
+17;Caçador Sagrado;Perseguidor de criaturas profanas;17;1;3;3
+18;Eremita;Solitário conectado com o divino;18;1;3;3
+19;Espiritual;Guia de almas e energias;19;1;3;3
+20;Guerreiro;Combatente disciplinado e habilidoso;20;1;2;2
+21;Pugilista;Lutador especializado em combate corporal;21;1;2;2
+22;Protetor;Defensor dedicado de outros;22;1;2;2
+23;Pugnador Arcano;Guerreiro que mescla magia e espada;23;1;2;2
+24;Guerreiro Rúnico;Combatente que emprega runas;24;1;2;2
+25;Duelista;Especialista em combate elegante;25;1;2;2
+26;Assassino;Eliminar alvos silenciosamente;26;1;2;2
+27;Bárbaro;Guerreiro selvagem e furioso;27;1;2;2
+28;Mago;Estudioso das artes arcanas;28;1;2;2
+29;Auspiciado;Favorecido por forças mágicas;29;1;2;2
+30;Caçador Arcano;Perseguidor de criaturas mágicas;30;1;2;2
+31;Arma Arcana;Guerreiro especializado em armas mágicas;31;1;2;2
+32;Ritualista;Mestre em cerimônias e rituais;32;1;2;2
+33;Ladrão;Especialista em furtos e stealth;33;1;2;2
+34;Infiltrador;Expert em penetração e espionagem;34;1;2;2
+35;Espião;Agente de informações e sabotagem;35;1;2;2
+36;Sentinela;Vigia e guardião vigilante;36;1;2;2
+37;Marinheiro;Navegador e combatente naval;37;1;2;2
+38;Druida;Guardião da natureza e seus ciclos;38;1;2;2
+39;Bestial;Conectado com animais selvagens;39;1;2;2
+40;Guardião Natural;Protetor dos espaços selvagens;40;1;2;2

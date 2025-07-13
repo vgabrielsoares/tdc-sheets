@@ -1,0 +1,16 @@
+id;nome;valor_po;velocidade;capacidade;tipo;descricao;raridade
+1;Cavalo de Montaria;75;24;150;MONTARIA;Cavalo comum para transporte;COMUM
+2;Cavalo de Guerra;400;20;200;MONTARIA;Cavalo treinado para combate;ATIPICO
+3;Pônei;30;16;75;MONTARIA;Cavalo pequeno e resistente;COMUM
+4;Mula;8;12;130;MONTARIA;Animal de carga híbrido;COMUM
+5;Camelo;50;20;150;MONTARIA;Animal adaptado ao deserto;ATIPICO
+6;Bote a Remo;50;3;500;VEICULO_AQUATICO;Pequena embarcação manual;COMUM
+7;Canoa;30;2;300;VEICULO_AQUATICO;Embarcação leve de madeira;COMUM
+8;Barco de Pesca;3000;5;2000;VEICULO_AQUATICO;Embarcação para pesca;ATIPICO
+9;Navio Mercante;10000;8;50000;VEICULO_AQUATICO;Grande embarcação comercial;RARO
+10;Galera de Guerra;25000;6;30000;VEICULO_AQUATICO;Navio militar com remos;MUITO_RARO
+11;Carroça;15;4;1000;VEICULO_TERRESTRE;Veículo de tração animal;COMUM
+12;Carruagem;100;6;500;VEICULO_TERRESTRE;Veículo de passageiros;ATIPICO
+13;Trenó;20;6;300;VEICULO_TERRESTRE;Veículo para neve;COMUM
+14;Charrete;30;8;200;VEICULO_TERRESTRE;Veículo leve de duas rodas;COMUM
+15;Balão de Ar Quente;8000;12;1000;VEICULO_AEREO;Veículo aéreo com ar quente;MUITO_RARO

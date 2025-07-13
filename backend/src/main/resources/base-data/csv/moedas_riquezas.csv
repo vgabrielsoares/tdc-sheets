@@ -1,0 +1,77 @@
+id;nome;valor_po;tipo;descricao;peso;raridade
+1;Chama de Cobre;0.01;MOEDA;Moeda mais barata usada em transações menores e mundanas;0;COMUM
+2;Íris de Ouro;1;MOEDA;Moeda usada em transações maiores de itens mais caros;0;COMUM
+3;Estrela de Platina;1000;MOEDA;Moeda usada em transações muito altas extremamente rara;0;MUITO_RARO
+4;Lingote de Ouro Puro;50;METAL_PRECIOSO;Base para cunhagem de moedas de ouro;1;RARO
+5;Lingote de Prata Pura;10;METAL_PRECIOSO;Usado em moedas menores e objetos de prata;1;ATIPICO
+6;Platina Bruta;100;METAL_PRECIOSO;Metal mais valioso usado em itens de luxo;1;MUITO_RARO
+7;Carta de Crédito Bancária;100;DOCUMENTO;Documento que representa valor monetário variável;0;ATIPICO
+8;Escritura de Propriedade;250;DOCUMENTO;Documento que comprova posse de terrenos e imóveis;0;RARO
+9;Patente de Nobreza;1500;DOCUMENTO;Títulos aristocráticos e reconhecimento social;0;MUITO_RARO
+10;Especiarias Exóticas;15;COMERCIAL;Especiarias raras e valiosas por frasco;0;ATIPICO
+11;Seda Pura;10;COMERCIAL;Tecido de alta qualidade por metro;0;RARO
+12;Incenso Sagrado;15;COMERCIAL;Incenso especial usado em rituais religiosos;0;RARO
+13;Óleo de Baleia;8;COMERCIAL;Óleo especial para lamparinas de alta qualidade;1;ATIPICO
+14;Relógio Mecânico;200;INSTRUMENTO;Instrumento de precisão temporal muito raro;1;MUITO_RARO
+15;Lupa de Qualidade;50;INSTRUMENTO;Instrumento óptico para estudos detalhados;0;RARO
+16;Bússola Mágica;150;INSTRUMENTO;Instrumento de navegação com propriedades mágicas;0;MUITO_RARO
+17;Ágata Bandada;10;PEDRA_PRECIOSA;Pedra preciosa comum com padrões listrados;0;COMUM
+18;Ágata Musgosa;10;PEDRA_PRECIOSA;Pedra preciosa comum com inclusões verdes;0;COMUM
+19;Ágata Olho;10;PEDRA_PRECIOSA;Pedra preciosa comum com padrão circular;0;COMUM
+20;Azurita;10;PEDRA_PRECIOSA;Pedra preciosa azul comum de cor intensa;0;COMUM
+21;Calcedônia;50;PEDRA_PRECIOSA;Pedra preciosa comum translúcida;0;COMUM
+22;Citrina;50;PEDRA_PRECIOSA;Quartzo amarelo dourado comum;0;COMUM
+23;Cornalina;50;PEDRA_PRECIOSA;Pedra preciosa comum de cor laranja-avermelhada;0;COMUM
+24;Crisoprásio;50;PEDRA_PRECIOSA;Pedra preciosa comum verde maçã;0;COMUM
+25;Heliotrópio;50;PEDRA_PRECIOSA;Pedra preciosa comum verde com pontos vermelhos;0;COMUM
+26;Hematita;10;PEDRA_PRECIOSA;Pedra preciosa comum metálica escura;0;COMUM
+27;Jaspe;50;PEDRA_PRECIOSA;Pedra preciosa comum opaca colorida;0;COMUM
+28;Lápis Lazúli;10;PEDRA_PRECIOSA;Pedra preciosa azul profundo com veios dourados;0;COMUM
+29;Malaquita;10;PEDRA_PRECIOSA;Pedra preciosa verde com padrões circulares;0;COMUM
+30;Obsidiana;10;PEDRA_PRECIOSA;Vidro vulcânico negro natural;0;COMUM
+31;Olho de Tigre;10;PEDRA_PRECIOSA;Pedra preciosa dourada com brilho sedoso;0;COMUM
+32;Ônix;50;PEDRA_PRECIOSA;Pedra preciosa negra comum;0;COMUM
+33;Pedra-da-Lua;50;PEDRA_PRECIOSA;Pedra preciosa com brilho lunar;0;COMUM
+34;Quartzo;50;PEDRA_PRECIOSA;Cristal transparente comum;0;COMUM
+35;Quartzo Azul;10;PEDRA_PRECIOSA;Quartzo de cor azul comum;0;COMUM
+36;Quartzo-Rosa-Estrela;50;PEDRA_PRECIOSA;Quartzo rosa com efeito estrela;0;COMUM
+37;Rodocrosita;10;PEDRA_PRECIOSA;Pedra preciosa rosa com listras;0;COMUM
+38;Sardônica;50;PEDRA_PRECIOSA;Pedra preciosa listrada comum;0;COMUM
+39;Turquesa;10;PEDRA_PRECIOSA;Pedra preciosa azul-verde comum;0;COMUM
+40;Zircão;50;PEDRA_PRECIOSA;Pedra preciosa brilhante comum;0;COMUM
+41;Âmbar;100;PEDRA_PRECIOSA;Resina fossilizada atípica;0;ATIPICO
+42;Ametista;100;PEDRA_PRECIOSA;Quartzo violeta atípico;0;ATIPICO
+43;Coral;100;PEDRA_PRECIOSA;Estrutura calcária marinha atípica;0;ATIPICO
+44;Crisoberilo;100;PEDRA_PRECIOSA;Pedra preciosa amarelo-dourada atípica;0;ATIPICO
+45;Espinélio;100;PEDRA_PRECIOSA;Pedra preciosa colorida atípica;0;ATIPICO
+46;Granada;100;PEDRA_PRECIOSA;Pedra preciosa vermelha atípica;0;ATIPICO
+47;Jade;100;PEDRA_PRECIOSA;Pedra preciosa verde atípica;0;ATIPICO
+48;Jet;100;PEDRA_PRECIOSA;Carvão fóssil negro atípico;0;ATIPICO
+49;Pérola;100;PEDRA_PRECIOSA;Gema orgânica marinha atípica;0;ATIPICO
+50;Turmalina;100;PEDRA_PRECIOSA;Pedra preciosa multicolorida atípica;0;ATIPICO
+51;Água-Marinha;250;PEDRA_PRECIOSA;Berilo azul-claro raro;0;RARO
+52;Alexandrita;250;PEDRA_PRECIOSA;Pedra que muda de cor rara;0;RARO
+53;Espinélio Azul;250;PEDRA_PRECIOSA;Espinélio de cor azul raro;0;RARO
+54;Esmeralda;500;PEDRA_PRECIOSA;Berilo verde raro;0;RARO
+55;Opala;500;PEDRA_PRECIOSA;Pedra com jogo de cores rara;0;RARO
+56;Opala de Fogo;500;PEDRA_PRECIOSA;Opala laranja-vermelha rara;0;RARO
+57;Opala Negra;500;PEDRA_PRECIOSA;Opala escura com cores rara;0;RARO
+58;Peridoto;250;PEDRA_PRECIOSA;Olivina verde rara;0;RARO
+59;Pérola Negra;250;PEDRA_PRECIOSA;Pérola escura rara;0;RARO
+60;Rubi-Estrela;500;PEDRA_PRECIOSA;Rubi com efeito estrela raro;0;RARO
+61;Safira Amarela;500;PEDRA_PRECIOSA;Coríndon amarelo raro;0;RARO
+62;Safira Azul;500;PEDRA_PRECIOSA;Coríndon azul raro;0;RARO
+63;Safira-Estrela;500;PEDRA_PRECIOSA;Safira com efeito estrela rara;0;RARO
+64;Topázio;250;PEDRA_PRECIOSA;Pedra preciosa cristalina rara;0;RARO
+65;Diamante;1000;PEDRA_PRECIOSA;Carbono cristalizado muito raro;0;MUITO_RARO
+66;Jacinto;1000;PEDRA_PRECIOSA;Zircão vermelho muito raro;0;MUITO_RARO
+67;Rubi;1000;PEDRA_PRECIOSA;Coríndon vermelho muito raro;0;MUITO_RARO
+68;Safira Negra;1000;PEDRA_PRECIOSA;Coríndon escuro muito raro;0;MUITO_RARO
+69;Anel de Ouro com Turquesa;10;OBRA_ARTE;Joia simples com pedra comum;0;COMUM
+70;Bracelete de Ouro;10;OBRA_ARTE;Joia simples de ouro;0;COMUM
+71;Cálice de Cobre Prateado;10;OBRA_ARTE;Recipiente decorativo comum;0;COMUM
+72;Espelho Pequeno Moldura Pintada;10;OBRA_ARTE;Espelho decorativo comum;0;COMUM
+73;Estatueta de Jade;10;OBRA_ARTE;Pequena escultura em jade;0;COMUM
+74;Adaga Cerimonial de Ouro;100;OBRA_ARTE;Arma decorativa atípica dourada;1;ATIPICO
+75;Adaga Cerimonial de Prata;50;OBRA_ARTE;Arma decorativa atípica prateada;1;ATIPICO
+76;Alaúde Madeira Exótica;100;OBRA_ARTE;Instrumento musical fino atípico;2;ATIPICO

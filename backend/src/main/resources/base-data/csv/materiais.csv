@@ -1,0 +1,21 @@
+id;nome;valor_po;peso;tipo_material;usos;descricao;raridade
+1;Ferro Comum;1;1;METAL;Forja e construção;Metal básico para ferramentas e armas;COMUM
+2;Aço;5;1;METAL;Forja e armas;Liga metálica resistente;COMUM
+3;Prata;25;1;METAL;Joalheria e armas especiais;Metal precioso com propriedades especiais;ATIPICO
+4;Ouro;50;1;METAL;Joalheria e conduítes mágicos;Metal nobre muito valioso;RARO
+5;Mithril;500;0.5;METAL;Itens mágicos e armaduras;Metal élfico leve e resistente;MUITO_RARO
+6;Adamantina;1000;1;METAL;Armas e armaduras superiores;Metal extremamente resistente;LENDARIO
+7;Madeira Comum;0.1;1;MADEIRA;Construção e ferramentas;Material básico de construção;COMUM
+8;Carvalho Élfico;5;1;MADEIRA;Arcos e itens especiais;Madeira mágica resistente;ATIPICO
+9;Ferro Sombrio;10;1;MADEIRA;Itens mágicos negros;Madeira corrompida por magia sombria;RARO
+10;Couro Comum;2;1;COURO;Armaduras e equipamentos;Material de proteção básico;COMUM
+11;Couro de Dragão;100;1;COURO;Armaduras superiores;Material resistente de criatura mágica;MUITO_RARO
+12;Pele de Demônio;200;1;COURO;Itens mágicos sombrios;Material de criatura planária;LENDARIO
+13;Cristal Comum;10;1;CRISTAL;Conduítes mágicos;Material para focalização mágica;COMUM
+14;Cristal de Poder;100;1;CRISTAL;Itens mágicos poderosos;Cristal com energia mágica;RARO
+15;Cristal Planar;500;1;CRISTAL;Itens mágicos planários;Cristal de outros planos;MUITO_RARO
+16;Tecido Comum;1;0;TECIDO;Roupas e equipamentos;Material têxtil básico;COMUM
+17;Seda Élfica;25;0;TECIDO;Roupas mágicas;Tecido mágico resistente;ATIPICO
+18;Fio de Mithril;200;0;TECIDO;Roupas encantadas;Tecido metálico especial;MUITO_RARO
+19;Gema Comum;50;0;GEMA;Joalheria e magia;Pedra preciosa básica;ATIPICO
+20;Gema de Poder;500;0;GEMA;Itens mágicos;Gema carregada com energia;RARO
