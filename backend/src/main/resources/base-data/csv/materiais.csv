@@ -1,21 +1,21 @@
-id;nome;valor_po;peso;tipo_material;usos;descricao;raridade
-1;Ferro Comum;1;1;METAL;Forja e construção;Metal básico para ferramentas e armas;COMUM
-2;Aço;5;1;METAL;Forja e armas;Liga metálica resistente;COMUM
-3;Prata;25;1;METAL;Joalheria e armas especiais;Metal precioso com propriedades especiais;ATIPICO
-4;Ouro;50;1;METAL;Joalheria e conduítes mágicos;Metal nobre muito valioso;RARO
-5;Mithril;500;0.5;METAL;Itens mágicos e armaduras;Metal élfico leve e resistente;MUITO_RARO
-6;Adamantina;1000;1;METAL;Armas e armaduras superiores;Metal extremamente resistente;LENDARIO
-7;Madeira Comum;0.1;1;MADEIRA;Construção e ferramentas;Material básico de construção;COMUM
-8;Carvalho Élfico;5;1;MADEIRA;Arcos e itens especiais;Madeira mágica resistente;ATIPICO
-9;Ferro Sombrio;10;1;MADEIRA;Itens mágicos negros;Madeira corrompida por magia sombria;RARO
-10;Couro Comum;2;1;COURO;Armaduras e equipamentos;Material de proteção básico;COMUM
-11;Couro de Dragão;100;1;COURO;Armaduras superiores;Material resistente de criatura mágica;MUITO_RARO
-12;Pele de Demônio;200;1;COURO;Itens mágicos sombrios;Material de criatura planária;LENDARIO
-13;Cristal Comum;10;1;CRISTAL;Conduítes mágicos;Material para focalização mágica;COMUM
-14;Cristal de Poder;100;1;CRISTAL;Itens mágicos poderosos;Cristal com energia mágica;RARO
-15;Cristal Planar;500;1;CRISTAL;Itens mágicos planários;Cristal de outros planos;MUITO_RARO
-16;Tecido Comum;1;0;TECIDO;Roupas e equipamentos;Material têxtil básico;COMUM
-17;Seda Élfica;25;0;TECIDO;Roupas mágicas;Tecido mágico resistente;ATIPICO
-18;Fio de Mithril;200;0;TECIDO;Roupas encantadas;Tecido metálico especial;MUITO_RARO
-19;Gema Comum;50;0;GEMA;Joalheria e magia;Pedra preciosa básica;ATIPICO
-20;Gema de Poder;500;0;GEMA;Itens mágicos;Gema carregada com energia;RARO
+id;nome;valor_po;peso;tipo;descricao;raridade
+351;Ferro Comum;1;1;MATERIAIS_INGREDIENTES;Metal básico para ferramentas e armas. Usos: Forja e construção;COMUM
+352;Aço;5;1;MATERIAIS_INGREDIENTES;Liga metálica resistente. Usos: Forja e armas;COMUM
+353;Prata;25;1;MATERIAIS_INGREDIENTES;Metal precioso com propriedades especiais. Usos: Joalheria e armas especiais;ATIPICO
+354;Ouro;50;1;MATERIAIS_INGREDIENTES;Metal nobre muito valioso. Usos: Joalheria e conduítes mágicos;RARO
+355;Mithril;500;0.5;MATERIAIS_INGREDIENTES;Metal élfico leve e resistente. Usos: Itens mágicos e armaduras;MUITO_RARO
+356;Adamantina;1000;1;MATERIAIS_INGREDIENTES;Metal extremamente resistente. Usos: Armas e armaduras superiores;LENDARIO
+357;Madeira Comum;0.1;1;MATERIAIS_INGREDIENTES;Material básico de construção. Usos: Construção e ferramentas;COMUM
+358;Carvalho Élfico;5;1;MATERIAIS_INGREDIENTES;Madeira mágica resistente. Usos: Arcos e itens especiais;ATIPICO
+359;Ferro Sombrio;10;1;MATERIAIS_INGREDIENTES;Madeira corrompida por magia sombria. Usos: Itens mágicos negros;RARO
+360;Couro Comum;2;1;MATERIAIS_INGREDIENTES;Material de proteção básico. Usos: Armaduras e equipamentos;COMUM
+361;Couro de Dragão;100;1;MATERIAIS_INGREDIENTES;Material resistente de criatura mágica. Usos: Armaduras superiores;MUITO_RARO
+362;Pele de Demônio;200;1;MATERIAIS_INGREDIENTES;Material de criatura planária. Usos: Itens mágicos sombrios;LENDARIO
+363;MATERIAIS_INGREDIENTES Comum;10;1;MATERIAIS_INGREDIENTES;Material para focalização mágica. Usos: Conduítes mágicos;COMUM
+364;MATERIAIS_INGREDIENTES de Poder;100;1;MATERIAIS_INGREDIENTES;MATERIAIS_INGREDIENTES com energia mágica. Usos: Itens mágicos poderosos;RARO
+365;MATERIAIS_INGREDIENTES Planar;500;1;MATERIAIS_INGREDIENTES;MATERIAIS_INGREDIENTES de outros planos. Usos: Itens mágicos planários;MUITO_RARO
+366;Tecido Comum;1;0;MATERIAIS_INGREDIENTES;Material têxtil básico. Usos: Roupas e equipamentos;COMUM
+367;Seda Élfica;25;0;MATERIAIS_INGREDIENTES;Tecido mágico resistente. Usos: Roupas mágicas;ATIPICO
+368;Fio de Mithril;200;0;MATERIAIS_INGREDIENTES;Tecido metálico especial. Usos: Roupas encantadas;MUITO_RARO
+369;MATERIAIS_INGREDIENTES Comum;50;0;MATERIAIS_INGREDIENTES;Pedra preciosa básica. Usos: Joalheria e magia;ATIPICO
+370;MATERIAIS_INGREDIENTES de Poder;500;0;MATERIAIS_INGREDIENTES;MATERIAIS_INGREDIENTES carregada com energia. Usos: Itens mágicos;RARO

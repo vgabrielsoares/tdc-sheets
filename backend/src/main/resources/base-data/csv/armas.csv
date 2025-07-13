@@ -1,21 +1,21 @@
-id;nome;valor_po;peso;categoria;dano;critico;alcance;tipo_dano;descricao;raridade
-1;Adaga;2;1;ARMA_SIMPLES;1d4;19-20;Toque;PERFURACAO;Arma leve perfurante simples;COMUM
-2;Clava;0;2;ARMA_SIMPLES;1d6;20;Toque;CONTUSAO;Arma simples de madeira;COMUM
-3;Punhal;1;0;ARMA_SIMPLES;1d3;19-20;Toque;PERFURACAO;Arma muito pequena perfurante;COMUM
-4;Lança;2;3;ARMA_SIMPLES;1d8;20;2;PERFURACAO;Arma de haste longa;COMUM
-5;Espada Curta;10;2;ARMA_MARCIAL;1d6;19-20;Toque;CORTANTE;Espada de uma mão;COMUM
-6;Espada Longa;15;3;ARMA_MARCIAL;1d8;19-20;Toque;CORTANTE;Espada de uma mão versátil;COMUM
-7;Espada Grande;50;6;ARMA_MARCIAL;2d6;19-20;Toque;CORTANTE;Espada de duas mãos;COMUM
-8;Machado de Guerra;12;4;ARMA_MARCIAL;1d8;20;Toque;CORTANTE;Machado de uma mão;COMUM
-9;Machado Duplo;60;15;ARMA_MARCIAL;1d8;20;Toque;CORTANTE;Machado de duas mãos duplo;ATIPICO
-10;Martelo de Guerra;15;5;ARMA_MARCIAL;1d8;20;Toque;CONTUSAO;Martelo de combate;COMUM
-11;Maça Pesada;15;8;ARMA_MARCIAL;1d8;20;Toque;CONTUSAO;Maça de duas mãos;COMUM
-12;Florete;20;1;ARMA_MARCIAL;1d6;18-20;Toque;PERFURACAO;Espada de estocada elegante;ATIPICO
-13;Rapieira;20;2;ARMA_MARCIAL;1d6;18-20;Toque;PERFURACAO;Espada de duelo;ATIPICO
-14;Cimitarra;15;2;ARMA_MARCIAL;1d6;18-20;Toque;CORTANTE;Espada curva;ATIPICO
-15;Arco Curto;30;2;ARMA_DISTANCIA;1d6;20;15;PERFURACAO;Arco de madeira básico;COMUM
-16;Arco Longo;75;3;ARMA_DISTANCIA;1d8;20;20;PERFURACAO;Arco de guerra;COMUM
-17;Besta Leve;35;4;ARMA_DISTANCIA;1d8;19-20;16;PERFURACAO;Besta de uma mão;COMUM
-18;Besta Pesada;50;8;ARMA_DISTANCIA;1d10;19-20;24;PERFURACAO;Besta de duas mãos;COMUM
-19;Funda;0;0;ARMA_DISTANCIA;1d4;20;10;CONTUSAO;Arma de projetil simples;COMUM
-20;Dardo;0.5;0;ARMA_DISTANCIA;1d4;20;4;PERFURACAO;Projétil leve de arremesso;COMUM
+id;nome;valor_po;peso;tipo;descricao;raridade
+201;Adaga;2;1;ARMAS_SIMPLES;Arma leve perfurante simples;COMUM
+202;Clava;0;2;ARMAS_SIMPLES;Arma simples de madeira;COMUM
+203;Punhal;1;0;ARMAS_SIMPLES;Arma muito pequena perfurante;COMUM
+204;Lança;2;3;ARMAS_SIMPLES;Arma de haste longa;COMUM
+205;Espada Curta;10;2;ARMAS_MARCIAIS;Espada de uma mão;COMUM
+206;Espada Longa;15;3;ARMAS_MARCIAIS;Espada de uma mão versátil;COMUM
+207;Espada Grande;50;6;ARMAS_MARCIAIS;Espada de duas mãos;COMUM
+208;Machado de Guerra;12;4;ARMAS_MARCIAIS;Machado de uma mão;COMUM
+209;Machado Duplo;60;15;ARMAS_MARCIAIS;Machado de duas mãos duplo;ATIPICO
+210;Martelo de Guerra;15;5;ARMAS_MARCIAIS;Martelo de combate;COMUM
+211;Maça Pesada;15;8;ARMAS_MARCIAIS;Maça de duas mãos;COMUM
+212;Florete;20;1;ARMAS_MARCIAIS;Espada de estocada elegante;ATIPICO
+213;Rapieira;20;2;ARMAS_MARCIAIS;Espada de duelo;ATIPICO
+214;Cimitarra;15;2;ARMAS_MARCIAIS;Espada curva;ATIPICO
+215;Arco Curto;30;2;MUNICOES;Arco de madeira básico;COMUM
+216;Arco Longo;75;3;MUNICOES;Arco de guerra;COMUM
+217;Besta Leve;35;4;MUNICOES;Besta de uma mão;COMUM
+218;Besta Pesada;50;8;MUNICOES;Besta de duas mãos;COMUM
+219;Funda;0;0;MUNICOES;Arma de projetil simples;COMUM
+220;Dardo;0.5;0;MUNICOES;Projétil leve de arremesso;COMUM

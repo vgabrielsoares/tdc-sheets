@@ -1,16 +1,16 @@
-id;nome;valor_po;velocidade;capacidade;tipo;descricao;raridade
-1;Cavalo de Montaria;75;24;150;MONTARIA;Cavalo comum para transporte;COMUM
-2;Cavalo de Guerra;400;20;200;MONTARIA;Cavalo treinado para combate;ATIPICO
-3;Pônei;30;16;75;MONTARIA;Cavalo pequeno e resistente;COMUM
-4;Mula;8;12;130;MONTARIA;Animal de carga híbrido;COMUM
-5;Camelo;50;20;150;MONTARIA;Animal adaptado ao deserto;ATIPICO
-6;Bote a Remo;50;3;500;VEICULO_AQUATICO;Pequena embarcação manual;COMUM
-7;Canoa;30;2;300;VEICULO_AQUATICO;Embarcação leve de madeira;COMUM
-8;Barco de Pesca;3000;5;2000;VEICULO_AQUATICO;Embarcação para pesca;ATIPICO
-9;Navio Mercante;10000;8;50000;VEICULO_AQUATICO;Grande embarcação comercial;RARO
-10;Galera de Guerra;25000;6;30000;VEICULO_AQUATICO;Navio militar com remos;MUITO_RARO
-11;Carroça;15;4;1000;VEICULO_TERRESTRE;Veículo de tração animal;COMUM
-12;Carruagem;100;6;500;VEICULO_TERRESTRE;Veículo de passageiros;ATIPICO
-13;Trenó;20;6;300;VEICULO_TERRESTRE;Veículo para neve;COMUM
-14;Charrete;30;8;200;VEICULO_TERRESTRE;Veículo leve de duas rodas;COMUM
-15;Balão de Ar Quente;8000;12;1000;VEICULO_AEREO;Veículo aéreo com ar quente;MUITO_RARO
+id;nome;valor_po;peso;tipo;descricao;raridade
+401;Cavalo de Montaria;75;0;AVENTURA_EXPLORACAO_VIAGEM;Cavalo comum para transporte. Velocidade: 24, Capacidade: 150;COMUM
+402;Cavalo de Guerra;400;0;AVENTURA_EXPLORACAO_VIAGEM;Cavalo treinado para combate. Velocidade: 20, Capacidade: 200;ATIPICO
+403;Pônei;30;0;AVENTURA_EXPLORACAO_VIAGEM;Cavalo pequeno e resistente. Velocidade: 16, Capacidade: 75;COMUM
+404;Mula;8;0;AVENTURA_EXPLORACAO_VIAGEM;Animal de carga híbrido. Velocidade: 12, Capacidade: 130;COMUM
+405;Camelo;50;0;AVENTURA_EXPLORACAO_VIAGEM;Animal adaptado ao deserto. Velocidade: 20, Capacidade: 150;ATIPICO
+406;Bote a Remo;50;0;AVENTURA_EXPLORACAO_VIAGEM;Pequena embarcação manual. Velocidade: 3, Capacidade: 500;COMUM
+407;Canoa;30;0;AVENTURA_EXPLORACAO_VIAGEM;Embarcação leve de madeira. Velocidade: 2, Capacidade: 300;COMUM
+408;Barco de Pesca;3000;0;AVENTURA_EXPLORACAO_VIAGEM;Embarcação para pesca. Velocidade: 5, Capacidade: 2000;ATIPICO
+409;Navio Mercante;10000;0;AVENTURA_EXPLORACAO_VIAGEM;Grande embarcação comercial. Velocidade: 8, Capacidade: 50000;RARO
+410;Galera de Guerra;25000;0;AVENTURA_EXPLORACAO_VIAGEM;Navio militar com remos. Velocidade: 6, Capacidade: 30000;MUITO_RARO
+411;Carroça;15;0;AVENTURA_EXPLORACAO_VIAGEM;Veículo de tração animal. Velocidade: 4, Capacidade: 1000;COMUM
+412;Carruagem;100;0;AVENTURA_EXPLORACAO_VIAGEM;Veículo de passageiros. Velocidade: 6, Capacidade: 500;ATIPICO
+413;Trenó;20;0;AVENTURA_EXPLORACAO_VIAGEM;Veículo para neve. Velocidade: 6, Capacidade: 300;COMUM
+414;Charrete;30;0;AVENTURA_EXPLORACAO_VIAGEM;Veículo leve de duas rodas. Velocidade: 8, Capacidade: 200;COMUM
+415;Balão de Ar Quente;8000;0;AVENTURA_EXPLORACAO_VIAGEM;Veículo aéreo com ar quente. Velocidade: 12, Capacidade: 1000;MUITO_RARO

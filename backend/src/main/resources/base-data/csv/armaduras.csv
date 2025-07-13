@@ -1,16 +1,16 @@
-id;nome;valor_po;peso;ca_bonus;categoria;penalidade_armor;descricao;raridade
-1;Roupas Comuns;0.5;0;0;SEM_ARMADURA;0;Vestimentas normais sem proteção;COMUM
-2;Armadura de Couro;10;10;2;ARMADURA_LEVE;-1;Proteção básica de couro;COMUM
-3;Armadura de Couro Batido;25;15;3;ARMADURA_LEVE;-1;Couro reforçado com metal;COMUM
-4;Armadura de Estudos;25;15;3;ARMADURA_LEVE;-1;Couro com tachas metálicas;COMUM
-5;Camisão de Malha;150;25;4;ARMADURA_MEDIA;-2;Camisa de anéis de metal;COMUM
-6;Armadura de Escamas;50;30;4;ARMADURA_MEDIA;-3;Escamas de metal sobrepostas;COMUM
-7;Brunea;100;30;4;ARMADURA_MEDIA;-3;Armadura de anéis e couro;COMUM
-8;Cota de Malha;500;40;5;ARMADURA_MEDIA;-4;Camisa completa de anéis;COMUM
-9;Armadura Segmentada;1200;45;6;ARMADURA_PESADA;-5;Placas articuladas completas;ATIPICO
-10;Loriga Segmentada;1500;50;6;ARMADURA_PESADA;-5;Armadura de placas sobrepostas;ATIPICO
-11;Armadura de Placas;1500;50;8;ARMADURA_PESADA;-6;Armadura completa de placas;RARO
-12;Broquel;5;2;1;ESCUDO;-1;Escudo pequeno de mão;COMUM
-13;Escudo Leve;9;3;1;ESCUDO;-1;Escudo pequeno de braço;COMUM
-14;Escudo Pesado;20;7;2;ESCUDO;-2;Escudo grande de corpo;COMUM
-15;Escudo de Torre;30;22;3;ESCUDO;-5;Escudo gigante de proteção total;ATIPICO
+id;nome;valor_po;peso;categoria;descricao;raridade
+251;Roupas Comuns;0.5;0;VESTIMENTAS;Vestimentas normais sem proteção;COMUM
+252;Armadura de Couro;10;10;PROTECOES_LEVES;Proteção básica de couro;COMUM
+253;Armadura de Couro Batido;25;15;PROTECOES_LEVES;Couro reforçado com metal;COMUM
+254;Armadura de Estudos;25;15;PROTECOES_LEVES;Couro com tachas metálicas;COMUM
+255;Camisão de Malha;150;25;PROTECOES_MEDIAS;Camisa de anéis de metal;COMUM
+256;Armadura de Escamas;50;30;PROTECOES_MEDIAS;Escamas de metal sobrepostas;COMUM
+257;Brunea;100;30;PROTECOES_MEDIAS;Armadura de anéis e couro;COMUM
+258;Cota de Malha;500;40;PROTECOES_MEDIAS;Camisa completa de anéis;COMUM
+259;Armadura Segmentada;1200;45;PROTECOES_PESADAS;Placas articuladas completas;ATIPICO
+260;Loriga Segmentada;1500;50;PROTECOES_PESADAS;Armadura de placas sobrepostas;ATIPICO
+261;Armadura de Placas;1500;50;PROTECOES_PESADAS;Armadura completa de placas;RARO
+262;Broquel;5;2;ESCUDOS;Escudo pequeno de mão;COMUM
+263;Escudo Leve;9;3;ESCUDOS;Escudo pequeno de braço;COMUM
+264;Escudo Pesado;20;7;ESCUDOS;Escudo grande de corpo;COMUM
+265;Escudo de Torre;30;22;ESCUDOS;Escudo gigante de proteção total;ATIPICO

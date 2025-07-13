@@ -1,16 +1,16 @@
-id;nome;valor_po;raridade;descricao;efeitos;tipo
-1;Anel de Proteção;2000;RARO;Anel que oferece proteção mágica;+1 de bônus na Defesa e testes de resistência;ANEL
-2;Amuleto de Cura;1500;RARO;Amuleto que acelera recuperação;Cura +1 PV por hora de descanso;AMULETO
-3;Botas de Velocidade;4000;MUITO_RARO;Botas que aumentam velocidade;+3 metros de movimento por rodada;CALCADO
-4;Capa da Invisibilidade;8000;LENDARIO;Capa que torna usuário invisível;Invisibilidade por 10 minutos 1x por dia;VESTIMENTA
-5;Varinha de Mísseis Mágicos;2500;ATIPICO;Varinha que dispara dardos mágicos;3 cargas de Dardo Arcano por dia;VARINHA
-6;Pocao de Cura Superior;50;ATIPICO;Poção que cura ferimentos graves;Cura 4d4+4 PV instantaneamente;POCAO
-7;Pergaminho de Bola de Fogo;150;ATIPICO;Pergaminho com feitiço de fogo;Conjura Bola de Fogo de 3º círculo;PERGAMINHO
-8;Cristal de Luz Eterna;1000;RARO;Cristal que emite luz constante;Luz brilhante constante sem combustível;CRISTAL
-9;Bolsa de Manter;4000;MUITO_RARO;Bolsa dimensional extra;Pode carregar 500kg em espaço de 60kg;CONTAINER
-10;Espada Flamejante;8000;MUITO_RARO;Espada que se incendeia;+1d6 de dano de fogo em ataques;ARMA_MAGICA
-11;Escudo de Absorção;6000;RARO;Escudo que absorve energia mágica;Absorve 1 feitiço por dia até 3º círculo;ESCUDO_MAGICO
-12;Amuleto de Voo;10000;LENDARIO;Amuleto que permite voar;Voo por 1 hora 1x por dia;AMULETO
-13;Anel de Teleporte;15000;LENDARIO;Anel que permite teletransporte;Teleporte de longa distância 1x por dia;ANEL
-14;Manto da Resistência;3000;RARO;Manto que oferece resistência;Resistência a um tipo de dano à escolha;VESTIMENTA
-15;Orbe de Detecção;2000;ATIPICO;Orbe que detecta magia;Detecta magia num raio de 30 metros;ORBE
+id;nome;valor_po;peso;tipo;descricao;raridade
+301;Anel de Proteção;2000;0;FEITICARIA_OUTROS;Anel que oferece proteção mágica. +1 de bônus na Defesa e testes de resistência;RARO
+302;Amuleto de Cura;1500;0;FEITICARIA_OUTROS;Amuleto que acelera recuperação. Cura +1 PV por hora de descanso;RARO
+303;Botas de Velocidade;4000;0;FEITICARIA_OUTROS;Botas que aumentam velocidade. +3 metros de movimento por rodada;MUITO_RARO
+304;Capa da Invisibilidade;8000;0;FEITICARIA_OUTROS;Capa que torna usuário invisível. Invisibilidade por 10 minutos 1x por dia;LENDARIO
+305;Varinha de Mísseis Mágicos;2500;0;FEITICARIA_OUTROS;Varinha que dispara dardos mágicos. 3 cargas de Dardo Arcano por dia;ATIPICO
+306;Pocao de Cura Superior;50;0;FEITICARIA_OUTROS;Poção que cura ferimentos graves. Cura 4d4+4 PV instantaneamente;ATIPICO
+307;Pergaminho de Bola de Fogo;150;0;FEITICARIA_OUTROS;Pergaminho com feitiço de fogo. Conjura Bola de Fogo de 3º círculo;ATIPICO
+308;Cristal de Luz Eterna;1000;0;FEITICARIA_OUTROS;Cristal que emite luz constante. Luz brilhante constante sem combustível;RARO
+309;Bolsa de Manter;4000;0;FEITICARIA_OUTROS;Bolsa dimensional extra. Pode carregar 500kg em espaço de 60kg;MUITO_RARO
+310;Espada Flamejante;8000;0;FEITICARIA_OUTROS;Espada que se incendeia. +1d6 de dano de fogo em ataques;MUITO_RARO
+311;Escudo de Absorção;6000;0;FEITICARIA_OUTROS;Escudo que absorve energia mágica. Absorve 1 feitiço por dia até 3º círculo;RARO
+312;Amuleto de Voo;10000;0;FEITICARIA_OUTROS;Amuleto que permite voar. Voo por 1 hora 1x por dia;LENDARIO
+313;Anel de Teleporte;15000;0;FEITICARIA_OUTROS;Anel que permite teletransporte. Teleporte de longa distância 1x por dia;LENDARIO
+314;Manto da Resistência;3000;0;FEITICARIA_OUTROS;Manto que oferece resistência. Resistência a um tipo de dano à escolha;RARO
+315;Orbe de Detecção;2000;0;FEITICARIA_OUTROS;Orbe que detecta magia. Detecta magia num raio de 30 metros;ATIPICO
