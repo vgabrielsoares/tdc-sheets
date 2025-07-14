@@ -134,7 +134,7 @@ export const TIPOS_ALCANCE_LABELS: Record<TiposAlcance, string> = {
   CURTO: 'Curto',
   MÉDIO: 'Médio',
   LONGO: 'Longo',
-  MUITO_lONGO: 'Muito Longo',
+  MUITO_LONGO: 'Muito Longo',
   ILIMITADO: 'Ilimitado'
 }
 
