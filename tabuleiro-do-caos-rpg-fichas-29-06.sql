@@ -767,7 +767,7 @@ CREATE TABLE "particularidades_personagem" (
 
 CREATE TABLE "equipamentos" (
   "id" SERIAL PRIMARY KEY,
-  "nome" VARCHAR NOT NULL,
+  "nome" VARCHAR(255) NOT NULL,
   "raridade" raridades,
   "peso" INTEGER,
   "preco" VARCHAR,
