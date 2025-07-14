@@ -185,4 +185,170 @@
         </rollback>
     </changeSet>
 
+    <!-- 2.3 Dados de Ações e Combate -->
+    
+    <changeSet id="fake-data-009" author="Victor Gabriel" context="fake-data">
+        <comment>Carrega dados fake de ações de personagem</comment>
+        <loadData file="fake-data/csv/acoes_personagem.csv" tableName="acoes_personagem">
+            <column name="id" type="NUMERIC"/>
+            <column name="ficha_personagem_id" type="NUMERIC"/>
+            <column name="acao" type="STRING"/>
+            <column name="acao_disponivel" type="BOOLEAN"/>
+        </loadData>
+        <rollback>
+            <delete tableName="acoes_personagem"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="fake-data-010" author="Victor Gabriel" context="fake-data">
+        <comment>Carrega dados fake de arquetipos de personagem</comment>
+        <loadData file="fake-data/csv/arquetipos_personagem.csv" tableName="arquetipos_personagem">
+            <column name="id" type="NUMERIC"/>
+            <column name="ficha_personagem_id" type="NUMERIC"/>
+            <column name="arquetipo_id" type="NUMERIC"/>
+            <column name="nivel_arquetipo" type="NUMERIC"/>
+        </loadData>
+        <rollback>
+            <delete tableName="arquetipos_personagem"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="fake-data-011" author="Victor Gabriel" context="fake-data">
+        <comment>Carrega dados fake de ataques de personagem</comment>
+        <loadData file="fake-data/csv/ataques_personagem.csv" tableName="ataques_personagem">
+            <column name="id" type="NUMERIC"/>
+            <column name="ficha_personagem_id" type="NUMERIC"/>
+            <column name="nome" type="STRING"/>
+            <column name="atributo" type="STRING"/>
+            <column name="habilidade_id" type="NUMERIC"/>
+            <column name="alcance" type="STRING"/>
+            <column name="dado_bonus" type="NUMERIC"/>
+            <column name="mod_bonus" type="NUMERIC"/>
+            <column name="custo_pp" type="NUMERIC"/>
+            <column name="created_at" type="TIMESTAMP"/>
+            <column name="updated_at" type="TIMESTAMP"/>
+        </loadData>
+        <rollback>
+            <delete tableName="ataques_personagem"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="fake-data-012" author="Victor Gabriel" context="fake-data">
+        <comment>Carrega dados fake de carga de personagem</comment>
+        <loadData file="fake-data/csv/carga_personagem.csv" tableName="carga_personagem">
+            <column name="id" type="NUMERIC"/>
+            <column name="ficha_personagem_id" type="NUMERIC"/>
+            <column name="carga_atual" type="NUMERIC"/>
+            <column name="capacidade_carga" type="NUMERIC"/>
+            <column name="bonus_capacidade_carga" type="NUMERIC"/>
+        </loadData>
+        <rollback>
+            <delete tableName="carga_personagem"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="fake-data-013" author="Victor Gabriel" context="fake-data">
+        <comment>Carrega dados fake de classes de personagem</comment>
+        <loadData file="fake-data/csv/classes_personagem.csv" tableName="classes_personagem">
+            <column name="id" type="NUMERIC"/>
+            <column name="ficha_personagem_id" type="NUMERIC"/>
+            <column name="classe_id" type="NUMERIC"/>
+            <column name="nivel" type="NUMERIC"/>
+        </loadData>
+        <rollback>
+            <delete tableName="classes_personagem"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="fake-data-014" author="Victor Gabriel" context="fake-data">
+        <comment>Carrega dados fake de cunhagem de personagem</comment>
+        <loadData file="fake-data/csv/cunhagem_personagem.csv" tableName="cunhagem_personagem">
+            <column name="id" type="NUMERIC"/>
+            <column name="carga_personagem_id" type="NUMERIC"/>
+            <column name="c_fisico" type="NUMERIC"/>
+            <column name="po_fisico" type="NUMERIC"/>
+            <column name="pp_fisico" type="NUMERIC"/>
+            <column name="c_banco" type="NUMERIC"/>
+            <column name="po_banco" type="NUMERIC"/>
+            <column name="pp_banco" type="NUMERIC"/>
+        </loadData>
+        <rollback>
+            <delete tableName="cunhagem_personagem"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="fake-data-015" author="Victor Gabriel" context="fake-data">
+        <comment>Carrega dados fake de dano de ataque</comment>
+        <loadData file="fake-data/csv/dano_ataque.csv" tableName="dano_ataque">
+            <column name="id" type="NUMERIC"/>
+            <column name="ataque_personagem_id" type="NUMERIC"/>
+            <column name="dado" type="STRING"/>
+            <column name="mod" type="NUMERIC"/>
+            <column name="bonus" type="NUMERIC"/>
+            <column name="critico" type="STRING"/>
+        </loadData>
+        <rollback>
+            <delete tableName="dano_ataque"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="fake-data-016" author="Victor Gabriel" context="fake-data">
+        <comment>Carrega dados fake de defesa</comment>
+        <loadData file="fake-data/csv/defesa.csv" tableName="defesa">
+            <column name="id" type="NUMERIC"/>
+            <column name="ficha_personagem_id" type="NUMERIC"/>
+            <column name="defesa_personagem" type="NUMERIC"/>
+            <column name="armadura" type="NUMERIC"/>
+            <column name="vestindo_armadura" type="BOOLEAN"/>
+            <column name="limite_agilidade" type="NUMERIC"/>
+            <column name="outro_mod" type="NUMERIC"/>
+        </loadData>
+        <rollback>
+            <delete tableName="defesa"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="fake-data-017" author="Victor Gabriel" context="fake-data">
+        <comment>Carrega dados fake de inventário de personagem</comment>
+        <loadData file="fake-data/csv/inventario_personagem.csv" tableName="inventario_personagem">
+            <column name="id" type="NUMERIC"/>
+            <column name="carga_personagem_id" type="NUMERIC"/>
+            <column name="equipamento_id" type="NUMERIC"/>
+            <column name="item" type="STRING"/>
+            <column name="descricao_item" type="STRING"/>
+            <column name="quantidade_item" type="NUMERIC"/>
+            <column name="peso_item" type="NUMERIC"/>
+            <column name="created_at" type="TIMESTAMP"/>
+            <column name="updated_at" type="TIMESTAMP"/>
+        </loadData>
+        <rollback>
+            <delete tableName="inventario_personagem"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="fake-data-018" author="Victor Gabriel" context="fake-data">
+        <comment>Carrega dados fake de particularidades de personagem</comment>
+        <loadData file="fake-data/csv/particularidades_personagem.csv" tableName="particularidades_personagem">
+            <column name="id" type="NUMERIC"/>
+            <column name="ficha_personagem_id" type="NUMERIC"/>
+            <column name="particularidade_id" type="NUMERIC"/>
+        </loadData>
+        <rollback>
+            <delete tableName="particularidades_personagem"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="fake-data-019" author="Victor Gabriel" context="fake-data">
+        <comment>Carrega dados fake de proficiências de personagem</comment>
+        <loadData file="fake-data/csv/proficiencias_personagem.csv" tableName="proficiencias_personagem">
+            <column name="id" type="NUMERIC"/>
+            <column name="ficha_personagem_id" type="NUMERIC"/>
+            <column name="proficiencia" type="STRING"/>
+            <column name="proficiente" type="BOOLEAN"/>
+        </loadData>
+        <rollback>
+            <delete tableName="proficiencias_personagem"/>
+        </rollback>
+    </changeSet>
+
 </databaseChangeLog>
