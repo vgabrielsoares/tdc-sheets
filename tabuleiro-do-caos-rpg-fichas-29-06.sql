@@ -492,7 +492,7 @@ CREATE TABLE "caracteristicas_ancestralidade" (
 
 CREATE TABLE "tamanho" (
   "id" SERIAL PRIMARY KEY,
-  "nome" tipos_tamanho NOT NULL UNIQUE,
+  "nome" tipos_tamanho NOT NULL,
   "alcance" INTEGER,
   "dano" VARCHAR,
   "defesa" INTEGER,
