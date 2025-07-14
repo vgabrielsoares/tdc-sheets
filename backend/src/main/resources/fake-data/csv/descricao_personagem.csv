@@ -1,0 +1,16 @@
+id;ficha_personagem_id;genero;pronomes;idade;altura;peso;cabelos;olhos;pele;tracos_personalidade;historia;aparencia_outros
+1001;1001;Masculino;Ele/Dele;85 anos;1.45m;85kg;Castanho com mechas grisalhas;Azul acinzentado;Bronzeada com cicatrizes;Determinado leal teimoso;Deixou as montanhas anãs após desentendimento familiar;Anão robusto com barba trançada e armadura pesada
+1002;1002;Feminino;Ela/Dela;180 anos;1.75m;60kg;Loiro platinado;Verde esmeralda;Pálida;Serena observadora protetora;Guardiã das florestas antigas contra invasores;Elfa alta e graciosa com arco élfico ancestral
+1003;1003;Masculino;Ele/Dele;28 anos;1.80m;78kg;Castanho escuro;Castanho;Morena;Justo corajoso inflexível;Órfão criado por clérigos jurou proteger inocentes;Humano atlético com armadura reluzente e símbolo sagrado
+1004;1004;Feminino;Ela/Dela;35 anos;1.10m;35kg;Castanho cacheado;Castanho escuro;Morena clara;Astuta curiosa independente;Cresceu nas ruas mestre em sobrevivência urbana;Halfling ágil com roupas escuras e múltiplas adagas
+1005;1005;Masculino;Ele/Dele;120 anos;1.50m;90kg;Branco como neve;Azul claro;Bronzeada;Sábio paciente protetor;Clérigo ancião guardião de conhecimentos sagrados;Anão venerável com barba branca e bastão ornamentado
+1006;1006;Feminino;Ela/Dela;24 anos;1.65m;55kg;Ruivo flamejante;Verde;Clara com sardas;Intensa estudiosa determinada;Maga prodígio buscando dominar magia elemental;Humana jovem com túnicas bordadas e cajado cristalino
+1007;1007;Masculino;Ele/Dele;250 anos;1.78m;70kg;Negro longo;Cinza prateado;Pálida;Solitário vigilante leal;Ranger das fronteiras protetor silencioso;Elfo magro com capa verde e arco longo
+1008;1008;Feminino;Ela/Dela;45 anos;1.40m;75kg;Ruivo selvagem;Verde intenso;Bronzeada;Explosiva honrada impulsiva;Guerreira bárbara em busca de relíquias familiares;Anã musculosa com tatuagens tribais e machado duplo
+1009;1009;Masculino;Ele/Dele;26 anos;1.75m;70kg;Castanho ondulado;Azul;Clara;Carismático curioso eloquente;Bardo viajante colecionador de histórias;Humano atraente com roupas coloridas e alaúde
+1010;1010;Feminino;Ela/Dela;65 anos;1.05m;30kg;Castanho com flores;Verde musgo;Levemente esverdeada;Conectada sábia selvagem;Druida gnoma em harmonia profunda com a natureza;Gnoma pequena com roupas de folhas e bastão de madeira viva
+1011;1011;Masculino;Ele/Dele;32 anos;1.82m;75kg;Negro;Violeta;Pálida;Conflituoso poderoso atormentado;Warlock que luta contra sua própria natureza sombria;Humano alto com marcas místicas e vestes escuras
+1012;1012;Feminino;Ela/Dela;200 anos;1.70m;58kg;Prateado;Azul gélido;Pálida como porcelana;Etérea poderosa misteriosa;Feiticeira élfica de linhagem mágica ancestral;Elfa elegante com aura mágica visível e vestes esvoaçantes
+1013;1013;Masculino;Ele/Dele;95 anos;1.48m;95kg;Castanho com mechas grisalhas;Marrom;Bronzeada com cicatrizes;Protetor teimoso leal;Tank anão que nunca abandonou um companheiro;Anão massivo com escudo torre e armadura completa
+1014;1014;Não-binário;Elu/Delu;28 anos;1.12m;38kg;Negro curto;Cinza;Morena;Misteriosa letal silenciosa;Assassina halfling de identidade oculta;Halfling enigmática com roupas escuras e rosto sempre coberto
+1015;1015;Masculino;Ele/Dele;30 anos;1.73m;68kg;Castanho;Castanho;Clara;Inventivo curioso excêntrico;Artífice humano criador de engenhocas mágicas;Humano magro com óculos avental e ferramentas mágicas
