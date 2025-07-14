@@ -13,5 +13,6 @@
     <include file="006-sistema-rpg-changelog.xml" relativeToChangelogFile="true"/>
     <include file="007-foreign-keys-changelog.xml" relativeToChangelogFile="true"/>
     <include file="008-data-loading-changelog.xml" relativeToChangelogFile="true"/>
+    <include file="009-fake-data-loading-changelog.xml" relativeToChangelogFile="true"/>
     
 </databaseChangeLog>
