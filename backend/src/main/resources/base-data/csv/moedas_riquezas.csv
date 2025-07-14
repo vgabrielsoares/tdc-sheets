@@ -1,0 +1,77 @@
+id;nome;valor_po;peso;tipo;descricao;raridade
+1;Chama de Cobre;0.01;0;PEDRAS_PRECIOSAS;Moeda mais barata usada em transações menores e mundanas;COMUM
+2;Íris de Ouro;1;0;PEDRAS_PRECIOSAS;Moeda usada em transações maiores de itens mais caros;COMUM
+3;Estrela de Platina;1000;0;PEDRAS_PRECIOSAS;Moeda usada em transações muito altas extremamente rara;MUITO_RARO
+4;Lingote de Ouro Puro;50;1;MERCADORIAS_METAIS;Base para cunhagem de moedas de ouro;RARO
+5;Lingote de Prata Pura;10;1;MERCADORIAS_METAIS;Usado em moedas menores e objetos de prata;ATIPICO
+6;Platina Bruta;100;1;MERCADORIAS_METAIS;Metal mais valioso usado em itens de luxo;MUITO_RARO
+7;Carta de Crédito Bancária;100;0;UTILITARIOS;Documento que representa valor monetário variável;ATIPICO
+8;Escritura de Propriedade;250;0;UTILITARIOS;Documento que comprova posse de terrenos e imóveis;RARO
+9;Patente de Nobreza;1500;0;UTILITARIOS;Títulos aristocráticos e reconhecimento social;MUITO_RARO
+10;Especiarias Exóticas;15;0;MERCADORIAS_PROVISOES;Especiarias raras e valiosas por frasco;ATIPICO
+11;Seda Pura;10;0;MERCADORIAS_PROVISOES;Tecido de alta qualidade por metro;RARO
+12;Incenso Sagrado;15;0;MERCADORIAS_PROVISOES;Incenso especial usado em rituais religiosos;RARO
+13;Óleo de Baleia;8;1;MERCADORIAS_PROVISOES;Óleo especial para lamparinas de alta qualidade;ATIPICO
+14;Relógio Mecânico;200;1;INSTRUMENTOS_MUSICAIS;Instrumento de precisão temporal muito raro;MUITO_RARO
+15;Lupa de Qualidade;50;0;INSTRUMENTOS_MUSICAIS;Instrumento óptico para estudos detalhados;RARO
+16;Bússola Mágica;150;0;INSTRUMENTOS_MUSICAIS;Instrumento de navegação com propriedades mágicas;MUITO_RARO
+17;Ágata Bandada;10;0;PEDRAS_PRECIOSAS;Pedra preciosa comum com padrões listrados;COMUM
+18;Ágata Musgosa;10;0;PEDRAS_PRECIOSAS;Pedra preciosa comum com inclusões verdes;COMUM
+19;Ágata Olho;10;0;PEDRAS_PRECIOSAS;Pedra preciosa comum com padrão circular;COMUM
+20;Azurita;10;0;PEDRAS_PRECIOSAS;Pedra preciosa azul comum de cor intensa;COMUM
+21;Calcedônia;50;0;PEDRAS_PRECIOSAS;Pedra preciosa comum translúcida;COMUM
+22;Citrina;50;0;PEDRAS_PRECIOSAS;Quartzo amarelo dourado comum;COMUM
+23;Cornalina;50;0;PEDRAS_PRECIOSAS;Pedra preciosa comum de cor laranja-avermelhada;COMUM
+24;Crisoprásio;50;0;PEDRAS_PRECIOSAS;Pedra preciosa comum verde maçã;COMUM
+25;Heliotrópio;50;0;PEDRAS_PRECIOSAS;Pedra preciosa comum verde com pontos vermelhos;COMUM
+26;Hematita;10;0;PEDRAS_PRECIOSAS;Pedra preciosa comum metálica escura;COMUM
+27;Jaspe;50;0;PEDRAS_PRECIOSAS;Pedra preciosa comum opaca colorida;COMUM
+28;Lápis Lazúli;10;0;PEDRAS_PRECIOSAS;Pedra preciosa azul profundo com veios dourados;COMUM
+29;Malaquita;10;0;PEDRAS_PRECIOSAS;Pedra preciosa verde com padrões circulares;COMUM
+30;Obsidiana;10;0;PEDRAS_PRECIOSAS;Vidro vulcânico negro natural;COMUM
+31;Olho de Tigre;10;0;PEDRAS_PRECIOSAS;Pedra preciosa dourada com brilho sedoso;COMUM
+32;Ônix;50;0;PEDRAS_PRECIOSAS;Pedra preciosa negra comum;COMUM
+33;Pedra-da-Lua;50;0;PEDRAS_PRECIOSAS;Pedra preciosa com brilho lunar;COMUM
+34;Quartzo;50;0;PEDRAS_PRECIOSAS;Cristal transparente comum;COMUM
+35;Quartzo Azul;10;0;PEDRAS_PRECIOSAS;Quartzo de cor azul comum;COMUM
+36;Quartzo-Rosa-Estrela;50;0;PEDRAS_PRECIOSAS;Quartzo rosa com efeito estrela;COMUM
+37;Rodocrosita;10;0;PEDRAS_PRECIOSAS;Pedra preciosa rosa com listras;COMUM
+38;Sardônica;50;0;PEDRAS_PRECIOSAS;Pedra preciosa listrada comum;COMUM
+39;Turquesa;10;0;PEDRAS_PRECIOSAS;Pedra preciosa azul-verde comum;COMUM
+40;Zircão;50;0;PEDRAS_PRECIOSAS;Pedra preciosa brilhante comum;COMUM
+41;Âmbar;100;0;PEDRAS_PRECIOSAS;Resina fossilizada atípica;ATIPICO
+42;Ametista;100;0;PEDRAS_PRECIOSAS;Quartzo violeta atípico;ATIPICO
+43;Coral;100;0;PEDRAS_PRECIOSAS;Estrutura calcária marinha atípica;ATIPICO
+44;Crisoberilo;100;0;PEDRAS_PRECIOSAS;Pedra preciosa amarelo-dourada atípica;ATIPICO
+45;Espinélio;100;0;PEDRAS_PRECIOSAS;Pedra preciosa colorida atípica;ATIPICO
+46;Granada;100;0;PEDRAS_PRECIOSAS;Pedra preciosa vermelha atípica;ATIPICO
+47;Jade;100;0;PEDRAS_PRECIOSAS;Pedra preciosa verde atípica;ATIPICO
+48;Jet;100;0;PEDRAS_PRECIOSAS;Carvão fóssil negro atípico;ATIPICO
+49;Pérola;100;0;PEDRAS_PRECIOSAS;Gema orgânica marinha atípica;ATIPICO
+50;Turmalina;100;0;PEDRAS_PRECIOSAS;Pedra preciosa multicolorida atípica;ATIPICO
+51;Água-Marinha;250;0;PEDRAS_PRECIOSAS;Berilo azul-claro raro;RARO
+52;Alexandrita;250;0;PEDRAS_PRECIOSAS;Pedra que muda de cor rara;RARO
+53;Espinélio Azul;250;0;PEDRAS_PRECIOSAS;Espinélio de cor azul raro;RARO
+54;Esmeralda;500;0;PEDRAS_PRECIOSAS;Berilo verde raro;RARO
+55;Opala;500;0;PEDRAS_PRECIOSAS;Pedra com jogo de cores rara;RARO
+56;Opala de Fogo;500;0;PEDRAS_PRECIOSAS;Opala laranja-vermelha rara;RARO
+57;Opala Negra;500;0;PEDRAS_PRECIOSAS;Opala escura com cores rara;RARO
+58;Peridoto;250;0;PEDRAS_PRECIOSAS;Olivina verde rara;RARO
+59;Pérola Negra;250;0;PEDRAS_PRECIOSAS;Pérola escura rara;RARO
+60;Rubi-Estrela;500;0;PEDRAS_PRECIOSAS;Rubi com efeito estrela raro;RARO
+61;Safira Amarela;500;0;PEDRAS_PRECIOSAS;Coríndon amarelo raro;RARO
+62;Safira Azul;500;0;PEDRAS_PRECIOSAS;Coríndon azul raro;RARO
+63;Safira-Estrela;500;0;PEDRAS_PRECIOSAS;Safira com efeito estrela rara;RARO
+64;Topázio;250;0;PEDRAS_PRECIOSAS;Pedra preciosa cristalina rara;RARO
+65;Diamante;1000;0;PEDRAS_PRECIOSAS;Carbono cristalizado muito raro;MUITO_RARO
+66;Jacinto;1000;0;PEDRAS_PRECIOSAS;Zircão vermelho muito raro;MUITO_RARO
+67;Rubi;1000;0;PEDRAS_PRECIOSAS;Coríndon vermelho muito raro;MUITO_RARO
+68;Safira Negra;1000;0;PEDRAS_PRECIOSAS;Coríndon escuro muito raro;MUITO_RARO
+69;Anel de Ouro com Turquesa;10;0;OBRAS_ARTES;Joia simples com pedra comum;COMUM
+70;Bracelete de Ouro;10;0;OBRAS_ARTES;Joia simples de ouro;COMUM
+71;Cálice de Cobre Prateado;10;0;OBRAS_ARTES;Recipiente decorativo comum;COMUM
+72;Espelho Pequeno Moldura Pintada;10;0;OBRAS_ARTES;Espelho decorativo comum;COMUM
+73;Estatueta de Jade;10;0;OBRAS_ARTES;Pequena escultura em jade;COMUM
+74;Adaga Cerimonial de Ouro;100;1;OBRAS_ARTES;Arma decorativa atípica dourada;ATIPICO
+75;Adaga Cerimonial de Prata;50;1;OBRAS_ARTES;Arma decorativa atípica prateada;ATIPICO
+76;Alaúde Madeira Exótica;100;2;OBRAS_ARTES;Instrumento musical fino atípico;ATIPICO

@@ -1,0 +1,198 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- ============================================ -->
+    <!-- SISTEMA DE LINHAGEM E ORIGEM DE PERSONAGENS -->
+    <!-- ============================================ -->
+    <!--
+        Este changelog contém:
+        - Sistema de linhagens/raças (linhagem, deslocamento_linhagem, idiomas_linhagem, sentidos_linhagem)
+        - Sistema de origens/backgrounds (origem, itens_origem, habilidades_origem, origem_custom)
+        - Sistema de tamanhos (tamanho)
+        - Características ancestrais (caracteristicas_ancestralidade)
+    -->
+
+    <!-- TABELAS BASE - LINHAGEM -->
+    
+    <changeSet author="Victor Gabriel" id="linhagem-001-table-linhagem">
+        <createTable tableName="linhagem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="linhagem_pkey"/>
+            </column>
+            <column name="nome" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tamanho" type="TIPOS_TAMANHO"/>
+            <column name="altura_media" type="VARCHAR"/>
+            <column name="peso_medio" type="VARCHAR"/>
+            <column name="maioridade" type="VARCHAR"/>
+            <column name="expectativa_vida" type="VARCHAR"/>
+            <column name="descricao" type="TEXT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="linhagem-002-table-deslocamento-linhagem">
+        <createTable tableName="deslocamento_linhagem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="deslocamento_linhagem_pkey"/>
+            </column>
+            <column name="linhagem_id" type="INTEGER"/>
+            <column name="deslocamento" type="TIPOS_DESLOCAMENTO"/>
+            <column name="valor" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="linhagem-003-table-idiomas-linhagem">
+        <createTable tableName="idiomas_linhagem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="idiomas_linhagem_pkey"/>
+            </column>
+            <column name="linhagem_id" type="INTEGER"/>
+            <column name="idioma" type="IDIOMAS"/>
+            <column name="alfabeto" type="ALFABETOS"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="linhagem-004-table-sentidos-linhagem">
+        <createTable tableName="sentidos_linhagem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="sentidos_linhagem_pkey"/>
+            </column>
+            <column name="linhagem_id" type="INTEGER"/>
+            <column name="audicao" type="TIPOS_SENTIDOS">
+                <constraints nullable="false"/>
+            </column>
+            <column name="olfato" type="TIPOS_SENTIDOS">
+                <constraints nullable="false"/>
+            </column>
+            <column name="visao" type="TIPOS_SENTIDOS">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- TABELAS BASE - ORIGEM -->
+
+    <changeSet author="Victor Gabriel" id="origem-001-table-origem">
+        <createTable tableName="origem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="origem_pkey"/>
+            </column>
+            <column name="nome" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="descricao" type="TEXT"/>
+            <column name="habilidade_especial" type="TEXT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="origem-002-table-itens-origem">
+        <createTable tableName="itens_origem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="itens_origem_pkey"/>
+            </column>
+            <column name="origem_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="equipamento_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="quantidade" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="origem-003-table-habilidades-origem">
+        <createTable tableName="habilidades_origem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="habilidades_origem_pkey"/>
+            </column>
+            <column name="origem_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="habilidade_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fixa" type="BOOLEAN"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="origem-004-table-origem-custom">
+        <createTable tableName="origem_custom">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="origem_custom_pkey"/>
+            </column>
+            <column name="ficha_personagem_id" type="INTEGER"/>
+            <column name="nome" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="descricao" type="TEXT"/>
+            <column name="habilidade_especial" type="TEXT"/>
+        </createTable>
+    </changeSet>
+
+    <!-- TABELA DE TAMANHOS -->
+
+    <changeSet author="Victor Gabriel" id="tamanho-001-table-tamanho">
+        <createTable tableName="tamanho">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="tamanho_pkey"/>
+            </column>
+            <column name="nome" type="TIPOS_TAMANHO">
+                <constraints nullable="false"/>
+            </column>
+            <column name="alcance" type="INTEGER"/>
+            <column name="dano" type="VARCHAR"/>
+            <column name="defesa" type="INTEGER"/>
+            <column name="quadrados" type="numeric"/>
+            <column name="peso_carregado" type="INTEGER"/>
+            <column name="manobras" type="INTEGER"/>
+            <column name="nd_rastro" type="INTEGER"/>
+            <column name="acrobacia" type="INTEGER"/>
+            <column name="atletismo" type="INTEGER"/>
+            <column name="furtividade" type="INTEGER"/>
+            <column name="reflexos" type="INTEGER"/>
+            <column name="tenacidade" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+
+    <!-- TABELA DE CARACTERÍSTICAS ANCESTRAIS -->
+
+    <changeSet author="Victor Gabriel" id="ancestralidade-001-table-caracteristicas-ancestralidade">
+        <createTable tableName="caracteristicas_ancestralidade">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="caracteristicas_ancestralidade_pkey"/>
+            </column>
+            <column name="linhagem_id" type="INTEGER"/>
+            <column name="nome" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="descricao" type="TEXT"/>
+            <column name="fixa" type="BOOLEAN"/>
+        </createTable>
+    </changeSet>
+
+    <!-- ÍNDICES -->
+
+    <changeSet author="Victor Gabriel" id="linhagem-005-index-linhagem-nome">
+        <createIndex indexName="idx_linhagem_nome" tableName="linhagem">
+            <column name="nome"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="origem-005-index-origem-nome">
+        <createIndex indexName="idx_origem_nome" tableName="origem">
+            <column name="nome"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="tamanho-002-unique-tamanho-nome">
+        <addUniqueConstraint columnNames="nome" constraintName="tamanho_nome_key" tableName="tamanho"/>
+    </changeSet>
+
+    <!-- FOREIGN KEYS - Referencias para outras tabelas serão adicionadas nos changelogs específicos -->
+
+</databaseChangeLog>

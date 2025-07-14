@@ -49,21 +49,24 @@ public interface UserRepository extends BaseRepository<User, Long> {
     
     /**
      * Busca usuários por nome completo (case insensitive)
+     * FIXED: Changed fullName to nomeCompleto and removed isActive condition
      */
-    @Query("SELECT u FROM User u WHERE LOWER(u.fullName) LIKE LOWER(CONCAT('%', :name, '%')) AND u.isActive = true")
+    @Query("SELECT u FROM User u WHERE LOWER(u.nomeCompleto) LIKE LOWER(CONCAT('%', :name, '%'))")
     List<User> findByFullNameContainingIgnoreCase(@Param("name") String name);
     
     /**
      * Busca usuários por nome completo com paginação
+     * FIXED: Changed fullName to nomeCompleto and removed isActive condition
      */
-    @Query("SELECT u FROM User u WHERE LOWER(u.fullName) LIKE LOWER(CONCAT('%', :name, '%')) AND u.isActive = true")
+    @Query("SELECT u FROM User u WHERE LOWER(u.nomeCompleto) LIKE LOWER(CONCAT('%', :name, '%'))")
     Page<User> findByFullNameContainingIgnoreCase(@Param("name") String name, Pageable pageable);
     
     /**
      * Busca usuários online (último acesso dentro de um período)
+     * TODO: Adicionar campo lastLoginAt à entidade User e banco de dados
      */
-    @Query("SELECT u FROM User u WHERE u.lastLoginAt >= :since AND u.isActive = true")
-    List<User> findUsersOnlineSince(@Param("since") LocalDateTime since);
+    // @Query("SELECT u FROM User u WHERE u.lastLoginAt >= :since AND u.isActive = true")
+    // List<User> findUsersOnlineSince(@Param("since") LocalDateTime since);
     
     /**
      * Busca usuários com authority específica
@@ -78,20 +81,21 @@ public interface UserRepository extends BaseRepository<User, Long> {
     List<User> findAdmins();
     
     /**
-     * Busca usuários por filtro textual (busca em username, email, fullName)
+     * Busca usuários por filtro textual (busca em username, email, nomeCompleto)
      */
     @Query("SELECT u FROM User u WHERE " +
            "(LOWER(u.username) LIKE LOWER(CONCAT('%', :filter, '%')) OR " +
            "LOWER(u.email) LIKE LOWER(CONCAT('%', :filter, '%')) OR " +
-           "LOWER(u.fullName) LIKE LOWER(CONCAT('%', :filter, '%'))) " +
+           "LOWER(u.nomeCompleto) LIKE LOWER(CONCAT('%', :filter, '%'))) " +
            "AND u.isActive = true")
     Page<User> findByTextFilter(@Param("filter") String filter, Pageable pageable);
     
     /**
      * Busca usuários ordenados por último login
+     * TODO: Adicionar campo lastLoginAt à entidade User e banco de dados
      */
-    @Query("SELECT u FROM User u WHERE u.isActive = true ORDER BY u.lastLoginAt DESC NULLS LAST")
-    List<User> findAllOrderByLastLogin();
+    // @Query("SELECT u FROM User u WHERE u.isActive = true ORDER BY u.lastLoginAt DESC NULLS LAST")
+    // List<User> findAllOrderByLastLogin();
     
     /**
      * Busca usuários por data de criação
@@ -105,27 +109,33 @@ public interface UserRepository extends BaseRepository<User, Long> {
     @Query("SELECT COUNT(u) FROM User u WHERE u.isActive = true")
     long countActiveUsers();
     
-    @Query("SELECT COUNT(u) FROM User u WHERE u.lastLoginAt >= :since AND u.isActive = true")
-    long countUsersLoggedInSince(@Param("since") LocalDateTime since);
-    
     @Query("SELECT COUNT(u) FROM User u WHERE u.createdAt >= :since AND u.isActive = true")
     long countUsersCreatedSince(@Param("since") LocalDateTime since);
     
     /**
-     * Busca usuários por avatar não nulo
+     * TODO: Adicionar campo lastLoginAt à entidade User e banco de dados
      */
-    @Query("SELECT u FROM User u WHERE u.avatarUrl IS NOT NULL AND u.isActive = true")
-    List<User> findUsersWithAvatar();
+    // @Query("SELECT COUNT(u) FROM User u WHERE u.lastLoginAt >= :since AND u.isActive = true")
+    // long countUsersLoggedInSince(@Param("since") LocalDateTime since);
+    
+    /**
+     * Busca usuários por avatar não nulo
+     * TODO: Adicionar campo avatarUrl à entidade User e banco de dados
+     */
+    // @Query("SELECT u FROM User u WHERE u.avatarUrl IS NOT NULL AND u.isActive = true")
+    // List<User> findUsersWithAvatar();
     
     /**
      * Busca usuários que nunca fizeram login
+     * TODO: Adicionar campo lastLoginAt à entidade User e banco de dados
      */
-    @Query("SELECT u FROM User u WHERE u.lastLoginAt IS NULL AND u.isActive = true")
-    List<User> findUsersNeverLoggedIn();
+    // @Query("SELECT u FROM User u WHERE u.lastLoginAt IS NULL AND u.isActive = true")
+    // List<User> findUsersNeverLoggedIn();
     
     /**
      * Busca usuários inativos há mais de X dias
+     * TODO: Adicionar campo lastLoginAt à entidade User e banco de dados
      */
-    @Query("SELECT u FROM User u WHERE u.lastLoginAt < :threshold AND u.isActive = true")
-    List<User> findInactiveUsersSince(@Param("threshold") LocalDateTime threshold);
+    // @Query("SELECT u FROM User u WHERE u.lastLoginAt < :threshold AND u.isActive = true")
+    // List<User> findInactiveUsersSince(@Param("threshold") LocalDateTime threshold);
 }

@@ -40,7 +40,7 @@ spring:
         
   # Configuração de produção do Liquibase
   liquibase:
-    contexts: prod
+    contexts: base-data
     
   # Cache habilitado em produção
   cache:

@@ -1,0 +1,30 @@
+id;nome;descricao;habilidade_especial
+1;Amigo dos Animais;Sente afinidade com animais e tem experiência em lidar com eles;Aumigo - Querido pelos animais com bônus de +5 em Adestramento e aliado animal
+2;Aristocrata;Considerado aristocrata por sangue nobre ou grande influência política;Sangue Azul - Rendimento de 5 PO por semana e bônus de +5 em situações sociais importantes
+3;Artista;Artista dedicado em várias formas de arte como música ou pintura;Magnum Opus - Pode gastar PP para receber +10 em testes de Arte ou Performance
+4;Atirador;Atirador nato com precisão fora do comum;Na Mosca - +2 bônus em ataques à distância e pode gastar 2 PP para +5 dano
+5;Atleta;Corpo de máquina com físico impecável e maestria em esportes;Físico Impecável - Pode gastar 2 PP para +5 em testes físicos e move 1m adicional
+6;Batedor;Especialista em reconhecimento e vigilância;Percepção de Lince - Habilidades aprimoradas de percepção e rastreamento
+7;Caçador;Especialista em caçar animais e sobrevivência selvagem;De Olho na Caça - Habilidades especializadas em rastreamento e caça
+8;Capanga;Intimidador profissional e executor de trabalhos pesados;Sorriso de Crocodilo - Especialista em intimidação e combate urbano
+9;Circense;Artista de circo especializado em acrobacias e performance;Truques na Corda Bamba - Habilidades acrobáticas e de entretenimento aprimoradas
+10;Cozinheiro;Especialista culinário com conhecimento de ingredientes;Preparar Talheres - Habilidades culinárias e conhecimento de ingredientes especiais
+11;Criminoso;Envolvido em atividades ilegais e submundo urbano;Malandragem - Habilidades de furto e navegação no submundo
+12;Curandeiro;Especialista em medicina e cura de ferimentos;Ambulância - Habilidades médicas aprimoradas e conhecimento de cura
+13;Escravo;Experiência de servidão que gerou resistência física e mental;Corcel Indomável - Resistência aprimorada e determinação inabalável
+14;Fazendeiro;Trabalhador rural com conhecimento de agricultura e animais;Filho da Terra - Conhecimento agrícola e conexão com a natureza
+15;Gladiador;Lutador de arena com experiência em combate público;O Show Não Pode Parar - Habilidades de combate e performance combinadas
+16;Guarda;Aplicador da lei com experiência em manter ordem;Ei Você Parado Aí - Habilidades de investigação e aplicação da lei
+17;Herói do Povo;Figura popular conhecida por atos heroicos;Um Por Todos - Habilidades de liderança e inspiração popular
+18;Letrado;Estudioso dedicado ao conhecimento e pesquisa;Nerd dos Livros - Conhecimento acadêmico amplo e habilidades de pesquisa
+19;Lutador;Combatente especializado em luta corporal;Espírito de Luta - Habilidades de combate corporal aprimoradas
+20;Marujo;Marinheiro experiente em navegação e vida marítima;Içar Velas - Habilidades náuticas e resistência marítima
+21;Minerador;Trabalhador de minas com resistência física excepcional;Senhor dos Túneis - Conhecimento de mineração e resistência subterrânea
+22;Negociante;Comerciante hábil em negociação e vendas;Quem Não Chora - Habilidades comerciais e de negociação aprimoradas
+23;Nômade;Viajante constante adaptado à vida em movimento;E O Vento Levou - Habilidades de sobrevivência e navegação natural
+24;Religioso;Devotado a práticas religiosas e estudos espirituais;Se Deus Quiser - Conhecimento religioso e conexão espiritual
+25;Selvagem;Criado na natureza selvagem longe da civilização;Cria da Natureza - Instintos selvagens e sobrevivência natural aprimorada
+26;Soldado;Veterano militar com experiência em combate organizado;Sentido - Disciplina militar e táticas de combate
+27;Trabalhador;Trabalhador especializado em ofício específico;Manu Factum - Expertise em ofício escolhido e habilidades práticas
+28;Trambiqueiro;Especialista em golpes e esquemas urbanos;Falácia Eu - Habilidades de enganação e esquemas urbanos
+29;Origem Customizável;Origem personalizada definida pelo jogador;Especialidade - Habilidade especial customizada definida com o narrador

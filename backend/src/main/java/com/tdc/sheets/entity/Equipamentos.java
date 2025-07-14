@@ -16,6 +16,9 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class Equipamentos extends BaseEntity {
     
+    @Column(name = "nome", nullable = false)
+    private String nome;
+    
     @Enumerated(EnumType.STRING)
     @Column(name = "raridade")
     private Raridades raridade;

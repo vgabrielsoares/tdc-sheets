@@ -86,13 +86,7 @@ public class FichaPersonagem extends AuditableEntity {
     private AcoesPersonagem acoes;
 
     @OneToOne(mappedBy = "fichaPersonagem", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-    private InventarioPersonagem inventario;
-
-    @OneToOne(mappedBy = "fichaPersonagem", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private CargaPersonagem carga;
-
-    @OneToOne(mappedBy = "fichaPersonagem", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-    private CunhagemPersonagem cunhagem;
 
     @OneToOne(mappedBy = "fichaPersonagem", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private DescricaoPersonagem descricao;
@@ -124,6 +118,9 @@ public class FichaPersonagem extends AuditableEntity {
 
     @OneToMany(mappedBy = "fichaPersonagem", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<ParticularidadesPersonagem> particularidades = new ArrayList<>();
+
+    @OneToMany(mappedBy = "fichaPersonagem", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    private List<CompartilhamentoFicha> compartilhamentos = new ArrayList<>();
 
     // Constructors
     public FichaPersonagem() {}
@@ -262,6 +259,14 @@ public class FichaPersonagem extends AuditableEntity {
 
     public void setFeiticos(List<FeiticosPersonagem> feiticos) {
         this.feiticos = feiticos;
+    }
+
+    public List<CompartilhamentoFicha> getCompartilhamentos() {
+        return compartilhamentos;
+    }
+
+    public void setCompartilhamentos(List<CompartilhamentoFicha> compartilhamentos) {
+        this.compartilhamentos = compartilhamentos;
     }
 
     // Helper methods

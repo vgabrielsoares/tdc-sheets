@@ -1,6 +1,6 @@
 package com.tdc.sheets.config;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
@@ -15,6 +15,7 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -24,22 +25,56 @@ import java.util.List;
  * @since 2025-06-28
  */
 @Configuration
+@ConfigurationProperties(prefix = "app.cors")
 public class WebConfig implements WebMvcConfigurer {
 
-    @Value("${app.cors.allowed-origins}")
-    private List<String> allowedOrigins;
-
-    @Value("${app.cors.allowed-methods}")
-    private List<String> allowedMethods;
-
-    @Value("${app.cors.allowed-headers}")
+    private String[] allowedOrigins;
+    private String[] allowedMethods;
     private String allowedHeaders;
-
-    @Value("${app.cors.allow-credentials}")
     private boolean allowCredentials;
-
-    @Value("${app.cors.max-age}")
     private long maxAge;
+    
+    // Getters and setters for ConfigurationProperties binding
+    
+    public String[] getAllowedOrigins() {
+        return allowedOrigins;
+    }
+    
+    public void setAllowedOrigins(String[] allowedOrigins) {
+        this.allowedOrigins = allowedOrigins;
+    }
+    
+    public String[] getAllowedMethods() {
+        return allowedMethods;
+    }
+    
+    public void setAllowedMethods(String[] allowedMethods) {
+        this.allowedMethods = allowedMethods;
+    }
+    
+    public String getAllowedHeaders() {
+        return allowedHeaders;
+    }
+    
+    public void setAllowedHeaders(String allowedHeaders) {
+        this.allowedHeaders = allowedHeaders;
+    }
+    
+    public boolean isAllowCredentials() {
+        return allowCredentials;
+    }
+    
+    public void setAllowCredentials(boolean allowCredentials) {
+        this.allowCredentials = allowCredentials;
+    }
+    
+    public long getMaxAge() {
+        return maxAge;
+    }
+    
+    public void setMaxAge(long maxAge) {
+        this.maxAge = maxAge;
+    }
 
     /**
      * Configuração global de CORS
@@ -47,9 +82,9 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(@org.springframework.lang.NonNull CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins(allowedOrigins.toArray(String[]::new))
-                .allowedMethods(allowedMethods.toArray(String[]::new))
-                .allowedHeaders(allowedHeaders.split(","))
+                .allowedOrigins(allowedOrigins)
+                .allowedMethods(allowedMethods)
+                .allowedHeaders(allowedHeaders)
                 .allowCredentials(allowCredentials)
                 .maxAge(maxAge);
     }
@@ -61,9 +96,9 @@ public class WebConfig implements WebMvcConfigurer {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         
-        configuration.setAllowedOrigins(allowedOrigins);
-        configuration.setAllowedMethods(allowedMethods);
-        configuration.setAllowedHeaders(Arrays.asList(allowedHeaders.split(",")));
+        configuration.setAllowedOrigins(Arrays.asList(allowedOrigins));
+        configuration.setAllowedMethods(Arrays.asList(allowedMethods));
+        configuration.setAllowedHeaders(Collections.singletonList(allowedHeaders));
         configuration.setAllowCredentials(allowCredentials);
         configuration.setMaxAge(maxAge);
         

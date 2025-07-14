@@ -1,0 +1,369 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- Criação de todos os ENUMs necessários para o sistema -->
+    
+    <changeSet author="Victor Gabriel" id="enum-001-arquetipos_nome">
+        <sql>
+            CREATE TYPE "arquetipos_nome" AS ENUM (
+                'ACADEMICO',
+                'ACOLITO',
+                'COMBATENTE',
+                'FEITICEIRO',
+                'LADINO',
+                'NATURAL'
+            );
+        </sql>
+        <rollback>
+            DROP TYPE IF EXISTS "arquetipos_nome";
+        </rollback>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="enum-002-matriz_feiticos">
+        <sql>
+            CREATE TYPE "matriz_feiticos" AS ENUM (
+                'ADIAFANA',
+                'ANA',
+                'ARCANA',
+                'ELFICA',
+                'GNOMICA',
+                'INFERNAL',
+                'LUZIDIA',
+                'MUNDANA',
+                'NATURAL',
+                'PRIMORDIAL'
+            );
+        </sql>
+        <rollback>
+            DROP TYPE IF EXISTS "matriz_feiticos";
+        </rollback>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="enum-003-classes_feiticos">
+        <sql>
+            CREATE TYPE "classes_feiticos" AS ENUM (
+                'ABJURACAO',
+                'DIVINACAO',
+                'ELEMENTAL',
+                'ENCANTAMENTO',
+                'EVOCACAO',
+                'ILUSAO',
+                'INVOCACAO',
+                'MANIPULACAO',
+                'MISTICA',
+                'NATURAL',
+                'NECROMANCIA',
+                'PROFANA',
+                'SAGRADA',
+                'TRANSLOCACAO',
+                'TRANSMUTACAO'
+            );
+        </sql>
+        <rollback>
+            DROP TYPE IF EXISTS "classes_feiticos";
+        </rollback>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="enum-004-grau_pericia">
+        <sql>
+            CREATE TYPE "grau_pericia" AS ENUM (
+                'LEIGO',
+                'ADEPTO',
+                'VERSADO',
+                'MESTRE',
+                'APEX_HUMANO'
+            );
+        </sql>
+        <rollback>
+            DROP TYPE IF EXISTS "grau_pericia";
+        </rollback>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="enum-005-atributos">
+        <sql>
+            CREATE TYPE "atributos" AS ENUM (
+                'AGILIDADE',
+                'CONSTITUICAO',
+                'FORCA',
+                'INFLUENCIA',
+                'MENTE',
+                'PRESENCA'
+            );
+        </sql>
+        <rollback>
+            DROP TYPE IF EXISTS "atributos";
+        </rollback>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="enum-006-tipos_dano">
+        <sql>
+            CREATE TYPE "tipos_dano" AS ENUM (
+                'ACIDO',
+                'ELETRICO',
+                'CORTANTE',
+                'PERFURANTE',
+                'IMPACTO',
+                'FOGO',
+                'FRIO',
+                'INTERNO',
+                'MENTAL',
+                'MISTICO',
+                'PROFANO',
+                'SAGRADO',
+                'SONORO',
+                'VENENO'
+            );
+        </sql>
+        <rollback>
+            DROP TYPE IF EXISTS "tipos_dano";
+        </rollback>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="enum-007-raridades">
+        <sql>
+            CREATE TYPE "raridades" AS ENUM (
+                'COMUM',
+                'ATIPICO',
+                'RARO',
+                'MUITO_RARO',
+                'LENDARIO'
+            );
+        </sql>
+        <rollback>
+            DROP TYPE IF EXISTS "raridades";
+        </rollback>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="enum-008-tipos_sentidos">
+        <sql>
+            CREATE TYPE "tipos_sentidos" AS ENUM (
+                'COMUM',
+                'AGUCADO',
+                'CEGO',
+                'SURDO'
+            );
+        </sql>
+        <rollback>
+            DROP TYPE IF EXISTS "tipos_sentidos";
+        </rollback>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="enum-009-tipos_deslocamento">
+        <sql>
+            CREATE TYPE "tipos_deslocamento" AS ENUM (
+                'ANDANDO',
+                'VOANDO',
+                'NADANDO',
+                'ESCALANDO',
+                'ESCAVANDO'
+            );
+        </sql>
+        <rollback>
+            DROP TYPE IF EXISTS "tipos_deslocamento";
+        </rollback>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="enum-010-tipos_alcance">
+        <sql>
+            CREATE TYPE "tipos_alcance" AS ENUM (
+                'PESSOAL',
+                'ADJACENTE',
+                'TOQUE',
+                'CURTO',
+                'MEDIO',
+                'LONGO',
+                'MUITO_LONGO',
+                'ILIMITADO'
+            );
+        </sql>
+        <rollback>
+            DROP TYPE IF EXISTS "tipos_alcance";
+        </rollback>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="enum-011-tipos_proficiencia">
+        <sql>
+            CREATE TYPE "tipos_proficiencia" AS ENUM (
+                'ARMAS_SIMPLES',
+                'ARMAS_COMPLEXAS',
+                'ARMAS_MARCIAIS',
+                'ARMAS_PESADAS',
+                'IDIOMA_COMUM',
+                'IDIOMA_PRIMORDIAL',
+                'IDIOMA_RUNICO',
+                'IDIOMA_ANAO',
+                'IDIOMA_AQUATICO',
+                'IDIOMA_DRACONICO',
+                'IDIOMA_ELFICO',
+                'IDIOMA_GIGANTE',
+                'IDIOMA_GNOMICO',
+                'IDIOMA_INFERNAL',
+                'IDIOMA_OOPARNEELA',
+                'IDIOMA_ORC',
+                'IDIOMA_SILVESTRE',
+                'IDIOMA_URURIMI',
+                'PROTECAO_LEVE',
+                'PROTECAO_MEDIA',
+                'PROTECAO_PESADA',
+                'ESCUDOS',
+                'INTRUMENTO_HABILIDADE',
+                'INTRUMENTO_OFICIO'
+            );
+        </sql>
+        <rollback>
+            DROP TYPE IF EXISTS "tipos_proficiencia";
+        </rollback>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="enum-012-tipos_tamanho">
+        <sql>
+            CREATE TYPE "tipos_tamanho" AS ENUM (
+                'MINUSCULO',
+                'PEQUENO',
+                'MEDIO',
+                'GRANDE',
+                'ENORME',
+                'COLOSSAL'
+            );
+        </sql>
+        <rollback>
+            DROP TYPE IF EXISTS "tipos_tamanho";
+        </rollback>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="enum-013-habilidades_resistencia">
+        <sql>
+            CREATE TYPE "habilidades_resistencia" AS ENUM (
+                'DETERMINACAO',
+                'REFLEXO',
+                'TENACIDADE',
+                'VIGOR'
+            );
+        </sql>
+        <rollback>
+            DROP TYPE IF EXISTS "habilidades_resistencia";
+        </rollback>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="enum-014-tempo_acoes">
+        <sql>
+            CREATE TYPE "tempo_acoes" AS ENUM (
+                'COMPLETA',
+                'REACAO',
+                'MAIOR',
+                'DUAS_MENORES',
+                'UMA_MENOR',
+                'LIVRE'
+            );
+        </sql>
+        <rollback>
+            DROP TYPE IF EXISTS "tempo_acoes";
+        </rollback>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="enum-015-tipos_resistencia">
+        <sql>
+            CREATE TYPE "tipos_resistencia" AS ENUM (
+                'ATAQUE',
+                'RESISTENCIA',
+                'RESISTENCIA_PARCIAL',
+                'AUTOMATICO'
+            );
+        </sql>
+        <rollback>
+            DROP TYPE IF EXISTS "tipos_resistencia";
+        </rollback>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="enum-016-tipos_equipamentos">
+        <sql>
+            CREATE TYPE "tipos_equipamentos" AS ENUM (
+                'PEDRAS_PRECIOSAS',
+                'OBRAS_ARTES',
+                'MERCADORIAS_TECIDOS',
+                'MERCADORIAS_METAIS',
+                'MERCADORIAS_ANIMAIS',
+                'MERCADORIAS_PROVISOES',
+                'AVENTURA_EXPLORACAO_VIAGEM',
+                'COMIDA_BEBIDA',
+                'FEITICARIA_CONDUITES',
+                'FEITICARIA_POCOES',
+                'FEITICARIA_OUTROS',
+                'FERRAMENTAS_HABILIDADE',
+                'FERRAMENTAS_OFICIO',
+                'FONTES_LUZ',
+                'HERBALISMO',
+                'INSTRUMENTOS_MUSICAIS',
+                'MUNICOES',
+                'PRODUTOS_ALQUIMICOS',
+                'RECIPIENTES',
+                'UTILITARIOS',
+                'VENENOS',
+                'VESTIMENTAS',
+                'ARMAS_SIMPLES',
+                'ARMAS_MARCIAIS',
+                'ARMAS_COMPLEXAS',
+                'ARMAS_PESADAS',
+                'PROTECOES_LEVES',
+                'PROTECOES_MEDIAS',
+                'PROTECOES_PESADAS',
+                'ESCUDOS',
+                'TRALHA',
+                'MATERIAIS_INGREDIENTES',
+                'MATERIAIS_CRIACAO'
+            );
+        </sql>
+        <rollback>
+            DROP TYPE IF EXISTS "tipos_equipamentos";
+        </rollback>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="enum-017-idiomas">
+        <sql>
+            CREATE TYPE "idiomas" AS ENUM (
+                'COMUM',
+                'PRIMORDIAL',
+                'RUNICO',
+                'ANAO',
+                'AQUATICO',
+                'DRACONICO',
+                'ELFICO',
+                'GIGANTE',
+                'GNOMICO',
+                'INFERNAL',
+                'OOPARNEELA',
+                'ORC',
+                'SILVESTRE',
+                'URURIMI'
+            );
+        </sql>
+        <rollback>
+            DROP TYPE IF EXISTS "idiomas";
+        </rollback>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="enum-018-alfabetos">
+        <sql>
+            CREATE TYPE "alfabetos" AS ENUM (
+                'COMUM',
+                'PRIMORDIAL',
+                'RUNICO',
+                'GNOMICO',
+                'AQUATICO',
+                'DRACONICO',
+                'ELFICO',
+                'GIGANTE',
+                'GLASNEE',
+                'SILVESTRE'
+            );
+        </sql>
+        <rollback>
+            DROP TYPE IF EXISTS "alfabetos";
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

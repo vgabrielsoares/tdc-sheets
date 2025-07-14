@@ -1,0 +1,21 @@
+id;nome;valor_po;peso;tipo;descricao;raridade
+201;Adaga;2;1;ARMAS_SIMPLES;Arma leve perfurante simples;COMUM
+202;Clava;0;2;ARMAS_SIMPLES;Arma simples de madeira;COMUM
+203;Punhal;1;0;ARMAS_SIMPLES;Arma muito pequena perfurante;COMUM
+204;Lança;2;3;ARMAS_SIMPLES;Arma de haste longa;COMUM
+205;Espada Curta;10;2;ARMAS_MARCIAIS;Espada de uma mão;COMUM
+206;Espada Longa;15;3;ARMAS_MARCIAIS;Espada de uma mão versátil;COMUM
+207;Espada Grande;50;6;ARMAS_MARCIAIS;Espada de duas mãos;COMUM
+208;Machado de Guerra;12;4;ARMAS_MARCIAIS;Machado de uma mão;COMUM
+209;Machado Duplo;60;15;ARMAS_MARCIAIS;Machado de duas mãos duplo;ATIPICO
+210;Martelo de Guerra;15;5;ARMAS_MARCIAIS;Martelo de combate;COMUM
+211;Maça Pesada;15;8;ARMAS_MARCIAIS;Maça de duas mãos;COMUM
+212;Florete;20;1;ARMAS_MARCIAIS;Espada de estocada elegante;ATIPICO
+213;Rapieira;20;2;ARMAS_MARCIAIS;Espada de duelo;ATIPICO
+214;Cimitarra;15;2;ARMAS_MARCIAIS;Espada curva;ATIPICO
+215;Arco Curto;30;2;MUNICOES;Arco de madeira básico;COMUM
+216;Arco Longo;75;3;MUNICOES;Arco de guerra;COMUM
+217;Besta Leve;35;4;MUNICOES;Besta de uma mão;COMUM
+218;Besta Pesada;50;8;MUNICOES;Besta de duas mãos;COMUM
+219;Funda;0;0;MUNICOES;Arma de projetil simples;COMUM
+220;Dardo;0.5;0;MUNICOES;Projétil leve de arremesso;COMUM

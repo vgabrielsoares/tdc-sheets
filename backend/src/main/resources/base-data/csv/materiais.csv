@@ -1,0 +1,21 @@
+id;nome;valor_po;peso;tipo;descricao;raridade
+351;Ferro Comum;1;1;MATERIAIS_INGREDIENTES;Metal básico para ferramentas e armas. Usos: Forja e construção;COMUM
+352;Aço;5;1;MATERIAIS_INGREDIENTES;Liga metálica resistente. Usos: Forja e armas;COMUM
+353;Prata;25;1;MATERIAIS_INGREDIENTES;Metal precioso com propriedades especiais. Usos: Joalheria e armas especiais;ATIPICO
+354;Ouro;50;1;MATERIAIS_INGREDIENTES;Metal nobre muito valioso. Usos: Joalheria e conduítes mágicos;RARO
+355;Mithril;500;0.5;MATERIAIS_INGREDIENTES;Metal élfico leve e resistente. Usos: Itens mágicos e armaduras;MUITO_RARO
+356;Adamantina;1000;1;MATERIAIS_INGREDIENTES;Metal extremamente resistente. Usos: Armas e armaduras superiores;LENDARIO
+357;Madeira Comum;0.1;1;MATERIAIS_INGREDIENTES;Material básico de construção. Usos: Construção e ferramentas;COMUM
+358;Carvalho Élfico;5;1;MATERIAIS_INGREDIENTES;Madeira mágica resistente. Usos: Arcos e itens especiais;ATIPICO
+359;Ferro Sombrio;10;1;MATERIAIS_INGREDIENTES;Madeira corrompida por magia sombria. Usos: Itens mágicos negros;RARO
+360;Couro Comum;2;1;MATERIAIS_INGREDIENTES;Material de proteção básico. Usos: Armaduras e equipamentos;COMUM
+361;Couro de Dragão;100;1;MATERIAIS_INGREDIENTES;Material resistente de criatura mágica. Usos: Armaduras superiores;MUITO_RARO
+362;Pele de Demônio;200;1;MATERIAIS_INGREDIENTES;Material de criatura planária. Usos: Itens mágicos sombrios;LENDARIO
+363;MATERIAIS_INGREDIENTES Comum;10;1;MATERIAIS_INGREDIENTES;Material para focalização mágica. Usos: Conduítes mágicos;COMUM
+364;MATERIAIS_INGREDIENTES de Poder;100;1;MATERIAIS_INGREDIENTES;MATERIAIS_INGREDIENTES com energia mágica. Usos: Itens mágicos poderosos;RARO
+365;MATERIAIS_INGREDIENTES Planar;500;1;MATERIAIS_INGREDIENTES;MATERIAIS_INGREDIENTES de outros planos. Usos: Itens mágicos planários;MUITO_RARO
+366;Tecido Comum;1;0;MATERIAIS_INGREDIENTES;Material têxtil básico. Usos: Roupas e equipamentos;COMUM
+367;Seda Élfica;25;0;MATERIAIS_INGREDIENTES;Tecido mágico resistente. Usos: Roupas mágicas;ATIPICO
+368;Fio de Mithril;200;0;MATERIAIS_INGREDIENTES;Tecido metálico especial. Usos: Roupas encantadas;MUITO_RARO
+369;MATERIAIS_INGREDIENTES Comum;50;0;MATERIAIS_INGREDIENTES;Pedra preciosa básica. Usos: Joalheria e magia;ATIPICO
+370;MATERIAIS_INGREDIENTES de Poder;500;0;MATERIAIS_INGREDIENTES;MATERIAIS_INGREDIENTES carregada com energia. Usos: Itens mágicos;RARO

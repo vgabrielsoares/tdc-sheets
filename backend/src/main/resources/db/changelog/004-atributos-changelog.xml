@@ -1,0 +1,125 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- =========================================== -->
+    <!-- SISTEMA DE ATRIBUTOS E CARACTERÍSTICAS RPG -->
+    <!-- =========================================== -->
+    <!--
+        Este changelog contém:
+        - Atributos básicos do personagem (atributos_personagem)
+        - Atributos base de origem (atributos_origem)
+        - Atributos base de linhagem (atributos_linhagem)
+    -->
+
+    <!-- TABELAS BASE -->
+    
+    <changeSet author="Victor Gabriel" id="atributos-001-table-atributos-personagem">
+        <createTable tableName="atributos_personagem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="atributos_personagem_pkey"/>
+            </column>
+            <column name="ficha_personagem_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="atributo" type="ATRIBUTOS">
+                <constraints nullable="false"/>
+            </column>
+            <column name="valor" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="valor_temp" type="INTEGER"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="created_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column defaultValueNumeric="1" name="version" type="INTEGER"/>
+            <column name="created_by_user_id" type="BIGINT"/>
+            <column name="updated_by_user_id" type="BIGINT"/>
+            <column defaultValueBoolean="true" name="is_active" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="atributos-002-table-atributos-origem">
+        <createTable tableName="atributos_origem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="atributos_origem_pkey"/>
+            </column>
+            <column name="origem_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="valor_agilidade" type="INTEGER"/>
+            <column name="valor_constituicao" type="INTEGER"/>
+            <column name="valor_forca" type="INTEGER"/>
+            <column name="valor_influencia" type="INTEGER"/>
+            <column name="valor_mente" type="INTEGER"/>
+            <column name="valor_presenca" type="INTEGER"/>
+            <column name="valor_generico_positivo" type="INTEGER"/>
+            <column name="valor_generico_negativo" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="atributos-003-table-atributos-linhagem">
+        <createTable tableName="atributos_linhagem">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="atributos_linhagem_pkey"/>
+            </column>
+            <column name="linhagem_id" type="INTEGER"/>
+            <column name="valor_agilidade" type="INTEGER"/>
+            <column name="valor_constituicao" type="INTEGER"/>
+            <column name="valor_forca" type="INTEGER"/>
+            <column name="valor_influencia" type="INTEGER"/>
+            <column name="valor_mente" type="INTEGER"/>
+            <column name="valor_presenca" type="INTEGER"/>
+            <column name="valor_generico_positivo" type="INTEGER"/>
+            <column name="valor_generico_negativo" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+
+    <!-- ÍNDICES -->
+
+    <changeSet author="Victor Gabriel" id="atributos-004-index-atributos-ficha">
+        <createIndex indexName="idx_atributos_ficha" tableName="atributos_personagem">
+            <column name="ficha_personagem_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="atributos-005-index-atributos-tipo">
+        <createIndex indexName="idx_atributos_tipo" tableName="atributos_personagem">
+            <column name="atributo"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="atributos-006-index-atributos-ficha-tipo">
+        <createIndex indexName="idx_atributos_ficha_tipo" tableName="atributos_personagem">
+            <column name="ficha_personagem_id"/>
+            <column name="atributo"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="atributos-007-index-atributos-active">
+        <createIndex indexName="idx_atributos_active" tableName="atributos_personagem">
+            <column defaultValueBoolean="true" name="is_active"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="atributos-008-index-atributos-created-by">
+        <createIndex indexName="idx_atributos_created_by" tableName="atributos_personagem">
+            <column name="created_by_user_id"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- CONSTRAINTS ÚNICOS -->
+
+    <changeSet author="Victor Gabriel" id="atributos-009-unique-atributos-ficha-tipo">
+        <addUniqueConstraint columnNames="ficha_personagem_id, atributo" constraintName="atributos_personagem_ficha_personagem_id_atributo_key" tableName="atributos_personagem"/>
+    </changeSet>
+
+    <!-- FOREIGN KEYS - Referencias para outras tabelas serão adicionadas nos changelogs específicos -->
+
+</databaseChangeLog>

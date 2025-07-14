@@ -1,0 +1,17 @@
+id;nome;tamanho;altura_media;peso_medio;maioridade;expectativa_vida;descricao
+1;Alshayatin;MEDIO;175 cm (145+3d20);70kg (peso 10);20 anos;200 anos;Raça originada do submundo com versatilidade mágica
+2;Anões;MEDIO;150cm (110+3d20);80kg (peso 10);50 anos;300 anos;Resistentes e fortes com tradições de forja
+3;Centauros;GRANDE;Variável;Variável;16 anos;80 anos;Criaturas meio-humano meio-cavalo ligadas à natureza
+4;Elfos;MEDIO;Variável;Variável;100 anos;700 anos;Ágeis e ligados à magia com longa expectativa de vida
+5;Ffyrnig;MEDIO;Variável;Variável;Variável;Variável;Criaturas metamórficas com formas variáveis
+6;Glasnee;MEDIO;Variável;Variável;20 anos;100 anos;Seres cristalinos inteligentes e mágicos
+7;Gnomos;PEQUENO;Variável;Variável;40 anos;150 anos;Pequenos e engenhosos com afinidade por magia
+8;Haneru;PEQUENO;Variável;Variável;25 anos;120 anos;Criaturas pequenas com habilidades sociais
+9;Humanos;MEDIO;Variável;Variável;18 anos;80 anos;Raça versátil e adaptável
+10;Khargis;GRANDE;Variável;Variável;12 anos;60 anos;Gigantes fortes e resistentes
+11;Meio-Sangue;MEDIO;Variável;Variável;18 anos;150 anos;Híbridos versáteis de diferentes linhagens
+12;Muremure;MEDIO;Variável;Variável;15 anos;70 anos;Criaturas com características goblinoides
+13;Nolddraig;MEDIO;Variável;Variável;20 anos;200 anos;Descendentes dracônicos com resistências
+14;Ogadain;MEDIO;Variável;Variável;30 anos;400 anos;Elfos das sombras ágeis e misteriosos
+15;Orcs;MEDIO;Variável;Variável;16 anos;80 anos;Guerreiros fortes e resistentes
+16;Tritões;MEDIO;Variável;Variável;20 anos;150 anos;Criaturas aquáticas com habilidades marinhas

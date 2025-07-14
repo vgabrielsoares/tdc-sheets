@@ -2,8 +2,8 @@ package com.tdc.sheets;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import jakarta.annotation.PostConstruct;
@@ -20,7 +20,7 @@ import java.util.TimeZone;
 @SpringBootApplication(scanBasePackages = "com.tdc.sheets")
 @EnableTransactionManagement
 @EnableCaching
-@EnableJpaAuditing
+@EnableConfigurationProperties
 public class TdcSheetsApplication {
 
     /**

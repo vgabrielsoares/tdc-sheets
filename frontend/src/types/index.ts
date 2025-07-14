@@ -127,7 +127,7 @@ export type TiposAlcance =
   | 'CURTO'
   | 'MÉDIO'
   | 'LONGO'
-  | 'MUITO_lONGO'
+  | 'MUITO_LONGO'
   | 'ILIMITADO'
 
 export type TiposProficiencia = 

@@ -1,0 +1,38 @@
+id,carga_personagem_id,equipamento_id,item,descricao_item,quantidade_item,peso_item,created_at,updated_at
+11001,6001,1,Espada Longa +1,Espada mágica com lâmina afiada,1,4,2025-01-10 10:00:00,2025-01-10 10:00:00
+11002,6001,15,Corda de Seda,Corda resistente de 15 metros,1,2,2025-01-10 10:00:00,2025-01-10 10:00:00
+11003,6001,,Poção de Cura,Restaura 2d4+2 pontos de vida,3,0,2025-01-10 10:00:00,2025-01-10 10:00:00
+11004,6002,8,Arco Élfico,Arco longo de madeira élfica,1,3,2025-01-10 10:00:00,2025-01-10 10:00:00
+11005,6002,25,Flechas,Munição para arco,50,3,2025-01-10 10:00:00,2025-01-10 10:00:00
+11006,6002,,Kit de Ladrão,Ferramentas para abrir fechaduras,1,1,2025-01-10 10:00:00,2025-01-10 10:00:00
+11007,6003,3,Machado de Batalha,Arma pesada de duas mãos,1,7,2025-01-10 14:15:00,2025-01-10 14:15:00
+11008,6003,12,Armadura de Couro,Proteção leve flexível,1,15,2025-01-10 14:15:00,2025-01-10 14:15:00
+11009,6003,,Ração de Viagem,Comida preservada para 5 dias,5,1,2025-01-10 14:15:00,2025-01-10 14:15:00
+11010,6004,5,Martelo de Guerra,Arma contundente pesada,1,8,2025-01-10 16:45:00,2025-01-10 16:45:00
+11011,6004,14,Escudo de Aço,Proteção para braço off-hand,1,6,2025-01-10 16:45:00,2025-01-10 16:45:00
+11012,6004,,Tocha,Fonte de luz por 1 hora,10,1,2025-01-10 16:45:00,2025-01-10 16:45:00
+11013,6005,18,Cajado Mágico,Conduíte arcano ornamentado,1,4,2025-01-10 18:20:00,2025-01-10 18:20:00
+11014,6005,,Grimório,Livro de feitiços pessoal,1,3,2025-01-10 18:20:00,2025-01-10 18:20:00
+11015,6005,,Componentes Mágicos,Reagentes para feitiços,1,1,2025-01-10 18:20:00,2025-01-10 18:20:00
+11016,6006,2,Espada Curta,Lâmina rápida e leve,1,2,2025-01-10 20:10:00,2025-01-10 20:10:00
+11017,6006,9,Besta Leve,Arma de projétil mecânica,1,4,2025-01-10 20:10:00,2025-01-10 20:10:00
+11018,6006,,Virotes,Munição para besta,30,2,2025-01-10 20:10:00,2025-01-10 20:10:00
+11019,6007,6,Clava Gigante,Arma improvisada massiva,1,15,2025-01-11 09:30:00,2025-01-11 09:30:00
+11020,6007,,Peles de Animal,Vestimentas primitivas,1,3,2025-01-11 09:30:00,2025-01-11 09:30:00
+11021,6008,,Foco Natural,Cristal druídico,1,1,2025-01-11 13:45:00,2025-01-11 13:45:00
+11022,6008,,Ervas Medicinais,Kit de cura natural,1,2,2025-01-11 13:45:00,2025-01-11 13:45:00
+11023,6009,19,Bastão Sagrado,Símbolo divino abençoado,1,4,2025-01-11 15:20:00,2025-01-11 15:20:00
+11024,6009,,Água Benta,Líquido consagrado,5,0,2025-01-11 15:20:00,2025-01-11 15:20:00
+11025,6009,,Pergaminhos Sagrados,Orações escritas,3,0,2025-01-11 15:20:00,2025-01-11 15:20:00
+11026,6010,7,Arco Longo Élfico,Arma tradicional élfica,1,3,2025-01-11 17:30:00,2025-01-11 17:30:00
+11027,6010,,Capa Élfica,Vestimenta mágica,1,1,2025-01-11 17:30:00,2025-01-11 17:30:00
+11028,6011,4,Machado Bárbaro,Arma tribal decorada,1,6,2025-01-11 19:15:00,2025-01-11 19:15:00
+11029,6011,,Troféus de Guerra,Dentes e garras coletados,1,2,2025-01-11 19:15:00,2025-01-11 19:15:00
+11030,6012,20,Varinha de Ilusão,Conduíte mágico delicado,1,1,2025-01-12 10:45:00,2025-01-12 10:45:00
+11031,6012,,Espelhos Pequenos,Ferramentas para ilusões,5,1,2025-01-12 10:45:00,2025-01-12 10:45:00
+11032,6013,21,Bordão Druida,Cajado natural entalhado,1,4,2025-01-12 14:20:00,2025-01-12 14:20:00
+11033,6013,,Sementes Mágicas,Componentes druídicos,10,0,2025-01-12 14:20:00,2025-01-12 14:20:00
+11034,6014,10,Mangual Pesado,Corrente com peso na ponta,1,10,2025-01-12 16:10:00,2025-01-12 16:10:00
+11035,6014,,Ferramentas de Forja,Kit completo de ferreiro,1,15,2025-01-12 16:10:00,2025-01-12 16:10:00
+11036,6015,,Cristais Psíquicos,Focalizadores mentais,3,1,2025-01-12 18:35:00,2025-01-12 18:35:00
+11037,6015,,Bandagens Mentais,Proteção psíquica,5,0,2025-01-12 18:35:00,2025-01-12 18:35:00

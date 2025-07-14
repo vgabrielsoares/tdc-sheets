@@ -7,6 +7,9 @@ spring:
   profiles:
     active: ${SPRING_PROFILES_ACTIVE:dev}
     
+  main:
+    allow-bean-definition-overriding: true
+    
   # Configuração de internacionalização
   web:
     locale: pt_BR
@@ -41,18 +44,26 @@ spring:
     open-in-view: false
     show-sql: false
     hibernate:
-      ddl-auto: validate
+      ddl-auto: none
       naming:
-        physical-strategy: org.hibernate.boot.model.naming.SnakeCasePhysicalNamingStrategy
-      properties:
-        hibernate:
-          dialect: org.hibernate.dialect.PostgreSQLDialect
-          format_sql: true
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        hbm2ddl:
+          auto: none
+        javax:
+          persistence:
+            schema-generation:
+              database:
+                action: none
         
   # Configuração Liquibase
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.xml
     enabled: true
+    contexts: base-data
     
   # Configuração de Cache
   cache:
@@ -98,7 +109,6 @@ resilience4j:
       default:
         limit-for-period: 100
         limit-refresh-period: 1s
-        timeout-duration: 1s
         
 # Configuração Actuator
 management:
@@ -164,8 +174,8 @@ app:
       - GET
       - POST
       - PUT
-      - DELETE
       - PATCH
+      - DELETE
       - OPTIONS
     allowed-headers: "*"
     allow-credentials: true

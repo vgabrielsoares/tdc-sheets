@@ -81,31 +81,35 @@ public interface FichaPersonagemRepository extends BaseRepository<FichaPersonage
     
     /**
      * Busca fichas por nível mínimo
+     * TODO: Ajustar para usar experiencia ou métodos calculados
      */
-    @Query("SELECT f FROM FichaPersonagem f WHERE f.nivel >= :nivelMinimo AND f.isActive = true")
-    List<FichaPersonagem> findByNivelMinimo(@Param("nivelMinimo") Integer nivelMinimo);
+    // @Query("SELECT f FROM FichaPersonagem f WHERE f.nivel >= :nivelMinimo AND f.isActive = true")
+    // List<FichaPersonagem> findByNivelMinimo(@Param("nivelMinimo") Integer nivelMinimo);
     
     /**
      * Busca fichas por faixa de nível
+     * TODO: Ajustar para usar experiencia ou métodos calculados
      */
-    @Query("SELECT f FROM FichaPersonagem f WHERE f.nivel BETWEEN :nivelMinimo AND :nivelMaximo AND f.isActive = true")
-    List<FichaPersonagem> findByNivelBetween(@Param("nivelMinimo") Integer nivelMinimo, @Param("nivelMaximo") Integer nivelMaximo);
+    // @Query("SELECT f FROM FichaPersonagem f WHERE f.nivel BETWEEN :nivelMinimo AND :nivelMaximo AND f.isActive = true")
+    // List<FichaPersonagem> findByNivelBetween(@Param("nivelMinimo") Integer nivelMinimo, @Param("nivelMaximo") Integer nivelMaximo);
     
     /**
      * Busca fichas por filtro textual (nome personagem, nome jogador, descrição)
      */
     @Query("SELECT f FROM FichaPersonagem f WHERE " +
            "(LOWER(f.nomePersonagem) LIKE LOWER(CONCAT('%', :filter, '%')) OR " +
-           "LOWER(f.nomeJogador) LIKE LOWER(CONCAT('%', :filter, '%')) OR " +
-           "LOWER(f.descricao.biografia) LIKE LOWER(CONCAT('%', :filter, '%'))) " +
+           "LOWER(f.user.nomeCompleto) LIKE LOWER(CONCAT('%', :filter, '%')) OR " +
+           "LOWER(f.descricao.historia) LIKE LOWER(CONCAT('%', :filter, '%'))) " +
            "AND f.isActive = true")
     Page<FichaPersonagem> findByTextFilter(@Param("filter") String filter, Pageable pageable);
     
     /**
      * Busca fichas compartilhadas publicamente
+     * TODO: Field 'publico' not found in CompartilhamentoFicha entity. Available fields: ativo, nivelAcesso, linkToken, expiracao
+     * Need to determine the correct logic for public sharing
      */
-    @Query("SELECT DISTINCT f FROM FichaPersonagem f JOIN f.compartilhamentos c WHERE c.publico = true AND f.isActive = true")
-    List<FichaPersonagem> findPublicSharedFichas();
+    // @Query("SELECT DISTINCT f FROM FichaPersonagem f JOIN f.compartilhamentos c WHERE c.publico = true AND f.isActive = true")
+    // List<FichaPersonagem> findPublicSharedFichas();
     
     /**
      * Busca fichas compartilhadas com um usuário específico
@@ -138,24 +142,24 @@ public interface FichaPersonagemRepository extends BaseRepository<FichaPersonage
      */
     @Query("SELECT f FROM FichaPersonagem f WHERE f.isActive = true ORDER BY f.updatedAt DESC")
     List<FichaPersonagem> findRecentlyUpdatedFichas(Pageable pageable);
-    
-    /**
-     * Estatísticas de fichas
+      /**
+     * Estatísticas de fichas - queries de nível comentadas pois precisam ser ajustadas
+     * TODO: Ajustar para usar experiencia ou métodos calculados
      */
     @Query("SELECT COUNT(f) FROM FichaPersonagem f WHERE f.isActive = true")
     long countAllFichas();
-    
+
     @Query("SELECT COUNT(f) FROM FichaPersonagem f WHERE f.user.id = :userId AND f.isActive = true")
     long countFichasByUser(@Param("userId") Long userId);
-    
-    @Query("SELECT AVG(f.nivel) FROM FichaPersonagem f WHERE f.isActive = true")
-    Double getAverageLevel();
-    
-    @Query("SELECT MAX(f.nivel) FROM FichaPersonagem f WHERE f.isActive = true")
-    Integer getMaxLevel();
-    
-    @Query("SELECT MIN(f.nivel) FROM FichaPersonagem f WHERE f.isActive = true")
-    Integer getMinLevel();
+
+    // @Query("SELECT AVG(f.nivel) FROM FichaPersonagem f WHERE f.isActive = true")
+    // Double getAverageLevel();
+
+    // @Query("SELECT MAX(f.nivel) FROM FichaPersonagem f WHERE f.isActive = true")
+    // Integer getMaxLevel();
+
+    // @Query("SELECT MIN(f.nivel) FROM FichaPersonagem f WHERE f.isActive = true")
+    // Integer getMinLevel();
     
     /**
      * Busca fichas por data de criação
