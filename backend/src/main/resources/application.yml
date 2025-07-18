@@ -166,6 +166,13 @@ app:
   name: TDC Sheets
   description: Sistema de Fichas para RPG Tabuleiro do Caos
   version: 0.0.1
+  # Configuração JWT
+  jwt:
+    secret: ${JWT_SECRET:TDC_SHEETS_JWT_SECRET_KEY_2025_VERY_SECURE_RANDOM_STRING_FOR_DEVELOPMENT_CHANGE_IN_PRODUCTION}
+    expiration: ${JWT_EXPIRATION:86400000} # 24 horas em millisegundos
+    refresh-expiration: ${JWT_REFRESH_EXPIRATION:604800000} # 7 dias em millisegundos
+    issuer: tdc-sheets-backend
+    audience: tdc-sheets-frontend
   cors:
     allowed-origins: 
       - http://localhost:3000
