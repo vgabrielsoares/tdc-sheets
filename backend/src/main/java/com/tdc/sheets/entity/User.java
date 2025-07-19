@@ -45,9 +45,6 @@ public class User extends AuditableEntity {
     @Column(name = "ativo", nullable = false)
     private Boolean ativo = true;
 
-    @Column(name = "primeiro_acesso", nullable = false)
-    private Boolean primeiroAcesso = true;
-
     // Relacionamento com as fichas do usuário
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<FichaPersonagem> fichas = new ArrayList<>();
@@ -110,14 +107,6 @@ public class User extends AuditableEntity {
 
     public void setAtivo(Boolean ativo) {
         this.ativo = ativo;
-    }
-
-    public Boolean getPrimeiroAcesso() {
-        return primeiroAcesso;
-    }
-
-    public void setPrimeiroAcesso(Boolean primeiroAcesso) {
-        this.primeiroAcesso = primeiroAcesso;
     }
 
     public List<FichaPersonagem> getFichas() {
