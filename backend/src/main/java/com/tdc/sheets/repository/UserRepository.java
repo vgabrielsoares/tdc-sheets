@@ -24,10 +24,28 @@ public interface UserRepository extends BaseRepository<User, Long> {
     Optional<User> findByUsername(@Param("username") String username);
     
     /**
+     * Busca usuário por username para autenticação
+     */
+    @Query("SELECT u FROM User u WHERE u.username = :username AND u.isActive = true")
+    Optional<User> findByUsernameAndIsActiveTrue(@Param("username") String username);
+    
+    /**
+     * Busca usuário por ID para autenticação
+     */
+    @Query("SELECT u FROM User u WHERE u.id = :id AND u.isActive = true")
+    Optional<User> findByIdAndIsActiveTrue(@Param("id") Long id);
+    
+    /**
      * Busca usuário por email
      */
     @Query("SELECT u FROM User u WHERE u.email = :email AND u.isActive = true")
     Optional<User> findByEmail(@Param("email") String email);
+    
+    /**
+     * Busca usuário por email para autenticação
+     */
+    @Query("SELECT u FROM User u WHERE u.email = :email AND u.isActive = true")
+    Optional<User> findByEmailAndIsActiveTrue(@Param("email") String email);
     
     /**
      * Busca usuário por username ou email
