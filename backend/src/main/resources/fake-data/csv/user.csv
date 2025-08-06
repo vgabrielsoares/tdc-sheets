@@ -1,12 +1,12 @@
 id;nome_completo;username;email;senha;ativo;data_nascimento;created_at;updated_at;version;is_active
-1001;Administrador do Sistema;admin;admin@tdc.com;$2a$10$dummy_hash_for_admin;true;1985-05-15;2025-01-01 00:00:00;2025-01-01 00:00:00;1;true
-1002;João Silva;mestre1;mestre1@tdc.com;$2a$10$dummy_hash_for_mestre1;true;1988-03-22;2025-01-02 08:30:00;2025-01-02 08:30:00;1;true
-1003;Maria Santos;mestre2;mestre2@tdc.com;$2a$10$dummy_hash_for_mestre2;true;1990-11-08;2025-01-03 14:15:00;2025-01-03 14:15:00;1;true
-1004;Pedro Oliveira;jogador1;jogador1@tdc.com;$2a$10$dummy_hash_for_jogador1;true;1995-07-12;2025-01-04 19:45:00;2025-01-04 19:45:00;1;true
-1005;Ana Costa;jogador2;jogador2@tdc.com;$2a$10$dummy_hash_for_jogador2;true;1992-09-30;2025-01-05 10:20:00;2025-01-05 10:20:00;1;true
-1006;Carlos Mendes;jogador3;jogador3@tdc.com;$2a$10$dummy_hash_for_jogador3;true;1987-12-04;2025-01-06 16:30:00;2025-01-06 16:30:00;1;true
-1007;Lucia Ferreira;jogador4;jogador4@tdc.com;$2a$10$dummy_hash_for_jogador4;true;1993-02-18;2025-01-07 21:10:00;2025-01-07 21:10:00;1;true
-1008;Rafael Souza;jogador5;jogador5@tdc.com;$2a$10$dummy_hash_for_jogador5;true;1989-06-25;2025-01-08 12:45:00;2025-01-08 12:45:00;1;true
-1009;Camila Lima;jogador6;jogador6@tdc.com;$2a$10$dummy_hash_for_jogador6;true;1994-10-13;2025-01-09 09:15:00;2025-01-09 09:15:00;1;true
-1010;Usuário de Teste;teste;teste@tdc.com;$2a$10$dummy_hash_for_teste;true;1991-04-07;2025-01-10 15:30:00;2025-01-10 15:30:00;1;true
-1011;Usuário Demo;demo;demo@tdc.com;$2a$10$dummy_hash_for_demo;true;1996-08-20;2025-01-11 11:00:00;2025-01-11 11:00:00;1;true
+1001;Administrador do Sistema;admin;admin@tdc.com;$2a$12$hJRdhkUtTXnI./xizz1XPujDB/LypLbzLRqS3UNGw4idB.e2CKkfO;true;1985-05-15;2025-01-01 00:00:00;2025-01-01 00:00:00;1;true
+1002;João Silva;mestre1;mestre1@tdc.com;$2a$12$hJRdhkUtTXnI./xizz1XPujDB/LypLbzLRqS3UNGw4idB.e2CKkfO;true;1988-03-22;2025-01-02 08:30:00;2025-01-02 08:30:00;1;true
+1003;Maria Santos;mestre2;mestre2@tdc.com;$2a$12$hJRdhkUtTXnI./xizz1XPujDB/LypLbzLRqS3UNGw4idB.e2CKkfO;true;1990-11-08;2025-01-03 14:15:00;2025-01-03 14:15:00;1;true
+1004;Pedro Oliveira;jogador1;jogador1@tdc.com;$2a$12$hJRdhkUtTXnI./xizz1XPujDB/LypLbzLRqS3UNGw4idB.e2CKkfO;true;1995-07-12;2025-01-04 19:45:00;2025-01-04 19:45:00;1;true
+1005;Ana Costa;jogador2;jogador2@tdc.com;$2a$12$hJRdhkUtTXnI./xizz1XPujDB/LypLbzLRqS3UNGw4idB.e2CKkfO;true;1992-09-30;2025-01-05 10:20:00;2025-01-05 10:20:00;1;true
+1006;Carlos Mendes;jogador3;jogador3@tdc.com;$2a$12$hJRdhkUtTXnI./xizz1XPujDB/LypLbzLRqS3UNGw4idB.e2CKkfO;true;1987-12-04;2025-01-06 16:30:00;2025-01-06 16:30:00;1;true
+1007;Lucia Ferreira;jogador4;jogador4@tdc.com;$2a$12$hJRdhkUtTXnI./xizz1XPujDB/LypLbzLRqS3UNGw4idB.e2CKkfO;true;1993-02-18;2025-01-07 21:10:00;2025-01-07 21:10:00;1;true
+1008;Rafael Souza;jogador5;jogador5@tdc.com;$2a$12$hJRdhkUtTXnI./xizz1XPujDB/LypLbzLRqS3UNGw4idB.e2CKkfO;true;1989-06-25;2025-01-08 12:45:00;2025-01-08 12:45:00;1;true
+1009;Camila Lima;jogador6;jogador6@tdc.com;$2a$12$hJRdhkUtTXnI./xizz1XPujDB/LypLbzLRqS3UNGw4idB.e2CKkfO;true;1994-10-13;2025-01-09 09:15:00;2025-01-09 09:15:00;1;true
+1010;Usuário de Teste;teste;teste@tdc.com;$2a$12$hJRdhkUtTXnI./xizz1XPujDB/LypLbzLRqS3UNGw4idB.e2CKkfO;true;1991-04-07;2025-01-10 15:30:00;2025-01-10 15:30:00;1;true
+1011;Usuário Demo;demo;demo@tdc.com;$2a$12$hJRdhkUtTXnI./xizz1XPujDB/LypLbzLRqS3UNGw4idB.e2CKkfO;true;1996-08-20;2025-01-11 11:00:00;2025-01-11 11:00:00;1;true
