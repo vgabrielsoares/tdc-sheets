@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- ============================================= -->
+    <!-- FOREIGN KEYS - Todas as relações do sistema -->
+    <!-- ============================================= -->
+
+    <!-- === AÇÕES & TALENTOS === -->
+    <changeSet author="Victor Gabriel" id="fk-001-acoes">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="acoes_personagem" constraintName="acoes_personagem_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+
+    <!-- === ARQUETIPOS === -->
+    <changeSet author="Victor Gabriel" id="fk-002-arquetipos-arquetipo">
+        <addForeignKeyConstraint baseColumnNames="arquetipo_id" baseTableName="arquetipos_personagem" constraintName="arquetipos_personagem_arquetipo_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="arquetipo" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-003-arquetipos-ficha">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="arquetipos_personagem" constraintName="arquetipos_personagem_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+
+    <!-- === ATAQUES === -->
+    <changeSet author="Victor Gabriel" id="fk-004-ataques-ficha">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="ataques_personagem" constraintName="ataques_personagem_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+
+    <!-- === ATRIBUTOS === -->
+    <changeSet author="Victor Gabriel" id="fk-005-atributos-linhagem">
+        <addForeignKeyConstraint baseColumnNames="linhagem_id" baseTableName="atributos_linhagem" constraintName="atributos_linhagem_linhagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="linhagem" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-006-atributos-origem">
+        <addForeignKeyConstraint baseColumnNames="origem_id" baseTableName="atributos_origem" constraintName="atributos_origem_origem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="origem" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-007-atributos-created-by">
+        <addForeignKeyConstraint baseColumnNames="created_by_user_id" baseTableName="atributos_personagem" constraintName="atributos_personagem_created_by_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-008-atributos-ficha">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="atributos_personagem" constraintName="atributos_personagem_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-009-atributos-updated-by">
+        <addForeignKeyConstraint baseColumnNames="updated_by_user_id" baseTableName="atributos_personagem" constraintName="atributos_personagem_updated_by_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+
+    <!-- === CARACTERÍSTICAS === -->
+    <changeSet author="Victor Gabriel" id="fk-010-caracteristica-arquetipo">
+        <addForeignKeyConstraint baseColumnNames="arquetipo_id" baseTableName="caracteristica_arquetipo" constraintName="caracteristica_arquetipo_arquetipo_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="arquetipo" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-011-caracteristicas-ancestralidade">
+        <addForeignKeyConstraint baseColumnNames="linhagem_id" baseTableName="caracteristicas_ancestralidade" constraintName="caracteristicas_ancestralidade_linhagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="linhagem" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-012-caracteristicas-arquetipos">
+        <addForeignKeyConstraint baseColumnNames="arquetipo_id" baseTableName="caracteristicas_arquetipos" constraintName="caracteristicas_arquetipos_arquetipo_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="arquetipo" validate="true"/>
+    </changeSet>
+
+    <!-- === CARGA & INVENTÁRIO === -->
+    <changeSet author="Victor Gabriel" id="fk-013-carga-ficha">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="carga_personagem" constraintName="carga_personagem_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+
+    <!-- === CLASSES === -->
+    <changeSet author="Victor Gabriel" id="fk-014-classe-requisitos">
+        <addForeignKeyConstraint baseColumnNames="requisitos_classe_id" baseTableName="classe" constraintName="classe_requisitos_classe_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="requisitos_classe" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-015-classes-feitico">
+        <addForeignKeyConstraint baseColumnNames="feitico_id" baseTableName="classes_feitico" constraintName="classes_feitico_feitico_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="feiticos" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-016-classes-personagem-classe">
+        <addForeignKeyConstraint baseColumnNames="classe_id" baseTableName="classes_personagem" constraintName="classes_personagem_classe_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="classe" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-017-classes-personagem-ficha">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="classes_personagem" constraintName="classes_personagem_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+
+    <!-- === COMPARTILHAMENTO === -->
+    <changeSet author="Victor Gabriel" id="fk-018-compartilhamento-created-by">
+        <addForeignKeyConstraint baseColumnNames="created_by_user_id" baseTableName="compartilhamento_ficha" constraintName="compartilhamento_ficha_created_by_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-019-compartilhamento-deleted-by">
+        <addForeignKeyConstraint baseColumnNames="deleted_by_user_id" baseTableName="compartilhamento_ficha" constraintName="compartilhamento_ficha_deleted_by_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-020-compartilhamento-ficha">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="compartilhamento_ficha" constraintName="compartilhamento_ficha_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-021-compartilhamento-updated-by">
+        <addForeignKeyConstraint baseColumnNames="updated_by_user_id" baseTableName="compartilhamento_ficha" constraintName="compartilhamento_ficha_updated_by_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-022-compartilhamento-user">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="compartilhamento_ficha" constraintName="compartilhamento_ficha_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+
+    <!-- === CUNHAGEM === -->
+    <changeSet author="Victor Gabriel" id="fk-023-cunhagem-carga">
+        <addForeignKeyConstraint baseColumnNames="carga_personagem_id" baseTableName="cunhagem_personagem" constraintName="cunhagem_personagem_carga_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="carga_personagem" validate="true"/>
+    </changeSet>
+
+    <!-- === DANO ATAQUE === -->
+    <changeSet author="Victor Gabriel" id="fk-024-dano-ataque">
+        <addForeignKeyConstraint baseColumnNames="ataque_personagem_id" baseTableName="dano_ataque" constraintName="dano_ataque_ataque_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ataques_personagem" validate="true"/>
+    </changeSet>
+
+    <!-- === DEFESA === -->
+    <changeSet author="Victor Gabriel" id="fk-025-defesa-ficha">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="defesa" constraintName="defesa_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+
+    <!-- === DESCRIÇÃO === -->
+    <changeSet author="Victor Gabriel" id="fk-026-descricao-ficha">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="descricao_personagem" constraintName="descricao_personagem_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+
+    <!-- === DESLOCAMENTO === -->
+    <changeSet author="Victor Gabriel" id="fk-027-deslocamento-linhagem">
+        <addForeignKeyConstraint baseColumnNames="linhagem_id" baseTableName="deslocamento_linhagem" constraintName="deslocamento_linhagem_linhagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="linhagem" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-028-deslocamento-personagem">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="deslocamento_personagem" constraintName="deslocamento_personagem_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+
+    <!-- === FEITIÇOS === -->
+    <changeSet author="Victor Gabriel" id="fk-029-feiticos-personagem-feiticos">
+        <addForeignKeyConstraint baseColumnNames="feiticos_id" baseTableName="feiticos_personagem" constraintName="feiticos_personagem_feiticos_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="feiticos" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-030-feiticos-personagem-ficha">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="feiticos_personagem" constraintName="feiticos_personagem_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-031-feiticos-personagem-habilidad">
+        <addForeignKeyConstraint baseColumnNames="feiticos_personagem_habilidade" baseTableName="feiticos_personagem_habilidades_personagem" constraintName="feiticos_personagem_habilidad_feiticos_personagem_habilida_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="feiticos_personagem" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-032-feiticos-personagem-habilidades">
+        <addForeignKeyConstraint baseColumnNames="habilidades_personagem_id" baseTableName="feiticos_personagem_habilidades_personagem" constraintName="feiticos_personagem_habilidades__habilidades_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="habilidades_personagem" validate="true"/>
+    </changeSet>
+
+    <!-- === FICHA PERSONAGEM === -->
+    <changeSet author="Victor Gabriel" id="fk-033-ficha-created-by">
+        <addForeignKeyConstraint baseColumnNames="created_by_user_id" baseTableName="ficha_personagem" constraintName="ficha_personagem_created_by_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-034-ficha-deleted-by">
+        <addForeignKeyConstraint baseColumnNames="deleted_by_user_id" baseTableName="ficha_personagem" constraintName="ficha_personagem_deleted_by_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-035-ficha-habilidade-assinatura">
+        <addForeignKeyConstraint baseColumnNames="habilidade_assinatura" baseTableName="ficha_personagem" constraintName="ficha_personagem_habilidade_assinatura_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="habilidades_personagem" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-036-ficha-linhagem">
+        <addForeignKeyConstraint baseColumnNames="linhagem_id" baseTableName="ficha_personagem" constraintName="ficha_personagem_linhagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="linhagem" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-037-ficha-origem">
+        <addForeignKeyConstraint baseColumnNames="origem_id" baseTableName="ficha_personagem" constraintName="ficha_personagem_origem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="origem" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-038-ficha-updated-by">
+        <addForeignKeyConstraint baseColumnNames="updated_by_user_id" baseTableName="ficha_personagem" constraintName="ficha_personagem_updated_by_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-039-ficha-user">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="ficha_personagem" constraintName="ficha_personagem_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+
+    <!-- === FICHA SNAPSHOT === -->
+    <changeSet author="Victor Gabriel" id="fk-040-ficha-snapshot">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="ficha_snapshot" constraintName="ficha_snapshot_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+
+    <!-- === HABILIDADES === -->
+    <changeSet author="Victor Gabriel" id="fk-041-habilidades-arquetipo">
+        <addForeignKeyConstraint baseColumnNames="arquetipo_id" baseTableName="habilidades_arquetipo" constraintName="habilidades_arquetipo_arquetipo_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="arquetipo" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-042-habilidades-arquetipo-habilidade">
+        <addForeignKeyConstraint baseColumnNames="habilidade_id" baseTableName="habilidades_arquetipo" constraintName="habilidades_arquetipo_habilidade_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="habilidade" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-043-habilidades-classe">
+        <addForeignKeyConstraint baseColumnNames="classe_id" baseTableName="habilidades_classe" constraintName="habilidades_classe_classe_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="classe" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-044-habilidades-origem-habilidade">
+        <addForeignKeyConstraint baseColumnNames="habilidade_id" baseTableName="habilidades_origem" constraintName="habilidades_origem_habilidade_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="habilidade" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-045-habilidades-origem-origem">
+        <addForeignKeyConstraint baseColumnNames="origem_id" baseTableName="habilidades_origem" constraintName="habilidades_origem_origem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="origem" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-046-habilidades-personagem-atributo">
+        <addForeignKeyConstraint baseColumnNames="atributo_personagem_id" baseTableName="habilidades_personagem" constraintName="habilidades_personagem_atributo_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="atributos_personagem" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-047-habilidades-personagem-created-by">
+        <addForeignKeyConstraint baseColumnNames="created_by_user_id" baseTableName="habilidades_personagem" constraintName="habilidades_personagem_created_by_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-048-habilidades-personagem-ficha">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="habilidades_personagem" constraintName="habilidades_personagem_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-049-habilidades-personagem-habilidade">
+        <addForeignKeyConstraint baseColumnNames="habilidade_id" baseTableName="habilidades_personagem" constraintName="habilidades_personagem_habilidade_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="habilidade" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-050-habilidades-personagem-updated-by">
+        <addForeignKeyConstraint baseColumnNames="updated_by_user_id" baseTableName="habilidades_personagem" constraintName="habilidades_personagem_updated_by_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+
+    <!-- === IDIOMAS === -->
+    <changeSet author="Victor Gabriel" id="fk-051-idiomas-linhagem">
+        <addForeignKeyConstraint baseColumnNames="linhagem_id" baseTableName="idiomas_linhagem" constraintName="idiomas_linhagem_linhagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="linhagem" validate="true"/>
+    </changeSet>
+
+    <!-- === INVENTÁRIO === -->
+    <changeSet author="Victor Gabriel" id="fk-052-inventario-carga">
+        <addForeignKeyConstraint baseColumnNames="carga_personagem_id" baseTableName="inventario_personagem" constraintName="inventario_personagem_carga_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="carga_personagem" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-053-inventario-equipamento">
+        <addForeignKeyConstraint baseColumnNames="equipamento_id" baseTableName="inventario_personagem" constraintName="inventario_personagem_equipamento_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="equipamentos" validate="true"/>
+    </changeSet>
+
+    <!-- === ITENS ORIGEM === -->
+    <changeSet author="Victor Gabriel" id="fk-054-itens-origem-origem">
+        <addForeignKeyConstraint baseColumnNames="origem_id" baseTableName="itens_origem" constraintName="itens_origem_origem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="origem" validate="true"/>
+    </changeSet>
+
+    <!-- === LINHAGEM === -->
+    <changeSet author="Victor Gabriel" id="fk-055-linhagem-tamanho">
+        <addForeignKeyConstraint baseColumnNames="tamanho" baseTableName="linhagem" constraintName="linhagem_tamanho_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="nome" referencedTableName="tamanho" validate="true"/>
+    </changeSet>
+
+    <!-- === LOG === -->
+    <changeSet author="Victor Gabriel" id="fk-056-log-alteracoes-ficha">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="log_alteracoes" constraintName="log_alteracoes_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-057-log-alteracoes-user">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="log_alteracoes" constraintName="log_alteracoes_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+
+    <!-- === ORIGEM CUSTOM === -->
+    <changeSet author="Victor Gabriel" id="fk-058-origem-custom-ficha">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="origem_custom" constraintName="origem_custom_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+
+    <!-- === PARTICULARIDADES === -->
+    <changeSet author="Victor Gabriel" id="fk-059-particularidades-personagem-ficha">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="particularidades_personagem" constraintName="particularidades_personagem_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-060-particularidades-personagem-particularidade">
+        <addForeignKeyConstraint baseColumnNames="particularidade_id" baseTableName="particularidades_personagem" constraintName="particularidades_personagem_particularidade_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="particularidade" validate="true"/>
+    </changeSet>
+
+    <!-- === PROFICIÊNCIAS === -->
+    <changeSet author="Victor Gabriel" id="fk-061-proficiencias-arquetipo">
+        <addForeignKeyConstraint baseColumnNames="arquetipo_id" baseTableName="proficiencias_arquetipo" constraintName="proficiencias_arquetipo_arquetipo_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="arquetipo" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-062-proficiencias-classe">
+        <addForeignKeyConstraint baseColumnNames="classe_id" baseTableName="proficiencias_classe" constraintName="proficiencias_classe_classe_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="classe" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-063-proficiencias-personagem">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="proficiencias_personagem" constraintName="proficiencias_personagem_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+
+    <!-- === PV & PP === -->
+    <changeSet author="Victor Gabriel" id="fk-064-pv-pp-personagem">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="pv_pp_personagem" constraintName="pv_pp_personagem_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+
+    <!-- === REQUISITOS === -->
+    <changeSet author="Victor Gabriel" id="fk-065-requisitos-habilidade">
+        <addForeignKeyConstraint baseColumnNames="habilidade_id" baseTableName="requisitos_talentos_poderes" constraintName="requisitos_talentos_poderes_habilidade_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="habilidade" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-066-requisitos-linhagem">
+        <addForeignKeyConstraint baseColumnNames="linhagem_id" baseTableName="requisitos_talentos_poderes" constraintName="requisitos_talentos_poderes_linhagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="linhagem" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-067-requisitos-talento-poder">
+        <addForeignKeyConstraint baseColumnNames="talento_poder_requisito" baseTableName="requisitos_talentos_poderes" constraintName="requisitos_talentos_poderes_talento_poder_requisito_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="talento__poderes_arquetipo" validate="true"/>
+    </changeSet>
+
+    <!-- === RESISTÊNCIAS === -->
+    <changeSet author="Victor Gabriel" id="fk-068-resistencias-personagem">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="resistencias_personagem" constraintName="resistencias_personagem_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+
+    <!-- === SENTIDOS === -->
+    <changeSet author="Victor Gabriel" id="fk-069-sentidos-linhagem">
+        <addForeignKeyConstraint baseColumnNames="linhagem_id" baseTableName="sentidos_linhagem" constraintName="sentidos_linhagem_linhagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="linhagem" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-070-sentidos-personagem">
+        <addForeignKeyConstraint baseColumnNames="ficha_personagem_id" baseTableName="sentidos_personagem" constraintName="sentidos_personagem_ficha_personagem_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ficha_personagem" validate="true"/>
+    </changeSet>
+
+    <!-- === TALENTOS & PODERES ARQUETIPO === -->
+    <changeSet author="Victor Gabriel" id="fk-071-talento-poderes-arquetipo">
+        <addForeignKeyConstraint baseColumnNames="arquetipo_id" baseTableName="talento__poderes_arquetipo" constraintName="talento__poderes_arquetipo_arquetipo_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="arquetipo" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-072-talento-poderes-arquetipo-requisitos">
+        <addForeignKeyConstraint baseColumnNames="requisitos_talentos_poderes_id" baseTableName="talento__poderes_arquetipo" constraintName="talento__poderes_arquetipo_requisitos_talentos_poderes_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="requisitos_talentos_poderes" validate="true"/>
+    </changeSet>
+
+    <!-- === USER AUTHORITIES === -->
+    <changeSet author="Victor Gabriel" id="fk-073-user-authority-authority">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="user_authority_authority_id_fkey"/>
+            </not>
+        </preConditions>
+        <addForeignKeyConstraint baseColumnNames="authority_id" baseTableName="user_authority" constraintName="user_authority_authority_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="authority" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-074-user-authority-user">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="user_authority_user_id_fkey"/>
+            </not>
+        </preConditions>
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_authority" constraintName="user_authority_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+
+    <!-- === USER AUDIT === -->
+    <changeSet author="Victor Gabriel" id="fk-075-user-created-by">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="user_created_by_user_id_fkey"/>
+            </not>
+        </preConditions>
+        <addForeignKeyConstraint baseColumnNames="created_by_user_id" baseTableName="user" constraintName="user_created_by_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-076-user-deleted-by">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="user_deleted_by_user_id_fkey"/>
+            </not>
+        </preConditions>
+        <addForeignKeyConstraint baseColumnNames="deleted_by_user_id" baseTableName="user" constraintName="user_deleted_by_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="fk-077-user-updated-by">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="user_updated_by_user_id_fkey"/>
+            </not>
+        </preConditions>
+        <addForeignKeyConstraint baseColumnNames="updated_by_user_id" baseTableName="user" constraintName="user_updated_by_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+
+    <!-- === USO HABILIDADE === -->
+    <changeSet author="Victor Gabriel" id="fk-078-uso-habilidade">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="uso_habilidade_habilidade_id_fkey"/>
+            </not>
+        </preConditions>
+        <addForeignKeyConstraint baseColumnNames="habilidade_id" baseTableName="uso_habilidade" constraintName="uso_habilidade_habilidade_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="habilidade" validate="true"/>
+    </changeSet>
+
+</databaseChangeLog>

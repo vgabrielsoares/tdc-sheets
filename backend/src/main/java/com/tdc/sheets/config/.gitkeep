@@ -1,0 +1,4 @@
+# Esta pasta conterá as classes de configuração do Spring
+
+Este arquivo garante que a pasta seja versionada no Git.
+Classes de configuração devem usar @Configuration e configurar beans específicos da aplicação.

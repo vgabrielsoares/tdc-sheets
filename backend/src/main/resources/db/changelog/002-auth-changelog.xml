@@ -1,0 +1,190 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- ================================== -->
+    <!-- SISTEMA DE AUTENTICAÇÃO E USUÁRIOS -->
+    <!-- ================================== -->
+    <!--
+        Este changelog contém:
+        - Tabela de usuários (user)
+        - Sistema de permissões (authorities, user_authority)
+        - Índices e constraints relacionados
+        - Foreign keys para auditoria
+    -->
+
+    <!-- TABELAS BASE -->
+    
+    <changeSet author="Victor Gabriel" id="auth-001-table-user">
+        <createTable tableName="user">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_pkey"/>
+            </column>
+            <column name="nome_completo" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="username" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="senha" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="true" name="ativo" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="data_nascimento" type="date"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="created_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column defaultValueNumeric="1" name="version" type="INTEGER"/>
+            <column name="created_by_user_id" type="BIGINT"/>
+            <column name="updated_by_user_id" type="BIGINT"/>
+            <column name="created_ip_address" type="VARCHAR(45)"/>
+            <column name="updated_ip_address" type="VARCHAR(45)"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="deleted_by_user_id" type="BIGINT"/>
+            <column defaultValueBoolean="true" name="is_active" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="auth-002-table-authorities">
+        <createTable tableName="authorities">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="authorities_pkey"/>
+            </column>
+            <column name="authority" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="auth-003-table-user-authority">
+        <createTable tableName="user_authority">
+            <column name="id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column autoIncrement="true" name="user_id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_authority_pkey"/>
+            </column>
+            <column name="authority_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ÍNDICES -->
+
+    <changeSet author="Victor Gabriel" id="auth-004-index-user-username">
+        <createIndex indexName="idx_user_username" tableName="user">
+            <column name="username"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="auth-005-index-user-active">
+        <createIndex indexName="idx_user_active" tableName="user">
+            <column defaultValueBoolean="true" name="is_active"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="auth-006-index-user-deleted">
+        <createIndex indexName="idx_user_deleted" tableName="user">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="auth-007-index-user-email">
+        <createIndex indexName="idx_user_email" tableName="user">
+            <column name="email"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- CONSTRAINTS ÚNICOS -->
+
+    <changeSet author="Victor Gabriel" id="auth-008-unique-username">
+        <addUniqueConstraint columnNames="username" constraintName="unique_username" tableName="user"/>
+    </changeSet>
+
+    <!-- FOREIGN KEYS -->
+
+    <changeSet author="Victor Gabriel" id="auth-009-fk-user-authority-authority">
+        <addForeignKeyConstraint 
+            baseColumnNames="authority_id" 
+            baseTableName="user_authority" 
+            constraintName="user_authority_authority_id_fkey" 
+            deferrable="false" 
+            initiallyDeferred="false" 
+            onDelete="NO ACTION" 
+            onUpdate="NO ACTION" 
+            referencedColumnNames="id" 
+            referencedTableName="authorities" 
+            validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="auth-010-fk-user-authority-user">
+        <addForeignKeyConstraint 
+            baseColumnNames="user_id" 
+            baseTableName="user_authority" 
+            constraintName="user_authority_user_id_fkey" 
+            deferrable="false" 
+            initiallyDeferred="false" 
+            onDelete="NO ACTION" 
+            onUpdate="NO ACTION" 
+            referencedColumnNames="id" 
+            referencedTableName="user" 
+            validate="true"/>
+    </changeSet>
+
+    <!-- FOREIGN KEYS DE AUDITORIA (auto-referência) -->
+
+    <changeSet author="Victor Gabriel" id="auth-011-fk-user-created-by">
+        <addForeignKeyConstraint 
+            baseColumnNames="created_by_user_id" 
+            baseTableName="user" 
+            constraintName="user_created_by_user_id_fkey" 
+            deferrable="false" 
+            initiallyDeferred="false" 
+            onDelete="NO ACTION" 
+            onUpdate="NO ACTION" 
+            referencedColumnNames="id" 
+            referencedTableName="user" 
+            validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="auth-012-fk-user-deleted-by">
+        <addForeignKeyConstraint 
+            baseColumnNames="deleted_by_user_id" 
+            baseTableName="user" 
+            constraintName="user_deleted_by_user_id_fkey" 
+            deferrable="false" 
+            initiallyDeferred="false" 
+            onDelete="NO ACTION" 
+            onUpdate="NO ACTION" 
+            referencedColumnNames="id" 
+            referencedTableName="user" 
+            validate="true"/>
+    </changeSet>
+
+    <changeSet author="Victor Gabriel" id="auth-013-fk-user-updated-by">
+        <addForeignKeyConstraint 
+            baseColumnNames="updated_by_user_id" 
+            baseTableName="user" 
+            constraintName="user_updated_by_user_id_fkey" 
+            deferrable="false" 
+            initiallyDeferred="false" 
+            onDelete="NO ACTION" 
+            onUpdate="NO ACTION" 
+            referencedColumnNames="id" 
+            referencedTableName="user" 
+            validate="true"/>
+    </changeSet>
+
+</databaseChangeLog>

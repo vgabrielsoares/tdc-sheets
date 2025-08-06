@@ -1,0 +1,71 @@
+# Multi-stage build para otimização do Backend Spring Boot
+FROM gradle:8.5-jdk17-alpine AS builder
+
+# Configuração do ambiente de build
+WORKDIR /app
+ARG GRADLE_OPTS="-Dorg.gradle.daemon=false -Dorg.gradle.parallel=true"
+
+# Copiar arquivos de configuração do Gradle primeiro (para cache de dependências)
+COPY backend/build.gradle backend/settings.gradle backend/gradle.properties* ./
+COPY backend/gradle/ ./gradle/
+
+# Download das dependências (aproveitando cache do Docker)
+RUN gradle dependencies --no-daemon --quiet
+
+# Copiar código fonte
+COPY backend/src ./src
+
+# Build da aplicação
+RUN gradle clean build --no-daemon
+
+# Verificar se o JAR foi criado
+RUN ls -la build/libs/
+
+# ==================================================
+# Stage 2: Runtime
+FROM openjdk:17-jre-alpine AS runtime
+
+# Instalar dependências necessárias
+RUN apk add --no-cache \
+    curl \
+    tzdata \
+    && rm -rf /var/cache/apk/*
+
+# Configurar timezone
+ENV TZ=America/Sao_Paulo
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+# Criar usuário não-root para segurança
+RUN addgroup -g 1001 -S spring && \
+    adduser -u 1001 -S spring -G spring
+
+# Configurar diretório de trabalho
+WORKDIR /app
+
+# Criar diretório de logs
+RUN mkdir -p /app/logs && \
+    chown -R spring:spring /app
+
+# Copiar JAR da aplicação
+COPY --from=builder --chown=spring:spring /app/build/libs/*.jar app.jar
+
+# Mudar para usuário não-root
+USER spring
+
+# Configurações da JVM para container
+ENV JAVA_OPTS="-XX:+UseContainerSupport \
+               -XX:MaxRAMPercentage=75.0 \
+               -XX:+UseG1GC \
+               -XX:+UnlockExperimentalVMOptions \
+               -XX:+UseCGroupMemoryLimitForHeap \
+               -Djava.security.egd=file:/dev/./urandom"
+
+# Healthcheck
+HEALTHCHECK --interval=30s --timeout=3s --start-period=60s --retries=3 \
+    CMD curl -f http://localhost:8080/actuator/health || exit 1
+
+# Expor porta
+EXPOSE 8080
+
+# Comando de inicialização
+ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar app.jar"]

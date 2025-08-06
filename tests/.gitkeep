@@ -1,0 +1,24 @@
+# Pasta de Testes E2E
+
+Esta pasta conterá os testes end-to-end da aplicação TDC Sheets.
+
+## Estrutura
+
+```
+tests/
+├── e2e/                  # Testes end-to-end
+├── integration/          # Testes de integração
+├── performance/          # Testes de performance
+├── fixtures/             # Dados de teste
+├── utils/                # Utilitários para testes
+└── config/               # Configurações de teste
+```
+
+## Tecnologias
+
+- **Playwright**: Framework principal para testes E2E
+- **Jest**: Runner de testes
+- **Docker**: Ambiente isolado
+- **Faker.js**: Geração de dados de teste
+
+Consulte o README.md principal desta pasta para documentação completa.

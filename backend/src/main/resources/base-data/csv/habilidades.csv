@@ -1,0 +1,34 @@
+id;pericia;descricao;atributo_chave;penalidade_carga;instrumento;proficiencia;combate
+1;Acerto;Habilidade para acertar ataques à distância;AGILIDADE;false;false;false;true
+2;Acrobacia;Equilíbrio e manobras corporais;AGILIDADE;true;false;false;false
+3;Adestramento;Treinamento e controle de animais;INFLUENCIA;false;false;true;false
+4;Arcano;Conhecimento de magia e fenômenos sobrenaturais;MENTE;false;false;true;true
+5;Arte;Criação e apreciação artística;MENTE;false;false;true;false
+6;Atletismo;Força e resistência físicas;CONSTITUICAO;true;false;false;false
+7;Condução;Pilotagem de veículos e montarias;AGILIDADE;true;true;true;false
+8;Destreza;Habilidade manual e manipulação de objetos;AGILIDADE;true;true;true;false
+9;Determinação;Resistência mental e força de vontade;PRESENCA;false;false;false;true
+10;Enganação;Arte da mentira e dissimulação;INFLUENCIA;false;true;false;false
+11;Estratégia;Planejamento tático e liderança;MENTE;false;false;true;false
+12;Furtividade;Movimento silencioso e ocultação;AGILIDADE;true;false;false;false
+13;História;Conhecimento de eventos passados;MENTE;false;false;false;false
+14;Iniciativa;Rapidez de reação em combate;AGILIDADE;true;false;false;true
+15;Instrução;Ensino e transmissão de conhecimento;MENTE;false;false;true;false
+16;Intimidação;Uso do medo como ferramenta;INFLUENCIA;false;false;false;false
+17;Investigação;Busca e análise de pistas;MENTE;false;false;false;false
+18;Luta;Combate corporal e artes marciais;FORCA;false;false;false;true
+19;Medicina;Cura e tratamento médico;MENTE;false;true;true;false
+20;Natureza;Conhecimento do mundo natural;PRESENCA;false;false;false;true
+21;Ofício;Trabalho especializado em profissão;MENTE;false;true;false;false
+22;Percepção;Uso dos sentidos para detectar;PRESENCA;false;false;false;false
+23;Performance;Apresentação artística e entretenimento;INFLUENCIA;true;false;false;false
+24;Perspicácia;Leitura de intenções e motivações;PRESENCA;false;false;false;false
+25;Persuasão;Convencimento através da eloquência;INFLUENCIA;false;false;false;false
+26;Rastreamento;Seguir rastros e pistas na natureza;PRESENCA;false;false;true;false
+27;Reflexo;Reações rápidas e esquiva;AGILIDADE;true;false;false;true
+28;Religião;Conhecimento de divindades e fé;PRESENCA;false;false;true;true
+29;Sobrevivência;Vida em ambientes selvagens;MENTE;false;false;false;false
+30;Sociedade;Conhecimento de culturas e política;INFLUENCIA;false;false;false;false
+31;Sorte;Influência do acaso e destino;PRESENCA;false;false;false;false
+32;Tenacidade;Resistência física contra dano;FORCA;false;false;false;true
+33;Vigor;Resistência contra efeitos físicos;CONSTITUICAO;false;false;false;true

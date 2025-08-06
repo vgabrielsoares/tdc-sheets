@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.23.xsd">
+
+    <include file="001-enums-changelog.xml" relativeToChangelogFile="true"/>
+    <include file="002-auth-changelog.xml" relativeToChangelogFile="true"/>
+    <include file="003-core-ficha-changelog.xml" relativeToChangelogFile="true"/>
+    <include file="004-atributos-changelog.xml" relativeToChangelogFile="true"/>
+    <include file="005-linhagem-origem-changelog.xml" relativeToChangelogFile="true"/>
+    <include file="006-sistema-rpg-changelog.xml" relativeToChangelogFile="true"/>
+    <include file="007-foreign-keys-changelog.xml" relativeToChangelogFile="true"/>
+    <include file="008-data-loading-changelog.xml" relativeToChangelogFile="true"/>
+    <include file="009-fake-data-loading-changelog.xml" relativeToChangelogFile="true"/>
+    
+</databaseChangeLog>

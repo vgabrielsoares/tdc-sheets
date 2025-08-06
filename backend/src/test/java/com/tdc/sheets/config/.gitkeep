@@ -1,0 +1,4 @@
+# Esta pasta conterá os testes de configurações
+
+Este arquivo garante que a pasta seja versionada no Git.
+Os testes de config devem testar beans de configuração e configurações do Spring.

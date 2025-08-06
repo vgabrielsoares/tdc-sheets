@@ -1,0 +1,123 @@
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      connection-timeout: 30000
+      maximum-pool-size: 20
+      minimum-idle: 5
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      leak-detection-threshold: 120000
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+        useLocalSessionState: true
+        rewriteBatchedStatements: true
+        cacheResultSetMetadata: true
+        cacheServerConfiguration: true
+        elideSetAutoCommits: true
+        maintainTimeStats: false
+  
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+        use_sql_comments: false
+        generate_statistics: false
+        jdbc:
+          batch_size: 20
+          batch_versioned_data: true
+        order_inserts: true
+        order_updates: true
+        
+  # Configuração de produção do Liquibase
+  liquibase:
+    contexts: base-data
+    
+  # Cache habilitado em produção
+  cache:
+    type: caffeine
+    caffeine:
+      spec: maximumSize=10000,expireAfterAccess=600s,expireAfterWrite=1800s
+      
+# Logging otimizado para produção
+logging:
+  level:
+    com.tdc.sheets: INFO
+    org.springframework.security: WARN
+    org.hibernate: WARN
+    liquibase: INFO
+    org.springframework.web: WARN
+    org.springframework.boot: INFO
+  pattern:
+    console: "%d{ISO8601} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{ISO8601} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: logs/tdc-sheets.log
+    max-size: 100MB
+    max-history: 30
+    
+# Configuração segura do servidor
+server:
+  error:
+    include-binding-errors: never
+    include-stacktrace: never
+    include-message: never
+    include-exception: false
+  compression:
+    enabled: true
+  http2:
+    enabled: true
+    
+# Actuator restrito em produção
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: never
+      show-components: never
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+        
+# JWT com tempo padrão
+jwt:
+  expiration: ${JWT_EXPIRATION:86400000} # 24 horas
+  
+# CORS restrito para produção
+app:
+  cors:
+    allowed-origins: ${ALLOWED_ORIGINS}
+    
+# Configurações de performance
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        sliding-window-size: 20
+        failure-rate-threshold: 30
+        wait-duration-in-open-state: 60s
+        permitted-number-of-calls-in-half-open-state: 5
+  retry:
+    configs:
+      default:
+        max-attempts: 2
+        wait-duration: 2s
+  ratelimiter:
+    configs:
+      default:
+        limit-for-period: 1000
+        limit-refresh-period: 1s
+        timeout-duration: 2s

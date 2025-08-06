@@ -1,0 +1,354 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.23.xsd">
+
+    <!-- ========================================== -->
+    <!-- CARGA DE DADOS FAKE - TDC SHEETS         -->
+    <!-- ========================================== -->
+    <!--
+        Este changelog contém:
+        - Dados fake de desenvolvimento (contexto: fake-data) - Apenas para dev/teste
+        - Usuários, fichas de personagem e dados relacionados para testes
+        
+        ORDEM IMPORTANTE: Carregamos primeiro os dados que não dependem de foreign keys,
+        depois os dados dependentes na ordem correta das dependências.
+        
+        CORREÇÃO: A foreign key habilidade_assinatura estava incorreta, apontando para
+        habilidades_personagem.id quando deveria apontar para habilidade.id (dados base)
+    -->
+    
+    <!-- 2.0 Correções necessárias -->
+    
+    <changeSet id="fake-data-000-fix-fk" author="Victor Gabriel" context="fake-data">
+        <comment>Corrige foreign key habilidade_assinatura para apontar para tabela habilidade</comment>
+        <dropForeignKeyConstraint baseTableName="ficha_personagem" constraintName="ficha_personagem_habilidade_assinatura_fkey"/>
+        <addForeignKeyConstraint baseColumnNames="habilidade_assinatura" baseTableName="ficha_personagem" constraintName="ficha_personagem_habilidade_assinatura_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="habilidade" validate="true"/>
+        <rollback>
+            <dropForeignKeyConstraint baseTableName="ficha_personagem" constraintName="ficha_personagem_habilidade_assinatura_fkey"/>
+            <addForeignKeyConstraint baseColumnNames="habilidade_assinatura" baseTableName="ficha_personagem" constraintName="ficha_personagem_habilidade_assinatura_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="habilidades_personagem" validate="true"/>
+        </rollback>
+    </changeSet>
+
+    <!-- 2.1 Dados de Autenticação e Usuários -->
+    
+    <changeSet id="fake-data-001" author="Victor Gabriel" context="fake-data">
+        <comment>Carrega dados fake de usuários</comment>
+        <loadData file="fake-data/csv/user.csv" tableName="user" separator=";">
+            <column name="id" type="NUMERIC"/>
+            <column name="nome_completo" type="STRING"/>
+            <column name="username" type="STRING"/>
+            <column name="email" type="STRING"/>
+            <column name="senha" type="STRING"/>
+            <column name="ativo" type="BOOLEAN"/>
+            <column name="data_nascimento" type="DATE"/>
+            <column name="created_at" type="TIMESTAMP"/>
+            <column name="updated_at" type="TIMESTAMP"/>
+            <column name="version" type="NUMERIC"/>
+            <column name="is_active" type="BOOLEAN"/>
+        </loadData>
+        <rollback>
+            <delete tableName="user"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="fake-data-002" author="Victor Gabriel" context="fake-data">
+        <comment>Carrega dados fake de authorities</comment>
+        <loadData file="fake-data/csv/authorities.csv" tableName="authorities" separator=";">
+            <column name="id" type="NUMERIC"/>
+            <column name="authority" type="STRING"/>
+        </loadData>
+        <rollback>
+            <delete tableName="authorities"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="fake-data-003" author="Victor Gabriel" context="fake-data">
+        <comment>Carrega dados fake de user_authority</comment>
+        <loadData file="fake-data/csv/user_authority.csv" tableName="user_authority" separator=";">
+            <column name="user_id" type="NUMERIC"/>
+            <column name="authority_id" type="NUMERIC"/>
+        </loadData>
+        <rollback>
+            <delete tableName="user_authority"/>
+        </rollback>
+    </changeSet>
+
+    <!-- 2.2 Dados de Fichas de Personagem -->
+    
+    <changeSet id="fake-data-004" author="Victor Gabriel" context="fake-data">
+        <comment>Carrega dados fake de fichas de personagem</comment>
+        <loadData file="fake-data/csv/ficha_personagem.csv" tableName="ficha_personagem" separator=";">
+            <column name="id" type="NUMERIC"/>
+            <column name="nome_personagem" type="STRING"/>
+            <column name="user_id" type="NUMERIC"/>
+            <column name="background" type="STRING"/>
+            <column name="origem_id" type="NUMERIC"/>
+            <column name="linhagem_id" type="NUMERIC"/>
+            <column name="experiencia" type="NUMERIC"/>
+            <column name="habilidade_assinatura" type="NUMERIC"/>
+            <column name="nivel_sorte" type="NUMERIC"/>
+            <column name="tamanho" type="STRING"/>
+            <column name="created_at" type="TIMESTAMP"/>
+            <column name="updated_at" type="TIMESTAMP"/>
+            <column name="version" type="NUMERIC"/>
+            <column name="is_active" type="BOOLEAN"/>
+        </loadData>
+        <rollback>
+            <delete tableName="ficha_personagem"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="fake-data-005" author="Victor Gabriel" context="fake-data">
+        <comment>Carrega dados fake de atributos de personagem</comment>
+        <loadData file="fake-data/csv/atributos_personagem.csv" tableName="atributos_personagem" separator=";">
+            <column name="id" type="NUMERIC"/>
+            <column name="ficha_personagem_id" type="NUMERIC"/>
+            <column name="atributo" type="STRING"/>
+            <column name="valor" type="NUMERIC"/>
+            <column name="valor_temp" type="NUMERIC"/>
+            <column name="created_at" type="TIMESTAMP"/>
+            <column name="updated_at" type="TIMESTAMP"/>
+            <column name="version" type="NUMERIC"/>
+            <column name="is_active" type="BOOLEAN"/>
+        </loadData>
+        <rollback>
+            <delete tableName="atributos_personagem"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="fake-data-006" author="Victor Gabriel" context="fake-data">
+        <comment>Carrega dados fake de descrição de personagem</comment>
+        <loadData file="fake-data/csv/descricao_personagem.csv" tableName="descricao_personagem" separator=";">
+            <column name="id" type="NUMERIC"/>
+            <column name="ficha_personagem_id" type="NUMERIC"/>
+            <column name="genero" type="STRING"/>
+            <column name="pronomes" type="STRING"/>
+            <column name="idade" type="STRING"/>
+            <column name="altura" type="STRING"/>
+            <column name="peso" type="STRING"/>
+            <column name="cabelos" type="STRING"/>
+            <column name="olhos" type="STRING"/>
+            <column name="pele" type="STRING"/>
+            <column name="tracos_personalidade" type="STRING"/>
+            <column name="historia" type="STRING"/>
+            <column name="aparencia_outros" type="STRING"/>
+        </loadData>
+        <rollback>
+            <delete tableName="descricao_personagem"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="fake-data-007" author="Victor Gabriel" context="fake-data">
+        <comment>Carrega dados fake de deslocamento de personagem</comment>
+        <loadData file="fake-data/csv/deslocamento_personagem.csv" tableName="deslocamento_personagem" separator=";">
+            <column name="id" type="NUMERIC"/>
+            <column name="ficha_personagem_id" type="NUMERIC"/>
+            <column name="terrestre" type="NUMERIC"/>
+            <column name="aquatico" type="NUMERIC"/>
+            <column name="aereo" type="NUMERIC"/>
+            <column name="escavacao" type="NUMERIC"/>
+            <column name="escalada" type="NUMERIC"/>
+            <column name="created_at" type="TIMESTAMP"/>
+            <column name="updated_at" type="TIMESTAMP"/>
+            <column name="version" type="NUMERIC"/>
+            <column name="is_active" type="BOOLEAN"/>
+        </loadData>
+        <rollback>
+            <delete tableName="deslocamento_personagem"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="fake-data-008" author="Victor Gabriel" context="fake-data">
+        <comment>Carrega dados fake de habilidades de personagem</comment>
+        <loadData file="fake-data/csv/habilidades_personagem.csv" tableName="habilidades_personagem" separator=";">
+            <column name="id" type="NUMERIC"/>
+            <column name="ficha_personagem_id" type="NUMERIC"/>
+            <column name="habilidade_id" type="NUMERIC"/>
+            <column name="grau_habilidade" type="STRING"/>
+            <column name="atributo_chave_personagem" type="STRING"/>
+            <column name="atributo_personagem_id" type="NUMERIC"/>
+            <column name="mod_dado_habilidade" type="NUMERIC"/>
+            <column name="mod_temp" type="NUMERIC"/>
+            <column name="mod_outros" type="NUMERIC"/>
+            <column name="created_at" type="TIMESTAMP"/>
+            <column name="updated_at" type="TIMESTAMP"/>
+            <column name="version" type="NUMERIC"/>
+            <column name="created_by_user_id" type="NUMERIC"/>
+            <column name="updated_by_user_id" type="NUMERIC"/>
+            <column name="is_active" type="BOOLEAN"/>
+        </loadData>
+        <rollback>
+            <delete tableName="habilidades_personagem"/>
+        </rollback>
+    </changeSet>
+
+    <!-- 2.3 Dados de Ações e Combate -->
+    
+    <changeSet id="fake-data-009" author="Victor Gabriel" context="fake-data">
+        <comment>Carrega dados fake de ações de personagem</comment>
+        <loadData file="fake-data/csv/acoes_personagem.csv" tableName="acoes_personagem">
+            <column name="id" type="NUMERIC"/>
+            <column name="ficha_personagem_id" type="NUMERIC"/>
+            <column name="acao" type="STRING"/>
+            <column name="acao_disponivel" type="BOOLEAN"/>
+        </loadData>
+        <rollback>
+            <delete tableName="acoes_personagem"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="fake-data-010" author="Victor Gabriel" context="fake-data">
+        <comment>Carrega dados fake de arquetipos de personagem</comment>
+        <loadData file="fake-data/csv/arquetipos_personagem.csv" tableName="arquetipos_personagem">
+            <column name="id" type="NUMERIC"/>
+            <column name="ficha_personagem_id" type="NUMERIC"/>
+            <column name="arquetipo_id" type="NUMERIC"/>
+            <column name="nivel_arquetipo" type="NUMERIC"/>
+        </loadData>
+        <rollback>
+            <delete tableName="arquetipos_personagem"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="fake-data-011" author="Victor Gabriel" context="fake-data">
+        <comment>Carrega dados fake de ataques de personagem</comment>
+        <loadData file="fake-data/csv/ataques_personagem.csv" tableName="ataques_personagem">
+            <column name="id" type="NUMERIC"/>
+            <column name="ficha_personagem_id" type="NUMERIC"/>
+            <column name="nome" type="STRING"/>
+            <column name="atributo" type="STRING"/>
+            <column name="habilidade_id" type="NUMERIC"/>
+            <column name="alcance" type="STRING"/>
+            <column name="dado_bonus" type="NUMERIC"/>
+            <column name="mod_bonus" type="NUMERIC"/>
+            <column name="custo_pp" type="NUMERIC"/>
+            <column name="created_at" type="TIMESTAMP"/>
+            <column name="updated_at" type="TIMESTAMP"/>
+        </loadData>
+        <rollback>
+            <delete tableName="ataques_personagem"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="fake-data-012" author="Victor Gabriel" context="fake-data">
+        <comment>Carrega dados fake de carga de personagem</comment>
+        <loadData file="fake-data/csv/carga_personagem.csv" tableName="carga_personagem">
+            <column name="id" type="NUMERIC"/>
+            <column name="ficha_personagem_id" type="NUMERIC"/>
+            <column name="carga_atual" type="NUMERIC"/>
+            <column name="capacidade_carga" type="NUMERIC"/>
+            <column name="bonus_capacidade_carga" type="NUMERIC"/>
+        </loadData>
+        <rollback>
+            <delete tableName="carga_personagem"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="fake-data-013" author="Victor Gabriel" context="fake-data">
+        <comment>Carrega dados fake de classes de personagem</comment>
+        <loadData file="fake-data/csv/classes_personagem.csv" tableName="classes_personagem">
+            <column name="id" type="NUMERIC"/>
+            <column name="ficha_personagem_id" type="NUMERIC"/>
+            <column name="classe_id" type="NUMERIC"/>
+            <column name="nivel" type="NUMERIC"/>
+        </loadData>
+        <rollback>
+            <delete tableName="classes_personagem"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="fake-data-014" author="Victor Gabriel" context="fake-data">
+        <comment>Carrega dados fake de cunhagem de personagem</comment>
+        <loadData file="fake-data/csv/cunhagem_personagem.csv" tableName="cunhagem_personagem">
+            <column name="id" type="NUMERIC"/>
+            <column name="carga_personagem_id" type="NUMERIC"/>
+            <column name="c_fisico" type="NUMERIC"/>
+            <column name="po_fisico" type="NUMERIC"/>
+            <column name="pp_fisico" type="NUMERIC"/>
+            <column name="c_banco" type="NUMERIC"/>
+            <column name="po_banco" type="NUMERIC"/>
+            <column name="pp_banco" type="NUMERIC"/>
+        </loadData>
+        <rollback>
+            <delete tableName="cunhagem_personagem"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="fake-data-015" author="Victor Gabriel" context="fake-data">
+        <comment>Carrega dados fake de dano de ataque</comment>
+        <loadData file="fake-data/csv/dano_ataque.csv" tableName="dano_ataque">
+            <column name="id" type="NUMERIC"/>
+            <column name="ataque_personagem_id" type="NUMERIC"/>
+            <column name="dado" type="STRING"/>
+            <column name="mod" type="NUMERIC"/>
+            <column name="bonus" type="NUMERIC"/>
+            <column name="critico" type="STRING"/>
+        </loadData>
+        <rollback>
+            <delete tableName="dano_ataque"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="fake-data-016" author="Victor Gabriel" context="fake-data">
+        <comment>Carrega dados fake de defesa</comment>
+        <loadData file="fake-data/csv/defesa.csv" tableName="defesa">
+            <column name="id" type="NUMERIC"/>
+            <column name="ficha_personagem_id" type="NUMERIC"/>
+            <column name="defesa_personagem" type="NUMERIC"/>
+            <column name="armadura" type="NUMERIC"/>
+            <column name="vestindo_armadura" type="BOOLEAN"/>
+            <column name="limite_agilidade" type="NUMERIC"/>
+            <column name="outro_mod" type="NUMERIC"/>
+        </loadData>
+        <rollback>
+            <delete tableName="defesa"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="fake-data-017" author="Victor Gabriel" context="fake-data">
+        <comment>Carrega dados fake de inventário de personagem</comment>
+        <loadData file="fake-data/csv/inventario_personagem.csv" tableName="inventario_personagem">
+            <column name="id" type="NUMERIC"/>
+            <column name="carga_personagem_id" type="NUMERIC"/>
+            <column name="equipamento_id" type="NUMERIC"/>
+            <column name="item" type="STRING"/>
+            <column name="descricao_item" type="STRING"/>
+            <column name="quantidade_item" type="NUMERIC"/>
+            <column name="peso_item" type="NUMERIC"/>
+            <column name="created_at" type="TIMESTAMP"/>
+            <column name="updated_at" type="TIMESTAMP"/>
+        </loadData>
+        <rollback>
+            <delete tableName="inventario_personagem"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="fake-data-018" author="Victor Gabriel" context="fake-data">
+        <comment>Carrega dados fake de particularidades de personagem</comment>
+        <loadData file="fake-data/csv/particularidades_personagem.csv" tableName="particularidades_personagem">
+            <column name="id" type="NUMERIC"/>
+            <column name="ficha_personagem_id" type="NUMERIC"/>
+            <column name="particularidade_id" type="NUMERIC"/>
+        </loadData>
+        <rollback>
+            <delete tableName="particularidades_personagem"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="fake-data-019" author="Victor Gabriel" context="fake-data">
+        <comment>Carrega dados fake de proficiências de personagem</comment>
+        <loadData file="fake-data/csv/proficiencias_personagem.csv" tableName="proficiencias_personagem">
+            <column name="id" type="NUMERIC"/>
+            <column name="ficha_personagem_id" type="NUMERIC"/>
+            <column name="proficiencia" type="STRING"/>
+            <column name="proficiente" type="BOOLEAN"/>
+        </loadData>
+        <rollback>
+            <delete tableName="proficiencias_personagem"/>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

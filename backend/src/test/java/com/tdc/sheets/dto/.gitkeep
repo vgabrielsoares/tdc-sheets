@@ -1,0 +1,4 @@
+# Esta pasta conterá os testes de DTOs e validações
+
+Este arquivo garante que a pasta seja versionada no Git.
+Os testes de DTO devem testar serialização, deserialização e validações.

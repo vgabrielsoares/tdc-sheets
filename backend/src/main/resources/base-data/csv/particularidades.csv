@@ -1,0 +1,69 @@
+id;particularidade;efeito;pontos
+1;Abaixo do Peso;-1 PV por nível e -5 de Peso;Oposto: Acima do Peso
+2;Acima do Peso;+1 PV por nível e +5 de Peso;Oposto: Abaixo do Peso
+3;Baixinho;+2 em Furtividade e -2 em Manobras;Oposto: Grandalhão
+4;Bem Aventurados;Você é uma criança;Oposto: Idoso
+5;Canhão de Vidro;+1 PP por nível e -1 PV por nível;Oposto: Saco de Pancada
+6;Cara Feia;+2 em Intimidação e -2 em Persuasão;Oposto: Rosto Bonito
+7;Cego;Você é Cego;Nenhum
+8;Grandalhão;+2 em Manobras e -2 em Furtividade;Oposto: Baixinho
+9;Grande Demais;Você é um Tamanho maior;Oposto: Pequeno Demais
+10;Idoso;Você é um idoso;Oposto: Bem Aventurados
+11;Ingenuidade;+2 em Persuasão e -2 em Perspicácia;Nenhum
+12;Justiça Cega;Perde 1 PP ao ser desonesto e ganha 1 PP temporário ao ser justo;Nenhum
+13;Pequeno Demais;Você é um Tamanho menor;Oposto: Grande Demais
+14;Perfeccionista;-1 PP ao tirar 10 ou menor e +1d6 de PP ao tirar 20;Nenhum
+15;Rosto Bonito;+2 em Persuasão e -2 em Intimidação;Oposto: Cara Feia
+16;Saco de Pancada;+1 PV por nível e -1 PP por nível;Oposto: Canhão de Vidro
+17;Ágil;+1d20 em testes de Agilidade;+3 pontos. Oposto: Desastrado
+18;Ambidestria;Ambidestro;+3 pontos
+19;Amigo do Povo;+2 em Sociedade;+1 ponto. Oposto: Antissocial
+20;Aponta pra onde dói;+2 em Medicina;+1 ponto
+21;Aprenda com o Passado;+2 em História;+1 ponto
+22;Artista Dedicado;+2 em Arte;+1 ponto
+23;Bala no Alvo;+2 em Acerto;+3 pontos. Oposto: Mira Torta
+24;Berço de Ouro;+10 PO$;+1 ponto
+25;Cão de Briga;+2 em Luta;+3 pontos. Oposto: Inofensivo
+26;Cicatrização Rápida;+1 para cada dado de cura;+3 pontos. Oposto: Cicatrização Tardia
+27;Conhecedor;+2 em Instrução;+1 ponto. Oposto: Ignorante
+28;Corajoso;+1d20 em testes contra amedrontamento;+1 ponto. Oposto: Medroso
+29;De novo;Pode refazer uma rolagem por cena;+2 pontos
+30;Dedos Leves;+2 em Destreza;+1 ponto. Oposto: Mão Furada
+31;Deixa eu fazer carinho;+2 em Adestramento;+1 ponto. Oposto: Grosseria Animal
+32;Desconfiado;+2 em Perspicácia;+1 ponto. Oposto: Tolo
+33;Dotado;+1 Atributo para distribuir;+3 pontos. Oposto: Despojado
+34;Estrela do Palco;+2 em Performance;+1 ponto
+35;Frio e Calculista;+2 em Estratégia;+1 ponto
+36;Gente Boa;+1d20 em testes de Influência;+3 pontos. Oposto: Grosseiro
+37;Iniciado;+1 nível;+5 pontos
+38;Língua de Prata;+2 em Persuasão;+1 ponto
+39;Memória Eidética;+1d20 em testes para lembrar de informações;+1 ponto
+40;Mente Afiada;+1d20 em testes de Mente;+3 pontos. Oposto: Confuso
+41;Mente Forte;+2 em Determinação;+1 ponto. Oposto: Mente Frágil
+42;Misticismo;+2 em Arcano;+3 pontos. Oposto: Voodoo é pra Jacu
+43;Molejo;+2 em Acrobacia;+1 ponto. Oposto: Desajeitado
+44;Na Cola;+2 em Rastreamento;+1 ponto
+45;Nascido pronto;+2 em Iniciativa;+3 pontos. Oposto: Calma tô indo
+46;Naturalista;+2 em Natureza;+3 pontos
+47;Pau pra toda obra;+1+Mente de proficiência em habilidades;+3 pontos. Oposto: Inábil
+48;Piloto de Fuga;+2 em Condução;+1 ponto
+49;Poker Face;+2 em Enganação;+1 ponto. Oposto: Gaguejou Mentiu
+50;Potente;+1d20 em testes de Presença;+3 pontos. Oposto: Alheio
+51;Quem procura acha;+2 em Investigação;+1 ponto
+52;Saúde de Ferro;+1d20 em testes de Constituição;+3 pontos. Oposto: Frágil
+53;Sentido Aranha;+2 em Reflexo;+3 pontos. Oposto: Hã
+54;Sentidos Aguçados;+2 em Percepção;+1 ponto. Oposto: No mundo da lua
+55;Sobre ter fé;+2 em Religião;+3 pontos. Oposto: Pulou a Catequese
+56;Sobrevivente;+2 em Sobrevivência;+1 ponto. Oposto: Criança de Apartamento
+57;Sombra;+2 em Furtividade;+1 ponto. Oposto: Chamariz
+58;Sortudo;+1 em Sorte;+1 ponto. Oposto: Azarado
+59;Trabalhe enquanto dormem;Um Ofício;+5 pontos
+60;Trincado;+2 em Atletismo;+1 ponto. Oposto: Frango
+61;Vigor de Cavalo;+2 em Vigor;+3 pontos. Oposto: Raquítico
+62;Alheio;-1d20 em testes de Presença;-3 pontos. Oposto: Potente
+63;Antissocial;-2 em Sociedade;-1 ponto. Oposto: Amigo de Todos
+64;Azarado;-1 em Sorte;-1 ponto. Oposto: Sortudo
+65;Calma tô indo;-2 em Iniciativa;-3 pontos. Oposto: Nascido pronto
+66;Chamariz;-2 em Furtividade;-1 ponto. Oposto: Sombra
+67;Cicatrização Tardia;-1 para cada dado de cura;-3 pontos. Oposto: Cicatrização Rápida
+68;Confuso;-1d20 em testes de Mente;-3 pontos. Oposto: Mente Afiada

@@ -1,0 +1,41 @@
+{
+    "folders": [
+        {
+            "name": "TDC Sheets",
+            "path": "."
+        },
+        {
+            "name": "Backend (Java)",
+            "path": "./backend"
+        }
+    ],
+    "settings": {
+        "java.configuration.updateBuildConfiguration": "automatic",
+        "java.project.sourcePaths": [
+            "backend/src/main/java"
+        ],
+        "java.project.outputPath": "backend/build/classes",
+        "java.sources": {
+            "backend/src/main/java": "source",
+            "backend/src/test/java": "test"
+        },
+        "java.project.referencedLibraries": [
+            "backend/build/libs/**/*.jar"
+        ],
+        "files.exclude": {
+            "**/build": true,
+            "**/.gradle": true,
+            "**/node_modules": true,
+            "**/.git": true,
+            "**/.DS_Store": true
+        }
+    },
+    "extensions": {
+        "recommendations": [
+            "vscjava.vscode-java-pack",
+            "vscjava.vscode-gradle",
+            "vscjava.vscode-spring-boot-dashboard",
+            "vmware.vscode-spring-boot"
+        ]
+    }
+}

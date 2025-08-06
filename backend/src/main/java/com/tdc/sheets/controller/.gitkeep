@@ -1,0 +1,4 @@
+# Esta pasta conterá os controllers REST da aplicação
+
+Este arquivo garante que a pasta seja versionada no Git.
+Controllers devem usar @RestController e seguir as convenções REST.

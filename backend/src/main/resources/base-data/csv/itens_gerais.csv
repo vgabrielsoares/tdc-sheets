@@ -1,0 +1,88 @@
+id;nome;valor_po;peso;categoria;descricao;raridade
+101;Apito de Sinal;0.03;0;AVENTURA_EXPLORACAO_VIAGEM;Apito usado para comunicação e sinalização;COMUM
+102;Bomba;15;1;AVENTURA_EXPLORACAO_VIAGEM;Explosivo usado para demolição ou combate;RARO
+103;Bomba de Emaranhamento;18;1;AVENTURA_EXPLORACAO_VIAGEM;Explosivo que cria redes e laços;MUITO_RARO
+104;Bomba de Fumaça;7;1;AVENTURA_EXPLORACAO_VIAGEM;Explosivo que cria cortina de fumaça;RARO
+105;Bússola;1;0;AVENTURA_EXPLORACAO_VIAGEM;Instrumento de navegação magnética;COMUM
+106;Cantil;0.25;0;AVENTURA_EXPLORACAO_VIAGEM;Recipiente para transporte de água;COMUM
+107;Cobertor;0.05;1;AVENTURA_EXPLORACAO_VIAGEM;Tecido para aquecimento e conforto;COMUM
+108;Coletor de Chuva;0.40;1;AVENTURA_EXPLORACAO_VIAGEM;Dispositivo para captação de água;COMUM
+109;Corda de Cânhamo;0.10;1;AVENTURA_EXPLORACAO_VIAGEM;Corda resistente de fibra natural;COMUM
+110;Corda de Seda;1;1;AVENTURA_EXPLORACAO_VIAGEM;Corda leve e resistente de seda;ATIPICO
+111;Dinamite;5;0;AVENTURA_EXPLORACAO_VIAGEM;Explosivo compacto e poderoso;RARO
+112;Filtro de Ar;10;0;AVENTURA_EXPLORACAO_VIAGEM;Dispositivo para purificação do ar;ATIPICO
+113;Kit de Marmita;0.30;0;AVENTURA_EXPLORACAO_VIAGEM;Conjunto de utensílios para cozinhar;COMUM
+114;Luneta;3;0;AVENTURA_EXPLORACAO_VIAGEM;Instrumento óptico para observação;ATIPICO
+115;Mochila de Viagem;0.50;0;AVENTURA_EXPLORACAO_VIAGEM;Mochila resistente para aventuras;ATIPICO
+116;Mochila Paraquedas;10;2;AVENTURA_EXPLORACAO_VIAGEM;Mochila com paraquedas para queda;MUITO_RARO
+117;Pederneira;0.05;0;AVENTURA_EXPLORACAO_VIAGEM;Ferramenta para criar fogo;COMUM
+118;Poção de Cura;5;0;AVENTURA_EXPLORACAO_VIAGEM;Poção que restaura pontos de vida;ATIPICO
+119;Ração;0.05;0;AVENTURA_EXPLORACAO_VIAGEM;Alimento conservado para viagem;COMUM
+120;Saco de Dormir;0.20;1;AVENTURA_EXPLORACAO_VIAGEM;Saco para dormir ao ar livre;COMUM
+121;Tenda;0.50;3;AVENTURA_EXPLORACAO_VIAGEM;Abrigo portátil para acampamento;COMUM
+122;Tochas;0.20;2;AVENTURA_EXPLORACAO_VIAGEM;Fontes de luz portáteis;COMUM
+123;Café;0.003;0;COMIDA_BEBIDA;Bebida estimulante quente;COMUM
+124;Cerveja;0.02;0;COMIDA_BEBIDA;Bebida alcoólica fermentada;COMUM
+125;Fatia de Pão;0.002;0;COMIDA_BEBIDA;Alimento básico de trigo;COMUM
+126;Leite;0.001;0;COMIDA_BEBIDA;Bebida nutritiva de origem animal;COMUM
+127;Pedaço de Carne;0.03;0;COMIDA_BEBIDA;Proteína animal preparada;COMUM
+128;Pedaço de Queijo;0.01;0;COMIDA_BEBIDA;Produto lácteo curado;COMUM
+129;Vinho Comum;0.07;0;COMIDA_BEBIDA;Bebida alcoólica de uva comum;COMUM
+130;Vinho Fino;0.30;0;COMIDA_BEBIDA;Bebida alcoólica de uva refinada;ATIPICO
+131;Amuleto de Conjuração;1;0;FEITICARIA_OUTROS;Conduíte mágico tipo amuleto;ATIPICO
+132;Anel de Conjuração;1;0;FEITICARIA_OUTROS;Conduíte mágico tipo anel;ATIPICO
+133;Cajado de Conjuração;1;2;FEITICARIA_OUTROS;Conduíte mágico tipo cajado;ATIPICO
+134;Cetro de Conjuração;1;1;FEITICARIA_OUTROS;Conduíte mágico tipo cetro;ATIPICO
+135;Cristal de Conjuração;2;0;FEITICARIA_OUTROS;Conduíte mágico tipo cristal;ATIPICO
+136;Orbe de Conjuração;2;0;FEITICARIA_OUTROS;Conduíte mágico tipo orbe;ATIPICO
+137;Tomo de Conjuração;2;1;FEITICARIA_OUTROS;Conduíte mágico tipo livro;ATIPICO
+138;Varinha de Conjuração;1;0;FEITICARIA_OUTROS;Conduíte mágico tipo varinha;ATIPICO
+139;Poção de Energia;5;0;FEITICARIA_OUTROS;Poção que restaura pontos de poder;ATIPICO
+140;Bolsa de Componentes;2.5;1;FEITICARIA_OUTROS;Bolsa para materiais mágicos;ATIPICO
+141;Grimório;5;1;FEITICARIA_OUTROS;Livro de feitiços e conhecimento;ATIPICO
+142;Aríete Portátil;1;2;FERRAMENTAS_HABILIDADE;Ferramenta para derrubar portas;ATIPICO
+143;Armadilha de Caça;0.80;1;FERRAMENTAS_HABILIDADE;Dispositivo para capturar animais;COMUM
+144;Balança de Mercador;1.5;1;FERRAMENTAS_HABILIDADE;Instrumento para pesar objetos;COMUM
+145;Cadeado;1;0;FERRAMENTAS_HABILIDADE;Dispositivo de segurança com chave;COMUM
+146;Lupa;3;0;FERRAMENTAS_HABILIDADE;Lente de aumento para detalhes;RARO
+147;Martelo;0.15;0;FERRAMENTAS_HABILIDADE;Ferramenta de impacto;COMUM
+148;Pá;0.20;1;FERRAMENTAS_HABILIDADE;Ferramenta para escavar;COMUM
+149;Pé de Cabra;0.20;1;FERRAMENTAS_HABILIDADE;Ferramenta de alavanca;COMUM
+150;Pedra de Amolar;0.02;0;FERRAMENTAS_HABILIDADE;Pedra para afiar lâminas;COMUM
+151;Picareta;0.20;1;FERRAMENTAS_HABILIDADE;Ferramenta para quebrar pedra;COMUM
+152;Pitão;0.02;0;FERRAMENTAS_HABILIDADE;Prego para escalada;COMUM
+153;Polia de Tração;0.10;1;FERRAMENTAS_HABILIDADE;Dispositivo para levantar pesos;ATIPICO
+154;Rede;0.10;2;FERRAMENTAS_HABILIDADE;Rede para capturar ou carregar;COMUM
+155;Lampião;1;1;FONTES_LUZ;Fonte de luz com combustível;COMUM
+156;Lampião Direcional;3.5;1;FONTES_LUZ;Lampião com foco direcionável;ATIPICO
+157;Tocha;0.02;0;FONTES_LUZ;Fonte de luz temporária;COMUM
+158;Vela;0.002;0;FONTES_LUZ;Fonte de luz de cera;COMUM
+159;Extrato de Steinhrifun;3;0;HERBALISMO;Planta medicinal processada;ATIPICO
+160;Folha de Khunzari;5;0;HERBALISMO;Planta com propriedades especiais;ATIPICO
+161;Folha de Tseverlegee;0.30;0;HERBALISMO;Planta comum medicinal;COMUM
+162;Iturikaitera;1;0;HERBALISMO;Planta com efeitos curativos;ATIPICO
+163;Leignim;2.5;0;HERBALISMO;Planta rara com propriedades únicas;ATIPICO
+164;Ovchjins;0.10;0;HERBALISMO;Planta comum de uso geral;COMUM
+165;Raiz de Unenchiluu;5;0;HERBALISMO;Raiz com propriedades medicinais;ATIPICO
+166;Semente de Tesrekhur;0.15;0;HERBALISMO;Semente com efeitos especiais;COMUM
+167;Uraabokhomos;0.50;0;HERBALISMO;Planta com propriedades alquímicas;COMUM
+168;Userchbuioch;0.10;0;HERBALISMO;Planta comum para tratamentos;COMUM
+169;Agulha de Sopro;0.015;0;MUNICOES;Projétil para zarabatana;ATIPICO
+170;Bala de Chumbo;0.03;0;MUNICOES;Projétil para armas de fogo;RARO
+171;Bola de Aço;0.01;0;MUNICOES;Projétil esférico de metal;ATIPICO
+172;Virote;0.01;0;MUNICOES;Projétil para besta;COMUM
+173;Flecha;0.01;0;MUNICOES;Projétil para arco;COMUM
+174;Munição em Rimmugull;10;0;MUNICOES;Munição especial encantada;RARO
+175;Ácido;2.5;0;PRODUTOS_ALQUIMICOS;Substância corrosiva;RARO
+176;Antitoxina;5;0;PRODUTOS_ALQUIMICOS;Neutralizador de venenos;RARO
+177;Cólera de Fogo;15;0;PRODUTOS_ALQUIMICOS;Substância incendiária;RARO
+178;Elixir da Verdade;15;0;PRODUTOS_ALQUIMICOS;Poção que força honestidade;RARO
+179;Fogo de Alquimista;5;0;PRODUTOS_ALQUIMICOS;Combustível alquímico;RARO
+180;Icor da Pestilência;20;0;PRODUTOS_ALQUIMICOS;Substância venenosa potente;RARO
+181;Lírio de Sangue;15;0;PRODUTOS_ALQUIMICOS;Ingrediente alquímico raro;RARO
+182;Óleo;0.01;0;PRODUTOS_ALQUIMICOS;Combustível comum;COMUM
+183;Pó Explosivo;5;0;PRODUTOS_ALQUIMICOS;Substância explosiva;RARO
+184;Pólvora;3.5;0;PRODUTOS_ALQUIMICOS;Explosivo em pó;ATIPICO
+185;Pomada Cicatrizante;0.50;0;PRODUTOS_ALQUIMICOS;Ungüento curativo;ATIPICO
+186;Seiva Negra;30;0;PRODUTOS_ALQUIMICOS;Substância venenosa rara;MUITO_RARO
+187;Vayelurat;15;0;PRODUTOS_ALQUIMICOS;Ingrediente alquímico especial;RARO

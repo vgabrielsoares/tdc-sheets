@@ -1,0 +1,46 @@
+id,ficha_personagem_id,acao,acao_disponivel
+3001,1001,Ataque Básico,true
+3002,1001,Defesa Total,true
+3003,1001,Movimento Cauteloso,false
+3004,1002,Ataque Múltiplo,true
+3005,1002,Esquiva Aprimorada,true
+3006,1002,Foco em Combate,true
+3007,1003,Desarmar Oponente,true
+3008,1003,Ataque Surpresa,false
+3009,1003,Bloqueio Ativo,true
+3010,1004,Investida Poderosa,true
+3011,1004,Manobra Defensiva,true
+3012,1004,Ataque de Oportunidade,false
+3013,1005,Conjuração Rápida,true
+3014,1005,Canalizar Magia,true
+3015,1005,Contramágica,true
+3016,1006,Ataque Furtivo,true
+3017,1006,Esconder-se,false
+3018,1006,Movimento Silencioso,true
+3019,1007,Ataque Devastador,true
+3020,1007,Resistir à Magia,true
+3021,1007,Intimidar Inimigo,false
+3022,1008,Voo Rasante,true
+3023,1008,Ataque Aéreo,true
+3024,1008,Pouso Forçado,false
+3025,1009,Cura Rápida,true
+3026,1009,Benção Divina,true
+3027,1009,Proteção Sagrada,true
+3028,1010,Rajada Élfica,true
+3029,1010,Tiro Certeiro,true
+3030,1010,Recarga Rápida,false
+3031,1011,Ataque Brutal,true
+3032,1011,Investida Berserker,true
+3033,1011,Grito de Guerra,false
+3034,1012,Ilusão Menor,true
+3035,1012,Invisibilidade,false
+3036,1012,Confundir Inimigo,true
+3037,1013,Comando Natural,true
+3038,1013,Comunicar com Animais,true
+3039,1013,Forma Selvagem,false
+3040,1014,Ataque Pesado,true
+3041,1014,Destruir Equipamento,true
+3042,1014,Quebrar Defesa,false
+3043,1015,Manipular Mente,true
+3044,1015,Telepatia,false
+3045,1015,Confusão Mental,true

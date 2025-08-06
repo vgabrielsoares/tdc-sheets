@@ -1,0 +1,126 @@
+version: '3.8'
+
+services:
+  database:
+    image: postgres:15-alpine
+    container_name: tdc-database
+    environment:
+      POSTGRES_DB: ${DB_NAME:-tdc_sheets}
+      POSTGRES_USER: ${DB_USERNAME:-tdc_user}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-tdc_password}
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale=C"
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ../tabuleiro-do-caos-rpg-fichas-29-06.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ./database/init-scripts:/docker-entrypoint-initdb.d:ro
+    networks:
+      - tdc-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME:-tdc_user} -d ${DB_NAME:-tdc_sheets}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.backend
+      args:
+        - GRADLE_OPTS=-Dorg.gradle.daemon=false
+    container_name: tdc-backend
+    environment:
+      # Database
+      DB_HOST: database
+      DB_PORT: 5432
+      DB_NAME: ${DB_NAME:-tdc_sheets}
+      DB_USERNAME: ${DB_USERNAME:-tdc_user}
+      DB_PASSWORD: ${DB_PASSWORD:-tdc_password}
+      DB_URL: jdbc:postgresql://database:5432/${DB_NAME:-tdc_sheets}
+      
+      # Security
+      JWT_SECRET: ${JWT_SECRET:-your-super-secret-jwt-key-change-in-production}
+      JWT_EXPIRATION: ${JWT_EXPIRATION:-86400000}
+      
+      # Application
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE:-dev}
+      SERVER_PORT: 8080
+      
+      # Logging
+      LOGGING_LEVEL_ROOT: ${LOG_LEVEL:-INFO}
+      LOGGING_LEVEL_COM_TDC_SHEETS: ${LOG_LEVEL_APP:-DEBUG}
+    ports:
+      - "${BACKEND_PORT:-8080}:8080"
+    depends_on:
+      database:
+        condition: service_healthy
+    networks:
+      - tdc-network
+    volumes:
+      - backend_logs:/app/logs
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.frontend
+      args:
+        - VITE_API_URL=${VITE_API_URL:-http://localhost:8080}
+        - VITE_APP_NAME=${VITE_APP_NAME:-TDC Sheets}
+    container_name: tdc-frontend
+    environment:
+      NGINX_HOST: ${FRONTEND_HOST:-localhost}
+      NGINX_PORT: ${FRONTEND_PORT:-80}
+    ports:
+      - "${FRONTEND_PORT:-3000}:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - tdc-network
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+
+  # Serviço para desenvolvimento (opcional)
+  database-admin:
+    image: adminer:4.8.1
+    container_name: tdc-adminer
+    ports:
+      - "${ADMINER_PORT:-8081}:8080"
+    depends_on:
+      - database
+    networks:
+      - tdc-network
+    environment:
+      ADMINER_DEFAULT_SERVER: database
+    profiles:
+      - dev
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+    driver: local
+  backend_logs:
+    driver: local
+
+networks:
+  tdc-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16

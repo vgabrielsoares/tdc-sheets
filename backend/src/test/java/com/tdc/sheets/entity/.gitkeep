@@ -1,0 +1,4 @@
+# Esta pasta conterá os testes das entidades JPA
+
+Este arquivo garante que a pasta seja versionada no Git.
+Os testes de entity devem testar mapeamentos JPA, relacionamentos e validações de entidade.

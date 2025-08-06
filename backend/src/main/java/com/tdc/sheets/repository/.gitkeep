@@ -1,0 +1,4 @@
+# Esta pasta conterá os repositórios JPA
+
+Este arquivo garante que a pasta seja versionada no Git.
+Repositórios devem estender JpaRepository e conter queries customizadas.

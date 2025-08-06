@@ -1,0 +1,182 @@
+# Configuração principal da aplicação TDC Sheets
+spring:
+  application:
+    name: tdc-sheets-backend
+    version: 0.0.1
+    
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+    
+  main:
+    allow-bean-definition-overriding: true
+    
+  # Configuração de internacionalização
+  web:
+    locale: pt_BR
+    locale-resolver: fixed
+    
+  # Configuração JSON
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+      write-durations-as-timestamps: false
+    deserialization:
+      fail-on-unknown-properties: false
+    default-property-inclusion: non_null
+    time-zone: America/Sao_Paulo
+    
+  # Configuração do banco de dados
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/tdc_sheets}
+    username: ${DB_USERNAME:tdc_user}
+    password: ${DB_PASSWORD:tdc_password}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      connection-timeout: 20000
+      maximum-pool-size: 10
+      minimum-idle: 5
+      idle-timeout: 300000
+      max-lifetime: 1200000
+      leak-detection-threshold: 60000
+
+  # Configuração JPA base
+  jpa:
+    open-in-view: false
+    show-sql: false
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        hbm2ddl:
+          auto: none
+        javax:
+          persistence:
+            schema-generation:
+              database:
+                action: none
+        
+  # Configuração Liquibase
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
+    enabled: true
+    contexts: base-data
+    
+  # Configuração de Cache
+  cache:
+    type: caffeine
+    caffeine:
+      spec: maximumSize=1000,expireAfterAccess=300s
+      
+# Configuração do servidor
+server:
+  port: ${SERVER_PORT:8080}
+  servlet:
+    context-path: /api
+  compression:
+    enabled: true
+    mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json
+    min-response-size: 1024
+  error:
+    include-binding-errors: never
+    include-stacktrace: never
+    include-message: always
+    
+# Configuração de segurança JWT
+jwt:
+  secret: ${JWT_SECRET:your-super-secret-jwt-key-change-in-production}
+  expiration: ${JWT_EXPIRATION:86400000} # 24 horas em ms
+  
+# Configuração Resilience4j
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        sliding-window-size: 10
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 30s
+        permitted-number-of-calls-in-half-open-state: 3
+  retry:
+    configs:
+      default:
+        max-attempts: 3
+        wait-duration: 1s
+  ratelimiter:
+    configs:
+      default:
+        limit-for-period: 100
+        limit-refresh-period: 1s
+        
+# Configuração Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: when_authorized
+      show-components: when_authorized
+  info:
+    env:
+      enabled: true
+    build:
+      enabled: true
+    git:
+      enabled: true
+      mode: full
+      
+# Configuração de logging
+logging:
+  level:
+    com.tdc.sheets: INFO
+    org.springframework.security: WARN
+    org.hibernate: WARN
+    liquibase: INFO
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{ISO8601} [%thread] %-5level %logger{36} - %msg%n"
+    
+# Configuração OpenAPI/Swagger
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: method
+    tagsSorter: alpha
+  info:
+    title: TDC Sheets API
+    description: API para gerenciamento de fichas do RPG Tabuleiro do Caos
+    version: 0.0.1
+    contact:
+      name: Victor Gabriel Soares
+      url: https://github.com/vgabrielsoares
+      email: 4vgabriel@gmail.com
+    license:
+      name: GNU General Public License v3.0
+      url: https://www.gnu.org/licenses/gpl-3.0.html
+      
+# Configuração da aplicação
+app:
+  name: TDC Sheets
+  description: Sistema de Fichas para RPG Tabuleiro do Caos
+  version: 0.0.1
+  cors:
+    allowed-origins: 
+      - http://localhost:3000
+      - http://localhost:5173
+    allowed-methods: 
+      - GET
+      - POST
+      - PUT
+      - PATCH
+      - DELETE
+      - OPTIONS
+    allowed-headers: "*"
+    allow-credentials: true
+    max-age: 3600
